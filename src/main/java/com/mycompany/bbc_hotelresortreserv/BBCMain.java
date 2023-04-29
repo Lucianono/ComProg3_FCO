@@ -1,10 +1,15 @@
 package com.mycompany.bbc_hotelresortreserv;
 
+//this is the main class
+//all classes should be in here
+
 public class BBCMain {
 
     public static void main(String[] args) {
-        System.out.println("Hello Gudmorning!");
-        System.out.println("Try");
-        System.out.println("test 1!");
+        
+        CustomerCRUD cstmr = new CustomerCRUD();
+        HotelCRUD hotel = new HotelCRUD();
+        ResourcesCRUD rsrcs = new ResourcesCRUD();
+        
     }
 }
