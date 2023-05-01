@@ -20,26 +20,23 @@ TODO :
 
 public class HotelCRUD {
 
-    ArrayList<Object> hotel_arr = new ArrayList();
+    ArrayList<Hotel> hotel_arr = new ArrayList();
     
     HotelCRUD(){
-        addHotel("A1","Tourist Class",true,1,1000.0,900.0);
-        System.out.println(hotel_arr.get(0).toString());
+        addHotel("A1","Tourist Class",true,1,1000,900);
+        addHotel("B1","Deluxe Class",true,1,1200,930);
+        addHotel("C1","Ambassador Class",true,1,1300,1030);
+        addHotel("D1","Corporate Class",true,1,1500,1300);
+        addHotel("E11","Annex Room",true,3,0,300.0);
+        addHotel("E12","Annex Room",true,5,0,300.0);
+        System.out.println(hotel_arr.get(4).getHotelType());
     }
 
 
     public void addHotel(String HotelNo, String HotelType, boolean Availability, int RoomCap , double RegRate, double PromoRate){
     
-        Object[] hotel = new Object[6];
-        hotel[0]= HotelNo;
-        hotel[1]= HotelType;
-        hotel[2]= Availability;
-        hotel[3]= RoomCap;
-        hotel[4]= RegRate;
-        hotel[5]= PromoRate;
+        Hotel hotel = new Hotel(HotelNo,HotelType,Availability,RoomCap,RegRate,PromoRate);
         hotel_arr.add(hotel);
-        System.out.println(hotel[1]);
-   
     }
     
     public void unbookHotel(String name, int numofroom, int roomcap){

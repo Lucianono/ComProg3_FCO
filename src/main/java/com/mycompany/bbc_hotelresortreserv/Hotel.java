@@ -21,6 +21,10 @@ public class Hotel {
         this.PromoRate = PromoRate;
     }
     
+    public String getHotelType(){
+        return HotelType;
+    }
+    
     
     
 }
