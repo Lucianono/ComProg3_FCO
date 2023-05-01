@@ -4,8 +4,8 @@ package com.mycompany.bbc_hotelresortreserv;
 
 public class Hotel {
 
-    private String HotelNo;
-    private String HotelType;
+    private final String HotelNo;
+    private final String HotelType;
     private boolean Availability;
     private int RoomCap;
     private double RegRate;
@@ -21,9 +21,32 @@ public class Hotel {
         this.PromoRate = PromoRate;
     }
     
+    public String getHotelNo(){
+        return HotelNo;
+    }
     public String getHotelType(){
         return HotelType;
     }
+    
+    public boolean getAvailability(){
+        return Availability;
+    }
+    
+    public int getRoomCap(){
+        return RoomCap;
+    }
+    
+    public double getRegRate(){
+        return RegRate;
+    }
+    
+    public double getPromoRate(){
+        return PromoRate;
+    }
+    
+    
+    
+    
     
     
     

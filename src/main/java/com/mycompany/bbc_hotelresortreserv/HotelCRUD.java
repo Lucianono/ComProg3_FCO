@@ -29,7 +29,6 @@ public class HotelCRUD {
         addHotel("D1","Corporate Class",true,1,1500,1300);
         addHotel("E11","Annex Room",true,3,0,300.0);
         addHotel("E12","Annex Room",true,5,0,300.0);
-        System.out.println(hotel_arr.get(4).getHotelType());
     }
 
 
