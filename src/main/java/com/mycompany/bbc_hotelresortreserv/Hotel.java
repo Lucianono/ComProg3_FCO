@@ -44,8 +44,16 @@ public class Hotel {
         return RegRate;
     }
     
+    public void setRegRate(double reg){
+        this.RegRate = reg;
+    }
+    
     public double getPromoRate(){
         return PromoRate;
+    }
+    
+    public void setPromoRate(double prm){
+        this.RegRate = prm;
     }
     
     

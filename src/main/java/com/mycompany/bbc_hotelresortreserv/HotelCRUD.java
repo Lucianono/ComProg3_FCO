@@ -72,13 +72,15 @@ public class HotelCRUD {
         
     }
     
-    public void updateHotelRate (int HotelIndex, double RegRate, double PromoRate){
+    public void updateHotelRate (String HotelNo, double RegRate, double PromoRate){
         
-        
-        
+        if(getHotelIndex(HotelNo)){
+            hotel_arr.get(getHotelIndex(HotelNo)).setRegRate(true);
+            hotel_arr.get(getHotelIndex(HotelNo)).setPromoRate(true);
+        }
     }
     
-    public void deleteHotel(String name, int numofroom, int roomcap){
+    public void deleteHotel(String HotelNo){
         
     }
     
