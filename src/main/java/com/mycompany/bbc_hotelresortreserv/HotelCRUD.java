@@ -74,9 +74,9 @@ public class HotelCRUD {
     
     public void updateHotelRate (String HotelNo, double RegRate, double PromoRate){
         
-        if(getHotelIndex(HotelNo)){
-            hotel_arr.get(getHotelIndex(HotelNo)).setRegRate(true);
-            hotel_arr.get(getHotelIndex(HotelNo)).setPromoRate(true);
+        if(getHotelIndex(HotelNo) != -1){
+            hotel_arr.get(getHotelIndex(HotelNo)).setRegRate(RegRate);
+            hotel_arr.get(getHotelIndex(HotelNo)).setPromoRate(PromoRate);
         }
     }
     
