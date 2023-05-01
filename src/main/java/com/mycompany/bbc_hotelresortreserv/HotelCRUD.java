@@ -33,6 +33,17 @@ public class HotelCRUD {
     }
 
 
+    public int getHotelIndex(String HotelNo){
+        
+        for(int i =0; i<hotel_arr.size();i++){
+            if(hotel_arr.get(i).getHotelNo().equals(HotelNo)){
+                return i;
+            }
+        }
+        return -1;
+        
+    }
+    
     public void addHotel(String HotelNo, String HotelType, boolean Availability, int RoomCap , double RegRate, double PromoRate){
     
         Hotel hotel = new Hotel(HotelNo,HotelType,Availability,RoomCap,RegRate,PromoRate);
@@ -41,18 +52,22 @@ public class HotelCRUD {
     }
     
     
-    public void bookHotel(int HotelIndex){
+    public void bookHotel(String HotelNo){
         
-        if(hotel_arr.get(HotelIndex).getAvailability()==true){
-            hotel_arr.get(HotelIndex).setAvailability(false);
+        if(getHotelIndex(HotelNo) != -1 && hotel_arr.get(getHotelIndex(HotelNo)).getAvailability()==true){
+            hotel_arr.get(getHotelIndex(HotelNo)).setAvailability(false);
+        }else{
+            System.out.println("Hotel does not exist");
         }
         
     }
     
-    public void unbookHotel(int HotelIndex){
+    public void unbookHotel(String HotelNo){
         
-        if(hotel_arr.get(HotelIndex).getAvailability()==false){
-            hotel_arr.get(HotelIndex).setAvailability(true);
+        if(getHotelIndex(HotelNo) != -1 && hotel_arr.get(getHotelIndex(HotelNo)).getAvailability()==false){
+            hotel_arr.get(getHotelIndex(HotelNo)).setAvailability(true);
+        }else{
+            System.out.println("Hotel does not exist");
         }
         
     }

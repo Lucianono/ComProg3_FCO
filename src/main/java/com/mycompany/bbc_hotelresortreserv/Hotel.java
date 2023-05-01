@@ -7,7 +7,7 @@ public class Hotel {
     private final String HotelNo;
     private final String HotelType;
     private boolean Availability;
-    private int RoomCap;
+    private final int RoomCap;
     private double RegRate;
     private double PromoRate;
     
