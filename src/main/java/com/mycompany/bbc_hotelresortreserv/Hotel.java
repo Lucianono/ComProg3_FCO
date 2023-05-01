@@ -31,6 +31,9 @@ public class Hotel {
     public boolean getAvailability(){
         return Availability;
     }
+    public void setAvailability(boolean avlbl){
+        this.Availability = avlbl;
+    }
     
     public int getRoomCap(){
         return RoomCap;
