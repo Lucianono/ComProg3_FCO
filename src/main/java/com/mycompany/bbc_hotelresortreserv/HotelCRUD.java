@@ -78,9 +78,12 @@ public class HotelCRUD {
             hotel_arr.get(getHotelIndex(HotelNo)).setRegRate(RegRate);
             hotel_arr.get(getHotelIndex(HotelNo)).setPromoRate(PromoRate);
         }
+        
     }
     
     public void deleteHotel(String HotelNo){
+       
+        hotel_arr.remove(getHotelIndex(HotelNo));
         
     }
     
