@@ -37,6 +37,7 @@ public class HotelCRUD {
     
         Hotel hotel = new Hotel(HotelNo,HotelType,Availability,RoomCap,RegRate,PromoRate);
         hotel_arr.add(hotel);
+        
     }
     
     
@@ -56,7 +57,9 @@ public class HotelCRUD {
         
     }
     
-    public void updateHotel(String name, int numofroom, int roomcap){
+    public void updateHotelRate (int HotelIndex, double RegRate, double PromoRate){
+        
+        
         
     }
     
