@@ -24,6 +24,7 @@ public class Hotel {
     public String getHotelNo(){
         return HotelNo;
     }
+    
     public String getHotelType(){
         return HotelType;
     }

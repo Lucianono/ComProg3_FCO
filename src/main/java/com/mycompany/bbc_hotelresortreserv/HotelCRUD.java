@@ -29,7 +29,7 @@ public class HotelCRUD {
         addHotel("D1","Corporate Class",true,1,1500,1300);
         addHotel("E11","Annex Room",true,3,0,300.0);
         addHotel("E12","Annex Room",true,5,0,300.0);
-        hotel_arr.get(8);
+        
     }
 
 
@@ -40,16 +40,19 @@ public class HotelCRUD {
     }
     
     
-    public void bookHotel(String HotelNo){
-        //while()){
-        //}
+    public void bookHotel(int HotelIndex){
+        
+        if(hotel_arr.get(HotelIndex).getAvailability()==true){
+            hotel_arr.get(HotelIndex).setAvailability(false);
+        }
         
     }
     
-    public void unbookHotel(String name, int numofroom, int roomcap){
-    }
-
-    public void getHotel(String name, int numofroom, int roomcap){
+    public void unbookHotel(int HotelIndex){
+        
+        if(hotel_arr.get(HotelIndex).getAvailability()==false){
+            hotel_arr.get(HotelIndex).setAvailability(true);
+        }
         
     }
     
