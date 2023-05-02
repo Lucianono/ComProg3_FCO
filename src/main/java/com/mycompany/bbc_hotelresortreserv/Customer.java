@@ -13,15 +13,15 @@ public class Customer {
     String cstmrName;
     int cstmrAge;
     long timeChecked = 0;
-    int index;
+    int custNo;
     private final String name;
     private final int age;
 
-    public Customer(String name, int age, long timeChecked, int index) {
+    public Customer(int custNo, String name, int age, long timeChecked) {
         this.name = name;
         this.age = age;
         this.timeChecked = timeChecked;
-        this.index = index;
+        this.custNo = custNo;
     }
 
     Object getName() {

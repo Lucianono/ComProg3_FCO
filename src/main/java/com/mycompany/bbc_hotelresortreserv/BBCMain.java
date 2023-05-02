@@ -11,7 +11,6 @@ public class BBCMain {
         HotelCRUD hotel = new HotelCRUD();
         ResourcesCRUD rsrcs = new ResourcesCRUD();
         
-        cstmr.CustomerInformationSystem();
         
     }
 }

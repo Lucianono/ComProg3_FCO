@@ -17,16 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerCRUD {
-    //eto ung ginamit namin sa main
-    /*public static void main(String[] args) {
-        CustomerInformationSystem();
-    }*/
     
-    public class SUI {
     private static int cstmrNum;
     private List<Customer> customers;
 
-    public SUI() {
+    CustomerCRUD() {
         customers = new ArrayList<>();
         cstmrNum = 0;
     }
@@ -36,6 +31,7 @@ public class CustomerCRUD {
         cstmrNum++;
     }
 
+    
     public Customer getCustomer(String name) {
        
         for (Customer c : customers) {
@@ -56,9 +52,9 @@ public class CustomerCRUD {
     }
 
     public int getNumCustomers() {
-        return cstmrNum;
+        return customers.size();
     }
-}
+
 
     
 }
