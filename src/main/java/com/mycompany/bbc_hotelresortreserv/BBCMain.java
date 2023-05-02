@@ -11,5 +11,7 @@ public class BBCMain {
         HotelCRUD hotel = new HotelCRUD();
         ResourcesCRUD rsrcs = new ResourcesCRUD();
         
+        SplashScreen splsh = new SplashScreen();
+        
     }
 }
