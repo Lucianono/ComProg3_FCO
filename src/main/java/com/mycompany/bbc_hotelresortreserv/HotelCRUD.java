@@ -22,6 +22,7 @@ public class HotelCRUD {
 
     ArrayList<Hotel> hotel_arr = new ArrayList();
     
+    //constructor
     HotelCRUD(){
         addHotel("A1","Tourist Class",true,1,1000,900);
         addHotel("B1","Deluxe Class",true,1,1200,930);
@@ -30,9 +31,11 @@ public class HotelCRUD {
         addHotel("E11","Annex Room",true,3,0,300.0);
         addHotel("E12","Annex Room",true,5,0,300.0);
         
+        
     }
 
 
+    //converts hotelno to index
     public int getHotelIndex(String HotelNo){
         
         for(int i =0; i<hotel_arr.size();i++){
@@ -44,6 +47,7 @@ public class HotelCRUD {
         
     }
     
+    //add a new hotel
     public void addHotel(String HotelNo, String HotelType, boolean Availability, int RoomCap , double RegRate, double PromoRate){
     
         Hotel hotel = new Hotel(HotelNo,HotelType,Availability,RoomCap,RegRate,PromoRate);
@@ -52,38 +56,60 @@ public class HotelCRUD {
     }
     
     
+    //book hotel
     public void bookHotel(String HotelNo){
         
-        if(getHotelIndex(HotelNo) != -1 && hotel_arr.get(getHotelIndex(HotelNo)).getAvailability()==true){
-            hotel_arr.get(getHotelIndex(HotelNo)).setAvailability(false);
+        if(getHotelIndex(HotelNo) != -1){ 
+            if (hotel_arr.get(getHotelIndex(HotelNo)).getAvailability()==true){
+                hotel_arr.get(getHotelIndex(HotelNo)).setAvailability(false);
+            }else{
+                System.out.println("Hotel already booked");
+            }
         }else{
             System.out.println("Hotel does not exist");
         }
         
+        
+        
     }
     
+    //unbook hotel
     public void unbookHotel(String HotelNo){
         
-        if(getHotelIndex(HotelNo) != -1 && hotel_arr.get(getHotelIndex(HotelNo)).getAvailability()==false){
-            hotel_arr.get(getHotelIndex(HotelNo)).setAvailability(true);
+        if(getHotelIndex(HotelNo) != -1){ 
+            if (hotel_arr.get(getHotelIndex(HotelNo)).getAvailability()==false){
+                hotel_arr.get(getHotelIndex(HotelNo)).setAvailability(true);
+            }else{
+                System.out.println("Hotel already unbooked");
+            }
         }else{
             System.out.println("Hotel does not exist");
         }
         
+        
     }
     
+    //change hotel price
     public void updateHotelRate (String HotelNo, double RegRate, double PromoRate){
         
         if(getHotelIndex(HotelNo) != -1){
             hotel_arr.get(getHotelIndex(HotelNo)).setRegRate(RegRate);
             hotel_arr.get(getHotelIndex(HotelNo)).setPromoRate(PromoRate);
+        }else{
+            System.out.println("Hotel does not exist");
         }
         
     }
     
+    //remove a hotel
     public void deleteHotel(String HotelNo){
        
-        hotel_arr.remove(getHotelIndex(HotelNo));
+        if(getHotelIndex(HotelNo) != -1){
+            hotel_arr.remove(getHotelIndex(HotelNo));
+        }else{
+            System.out.println("Hotel does not exist");
+        }
+        
         
     }
     
