@@ -1,8 +1,6 @@
-
 package com.mycompany.bbc_hotelresortreserv;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /*
 This is the class for the Resources or Amenities CRUD
@@ -18,7 +16,7 @@ TODO:
 
 
  */
-public class ResourcesCRUD {
+public final class ResourcesCRUD {
         ArrayList<Resources> rcs = new ArrayList();
         
         public int getIndex(int itemNum){
@@ -31,10 +29,10 @@ public class ResourcesCRUD {
         }
         
         public void update(int itemNum, String itemName, int qty, double price){
-            if(find(itemNum)){
+            if(itemNum != -1){
                 rcs.get(getIndex(itemNum)).setItemName(itemName);
-                rcs.setQty(qty);
-                rcs.setPrice(price);
+                rcs.get(getIndex(itemNum)).setQty(qty);
+                rcs.get(getIndex(itemNum)).setPrice(price);
                 System.out.println("Updated successfully");
             }else{
                 System.out.println("Item is not found");
@@ -42,13 +40,28 @@ public class ResourcesCRUD {
         }
         
         
-        public void delete(String itemName, int qty, double price){
-            
+        public void delete(String itemName){
+             Resources rcsDel = null;
+             for (Resources rec : rcs){
+                if(rcsDel == null){
+                    System.out.println("Cannot delete");
+                }else{
+                    rcs.remove(rcsDel);
+                    System.out.println("Successful remove the item");
+                }
+             }
         }
         
         
-        public void display(String itemName, int qty, double price){
-            
+        public void display(){
+            if (rcs.isEmpty()){
+                System.out.println("No item");
+            }
+            else {
+            for (Resources c : rcs) { 
+            System.out.println(c.getItemName() + ", " + c.getQty() + ", " + c.getItemNum()); 
+        } 
+            }
         }
         
 

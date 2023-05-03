@@ -35,7 +35,7 @@ public class Resources {
         this.price = price;
         return 0;
     }
-    public int itemNum() {
+    public int getItemNum() {
         return itemNum;
     }
     public void setItemNum(int itemNum) {
