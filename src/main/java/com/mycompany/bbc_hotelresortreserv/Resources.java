@@ -1,19 +1,17 @@
-
 package com.mycompany.bbc_hotelresortreserv;
 
 public class Resources {
     private String itemName;
     private final int qty;
     private double price;
+    private int itemNum;
     
-    public Resources (String itemName, int qty, double price){
+    public Resources (int itemNum, String itemName, int qty, double price){
         this.itemName = itemName;
         this.qty = qty;
         this.price = price;
-    }
-
-    Resources() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.itemNum = itemNum;
+        
     }
 
     public String getItemName() {
@@ -36,5 +34,11 @@ public class Resources {
     public double setPrice(double price) {
         this.price = price;
         return 0;
+    }
+    public int itemNum() {
+        return itemNum;
+    }
+    public void setItemNum(int itemNum) {
+        this.itemNum = itemNum;
     }
 }

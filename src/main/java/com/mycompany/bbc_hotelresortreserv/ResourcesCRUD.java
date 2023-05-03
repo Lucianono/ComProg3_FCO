@@ -19,20 +19,33 @@ TODO:
 
  */
 public class ResourcesCRUD {
-        Collection<Resources> rcs = new ArrayList<Resources>();
+        ArrayList<Resources> rcs = new ArrayList();
         
-        public void create(){
-            Resources resources = new Resources();
-                rcs.add(resources);
+        public int getIndex(int itemNum){
+            return 0;
         }
         
-        public void update(String itemName, int qty, double price){
-            
+        public void create(int itemNum, String itemName, int qty, double price){
+            Resources resources = new Resources(itemNum, itemName, qty, price);
+            rcs.add(resources);
         }
+        
+        public void update(int itemNum, String itemName, int qty, double price){
+            if(find(itemNum)){
+                rcs.get(getIndex(itemNum)).setItemName(itemName);
+                rcs.setQty(qty);
+                rcs.setPrice(price);
+                System.out.println("Updated successfully");
+            }else{
+                System.out.println("Item is not found");
+            }
+        }
+        
         
         public void delete(String itemName, int qty, double price){
             
         }
+        
         
         public void display(String itemName, int qty, double price){
             
@@ -43,6 +56,8 @@ public class ResourcesCRUD {
     
     ResourcesCRUD(){
         System.out.println("ResourcesCRUD created");
+        
+        create(101,"extra bed",10,150);
     }
     
 }
