@@ -25,6 +25,7 @@ TODO :
 
 */
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,18 +40,20 @@ public class CustomerCRUD {
 
 // To be Completed
         }
-        
+    /*
+        public void List(){
+         customers = new LinkedList<Customer>();
+    }
+    
+    CustomerCRUD() {
+        customers = new LinkedList<>();
+        cstmrNum = 0;
+        */    
     private static int cstmrNum;
-    private List<Customer> customers;
+    private LinkedList<Customer> customers;
 
     CustomerCRUD() {
-        customers = new ArrayList<>();
-    }
-
-
-    public CustomerCRUD(List<Customer> customers) { //constructor with para for creating customer objects
-        this.customers = customers;
-        cstmrNum = customers.size();
+        customers = new LinkedList<>();
     }
 
     public void createCustomer(Customer customer) { //create customer

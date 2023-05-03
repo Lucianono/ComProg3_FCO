@@ -5,6 +5,7 @@ package com.mycompany.bbc_hotelresortreserv;
  */
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime; 
+import java.util.Date;
 
 public class Customer {
     String cstmrName;
