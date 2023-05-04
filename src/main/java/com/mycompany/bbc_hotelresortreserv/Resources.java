@@ -2,15 +2,15 @@ package com.mycompany.bbc_hotelresortreserv;
 
 public class Resources {
     private String itemName;
-    private final int qty;
+    private int qty;
     private double price;
-    private int itemNum;
+    private final int itemID;
     
-    public Resources (int itemNum, String itemName, int qty, double price){
+    public Resources (int itemID, String itemName, int qty, double price){
         this.itemName = itemName;
         this.qty = qty;
         this.price = price;
-        this.itemNum = itemNum;
+        this.itemID = itemID;
         
     }
 
@@ -25,20 +25,17 @@ public class Resources {
         return qty;
     }
     public void setQty(int qty) {
-        this.price = qty;
+        this.qty = qty;
     }
 
     public double getPrice() {
         return price;
     }
-    public double setPrice(double price) {
+    public void setPrice(double price) {
         this.price = price;
-        return 0;
     }
+    
     public int getItemNum() {
-        return itemNum;
-    }
-    public void setItemNum(int itemNum) {
-        this.itemNum = itemNum;
+        return itemID;
     }
 }

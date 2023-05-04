@@ -19,20 +19,34 @@ TODO:
 public final class ResourcesCRUD {
         ArrayList<Resources> rcs = new ArrayList();
         
-        public int getIndex(int itemNum){
-            return 0;
+        ResourcesCRUD(){
+        System.out.println("ResourcesCRUD created");
+        
+        create(101,"extra bed",10,150);
+        create(103,"f",10,150);
+        create(105,"asf",10,150);
+        
         }
         
-        public void create(int itemNum, String itemName, int qty, double price){
-            Resources resources = new Resources(itemNum, itemName, qty, price);
+        public int getIndex(int itemNum){
+            for (int i = 0; i < rcs.size(); i++){
+            if (rcs.get(i).equals(itemNum)) {
+                return i;
+            }
+        }
+        return -1;
+        }
+        
+        public void create(int itemID, String itemName, int qty, double price){
+            Resources resources = new Resources(itemID, itemName, qty, price);
             rcs.add(resources);
         }
         
-        public void update(int itemNum, String itemName, int qty, double price){
-            if(itemNum != -1){
-                rcs.get(getIndex(itemNum)).setItemName(itemName);
-                rcs.get(getIndex(itemNum)).setQty(qty);
-                rcs.get(getIndex(itemNum)).setPrice(price);
+        public void update(int itemID, String itemName, int qty, double price){
+            if(itemID != -1){
+                rcs.get(getIndex(itemID)).setItemName(itemName);
+                rcs.get(getIndex(itemID)).setQty(qty);
+                rcs.get(getIndex(itemID)).setPrice(price);
                 System.out.println("Updated successfully");
             }else{
                 System.out.println("Item is not found");
@@ -40,16 +54,16 @@ public final class ResourcesCRUD {
         }
         
         
-        public void delete(String itemName){
-             Resources rcsDel = null;
-             for (Resources rec : rcs){
-                if(rcsDel == null){
-                    System.out.println("Cannot delete");
-                }else{
-                    rcs.remove(rcsDel);
-                    System.out.println("Successful remove the item");
-                }
-             }
+        public void delete(int itemID){
+            
+            if (getIndex(itemID) != -1)
+            {
+                rcs.remove(itemID);
+            }
+            else {
+                    System.out.println("Resource does not exist");
+            }
+            
         }
         
         
@@ -67,10 +81,6 @@ public final class ResourcesCRUD {
 
 
     
-    ResourcesCRUD(){
-        System.out.println("ResourcesCRUD created");
-        
-        create(101,"extra bed",10,150);
-    }
+    
     
 }

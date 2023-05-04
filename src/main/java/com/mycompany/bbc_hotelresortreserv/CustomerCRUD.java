@@ -1,5 +1,6 @@
 package com.mycompany.bbc_hotelresortreserv;
 
+
 /*This is the class for Customer CRUD
 
 TODO :
@@ -12,52 +13,31 @@ TODO :
 -Customer should have the following details: Name, Age, TimeChecked
 
 */
-/*This is the class for Customer CRUD
-
-TODO :
--This do not have GUI
--Create methods for Customer Information System
--Create method to create a customer
--Create method to read or get a customer's details
--Create method to update a customer's details
--Create method to delete a customer
--Customer should have the following details: Name, Age, TimeChecked
-
-*/
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 
 
 public class CustomerCRUD {
     
-        public static void main(String[] args) { // FOR TESTING ONLY
-        Scanner sc = new Scanner(System.in);
-        Customer customer = new Customer();
- 
-
-// To be Completed
-        }
-    /*
-        public void List(){
-         customers = new LinkedList<Customer>();
-    }
     
-    CustomerCRUD() {
-        customers = new LinkedList<>();
-        cstmrNum = 0;
-        */    
-    private static int cstmrNum;
     private LinkedList<Customer> customers;
 
     CustomerCRUD() {
         customers = new LinkedList<>();
+        
+        createCustomer(0, "Bryan", 20);
+        createCustomer(1, "Jelo", 20);
+        createCustomer(2, "Noren", 20);
+        
+        displayCustomers();
     }
 
-    public void createCustomer(Customer customer) { //create customer
-        cstmrNum++;
+    public void createCustomer(int ID, String name, int age ) { //create customer
+        
+        Customer customer = new Customer(ID, name, age);
         customers.add(customer);
     }
 
@@ -73,23 +53,26 @@ public class CustomerCRUD {
 
     public void updateCustomerName(int ID, String cstmrName) { //changing of customer name
         for (Customer c : customers) {
-            if (c.getName().equals(ID)) {
+            if (c.getCstmrID() == ID) {
+                c.setName(cstmrName);
             }
         }
     }
     public void updateCustomerAge(int ID, int cstmrAge) { //chaging of customer age
         for (Customer c : customers) {
-            if (c.getName().equals(ID)) {
+            if (c.getCstmrID() == ID) {
+                c.setAge(cstmrAge);
             }
         }
     }  
 
-    public void deleteCustomer(int ID, String cstmrName, int cstmrAge) { //remove customer depending on index
+    public void deleteCustomer(int ID) { //remove customer depending on index
         if (getIndex(ID) != -1)
         {
             customers.remove(ID);
         }
         else {
+            System.out.println("Customer does not exist");
         }
     }
 
