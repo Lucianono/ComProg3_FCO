@@ -32,7 +32,6 @@ public class CustomerCRUD {
         createCustomer(1, "Jelo", 20);
         createCustomer(2, "Noren", 20);
         
-        displayCustomers();
     }
 
     public void createCustomer(int ID, String name, int age ) { //create customer
