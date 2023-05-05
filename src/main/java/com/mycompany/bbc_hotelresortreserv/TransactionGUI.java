@@ -23,6 +23,8 @@ public class TransactionGUI extends JFrame implements ActionListener{
     JPanel jPanel4 = new JPanel();
     JButton jButton3 = new JButton();
     
+    JTextField[] customer_txt_arr = new JTextField[10];
+    int custCount = 1;
     
     TransactionGUI() {
         frame.setSize(600,400);
@@ -41,13 +43,12 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jButton2.setText("-");
         jButton2.addActionListener(this);
         jPanel1.add(jButton2);
-
         
-        jTextField1.setText("name");
-        jPanel1.add(jTextField1);
+        customer_txt_arr[custCount*2] = new JTextField();
+        customer_txt_arr[custCount*2 +1] = new JTextField();
 
-        jTextField2.setText("age");
-        jPanel1.add(jTextField2);
+        jPanel1.add(customer_txt_arr[custCount*2]);
+        jPanel1.add(customer_txt_arr[custCount*2 +1]);
         
         frame.add(jPanel1);
 
@@ -80,10 +81,31 @@ public class TransactionGUI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource()==jButton1){
-            jPanel1.add(new JTextField());
-            jPanel1.add(new JTextField());
-            System.out.println("panel added");
-            frame.setVisible(true);
+            
+            if(custCount < 5){
+                customer_txt_arr[custCount*2] = new JTextField();
+                customer_txt_arr[custCount*2 +1] = new JTextField();
+
+                jPanel1.add(customer_txt_arr[custCount*2]);
+                jPanel1.add(customer_txt_arr[custCount*2 +1]);
+                custCount++;
+
+                frame.setVisible(true);
+            }
+
+        }
+        
+        if(e.getSource()==jButton2){
+            
+            if(custCount > 1){
+
+                jPanel1.remove(customer_txt_arr[custCount*2 -1]);
+                jPanel1.remove(customer_txt_arr[custCount*2 -2]);
+                
+                custCount--;
+
+                frame.setVisible(true);
+            }
 
         }
 
