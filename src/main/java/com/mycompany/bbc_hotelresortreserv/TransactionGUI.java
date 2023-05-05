@@ -23,25 +23,30 @@ public class TransactionGUI extends JFrame implements ActionListener{
     JPanel jPanel4 = new JPanel();
     JButton jButton3 = new JButton();
     
-    JTextField[] customer_txt_arr = new JTextField[10];
     int custCount = 1;
+    int custLimit = 8;
+    JTextField[] customer_txt_arr = new JTextField[custLimit * 2];
+    int custWidth = 110, custHeight = 25;
+    
+    JPanel panelRight = new JPanel();
+    JPanel panelMain = new JPanel();
     
     TransactionGUI() {
         frame.setSize(600,400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        frame.setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
 
-        jPanel1.setLayout(new java.awt.GridLayout(0, 2));
 
 
         jButton1.setText("+");
         jButton1.addActionListener(this);
+        jButton1.setPreferredSize(new Dimension(custWidth,custHeight));
         jPanel1.add(jButton1);
 
         jButton2.setText("-");
         jButton2.addActionListener(this);
+        jButton2.setPreferredSize(new Dimension(custWidth,custHeight));
         jPanel1.add(jButton2);
         
         customer_txt_arr[custCount*2] = new JTextField();
@@ -50,25 +55,39 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jPanel1.add(customer_txt_arr[custCount*2]);
         jPanel1.add(customer_txt_arr[custCount*2 +1]);
         
-        frame.add(jPanel1);
+        customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
+        customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
+        
+        jPanel1.setPreferredSize(new Dimension(250,300));
+        jPanel1.setBorder(BorderFactory.createTitledBorder("Customer Information"));
 
         jLabel1.setText(" Hotel");
         jPanel2.add(jLabel1);
 
         jPanel2.add(jComboBox1);
 
-        frame.add(jPanel2);
 
         jTextField7.setText("Cash");
         jPanel3.add(jTextField7);
 
-        frame.add(jPanel3);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jButton3.setText("CheckIn");
+        
+        panelRight.add(jPanel2);
+        panelRight.add(jPanel3);
+        panelRight.setLayout(new BoxLayout(panelRight,BoxLayout.Y_AXIS));
+        
+        panelMain.add(jPanel1);
+        panelMain.add(panelRight);
+        //panelMain.setLayout(new BoxLayout(panelMain,BoxLayout.X_AXIS));
+        
+
+
         jPanel4.add(jButton3, java.awt.BorderLayout.CENTER);
 
+        frame.add(panelMain);
         frame.add(jPanel4,BorderLayout.SOUTH);
 
         
@@ -81,14 +100,19 @@ public class TransactionGUI extends JFrame implements ActionListener{
         
         if(e.getSource()==jButton1){
             
-            if(custCount < 5){
+            if(custCount < custLimit){
                 customer_txt_arr[custCount*2] = new JTextField();
                 customer_txt_arr[custCount*2 +1] = new JTextField();
 
                 jPanel1.add(customer_txt_arr[custCount*2]);
                 jPanel1.add(customer_txt_arr[custCount*2 +1]);
+                
+                customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
+                customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
+                
                 custCount++;
 
+             
                 frame.setVisible(true);
             }
 
@@ -102,6 +126,9 @@ public class TransactionGUI extends JFrame implements ActionListener{
                 jPanel1.remove(customer_txt_arr[custCount*2 -2]);
                 
                 custCount--;
+                
+                jPanel1.repaint();
+                jPanel1.revalidate();
 
                 frame.setVisible(true);
             }
