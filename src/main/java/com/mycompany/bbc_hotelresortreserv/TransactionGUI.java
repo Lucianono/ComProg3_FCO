@@ -17,7 +17,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
     JButton jButton2 = new JButton();
     JPanel jPanel2 = new JPanel();
     JLabel jLabel1 = new JLabel();
-    JComboBox jComboBox1 = new JComboBox<>();
+    JComboBox jComboBox1 = new JComboBox(new HotelCRUD().getAllHotelID());
     JPanel jPanel3 = new JPanel();
     JTextField jTextField7 = new JTextField();
     JPanel jPanel4 = new JPanel();
@@ -55,7 +55,6 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jLabel1.setText(" Hotel");
         jPanel2.add(jLabel1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(jComboBox1);
 
         frame.add(jPanel2);
