@@ -44,7 +44,7 @@ public class toDelete extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         jPanel1.setLayout(new java.awt.GridLayout(0, 2));
 
@@ -99,7 +99,7 @@ public class toDelete extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jButton3.setText("CheckIn");
+        jButton3.setText("jButton3");
         jPanel4.add(jButton3, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel4);
