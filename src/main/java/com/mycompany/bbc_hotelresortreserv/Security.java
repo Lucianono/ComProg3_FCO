@@ -1,6 +1,8 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
+import java.util.Scanner;
+
 /*
 -This is the class for Security System
 
@@ -22,6 +24,24 @@ public class Security {
 
     public Security() {
         System.out.println("Security Created");
+    }
+    
+    public static int StringIncrement = 1;
+    
+    public static void Encrypt(String password){
+        //pachange nlng variable sa password variable na gamit
+        //paalis nlng scanner//Scanner sc = new Scanner(System.in);
+        System.out.println("Password: ");
+        //String password = sc.nextLine();
+        
+        
+        char[] chars = password.toCharArray();
+        for(char c : chars){
+            c += 1;
+            System.out.print(c);
+            
+        }
+        
     }
     
 }
