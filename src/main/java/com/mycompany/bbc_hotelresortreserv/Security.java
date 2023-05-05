@@ -26,7 +26,7 @@ public class Security {
         System.out.println("Security Created");
     }
     
-    public static int StringIncrement = 1;
+    public static int StringIncrement = 1;  //for Encrypt
     
     public static void Encrypt(String password){
         //pachange nlng variable sa password variable na gamit
