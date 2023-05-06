@@ -34,7 +34,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     
     
     int custCount = 0;
-    int custLimit = 8;
+    int custLimit = 1;
     JTextField[] customer_txt_arr = new JTextField[custLimit * 2];
     int custWidth = 110, custHeight = 25;
     
@@ -44,6 +44,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     JComboBox month = new JComboBox(m);
     JComboBox day = new JComboBox();
     JLabel avlblLbl = new JLabel("    . . .    ");
+    JLabel expectCashlLbl = new JLabel("       .    .    .       ");
     
     
     JPanel panelRight = new JPanel();
@@ -127,6 +128,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jTextField7.setPreferredSize(new Dimension(150,30));
         jPanel3.setBorder(BorderFactory.createTitledBorder("Cash"));
         jPanel3.add(jTextField7);
+        expectCashlLbl.setFont(new Font("Arial",Font.ITALIC,15)  );
+        jPanel3.add(expectCashlLbl);
 
 
         jButton3.setText("RESERVE");
@@ -284,7 +287,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     @Override
     public void itemStateChanged(ItemEvent e) {
 
-        if(e.getSource() == month || e.getSource() == year || e.getSource() == day){
+        if(e.getSource() == month || e.getSource() == year || e.getSource() == day || e.getSource() == jComboBox1){
             day.setEnabled(true);
 
                 int maxDays = 0;
@@ -343,6 +346,11 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                         jButton3.setEnabled(true);
                     }
                 }
+        }
+        
+        if(e.getSource() == month || e.getSource() == year || e.getSource() == day || e.getSource() == jComboBox1){
+            double amount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate();
+            expectCashlLbl.setText("     P "+ amount+"     ");
         }
     }
     
