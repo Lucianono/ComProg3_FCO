@@ -29,7 +29,9 @@ public class TransactionGUI extends JFrame implements ActionListener{
     int custWidth = 110, custHeight = 25;
     
     JPanel panelRight = new JPanel();
+    JPanel panelBottom = new JPanel();
     JPanel panelMain = new JPanel();
+    JPanel panelSuper = new JPanel();
     
     TransactionGUI() {
         frame.setSize(600,400);
@@ -61,34 +63,50 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jPanel1.setPreferredSize(new Dimension(250,300));
         jPanel1.setBorder(BorderFactory.createTitledBorder("Customer Information"));
 
+
         jLabel1.setText(" Hotel");
+        jLabel1.setFont(new Font("Arial",Font.BOLD,15)  );
         jPanel2.add(jLabel1);
-
+        
+        jComboBox1.setFont(new Font("Arial",Font.PLAIN,15)  );
+        jComboBox1.setPreferredSize(new Dimension(100,30));
         jPanel2.add(jComboBox1);
+        
+        jPanel2.setBorder(BorderFactory.createTitledBorder("Hotel Booking"));
 
 
-        jTextField7.setText("Cash");
+
+        jTextField7.setText("");
+        jTextField7.setFont(new Font("Arial",Font.BOLD,15)  );
+        jTextField7.setPreferredSize(new Dimension(150,30));
+        jPanel3.setBorder(BorderFactory.createTitledBorder("Cash"));
         jPanel3.add(jTextField7);
 
 
-        jPanel4.setLayout(new java.awt.BorderLayout());
-
-        jButton3.setText("CheckIn");
+        jButton3.setText("CHECK IN");
+        jButton3.setPreferredSize(new Dimension(120,30));
         
         panelRight.add(jPanel2);
         panelRight.add(jPanel3);
         panelRight.setLayout(new BoxLayout(panelRight,BoxLayout.Y_AXIS));
+        panelRight.setPreferredSize(new Dimension(250,300));
         
         panelMain.add(jPanel1);
         panelMain.add(panelRight);
-        //panelMain.setLayout(new BoxLayout(panelMain,BoxLayout.X_AXIS));
+        
+        
+        jPanel4.add(jButton3);
+        panelBottom.add(jPanel4);
+        
+        panelSuper.add(panelMain);
+        panelSuper.add(panelBottom);
+        panelSuper.setLayout(new BoxLayout(panelSuper,BoxLayout.Y_AXIS));
         
 
 
-        jPanel4.add(jButton3, java.awt.BorderLayout.CENTER);
+        
 
-        frame.add(panelMain);
-        frame.add(jPanel4,BorderLayout.SOUTH);
+        frame.add(panelSuper);
 
         
         frame.setVisible(true);
