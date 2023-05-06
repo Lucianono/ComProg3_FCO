@@ -63,10 +63,16 @@ private JButton nxtbtn = new JButton("Next");
     private static class SecondFrame {
         private JFrame sfrm = new JFrame("Monthly Report");
         public SecondFrame() {
+            close();
             sfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             sfrm.setSize(300,400);
             sfrm.setVisible(true);
             sfrm.setResizable(false);
+            sfrm.setLocationRelativeTo(null);   
+        }
+
+        private void close() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
 }
