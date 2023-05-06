@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     String [] m = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     JComboBox month = new JComboBox(m);
     JComboBox day = new JComboBox();
-    JLabel avlblLbl = new JLabel("Not Available");
+    JLabel avlblLbl = new JLabel("    . . .    ");
     
     
     JPanel panelRight = new JPanel();
@@ -95,61 +96,23 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         
         jComboBox1.setFont(new Font("Arial",Font.PLAIN,15)  );
         jComboBox1.setPreferredSize(new Dimension(120,30));
+        jComboBox1.addItemListener(this);
         jPanel2.add(jComboBox1);
         
         year.setFont(new Font("Arial",Font.PLAIN,12)  );
         year.setPreferredSize(new Dimension(70,24));
+        year.addItemListener(this);
         jPanel2.add(year);
         month.setFont(new Font("Arial",Font.PLAIN,12)  );
         month.setPreferredSize(new Dimension(80,24));
-        month.setSelectedItem(null);
-        month.addItemListener(new ItemListener(){
-            public void itemStateChanged(ItemEvent e) {
-                day.setEnabled(true);
-
-                int maxDays = 0;
-                switch(month.getSelectedIndex()){
-                    case 0:
-                    case 2:
-                    case 4:
-                    case 6:
-                    case 7:
-                    case 9:
-                    case 11:
-                        maxDays = 31;
-                        break;
-                    case 3:
-                    case 5:
-                    case 8:
-                    case 10:
-                        maxDays = 30;
-                        break;
-                    case 1 :
-                    {
-                        if(Integer.parseInt(year.getSelectedItem()+"")%4 == 0)
-                            maxDays = 29;
-                        else
-                            maxDays = 28;
-                        break;
-                    }
-                }
-                
-                String[] days = new String[maxDays];
-                for (int i =0; i<maxDays ; i++){
-                    days[i]= i+1 +"";
-                }
-                day.setModel(new DefaultComboBoxModel<>(days));
-
-                
-                
-            }
-            
-            
-        });
+        month.setSelectedItem(m[0]);
+        month.addItemListener(this);
+        
         jPanel2.add(month);
         day.setFont(new Font("Arial",Font.PLAIN,12)  );
         day.setPreferredSize(new Dimension(40,24));
         day.setEnabled(false);
+        day.addItemListener(this);
         avlblLbl.setFont(new Font("Arial",Font.PLAIN,15)  );
         
         jPanel2.add(day);
@@ -169,6 +132,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jButton3.setText("RESERVE");
         jButton3.setPreferredSize(new Dimension(120,30));
         jButton3.addActionListener(this);
+        jButton3.setEnabled(false);
         
         panelRight.add(jPanel2);
         panelRight.add(jPanel3);
@@ -221,7 +185,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         custCount++;
         
         
-        month.setSelectedItem(null);
+        month.setSelectedItem(m[0]);
         day.setEnabled(false);
         day.setSelectedItem(null);
 
@@ -291,9 +255,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             
             if((hotelBooked.getHotel(hotelSelected).getRegRate()*realCustCount <= cashInput) &&
                     realCustCount > 0){
-                    
-                    
-                if(hotelBooked.bookHotel(hotelSelected+"")){
+
                     
                     String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
@@ -310,25 +272,9 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                     JOptionPane.showMessageDialog(null, "Reservation completed!");
                     
                     clearAll();
-                }
+                
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                    
             
 
         }
@@ -338,7 +284,66 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     @Override
     public void itemStateChanged(ItemEvent e) {
 
-        
+        if(e.getSource() == month || e.getSource() == year || e.getSource() == day){
+            day.setEnabled(true);
+
+                int maxDays = 0;
+                //smart day combobox
+                switch(month.getSelectedIndex()){
+                    case 0:
+                    case 2:
+                    case 4:
+                    case 6:
+                    case 7:
+                    case 9:
+                    case 11:
+                        maxDays = 31;
+                        break;
+                    case 3:
+                    case 5:
+                    case 8:
+                    case 10:
+                        maxDays = 30;
+                        break;
+                    case 1 :
+                    {
+                        if(Integer.parseInt(year.getSelectedItem()+"")%4 == 0)
+                            maxDays = 29;
+                        else
+                            maxDays = 28;
+                        break;
+                    }
+                }
+                
+                String[] days = new String[maxDays];
+                for (int i =0; i<maxDays ; i++){
+                    days[i]= i+1 +"";
+                }
+                day.setModel(new DefaultComboBoxModel<>(days));
+
+                //display if hotel is available that day
+                String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+                Date dateBooked=null;
+                try {
+                    dateBooked = formatter.parse(s);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TransactionGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ArrayList<Transaction> transToDate = transactionsCompleted.getTransactionsByDate(dateBooked);
+                avlblLbl.setText("Available");
+                jButton3.setEnabled(true);
+                for(int i=0; i<transToDate.size(); i++){
+                    if(transToDate.get(i).getHotel().equals(jComboBox1.getSelectedItem()+"")){
+                        avlblLbl.setText("Not Available!");
+                        jButton3.setEnabled(false);
+                    }
+                    else{
+                        avlblLbl.setText("Available");
+                        jButton3.setEnabled(true);
+                    }
+                }
+        }
     }
     
     

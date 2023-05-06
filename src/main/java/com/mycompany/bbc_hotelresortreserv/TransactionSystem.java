@@ -1,6 +1,7 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -35,9 +36,21 @@ public class TransactionSystem {
         }
     }
     
+    public ArrayList<Transaction> getTransactionsByDate(Date d){
+        
+        ArrayList<Transaction> transTaken = new ArrayList<>();
+        for(int i = 0; i<transactions.size();i++){
+            if(transactions.get(i).getDateRsrv().equals(d)){
+                transTaken.add(transactions.get(i));
+            }
+        }
+        return transTaken;
+        
+    }
+    
     public int getIndex(int TransID) {//get index 
         for (int i = 0; i < transactions.size(); i++){
-            if (transactions.get(i).getTransID()==TransID) {
+            if (transactions.get(i).getTransactID()==TransID) {
                 return i;
             }
         }
