@@ -31,6 +31,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     JPanel jPanelminus = new JPanel();
     
     
+    
     int custCount = 0;
     int custLimit = 8;
     JTextField[] customer_txt_arr = new JTextField[custLimit * 2];
@@ -41,7 +42,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     String [] m = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     JComboBox month = new JComboBox(m);
     JComboBox day = new JComboBox();
-
+    JLabel avlblLbl = new JLabel("Not Available");
     
     
     JPanel panelRight = new JPanel();
@@ -139,14 +140,20 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
                 day.setModel(new DefaultComboBoxModel<>(days));
 
+                
+                
             }
+            
+            
         });
         jPanel2.add(month);
         day.setFont(new Font("Arial",Font.PLAIN,12)  );
         day.setPreferredSize(new Dimension(40,24));
         day.setEnabled(false);
+        avlblLbl.setFont(new Font("Arial",Font.PLAIN,15)  );
         
         jPanel2.add(day);
+        jPanel2.add(avlblLbl);
         
         jPanel2.setBorder(BorderFactory.createTitledBorder("Hotel Booking"));
 
@@ -299,6 +306,9 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                     
                     transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked);
                     System.out.println("Transaction was successful");
+                    
+                    JOptionPane.showMessageDialog(null, "Reservation completed!");
+                    
                     clearAll();
                 }
             }

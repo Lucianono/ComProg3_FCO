@@ -24,6 +24,26 @@ public class TransactionSystem {
         
         }
     
+    public Transaction getTransaction(int TransID){
+        if (getIndex(TransID) != -1)
+        {
+            return transactions.get(getIndex(TransID) );
+        }
+        else {
+            System.out.println("Transaction does not exist");
+            return null;
+        }
+    }
+    
+    public int getIndex(int TransID) {//get index 
+        for (int i = 0; i < transactions.size(); i++){
+            if (transactions.get(i).getTransID()==TransID) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     
     
 }

@@ -78,9 +78,25 @@ public class HotelCRUD {
             System.out.println("Hotel does not exist");
             return false;
         }
+         
+    }
+    
+    //reserve hotel
+    public boolean rsrvHotel(String HotelID){
         
-        
-        
+        if(getHotelIndex(HotelID) != -1){ 
+            if (hotel_arr.get(getHotelIndex(HotelID)).getAvailability()==true){
+                hotel_arr.get(getHotelIndex(HotelID)).setAvailability(false);
+                return true;
+            }else{
+                System.out.println("Hotel already booked");
+                return false;
+            }
+        }else{
+            System.out.println("Hotel does not exist");
+            return false;
+        }
+         
     }
     
     //unbook hotel
