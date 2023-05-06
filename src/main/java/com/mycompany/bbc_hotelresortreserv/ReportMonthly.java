@@ -1,4 +1,5 @@
 package com.mycompany.bbc_hotelresortreserv;
+import javax.swing.*;
 
 /*
 This class is for Monthly Report JFrame
@@ -15,49 +16,21 @@ TODO:
 -BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
 */
 
-public class ReportMonthly extends javax.swing.JFrame {
-
+public class ReportMonthly {
     
     public ReportMonthly() {
-        initComponents();
-        this.setVisible(true);
+        JFrame frm = new JFrame();
+        String data[][] = {{"101", "Amit", "670000"},
+                            {"102", "Jai", "780000"},
+                            {"101", "Sachin", "700000"}};
+        String column[] = {"Sales", "#ofCustomers", "ResourcesUsed"};
+        JTable rm = new JTable(data, column);
+        rm.setBounds(30, 40, 200, 300);
+        JScrollPane sp = new JScrollPane(rm);
+        frm.add(sp);
+        frm.setSize(300, 400);
+        frm.setVisible(true);
+        frm.setResizable(false);
+        frm.setLocationRelativeTo(null);
     }
-
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Monthly Report");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jLabel1)
-                .addContainerGap(174, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel1)
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    
-    
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration//GEN-END:variables
 }
