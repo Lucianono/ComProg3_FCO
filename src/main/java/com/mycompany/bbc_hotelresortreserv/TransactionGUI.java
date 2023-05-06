@@ -22,11 +22,22 @@ public class TransactionGUI extends JFrame implements ActionListener{
     JTextField jTextField7 = new JTextField();
     JPanel jPanel4 = new JPanel();
     JButton jButton3 = new JButton();
+    JPanel jPanelplus = new JPanel();
+    JPanel jPanelminus = new JPanel();
+    
     
     int custCount = 0;
     int custLimit = 8;
     JTextField[] customer_txt_arr = new JTextField[custLimit * 2];
     int custWidth = 110, custHeight = 25;
+    
+    String [] y = {"2023","2024","2025"};
+    JComboBox year = new JComboBox(y);
+    String [] m = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+    JComboBox month = new JComboBox(m);
+    JComboBox day = new JComboBox();
+
+    
     
     JPanel panelRight = new JPanel();
     JPanel panelBottom = new JPanel();
@@ -47,13 +58,15 @@ public class TransactionGUI extends JFrame implements ActionListener{
 
         jButton1.setText("+");
         jButton1.addActionListener(this);
-        jButton1.setPreferredSize(new Dimension(custWidth,custHeight));
-        jPanel1.add(jButton1);
+        jButton1.setPreferredSize(new Dimension(50,custHeight));
+        jPanelplus.add(jButton1);
+        jPanel1.add(jPanelplus);
 
         jButton2.setText("-");
         jButton2.addActionListener(this);
-        jButton2.setPreferredSize(new Dimension(custWidth,custHeight));
-        jPanel1.add(jButton2);
+        jButton2.setPreferredSize(new Dimension(50,custHeight));
+        jPanelminus.add(jButton2);
+        jPanel1.add(jPanelminus);
         
         customer_txt_arr[custCount*2] = new JTextField();
         customer_txt_arr[custCount*2 +1] = new JTextField();
@@ -75,8 +88,18 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jPanel2.add(jLabel1);
         
         jComboBox1.setFont(new Font("Arial",Font.PLAIN,15)  );
-        jComboBox1.setPreferredSize(new Dimension(100,30));
+        jComboBox1.setPreferredSize(new Dimension(120,30));
         jPanel2.add(jComboBox1);
+        
+        year.setFont(new Font("Arial",Font.PLAIN,12)  );
+        year.setPreferredSize(new Dimension(70,24));
+        jPanel2.add(year);
+        month.setFont(new Font("Arial",Font.PLAIN,12)  );
+        month.setPreferredSize(new Dimension(80,24));
+        jPanel2.add(month);
+        day.setFont(new Font("Arial",Font.PLAIN,12)  );
+        day.setPreferredSize(new Dimension(40,24));
+        jPanel2.add(day);
         
         jPanel2.setBorder(BorderFactory.createTitledBorder("Hotel Booking"));
 
@@ -89,7 +112,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jPanel3.add(jTextField7);
 
 
-        jButton3.setText("CHECK IN");
+        jButton3.setText("RESERVE");
         jButton3.setPreferredSize(new Dimension(120,30));
         jButton3.addActionListener(this);
         
@@ -213,9 +236,8 @@ public class TransactionGUI extends JFrame implements ActionListener{
                     
                 if(hotelBooked.bookHotel(hotelSelected+"")){
                     
-                    transactionsCompleted.createTransaction(custArr, hotelSelected, cashInput);
-                    System.out.println(hotelSelected+"");
-                    System.out.println("success ata");
+                    transactionsCompleted.createReservation(custArr, hotelSelected, cashInput);
+                    System.out.println("Transaction was successful");
                     clearAll();
                 }
             }
