@@ -91,7 +91,7 @@ public class CustomerCRUD {
 
     public void displayCustomers() {//display customers along with name, age, time checked
         for (Customer c : customers) {
-            System.out.println(c.getName() + ", " + c.getAge() + ", " + c.getTimeChecked());
+            System.out.println(c.getName() + ", " + c.getAge());
         }
     }
 

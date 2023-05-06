@@ -1,6 +1,7 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
+import java.util.Date;
 import java.util.LinkedList;
 
 
@@ -15,9 +16,9 @@ public class TransactionSystem {
         
     }
     
-    public Transaction createReservation( Customer[] customers, String hotel, double cash ) { //create customer
+    public Transaction createReservation( Customer[] customers, String hotel, double cash , Date timeRsrv) { //create customer
         
-            Transaction transaction = new Transaction(TransIDCtr++,customers,hotel,cash);
+            Transaction transaction = new Transaction(TransIDCtr++,customers,hotel,cash,timeRsrv);
             transactions.add(transaction);
             return transaction;
         

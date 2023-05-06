@@ -4,10 +4,15 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
-public class TransactionGUI extends JFrame implements ActionListener{
+public class TransactionGUI extends JFrame implements ActionListener,ItemListener{
 
     JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
@@ -96,9 +101,47 @@ public class TransactionGUI extends JFrame implements ActionListener{
         jPanel2.add(year);
         month.setFont(new Font("Arial",Font.PLAIN,12)  );
         month.setPreferredSize(new Dimension(80,24));
+        month.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e) {
+                int maxDays = 0;
+                switch(month.getSelectedIndex()){
+                    case 0:
+                    case 2:
+                    case 4:
+                    case 6:
+                    case 7:
+                    case 9:
+                    case 11:
+                        maxDays = 31;
+                        break;
+                    case 3:
+                    case 5:
+                    case 8:
+                    case 10:
+                        maxDays = 30;
+                        break;
+                    case 1 :
+                    {
+                        if(Integer.parseInt(year.getSelectedItem()+"")%4 == 0)
+                            maxDays = 29;
+                        else
+                            maxDays = 28;
+                        break;
+                    }
+                }
+                
+                String[] days = new String[maxDays];
+                for (int i =0; i<maxDays ; i++){
+                    days[i]= i+1 +"";
+                }
+                day.setModel(new DefaultComboBoxModel<>(days));
+
+            }
+        });
         jPanel2.add(month);
         day.setFont(new Font("Arial",Font.PLAIN,12)  );
         day.setPreferredSize(new Dimension(40,24));
+        
         jPanel2.add(day);
         
         jPanel2.setBorder(BorderFactory.createTitledBorder("Hotel Booking"));
@@ -236,7 +279,16 @@ public class TransactionGUI extends JFrame implements ActionListener{
                     
                 if(hotelBooked.bookHotel(hotelSelected+"")){
                     
-                    transactionsCompleted.createReservation(custArr, hotelSelected, cashInput);
+                    String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+                    Date dateBooked = null;
+                    try {
+                        dateBooked = formatter.parse(s);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(TransactionGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked);
                     System.out.println("Transaction was successful");
                     clearAll();
                 }
@@ -262,6 +314,12 @@ public class TransactionGUI extends JFrame implements ActionListener{
 
         }
 
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+
+        
     }
     
     
