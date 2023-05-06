@@ -13,10 +13,7 @@ TODO :
 -Customer should have the following details: Name, Age, TimeChecked
 
 */
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 
 
@@ -32,6 +29,8 @@ public class CustomerCRUD {
         createCustomer(1, "Jelo", 20);
         createCustomer(2, "Noren", 20);
         
+        getCustomer(1);
+        
     }
 
     public void createCustomer(int ID, String name, int age ) { //create customer
@@ -42,11 +41,23 @@ public class CustomerCRUD {
 
     public int getIndex(int ID) {//get index 
         for (int i = 0; i < customers.size(); i++){
-            if (customers.get(i).equals(ID)) {
+            if (customers.get(i).getCstmrID()==ID) {
                 return i;
             }
         }
         return -1;
+    }
+    
+    public Customer getCustomer(int ID ) { //return customer
+        
+        if (getIndex(ID) != -1)
+        {
+            return customers.get(getIndex(ID) );
+        }
+        else {
+            System.out.println("Customer does not exist");
+            return null;
+        }
     }
 
 

@@ -57,16 +57,19 @@ public class HotelCRUD {
     
     
     //book hotel
-    public void bookHotel(String HotelID){
+    public boolean bookHotel(String HotelID){
         
         if(getHotelIndex(HotelID) != -1){ 
             if (hotel_arr.get(getHotelIndex(HotelID)).getAvailability()==true){
                 hotel_arr.get(getHotelIndex(HotelID)).setAvailability(false);
+                return true;
             }else{
                 System.out.println("Hotel already booked");
+                return false;
             }
         }else{
             System.out.println("Hotel does not exist");
+            return false;
         }
         
         
@@ -74,16 +77,19 @@ public class HotelCRUD {
     }
     
     //unbook hotel
-    public void unbookHotel(String HotelID){
+    public boolean unbookHotel(String HotelID){
         
         if(getHotelIndex(HotelID) != -1){ 
             if (hotel_arr.get(getHotelIndex(HotelID)).getAvailability()==false){
                 hotel_arr.get(getHotelIndex(HotelID)).setAvailability(true);
+                return true;
             }else{
                 System.out.println("Hotel already unbooked");
+                return false;
             }
         }else{
             System.out.println("Hotel does not exist");
+            return false;
         }
         
         

@@ -23,7 +23,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
     JPanel jPanel4 = new JPanel();
     JButton jButton3 = new JButton();
     
-    int custCount = 1;
+    int custCount = 0;
     int custLimit = 8;
     JTextField[] customer_txt_arr = new JTextField[custLimit * 2];
     int custWidth = 110, custHeight = 25;
@@ -32,6 +32,9 @@ public class TransactionGUI extends JFrame implements ActionListener{
     JPanel panelBottom = new JPanel();
     JPanel panelMain = new JPanel();
     JPanel panelSuper = new JPanel();
+    
+    HotelCRUD hotelBooked = new HotelCRUD();
+    CustomerCRUD customersBooked = new CustomerCRUD();
     
     TransactionGUI() {
         frame.setSize(600,400);
@@ -60,6 +63,8 @@ public class TransactionGUI extends JFrame implements ActionListener{
         customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
         customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
         
+        custCount++;
+        
         jPanel1.setPreferredSize(new Dimension(250,300));
         jPanel1.setBorder(BorderFactory.createTitledBorder("Customer Information"));
 
@@ -85,6 +90,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
 
         jButton3.setText("CHECK IN");
         jButton3.setPreferredSize(new Dimension(120,30));
+        jButton3.addActionListener(this);
         
         panelRight.add(jPanel2);
         panelRight.add(jPanel3);
@@ -136,7 +142,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
 
         }
         
-        if(e.getSource()==jButton2){
+        else if(e.getSource()==jButton2){
             
             if(custCount > 1){
 
@@ -150,6 +156,31 @@ public class TransactionGUI extends JFrame implements ActionListener{
 
                 frame.setVisible(true);
             }
+
+        }
+        else if(e.getSource()==jButton3){
+            
+            //String hotelBooked = jComboBox1.getSelectedItem()+"";
+            //hotelBooked.getHotelIndex(jComboBox1.getSelectedItem()+"");
+            Customer[] custArr = new Customer[custCount];
+            int realCustCount = 0;
+            
+            if(hotelBooked.bookHotel(jComboBox1.getSelectedItem()+"")){
+                System.out.println(jComboBox1.getSelectedItem()+"");
+            }
+            
+            for(int i = 0; i<custCount ; i++){
+                if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
+                    
+                    customersBooked.createCustomer(1, customer_txt_arr[i*2].getText(), Integer.parseInt(customer_txt_arr[i*2 +1].getText()));
+                    custArr[realCustCount] = customersBooked.getCustomer(1);
+                    realCustCount++;
+                    System.out.println(customersBooked.getCustomer(1).getName() + " "+ customersBooked.getCustomer(1).getAge());
+                    
+                }
+            }
+            
+            
 
         }
 

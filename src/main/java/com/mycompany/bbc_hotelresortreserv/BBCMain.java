@@ -7,9 +7,6 @@ public class BBCMain {
 
     public static void main(String[] args) {
         
-        CustomerCRUD cstmr = new CustomerCRUD();
-        HotelCRUD hotel = new HotelCRUD();
-        ResourcesCRUD rsrcs = new ResourcesCRUD();
         
         TransactionGUI transGUI = new TransactionGUI();
         
