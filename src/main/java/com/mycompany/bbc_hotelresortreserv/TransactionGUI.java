@@ -101,8 +101,11 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jPanel2.add(year);
         month.setFont(new Font("Arial",Font.PLAIN,12)  );
         month.setPreferredSize(new Dimension(80,24));
+        month.setSelectedItem(null);
         month.addItemListener(new ItemListener(){
             public void itemStateChanged(ItemEvent e) {
+                day.setEnabled(true);
+
                 int maxDays = 0;
                 switch(month.getSelectedIndex()){
                     case 0:
@@ -141,6 +144,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jPanel2.add(month);
         day.setFont(new Font("Arial",Font.PLAIN,12)  );
         day.setPreferredSize(new Dimension(40,24));
+        day.setEnabled(false);
         
         jPanel2.add(day);
         
@@ -209,6 +213,12 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
 
         custCount++;
         
+        
+        month.setSelectedItem(null);
+        day.setEnabled(false);
+        day.setSelectedItem(null);
+
+        
         jPanel1.repaint();
         jPanel1.revalidate();
         frame.setVisible(true);
@@ -256,8 +266,6 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         }
         else if(e.getSource()==jButton3){
             
-            //String hotelBooked = jComboBox1.getSelectedItem()+"";
-            //hotelBooked.getHotelIndex(jComboBox1.getSelectedItem()+"");
             Customer[] custArr = new Customer[custCount];
             int realCustCount = 0;
             String hotelSelected = jComboBox1.getSelectedItem()+"" ;
@@ -274,7 +282,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
             }
             
-            if(hotelBooked.getHotel(hotelSelected).getRegRate()*realCustCount <= cashInput){
+            if((hotelBooked.getHotel(hotelSelected).getRegRate()*realCustCount <= cashInput) &&
+                    realCustCount > 0){
                     
                     
                 if(hotelBooked.bookHotel(hotelSelected+"")){
