@@ -35,6 +35,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
     
     HotelCRUD hotelBooked = new HotelCRUD();
     CustomerCRUD customersBooked = new CustomerCRUD();
+    TransactionSystem transactionsCompleted = new TransactionSystem();
     
     TransactionGUI() {
         frame.setSize(600,400);
@@ -81,7 +82,7 @@ public class TransactionGUI extends JFrame implements ActionListener{
 
 
 
-        jTextField7.setText("");
+        jTextField7.setText("0");
         jTextField7.setFont(new Font("Arial",Font.BOLD,15)  );
         jTextField7.setPreferredSize(new Dimension(150,30));
         jPanel3.setBorder(BorderFactory.createTitledBorder("Cash"));
@@ -119,6 +120,35 @@ public class TransactionGUI extends JFrame implements ActionListener{
         
     }
 
+    public void clearAll(){
+        int custCountPast = custCount;
+        for(int i = 0; i<custCountPast ; i++){
+            
+                jPanel1.remove(customer_txt_arr[custCount*2 -1]);
+                jPanel1.remove(customer_txt_arr[custCount*2 -2]);
+                
+                custCount--;
+                
+            }
+        
+        jTextField7.setText("0");
+        customer_txt_arr[custCount*2] = new JTextField();
+        customer_txt_arr[custCount*2 +1] = new JTextField();
+
+        jPanel1.add(customer_txt_arr[custCount*2]);
+        jPanel1.add(customer_txt_arr[custCount*2 +1]);
+
+        customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
+        customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
+
+        custCount++;
+        
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        frame.setVisible(true);
+
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -164,21 +194,47 @@ public class TransactionGUI extends JFrame implements ActionListener{
             //hotelBooked.getHotelIndex(jComboBox1.getSelectedItem()+"");
             Customer[] custArr = new Customer[custCount];
             int realCustCount = 0;
-            
-            if(hotelBooked.bookHotel(jComboBox1.getSelectedItem()+"")){
-                System.out.println(jComboBox1.getSelectedItem()+"");
-            }
+            String hotelSelected = jComboBox1.getSelectedItem()+"" ;
+            double cashInput = Double.parseDouble(jTextField7.getText());
             
             for(int i = 0; i<custCount ; i++){
                 if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
                     
-                    customersBooked.createCustomer(1, customer_txt_arr[i*2].getText(), Integer.parseInt(customer_txt_arr[i*2 +1].getText()));
-                    custArr[realCustCount] = customersBooked.getCustomer(1);
+                    custArr[realCustCount] = customersBooked.createCustomer(customer_txt_arr[i*2].getText(), Integer.parseInt(customer_txt_arr[i*2 +1].getText()));
+                    System.out.println(custArr[realCustCount].getName() + " "+ custArr[realCustCount].getAge());
                     realCustCount++;
-                    System.out.println(customersBooked.getCustomer(1).getName() + " "+ customersBooked.getCustomer(1).getAge());
+
                     
                 }
             }
+            
+            if(hotelBooked.getHotel(hotelSelected).getRegRate()*realCustCount <= cashInput){
+                    
+                    
+                if(hotelBooked.bookHotel(hotelSelected+"")){
+                    
+                    transactionsCompleted.createTransaction(custArr, hotelSelected, cashInput);
+                    System.out.println(hotelSelected+"");
+                    System.out.println("success ata");
+                    clearAll();
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
 

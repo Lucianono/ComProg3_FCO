@@ -55,6 +55,13 @@ public class HotelCRUD {
         
     }
     
+    //gethotel
+    public Hotel getHotel(String HotelID){
+    
+        return hotel_arr.get(getHotelIndex(HotelID));
+        
+    }
+    
     
     //book hotel
     public boolean bookHotel(String HotelID){

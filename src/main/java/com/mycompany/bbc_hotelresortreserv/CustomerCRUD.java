@@ -20,23 +20,26 @@ import java.util.LinkedList;
 public class CustomerCRUD {
     
     
+    private int customerIDCtr = 0;
     private LinkedList<Customer> customers;
 
     CustomerCRUD() {
         customers = new LinkedList<>();
         
-        createCustomer(0, "Bryan", 20);
-        createCustomer(1, "Jelo", 20);
-        createCustomer(2, "Noren", 20);
+        createCustomer("Bryan", 20);
+        createCustomer("Jelo", 20);
+        createCustomer("Noren", 20);
         
         getCustomer(1);
         
     }
 
-    public void createCustomer(int ID, String name, int age ) { //create customer
+    public Customer createCustomer(String name, int age ) { //create customer
         
-        Customer customer = new Customer(ID, name, age);
+        Customer customer = new Customer(customerIDCtr++, name, age);
         customers.add(customer);
+        return customer;
+        
     }
 
     public int getIndex(int ID) {//get index 
