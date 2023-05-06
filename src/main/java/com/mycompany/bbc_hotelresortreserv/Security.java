@@ -1,33 +1,24 @@
 package com.mycompany.bbc_hotelresortreserv;
 
-/*import java.util.Scanner;
-
-    /* jelo note:
-       -Create String in form of array so that multiple accs can be stored and accessed. 
-       -signUp boolean type to indicate if process is successful or fail.
-       -make position a string to store.. 
-       -Note public static void is ONLY AND PURELY for testing
-       -11:12 signUp feature done bitch
-       -11:57 logIn feature done BITCH
-       -may bug sa login tanginang 3 times yan
-*/
-
-
     public class Security {
-        private String[] user = new String[]{"user123"};
-        private String[] pass = new String[]{"pass123"};
-        private String[] pos = new String[] {"staff"};
+        
+        private String[] user = new String[]{"user123"}; //default username
+        private String[] pass = new String[]{"pass123"}; //default password
+        private String[] pos = new String[] {"staff"}; //default position
         public static int StringIncrement = 1;
     
-/*---------------------------------------------------------------------*/ 
+        public Security(){
+            System.out.println("Security Created");
+        }
+        
     public boolean signUp(String username, String password, String position) { //signUp method
             for (String user1 : user) {
                 if (user1.equals(username)) {
-                    return false; //username already exists
+                    return false; //username already taken
                 }
             }
 
-        //if username does not exist, add the new user to the arrays
+        //if username does not exist, add the new user to the storage
         String[] newusernames = new String[user.length+1];
         String[] newpasswords = new String[pass.length+1];
         String[] newposition = new String[pos.length+1];
@@ -39,109 +30,58 @@ package com.mycompany.bbc_hotelresortreserv;
             }
             
         newusernames[newusernames.length-1] = username;
-        newpasswords[newpasswords.length-1] = Encrypt(password);
+        newpasswords[newpasswords.length-1] = Encrypt(password); //<---- encrypted password
         newposition[newposition.length-1] = position;
+        
         user = newusernames;
         pass = newpasswords;
         pos = newposition;
         return true;
-}
-/*---------------------------------------------------------------------*/     
+}  
     public boolean logIn (String username, String password){ //logIn Method
         int logAttempts = 0;
         boolean logged = false;
-            while (logAttempts < 3 && !logged){
-                for (int i = 0; i < user.length; i++)
+            while (logAttempts < 2 && !logged){// <---- 3 times error 
+                for (int i = 0; i < user.length; i++)//checheck if username and password is compatible
                 {
                     if (user[i].equals(username) && pass[i].equals(password)){ //user logged in
-                        System.out.println("wow");
+                        System.out.println("Login Successful!");
                         logged=true;
                         break;
                     }
                     
                 }
-                    if (!logged){
-                        System.out.println("Invalid. Remaining Tries: " + (3-logAttempts));
-                    
-
-                        System.out.println("gg bye");
+                    if (logAttempts == 2){
+                        System.out.println("You have reached maximum amount of tries.");
+                        System.out.println("Program Close...");
                         System.exit(0);
                     }
-    
-            }
+                    else {
+                    logAttempts++;
+                        System.out.println("Invalid. Remaining Tries: " + (3-logAttempts));
+                    }
+                }
             return false;
     }
-/*---------------------------------------------------------------------*/
-    //encryption SUI   
-    public static String Encrypt (String Password){
+
+    private static String Encrypt (String Password){ //Encryption Method
         char[] chars = Password.toCharArray(); 
         String encryptedPass = "";
-        for(char c : chars){ 
-            c += 1; 
-            encryptedPass += c;
-        }    
+            for(char c : chars){ 
+                c += 5; 
+                encryptedPass += c;
+            }    
         return encryptedPass;
     } 
-        
-/*---------------------------------------------------------------------
-    
-        //for testing
-         public static void main(String[] args) {
-            SUI security = new SUI();
-            Scanner scanner = new Scanner(System.in);
-        
-        while (true){
-            
-            System.out.print("choice (1 to signup | 2 to login): ");
-            String choice = scanner.nextLine();
-                switch(choice){
-                    case "1" -> {
-                        System.out.print("Enter a new username: ");
-                        String username = scanner.nextLine();
-                        if (username.equals("q"))
-                        {
-                        }
-                        System.out.print("Enter a new password: ");
-                        String password = scanner.nextLine();
-                        String encryptedPass = SUI.Encrypt(password);
-                        System.out.println("Encrypted Password: " + encryptedPass);
-                    
-                        
-                        System.out.print("Admin or Staff: ");
-                        String position = scanner.nextLine().toLowerCase();
-                        if (position.equals("admin") || position.equals("staff")){
-                            boolean success = security.signUp(username, password, position); // <--------- call signUp here
-                            
-                            if (success) {
-                                System.out.println("Sign up successful!");
-                            } else {
-                                System.out.println("Username already exists!");
-                            }
-                        }
-                        else {
-                            System.out.println("No bitch");
-                        }       }
-            
-                    case "2" -> { 
-                        System.out.print("enter user: ");
-                        String logUser = scanner.nextLine();
-                        System.out.print("enter pass: ");
-                        String logPass = scanner.nextLine();
-                        String encryptedPass = SUI.Encrypt(logPass);
-                        System.out.println("Encrypted Password: " + encryptedPass);
-                        boolean logged = security.logIn(logUser, logPass); // <------------ call logIn here
-                        {
-                            if (logged){
-                                System.out.println("Sad. See ya dick");
-                                System.exit(0);
-                            }
-                        }
-                    }
-                    default -> {
-                    }
-                    
+
+    private static String Decrypt (String encryptedPass){ //Decryption Method
+        char[] chars = encryptedPass.toCharArray();
+        String decryptPass = "";
+            for (char c : chars){
+                c -= StringIncrement - 1;
+                decryptPass += c;
             }
-            }
-         }
-/*---------------------------------------------------------------------*/ 
+        return decryptPass;
+        
+    }
 }
