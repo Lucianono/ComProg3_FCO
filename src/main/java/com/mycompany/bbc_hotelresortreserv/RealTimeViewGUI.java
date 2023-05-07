@@ -222,17 +222,25 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     //update full cust info
     private void fullCustInfoDisplay(Transaction t){
         
-        fullCustInfoLbl.setText(
-                            "<html> Customer Name : <b>" +  t.getCustomers()[0].getName() +
-                            "</b><br/>Number of Customers : " +  t.getCustomers().length +
-                            "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
-                            "<br/>Down Payment : " +  t.getDownCash()+
-                            "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
-                            "<br/>Checked In : " +  t.isCheckedIn()+
-                            "<br/>Checked In : " +  t.isCheckedOut()
-                            
+        if(t == null){
+            fullCustInfoLbl.setText(
+                            "<html><i>Nothing to show here..." 
                     );
+        }else{
+        
+            fullCustInfoLbl.setText(
+                                "<html> Customer Name : <b>" +  t.getCustomers()[0].getName() +
+                                "</b><br/>Number of Customers : " +  t.getCustomers().length +
+                                "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
+                                "<br/>Down Payment : " +  t.getDownCash()+
+                                "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
+                                "<br/>Checked In : " +  t.isCheckedIn()+
+                                "<br/>Checked In : " +  t.isCheckedOut()
+
+                        );
+        }
     }
+    //xtra btn creates new jFrame
     
     
     @Override
@@ -259,12 +267,39 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             if(!t.isCheckedIn()){
                 t.setCheckedIn(true);
-                JOptionPane.showMessageDialog(null, "Successfully checked in!");
+                JOptionPane.showMessageDialog(null, "Successfully checked in!" );
             }
             
             fullCustInfoDisplay(t);
             
+        }
+        else if (e.getSource()==chkOutBtn){
             
+            Transaction t = transactionsCompleted.getTransaction(transSelectedID);
+          
+            
+            if(t!=null){
+                if(!t.isCheckedOut() && t.isCheckedIn()){
+                    try {
+                        if(t.getRemBal() == 0 || (Double.parseDouble(JOptionPane.showInputDialog("Input Cash")) >= t.getRemBal()) ){
+                            t.setCheckedOut(true);
+                            t.setFullCash(t.getRemBal());
+                            t.setRemBal(0);
+                            JOptionPane.showMessageDialog(null, "Successfully checked out!" );
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Insufficient funds!" );
+                        }
+                        
+                    } catch (Exception err) {
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                    
+                }
+            }
+            
+            
+            fullCustInfoDisplay(t);
             
         }
         
@@ -280,6 +315,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         
         if(e.getSource()==monthCmb || e.getSource()==yearCmb || e.getSource()==dayCmb ){
             custRefresh();
+            fullCustInfoDisplay(null);
         }
     }
     
