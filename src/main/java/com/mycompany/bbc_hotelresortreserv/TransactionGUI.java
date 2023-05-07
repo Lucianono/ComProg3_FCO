@@ -28,7 +28,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     JPanel jPanel3 = new JPanel();
     JTextField cashTxt = new JTextField();
     JPanel jPanel4 = new JPanel();
-    JButton btnRsrv = new JButton();
+    JButton btnRsrv50 = new JButton();
+    JButton btnRsrv100 = new JButton();
     JPanel jPanelplus = new JPanel();
     JPanel jPanelminus = new JPanel();
     JPanel jPanelPriceBreakdown = new JPanel();
@@ -150,15 +151,18 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         });
         jPanel3.add(cashTxt);
         jPanelPriceBreakdown.setLayout(new BoxLayout(jPanelPriceBreakdown,BoxLayout.Y_AXIS));
-        jScrollPriceBreakdown.setPreferredSize(new Dimension(170,90));
+        jScrollPriceBreakdown.setPreferredSize(new Dimension(200,90));
         jPanel3.setPreferredSize(new Dimension(150,80));
         jPanel3.add(jScrollPriceBreakdown);
         
 
 
-        btnRsrv.setText("RESERVE");
-        btnRsrv.setPreferredSize(new Dimension(120,30));
-        btnRsrv.addActionListener(this);
+        btnRsrv50.setText("RESERVE (50%)");
+        btnRsrv50.setPreferredSize(new Dimension(150,30));
+        btnRsrv50.addActionListener(this);
+        btnRsrv100.setText("RESERVE (100%)");
+        btnRsrv100.setPreferredSize(new Dimension(150,30));
+        btnRsrv100.addActionListener(this);
         
         panelRight.add(jPanel2);
         panelRight.add(jPanel3);
@@ -168,8 +172,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         panelMain.add(jPanel1);
         panelMain.add(panelRight);
         
-        
-        jPanel4.add(btnRsrv);
+        jPanel4.add(btnRsrv100);
+        jPanel4.add(btnRsrv50);
         panelBottom.add(jPanel4);
         
         panelSuper.add(panelMain);
@@ -255,16 +259,18 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
                 ArrayList<Transaction> transToDate = transactionsCompleted.getTransactionsByDate(dateBooked);
                 avlblLbl.setText("     Available     ");
-                btnRsrv.setEnabled(true);
+                btnRsrv50.setEnabled(true);
                 for(int i=0; i<transToDate.size(); i++){
                     if(transToDate.get(i).getHotel().equals(hotelCmb.getSelectedItem()+"")){
                         avlblLbl.setText("     Not Available!      ");
-                        btnRsrv.setEnabled(false);
+                        btnRsrv50.setEnabled(false);
+                        btnRsrv100.setEnabled(false);
                         break;
                     }
                     else{
                         avlblLbl.setText("     Available     ");
-                        btnRsrv.setEnabled(true);
+                        btnRsrv50.setEnabled(true);
+                        btnRsrv100.setEnabled(true);                        
                     }
                 }
     }
@@ -273,6 +279,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         
         resetCashDisplay();
         double hotelAmount = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRegRate();
+        double hotelAmountPromoDiscount = hotelAmount - hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getPromoRate();
         double totalAmount = 0;
         double discountAmount = 0;
         
@@ -316,6 +323,17 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         expectCashlLbl[labelCount] = new JLabel("<html>============== <br/> Total Amount : "+ totalAmount+"     ");
         expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
         jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+        labelCount++;
+        
+        expectCashlLbl[labelCount] = new JLabel("*50% Down Payment : "+ totalAmount/2+"     ");
+        expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,10)  );
+        jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+        labelCount++;
+        
+        expectCashlLbl[labelCount] = new JLabel("<html>*100% Down Payment :"+ (totalAmount - hotelAmountPromoDiscount)+"<br/>-->(Promo applied)");
+        expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,10)  );
+        jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+        labelCount++;
         
         jPanelPriceBreakdown.repaint();
         jPanelPriceBreakdown.revalidate();
@@ -411,6 +429,57 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 frame.setVisible(true);
             }
     } 
+    //process transaction
+    public void processTransaction(int type){
+        Customer[] custArr = new Customer[custCount];
+        int realCustCount = 0;
+        String hotelSelected = hotelCmb.getSelectedItem()+"" ;
+        double cashInput = Double.parseDouble(cashTxt.getText());
+
+        for(int i = 0; i<custCount ; i++){
+            if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
+
+                custArr[realCustCount] = customersBooked.createCustomer(customer_txt_arr[i*2].getText(), Integer.parseInt(customer_txt_arr[i*2 +1].getText()));
+                System.out.println(custArr[realCustCount].getName() + " "+ custArr[realCustCount].getAge());
+                realCustCount++;
+
+
+            }
+        }
+
+        double custCash = 0;
+        double realAmount = 0;
+        //0 50% & 1 100%
+        if (type == 0){
+            realAmount = expectedCashDisplay();
+            custCash = realAmount / 2 ;
+        }
+        else if (type == 1){
+            custCash = expectedCashDisplay() - (hotelBooked.getHotel(hotelSelected).getRegRate() - hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getPromoRate());
+            realAmount = custCash;
+            System.out.println(custCash);
+        }
+        
+        if( (custCash <= cashInput) && realCustCount > 0){
+
+                String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+                Date dateBooked = null;
+                try {
+                    dateBooked = formatter.parse(s);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TransactionGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked,0,realAmount-custCash);
+                System.out.println("Transaction was successful");
+
+                JOptionPane.showMessageDialog(null, "Reservation completed!");
+
+                clearAll();
+                
+            }
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -426,48 +495,15 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             removeCustTxt();
 
         }
-        else if(e.getSource()==btnRsrv){
+        else if(e.getSource()==btnRsrv50){
             
-            Customer[] custArr = new Customer[custCount];
-            int realCustCount = 0;
-            String hotelSelected = hotelCmb.getSelectedItem()+"" ;
-            double cashInput = Double.parseDouble(cashTxt.getText());
+            processTransaction(0);
             
-            for(int i = 0; i<custCount ; i++){
-                if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
-                    
-                    custArr[realCustCount] = customersBooked.createCustomer(customer_txt_arr[i*2].getText(), Integer.parseInt(customer_txt_arr[i*2 +1].getText()));
-                    System.out.println(custArr[realCustCount].getName() + " "+ custArr[realCustCount].getAge());
-                    realCustCount++;
-
-                    
-                }
-            }
+        }
+        else if(e.getSource()==btnRsrv100){
             
-            if((expectedCashDisplay() <= cashInput) &&
-                    realCustCount > 0){
-
-                    
-                    String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
-                    Date dateBooked = null;
-                    try {
-                        dateBooked = formatter.parse(s);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TransactionGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked);
-                    System.out.println("Transaction was successful");
-                    
-                    JOptionPane.showMessageDialog(null, "Reservation completed!");
-                    
-                    clearAll();
-                
-            }
-                    
+            processTransaction(1);
             
-
         }
 
     }
