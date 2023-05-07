@@ -7,6 +7,21 @@ public class Monthly extends JFrame {
     
     private JButton nxtbtn = new JButton("Resources Used");
     
+    String [] yr = {"2023","2024","2025"};
+        JLabel year = new JLabel(yr);
+        year.setFont(new Font("Arial",Font.PLAIN,12)  );
+        year.setPreferredSize(new Dimension(70,24));
+        year.addItemListener(this);
+        jPanel2.add(year);
+        
+    String [] mnth = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+        JLabel month = new JLabel(mnth);
+        month.setFont(new Font("Arial",Font.PLAIN,12)  );
+        month.setPreferredSize(new Dimension(80,24));
+        month.setSelectedItem(m[0]);
+        month.addItemListener(this);
+        jPanel2.add(month);
+    
     public Monthly() {
         JFrame mfrm = new JFrame("Year Report");
         JPanel mpnl = new JPanel();
@@ -110,5 +125,41 @@ public class Monthly extends JFrame {
             sfrm.setLocationRelativeTo(null);
             sfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
+    }
+    public void smartDay(){
+        
+                int maxDays = 0;
+                //smart day combobox
+                switch(month.getSelectedIndex()){
+                    case 0:
+                    case 2:
+                    case 4:
+                    case 6:
+                    case 7:
+                    case 9:
+                    case 11:
+                        maxDays = 31;
+                        break;
+                    case 3:
+                    case 5:
+                    case 8:
+                    case 10:
+                        maxDays = 30;
+                        break;
+                    case 1 :
+                    {
+                        if(Integer.parseInt(year.getSelectedItem()+"")%4 == 0)
+                            maxDays = 29;
+                        else
+                            maxDays = 28;
+                        break;
+                    }
+                }
+                
+                String[] days = new String[maxDays];
+                for (int i =0; i<maxDays ; i++){
+                    days[i]= i+1 +"";
+                }
+                day.setModel(new DefaultComboBoxModel<>(days));
     }
 }
