@@ -81,6 +81,22 @@ public final class ResourcesCRUD {
 
 
     
+    ResourcesCRUD(){
+        System.out.println("ResourcesCRUD created");
+        
+        create(101,"Extra Bed",10,300);
+        create(102,"Pillow",20,150);
+        create(103,"Towel",30,150);
+        create(104,"Reading Light",15,200);
+        create(105,"Books/Magazines",50,100);
+        create(106,"Toiletries",100,300);
+        create(107,"Luggage Rack",15,300);
+        create(201,"Breakfast",100,400); // <---- different item num because different category of reso
+        create(202,"Lunch",100,600);
+        create(203,"Dinner",100,600);
+        create(204,"Drink",100,100);
+        create(205,"Snack",100,300);
+    }
     
     
 }
