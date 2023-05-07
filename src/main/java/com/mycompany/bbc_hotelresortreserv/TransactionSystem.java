@@ -18,9 +18,9 @@ public class TransactionSystem {
         
     }
     
-    public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal) { //create customer
+    public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
         
-            Transaction transaction = new Transaction(TransIDCtr++,customers,hotel,downcash,timeRsrv,fullcash,remBal);
+            Transaction transaction = new Transaction(TransIDCtr++,customers,hotel,downcash,timeRsrv,fullcash,remBal,resoUsed);
             transactions.add(transaction);
             return transaction;
         

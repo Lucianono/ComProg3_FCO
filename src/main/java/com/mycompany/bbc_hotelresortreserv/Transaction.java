@@ -11,8 +11,9 @@ public class Transaction {
     private final Date dateRsrv;
     private double fullCash;
     private double remBal;
+    private Resources [] resoUsed;
 
-    Transaction(int TransactID, Customer[] customers, String hotel, double downCash, Date dateRsrv, double fullCash ,double remBal) {
+    Transaction(int TransactID, Customer[] customers, String hotel, double downCash, Date dateRsrv, double fullCash ,double remBal, Resources [] resoUsed) {
         this.TransactID = TransactID;
         this.customers = customers;
         this.hotel = hotel;
@@ -20,6 +21,7 @@ public class Transaction {
         this.dateRsrv = dateRsrv;
         this.fullCash = fullCash;
         this.remBal = remBal;
+        this.resoUsed = resoUsed;
     }
 
     // Getters for all variables
@@ -50,6 +52,10 @@ public class Transaction {
     public double getRemBal() {
         return remBal;
     }
+    
+    public Resources[] getResoUsed() {
+        return resoUsed;
+    }
 
     // Setters for the non-final variables
     public void setFullCash(double fullCash) {
@@ -58,5 +64,9 @@ public class Transaction {
 
     public void setRemBal(double remBal) {
         this.remBal = remBal;
+    }
+    
+    public void setResoUsed(Resources[] resoUsed) {
+        this.resoUsed = resoUsed;
     }
 }

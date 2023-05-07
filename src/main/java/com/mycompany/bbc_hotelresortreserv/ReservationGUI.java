@@ -456,7 +456,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                     Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked,0,realAmount-custCash);
+                transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked,0,realAmount-custCash,null);
                 System.out.println("Transaction was successful");
 
                 JOptionPane.showMessageDialog(null, "Reservation completed!");
