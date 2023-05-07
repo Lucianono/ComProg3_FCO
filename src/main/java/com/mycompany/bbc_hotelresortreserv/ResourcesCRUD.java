@@ -19,14 +19,6 @@ TODO:
 public final class ResourcesCRUD {
         ArrayList<Resources> rcs = new ArrayList();
         
-        ResourcesCRUD(){
-        System.out.println("ResourcesCRUD created");
-        
-        create(101,"extra bed",10,150);
-        create(103,"f",10,150);
-        create(105,"asf",10,150);
-        
-        }
         
         public int getIndex(int itemNum){
             for (int i = 0; i < rcs.size(); i++){

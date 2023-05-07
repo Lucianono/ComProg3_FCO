@@ -40,6 +40,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     
     int custCount = 0;
     int custLimit = 1;
+    int custMinimum = 1;
     int realCustLimit = 8;
     JTextField[] customer_txt_arr = new JTextField[realCustLimit * 2];
     int custWidth = 110, custHeight = 25;
@@ -264,32 +265,59 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
     }
     
-    public void expectedCashDisplay(){
+    public double expectedCashDisplay(){
         
         resetCashDisplay();
         double hotelAmount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate();
         double totalAmount = 0;
+        double discountAmount = 0;
         
-        int realCustCount = 0;
+        int labelCount = 0;
 
         for(int i = 0; i<custCount ; i++){
             if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
                 System.out.println("exoct");
-                expectCashlLbl[realCustCount] = new JLabel("Regular Rate : " + hotelAmount);
-                expectCashlLbl[realCustCount].setFont(new Font("Arial",Font.ITALIC,15)  );
-                jPanelPriceBreakdown.add(expectCashlLbl[realCustCount]);
-                realCustCount++;
+                expectCashlLbl[labelCount] = new JLabel("Regular Rate : " + hotelAmount);
+                expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
+                jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+                labelCount++;
                 totalAmount += hotelAmount;
                 
-                jPanelPriceBreakdown.repaint();
-                jPanelPriceBreakdown.revalidate();
+                
+                if(Integer.parseInt(customer_txt_arr[i*2+1].getText())>=60){
+                    double discount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate() * .2;
+                    expectCashlLbl[labelCount] = new JLabel("*Discount for Senior : " + discount);
+                    expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
+                    jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+                    labelCount++;
+                    discountAmount += discount;
+                }
+                
 
 
             }
+            
         }
-        expectCashlLbl[realCustCount] = new JLabel("<html>============== <br/> Total Amount : "+ totalAmount+"     ");
-        expectCashlLbl[realCustCount].setFont(new Font("Arial",Font.ITALIC,15)  );
-        jPanelPriceBreakdown.add(expectCashlLbl[realCustCount]);
+        
+        if(jComboBox1.getSelectedIndex()>=4){
+                    if(totalAmount < hotelAmount*custMinimum){
+                        totalAmount = hotelAmount*custMinimum;
+                        expectCashlLbl[labelCount] = new JLabel("*Minimum Amount : "+ totalAmount+"     ");
+                        expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
+                        jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+                        labelCount++;
+                    }
+                }
+        
+        totalAmount -= discountAmount;
+        expectCashlLbl[labelCount] = new JLabel("<html>============== <br/> Total Amount : "+ totalAmount+"     ");
+        expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
+        jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
+        
+        jPanelPriceBreakdown.repaint();
+        jPanelPriceBreakdown.revalidate();
+        
+        return totalAmount;
     }
     
     public void resetCashDisplay(){
@@ -311,7 +339,10 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     }
     
     public void customerCountRefresh(){
-        int indicator = custLimit - custCount ;
+        
+        int indicator = custMinimum - custCount ;
+        
+            System.out.println(custMinimum);
         
         if(indicator<0){
             for(int i = 0; i<Math.abs(indicator); i++){
@@ -392,7 +423,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
             }
             
-            if((hotelBooked.getHotel(hotelSelected).getRegRate()*realCustCount <= cashInput) &&
+            if((expectedCashDisplay() <= cashInput) &&
                     realCustCount > 0){
 
                     
@@ -438,31 +469,40 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         
         if(e.getSource() == jComboBox1){
             
-            custLimit = switch (jComboBox1.getSelectedIndex()) {
-                case 4 -> 3;
-                case 5 -> 5;
-                default -> 1;
+            switch (jComboBox1.getSelectedIndex()) {
+                case 4 :
+                {   custLimit = realCustLimit;
+                    custMinimum=3;
+                    break;
+                }
+                case 5 :
+                {   custLimit = realCustLimit;
+                    custMinimum=5;
+                    break;
+                }
+                default :
+                {   custLimit = 1;
+                    custMinimum = 1;
+                    break;
+                }
             };
+            
             customerCountRefresh();
         }
     }
-
-    int kl=0;
+    
     @Override
     public void insertUpdate(DocumentEvent e) {
-        System.out.println(kl++);
         expectedCashDisplay();
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
-        System.out.print(kl++);
         expectedCashDisplay();
     }
 
     @Override
     public void changedUpdate(DocumentEvent e) {
-        System.out.println(kl++);
         expectedCashDisplay();
     }
     
