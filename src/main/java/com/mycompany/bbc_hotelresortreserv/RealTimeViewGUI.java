@@ -34,11 +34,12 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     JPanel jPanel8 = new JPanel();
     JLabel fullCustInfoLbl = new JLabel();
     JPanel jPanel9 = new JPanel();
-    JButton jButton3 = new JButton();
-    JButton jButton4 = new JButton();
-    JButton jButton5 = new JButton();
+    JButton chkInBtn = new JButton();
+    JButton xtraBtn = new JButton();
+    JButton chkOutBtn = new JButton();
     
     int custCountRsrv = 0;
+    int transSelectedID = -1;
     
     private final HotelCRUD hotelBooked;
     private final CustomerCRUD customersBooked;
@@ -89,7 +90,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jPanel8.setBorder(BorderFactory.createTitledBorder("Customer Information"));
         jPanel8.setLayout(new BorderLayout());
 
-        fullCustInfoLbl.setText("fullCustInfoLbl");
+        fullCustInfoLbl.setText(" . . . ");
         fullCustInfoLbl.setFont(new Font("Arial", Font.PLAIN, 15));
         jPanel8.add(fullCustInfoLbl, BorderLayout.CENTER);
 
@@ -97,14 +98,17 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
 
         custInfoPanelMain.add(custInfoScrlPane);
 
-        jButton3.setText("CHECK IN");
-        jPanel9.add(jButton3);
+        chkInBtn.setText("CHECK IN");
+        chkInBtn.addActionListener(this);
+        jPanel9.add(chkInBtn);
 
-        jButton4.setText("EXTRAS");
-        jPanel9.add(jButton4);
+        xtraBtn.setText("EXTRAS");
+        xtraBtn.addActionListener(this);
+        jPanel9.add(xtraBtn);
 
-        jButton5.setText("CHECKOUT");
-        jPanel9.add(jButton5);
+        chkOutBtn.setText("CHECKOUT");
+        chkOutBtn.addActionListener(this);
+        jPanel9.add(chkOutBtn);
 
         custInfoPanelMain.add(jPanel9);
 
@@ -159,6 +163,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             Transaction t = transFromDate.get(i);
             
+            
             custCountRsrv++;
             
             custInfoLbl[i] = new JLabel();
@@ -169,15 +174,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             custInfoBtn[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    fullCustInfoLbl.setText(
-                            "<html> Customer Name : <b>" +  t.getCustomers()[0].getName() +
-                            "</b><br/>Number of Customers : " +  t.getCustomers().length +
-                            "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
-                            "<br/>Down Payment : " +  t.getDownCash()+
-                            "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
-                            "<br/>Checked In : " +  t.isCheckedIn()+
-                            "<br/>Checked In : " +  t.isCheckedOut()
-                    );
+                    
+                    fullCustInfoDisplay(t);
+                    transSelectedID = t.getTransactID();
                 }
             });
             
@@ -220,6 +219,21 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         
         custDisplayAll();
     }
+    //update full cust info
+    private void fullCustInfoDisplay(Transaction t){
+        
+        fullCustInfoLbl.setText(
+                            "<html> Customer Name : <b>" +  t.getCustomers()[0].getName() +
+                            "</b><br/>Number of Customers : " +  t.getCustomers().length +
+                            "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
+                            "<br/>Down Payment : " +  t.getDownCash()+
+                            "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
+                            "<br/>Checked In : " +  t.isCheckedIn()+
+                            "<br/>Checked In : " +  t.isCheckedOut()
+                            
+                    );
+    }
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -237,6 +251,20 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             dayCmb.setSelectedIndex(day-1);
             
             custRefresh();
+            
+        }
+        else if (e.getSource()==chkInBtn){
+            
+            Transaction t = transactionsCompleted.getTransaction(transSelectedID);
+            
+            if(!t.isCheckedIn()){
+                t.setCheckedIn(true);
+                JOptionPane.showMessageDialog(null, "Successfully checked in!");
+            }
+            
+            fullCustInfoDisplay(t);
+            
+            
             
         }
         

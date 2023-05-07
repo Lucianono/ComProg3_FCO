@@ -22,6 +22,7 @@ public class TransactionSystem {
         Customer[] customers = {c};
         createReservation(customers,"A1",5000,d,0,0,null);
         createReservation(customers,"B1",5000,d,0,0,null);
+        createReservation(customers,"C1",5000,d,0,0,null);
     }
     
     public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
