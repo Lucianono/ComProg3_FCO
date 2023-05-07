@@ -215,29 +215,14 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 int maxDays = 0;
                 //smart day combobox
                 switch(month.getSelectedIndex()){
-                    case 0:
-                    case 2:
-                    case 4:
-                    case 6:
-                    case 7:
-                    case 9:
-                    case 11:
-                        maxDays = 31;
-                        break;
-                    case 3:
-                    case 5:
-                    case 8:
-                    case 10:
-                        maxDays = 30;
-                        break;
-                    case 1 :
-                    {
+                    case 0, 2, 4, 6, 7, 9, 11 -> maxDays = 31;
+                    case 3, 5, 8, 10 -> maxDays = 30;
+                    case 1 -> {
                         if(Integer.parseInt(year.getSelectedItem()+"")%4 == 0)
                             maxDays = 29;
                         else
                             maxDays = 28;
-                        break;
-                    }
+            }
                 }
                 
                 String[] days = new String[maxDays];
@@ -309,7 +294,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             
         }
         
-        if(hotelCmb.getSelectedIndex()>=4){
+        if(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap() > 1){
                     if(totalAmount < hotelAmount*custMinimum){
                         totalAmount = hotelAmount*custMinimum;
                         expectCashlLbl[labelCount] = new JLabel("*Minimum Amount : "+ totalAmount+"     ");
@@ -528,23 +513,14 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             
             hotelTypeDisplay();
             
-            switch (hotelCmb.getSelectedIndex()) {
-                case 4 :
-                {   custLimit = realCustLimit;
-                    custMinimum=3;
-                    break;
-                }
-                case 5 :
-                {   custLimit = realCustLimit;
-                    custMinimum=5;
-                    break;
-                }
-                default :
-                {   custLimit = 1;
-                    custMinimum = 1;
-                    break;
-                }
-            };
+            if(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap() > 1){
+                custLimit = realCustLimit;
+                custMinimum=hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap();
+            }else{
+                custLimit = 1;
+                custMinimum = 1;
+            }
+            
             
             customerCountRefresh();
         }
