@@ -182,6 +182,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         
     }
 
+    //clear all input/ resets
     public void clearAll(){
         int custCountPast = custCount;
         for(int i = 0; i<custCountPast ; i++){
@@ -204,7 +205,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         frame.setVisible(true);
 
     }
-    
+    //day of combobox depnds on month
     public void smartDay(){
         
                 int maxDays = 0;
@@ -241,7 +242,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
                 day.setModel(new DefaultComboBoxModel<>(days));
     }
-    
+    //available label display
     public void hotelAvlblDisplay(){
         //display if hotel is available that day
                 String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
@@ -267,7 +268,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                     }
                 }
     }
-    
+    //cash label display return total amount
     public double expectedCashDisplay(){
         
         resetCashDisplay();
@@ -323,7 +324,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         
         return totalAmount;
     }
-    
+    //resets cash label
     public void resetCashDisplay(){
         for (int i = 0; i<expectCashlLbl.length; i++){
             if(expectCashlLbl[i]!=null){
@@ -332,7 +333,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             }
         }
     }
-    
+    //display room needed cusotmer
     public void goodForDisplay(){
         int cap = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap();
         if(cap == 1){
@@ -341,7 +342,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             capLabel.setText("     Good for "+cap+" people!    \n * minimum of " +cap+ ". *");
         }
     }
-    
+    //customer textfields referesh
     public void customerCountRefresh(){
         
         int indicator = custMinimum - custCount ;
@@ -358,13 +359,13 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             }
         }
     }
-    
+    //hotel type indicatior
     public void hotelTypeDisplay(){
         
         hotelTypeLbl.setText(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getHotelType());
         
     }
-    
+    //add cusotmer text field
     public void addCustTxt(){
         if(custCount < custLimit){
                 customer_txt_arr[custCount*2] = new JTextField();
@@ -395,7 +396,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 frame.setVisible(true);
             }
     }
-    
+    //remove cusotmer text field
     public void removeCustTxt(){
         if(custCount > 1){
 
