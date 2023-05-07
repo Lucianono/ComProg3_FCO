@@ -24,9 +24,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     JPanel jPanelCustInf = new JPanel();
     JLabel jLabel1 = new JLabel();
     JButton jButton1 = new JButton();
-    JPanel jPanel7 = new JPanel();
-    JLabel jLabel2 = new JLabel();
-    JButton jButton2 = new JButton();
     JPanel jPanel4 = new JPanel();
     JScrollPane jScrollPane1 = new JScrollPane();
     JPanel jPanel8 = new JPanel();
@@ -87,19 +84,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jPanel6.add(jButton1);
 
         jPanel5.add(jPanel6);
-
-        jPanel7.setPreferredSize(new Dimension(300, 50));
-        jPanel7.setLayout(new BoxLayout(jPanel7, BoxLayout.X_AXIS));
-
-        jLabel2.setFont(new Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("jLabel1");
-        jLabel2.setPreferredSize(new Dimension(250, 16));
-        jPanel7.add(jLabel2);
-
-        jButton2.setText(">");
-        jPanel7.add(jButton2);
-
-        jPanel5.add(jPanel7);
 
         jPanel3.add(jPanel5);
 

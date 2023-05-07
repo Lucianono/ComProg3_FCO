@@ -1,6 +1,7 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,8 +15,13 @@ public class TransactionSystem {
     private LinkedList<Transaction> transactions = new LinkedList<>();
     
     
-    public TransactionSystem() {
-        
+    public TransactionSystem() throws ParseException {
+        Customer c = new Customer(5, "bry", 12);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+        Date d = formatter.parse("2023/1/1");
+        Customer[] customers = {c};
+        createReservation(customers,"A1",5000,d,0,0,null);
+        createReservation(customers,"B1",5000,d,0,0,null);
     }
     
     public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
