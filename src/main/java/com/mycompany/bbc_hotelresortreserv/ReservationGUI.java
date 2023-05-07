@@ -61,11 +61,16 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
     JPanel panelMain = new JPanel();
     JPanel panelSuper = new JPanel();
     
-    HotelCRUD hotelBooked = new HotelCRUD();
-    CustomerCRUD customersBooked = new CustomerCRUD();
-    TransactionSystem transactionsCompleted = new TransactionSystem();
+    private final HotelCRUD hotelBooked;
+    private final CustomerCRUD customersBooked;
+    private final TransactionSystem transactionsCompleted;
+
     
-    ReservationGUI() {
+    ReservationGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked, TransactionSystem transactionsCompleted) {
+        this.hotelBooked=hotelBooked;
+        this.customersBooked=customersBooked;
+        this.transactionsCompleted=transactionsCompleted;
+        
         frame.setSize(600,400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);

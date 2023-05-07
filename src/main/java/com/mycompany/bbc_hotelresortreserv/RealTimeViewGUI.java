@@ -4,6 +4,8 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListener{
 
@@ -19,6 +21,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     JButton resetBtn = new JButton("Reset");
     JPanel jPanel5 = new JPanel();
     JPanel jPanel6 = new JPanel();
+    JPanel jPanelCustInf = new JPanel();
     JLabel jLabel1 = new JLabel();
     JButton jButton1 = new JButton();
     JPanel jPanel7 = new JPanel();
@@ -33,9 +36,16 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     JButton jButton4 = new JButton();
     JButton jButton5 = new JButton();
     
-    public RealTimeViewGUI() {
-        
+    private final HotelCRUD hotelBooked;
+    private final CustomerCRUD customersBooked;
+    private final TransactionSystem transactionsCompleted;
+    
+    public RealTimeViewGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked, TransactionSystem transactionsCompleted) {
+        this.hotelBooked=hotelBooked;
+        this.customersBooked=customersBooked;
+        this.transactionsCompleted=transactionsCompleted;
 
+        
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.X_AXIS));
@@ -62,14 +72,16 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jPanel5.setBorder(BorderFactory.createTitledBorder("Customers Reserved"));
         jPanel5.setPreferredSize(new Dimension(335, 440));
 
-        jPanel6.setPreferredSize(new Dimension(300, 50));
+        jPanel6.setPreferredSize(new Dimension(250, 50));
         jPanel6.setRequestFocusEnabled(false);
         jPanel6.setLayout(new BoxLayout(jPanel6, BoxLayout.X_AXIS));
 
         jLabel1.setFont(new Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new Dimension(250, 16));
-        jPanel6.add(jLabel1);
+        jPanelCustInf.setPreferredSize(new Dimension(180, 16));
+        jPanelCustInf.setLayout(new FlowLayout(FlowLayout.LEFT));
+        jPanelCustInf.add(jLabel1);
+        jPanel6.add(jPanelCustInf);
 
         jButton1.setText(">");
         jPanel6.add(jButton1);
@@ -153,6 +165,20 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        if(e.getSource()==resetBtn){
+            Date nowDate = new Date();
+            int year = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+            int month = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonthValue();
+            int day = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfMonth();
+
+            yearCmb.setSelectedIndex(year-2023);
+            monthCmb.setSelectedIndex(month-1);
+            dayCmb.setSelectedIndex(day-1);
+            
+            System.out.println(month);
+            
+        }
         
     }
 

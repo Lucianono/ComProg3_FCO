@@ -7,8 +7,12 @@ public class BBCMain {
 
     public static void main(String[] args) {
         
-        //ReservationGUI transGUI = new ReservationGUI();
-        RealTimeViewGUI rtvGUI = new RealTimeViewGUI();
+        HotelCRUD hotelBooked = new HotelCRUD();
+        CustomerCRUD customersBooked = new CustomerCRUD();
+        TransactionSystem transactionsCompleted = new TransactionSystem();
+        
+        //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
+        RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted);
         
     }
 }
