@@ -5,17 +5,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class RealTimeViewGUI extends JFrame implements ActionListener{
+public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListener{
 
     JFrame frame = new JFrame();
-    JComboBox jComboBox1 = new JComboBox<>();
     JPanel jPanel2 = new JPanel();
     JPanel jPanel3 = new JPanel();
     JPanel jPanel1 = new JPanel();
-    JComboBox jComboBox2 = new JComboBox<>();
-    JComboBox jComboBox3 = new JComboBox<>();
-    JComboBox jComboBox4 = new JComboBox<>();
-    JButton jButton6 = new JButton();
+    String [] y = {"2023","2024","2025"};
+    JComboBox yearCmb = new JComboBox(y);
+    String [] m = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+    JComboBox monthCmb = new JComboBox(m);
+    JComboBox dayCmb = new JComboBox();
+    JButton resetBtn = new JButton("Reset");
     JPanel jPanel5 = new JPanel();
     JPanel jPanel6 = new JPanel();
     JLabel jLabel1 = new JLabel();
@@ -34,8 +35,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener{
     
     public RealTimeViewGUI() {
         
-        jComboBox1.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(this);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,19 +42,20 @@ public class RealTimeViewGUI extends JFrame implements ActionListener{
 
         jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS));
 
-        jComboBox2.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2);
+        jPanel1.add(yearCmb);
+        jPanel1.add(monthCmb);
+        smartDay();
+        jPanel1.add(dayCmb);
 
-        jComboBox3.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3);
-
-        jComboBox4.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox4);
-
-        jButton6.setText("reset");
-        jButton6.setPreferredSize(new Dimension(60, 23));
-        jButton6.addActionListener(this);
-        jPanel1.add(jButton6);
+        monthCmb.addItemListener(this);
+        monthCmb.setFont(new Font("Arial", Font.PLAIN, 12));
+        yearCmb.addItemListener(this);
+        yearCmb.setFont(new Font("Arial", Font.PLAIN, 12));
+        dayCmb.setFont(new Font("Arial", Font.PLAIN, 12));
+        resetBtn.setPreferredSize(new Dimension(70, 23));
+        resetBtn.addActionListener(this);
+        resetBtn.setFont(new Font("Arial", Font.PLAIN, 12));
+        jPanel1.add(resetBtn);
 
         jPanel3.add(jPanel1);
 
@@ -128,10 +128,39 @@ public class RealTimeViewGUI extends JFrame implements ActionListener{
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-
+    // day computer
+    private void smartDay(){
+        
+                int maxDays = 0;
+                //smart day combobox
+                switch(monthCmb.getSelectedIndex()){
+                    case 0, 2, 4, 6, 7, 9, 11 -> maxDays = 31;
+                    case 3, 5, 8, 10 -> maxDays = 30;
+                    case 1 -> {
+                        if(Integer.parseInt(yearCmb.getSelectedItem()+"")%4 == 0)
+                            maxDays = 29;
+                        else
+                            maxDays = 28;
+            }
+                }
+                
+                String[] days = new String[maxDays];
+                for (int i =0; i<maxDays ; i++){
+                    days[i]= i+1 +"";
+                }
+                dayCmb.setModel(new DefaultComboBoxModel<>(days));
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if(e.getSource()==monthCmb || e.getSource()==yearCmb){
+            smartDay();
+        }
     }
     
     

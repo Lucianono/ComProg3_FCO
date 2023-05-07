@@ -187,7 +187,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
     }
 
     //clear all input/ resets
-    public void clearAll(){
+    private void clearAll(){
         int custCountPast = custCount;
         for(int i = 0; i<custCountPast ; i++){
             
@@ -210,7 +210,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
 
     }
     //day of combobox depnds on month
-    public void smartDay(){
+    private void smartDay(){
         
                 int maxDays = 0;
                 //smart day combobox
@@ -232,7 +232,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 day.setModel(new DefaultComboBoxModel<>(days));
     }
     //available label display
-    public void hotelAvlblDisplay(){
+    private void hotelAvlblDisplay(){
         //display if hotel is available that day
                 String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
@@ -260,7 +260,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 }
     }
     //cash label display return total amount
-    public double expectedCashDisplay(){
+    private double expectedCashDisplay(){
         
         resetCashDisplay();
         double hotelAmount = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRegRate();
@@ -328,7 +328,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         return totalAmount;
     }
     //resets cash label
-    public void resetCashDisplay(){
+    private void resetCashDisplay(){
         for (int i = 0; i<expectCashlLbl.length; i++){
             if(expectCashlLbl[i]!=null){
                 jPanelPriceBreakdown.remove(expectCashlLbl[i]);
@@ -337,7 +337,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         }
     }
     //display room needed cusotmer
-    public void goodForDisplay(){
+    private void goodForDisplay(){
         int cap = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap();
         if(cap == 1){
             capLabel.setText("     Only 1 customer needed.    ");
@@ -346,7 +346,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         }
     }
     //customer textfields referesh
-    public void customerCountRefresh(){
+    private void customerCountRefresh(){
         
         int indicator = custMinimum - custCount ;
         
@@ -363,13 +363,13 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         }
     }
     //hotel type indicatior
-    public void hotelTypeDisplay(){
+    private void hotelTypeDisplay(){
         
         hotelTypeLbl.setText(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getHotelType());
         
     }
     //add cusotmer text field
-    public void addCustTxt(){
+    private void addCustTxt(){
         if(custCount < custLimit){
                 customer_txt_arr[custCount*2] = new JTextField();
                 customer_txt_arr[custCount*2 +1] = new JTextField();
@@ -400,7 +400,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             }
     }
     //remove cusotmer text field
-    public void removeCustTxt(){
+    private void removeCustTxt(){
         if(custCount > 1){
 
                 jPanel1.remove(customer_txt_arr[custCount*2 -1]);
@@ -415,7 +415,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             }
     } 
     //process transaction
-    public void processTransaction(int type){
+    private void processTransaction(int type){
         Customer[] custArr = new Customer[custCount];
         int realCustCount = 0;
         String hotelSelected = hotelCmb.getSelectedItem()+"" ;
