@@ -32,7 +32,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     JPanel custInfoPanelMain = new JPanel();
     JScrollPane custInfoScrlPane = new JScrollPane();
     JPanel jPanel8 = new JPanel();
-    JLabel jLabel3 = new JLabel();
+    JLabel fullCustInfoLbl = new JLabel();
     JPanel jPanel9 = new JPanel();
     JButton jButton3 = new JButton();
     JButton jButton4 = new JButton();
@@ -89,8 +89,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jPanel8.setBorder(BorderFactory.createTitledBorder("Customer Information"));
         jPanel8.setLayout(new BorderLayout());
 
-        jLabel3.setText("jLabel3");
-        jPanel8.add(jLabel3, BorderLayout.CENTER);
+        fullCustInfoLbl.setText("fullCustInfoLbl");
+        fullCustInfoLbl.setFont(new Font("Arial", Font.PLAIN, 15));
+        jPanel8.add(fullCustInfoLbl, BorderLayout.CENTER);
 
         custInfoScrlPane.setViewportView(jPanel8);
 
@@ -156,12 +157,29 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         
         for(int i=0; i<transFromDate.size(); i++){
             
+            Transaction t = transFromDate.get(i);
+            
             custCountRsrv++;
             
             custInfoLbl[i] = new JLabel();
             custInfoBtn[i] = new JButton();
             custInfoPanel[i] = new JPanel();
             custInfoBtnPanel[i] = new JPanel();
+            
+            custInfoBtn[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    fullCustInfoLbl.setText(
+                            "<html> Customer Name : <b>" +  t.getCustomers()[0].getName() +
+                            "</b><br/>Number of Customers : " +  t.getCustomers().length +
+                            "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
+                            "<br/>Down Payment : " +  t.getDownCash()+
+                            "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
+                            "<br/>Checked In : " +  t.isCheckedIn()+
+                            "<br/>Checked In : " +  t.isCheckedOut()
+                    );
+                }
+            });
             
             custInfoBtnPanel[i].setPreferredSize(new Dimension(200, 30));
             custInfoBtnPanel[i].setRequestFocusEnabled(false);
@@ -170,7 +188,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             jPanel5.add(custInfoBtnPanel[i]);
             
             custInfoLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
-            custInfoLbl[i].setText(transFromDate.get(i).getHotel()+" | " + transFromDate.get(i).getCustomers()[0].getName());
+            custInfoLbl[i].setText(t.getHotel()+" | " + t.getCustomers()[0].getName());
             //custInfoPanel[i].setPreferredSize(new Dimension(250, 16));
             custInfoPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
             custInfoPanel[i].setBackground(Color.white);

@@ -12,8 +12,10 @@ public class Transaction {
     private double fullCash;
     private double remBal;
     private Resources [] resoUsed;
+    private boolean checkedIn;
+    private boolean checkedOut;
 
-    Transaction(int TransactID, Customer[] customers, String hotel, double downCash, Date dateRsrv, double fullCash ,double remBal, Resources [] resoUsed) {
+    Transaction(int TransactID, Customer[] customers, String hotel, double downCash, Date dateRsrv, double fullCash ,double remBal, Resources [] resoUsed , boolean checkedIn, boolean checkedOut) {
         this.TransactID = TransactID;
         this.customers = customers;
         this.hotel = hotel;
@@ -22,6 +24,8 @@ public class Transaction {
         this.fullCash = fullCash;
         this.remBal = remBal;
         this.resoUsed = resoUsed;
+        this.checkedIn = checkedOut;
+        this.checkedIn = checkedOut;
     }
 
     // Getters for all variables
@@ -56,6 +60,15 @@ public class Transaction {
     public Resources[] getResoUsed() {
         return resoUsed;
     }
+    
+    public boolean isCheckedIn() {
+        return checkedIn;
+    }
+
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
 
     // Setters for the non-final variables
     public void setFullCash(double fullCash) {
@@ -69,4 +82,13 @@ public class Transaction {
     public void setResoUsed(Resources[] resoUsed) {
         this.resoUsed = resoUsed;
     }
+   
+    public void setCheckedIn(boolean checkedIn) {
+        this.checkedIn = checkedIn;
+    }
+
+    public void setCheckedOut(boolean checkedOut) {
+        this.checkedOut = checkedOut;
+    }
+
 }
