@@ -1,11 +1,11 @@
 package com.mycompany.bbc_hotelresortreserv;
 
-    public class Security {
+    public class Security{
         
-        private String[] user = new String[]{"user123"}; //default username
-        private String[] pass = new String[]{"pass123"}; //default password
-        private String[] pos = new String[] {"staff"}; //default position
-        public static int StringIncrement = 1;
+        private static String[] user = new String[]{"user123"}; //default username
+        private static String[] pass = new String[]{"pass123"}; //default password
+        private static String[] pos = new String[] {"staff"}; //default position
+        public static int StringIncrement = 5;
     
         public Security(){
             System.out.println("Security Created");
@@ -44,23 +44,25 @@ package com.mycompany.bbc_hotelresortreserv;
             while (logAttempts < 2 && !logged){// <---- 3 times error 
                 for (int i = 0; i < user.length; i++)//checheck if username and password is compatible
                 {
-                    if (user[i].equals(username) && pass[i].equals(password)){ //user logged in
+                    if (user[i].equals(username) && Decrypt(pass[i]).equals(password)){ //user logged in
                         System.out.println("Login Successful!");
                         logged=true;
                         break;
                     }
                     
                 }
-                    if (logAttempts == 2){
-                        System.out.println("You have reached maximum amount of tries.");
-                        System.out.println("Program Close...");
-                        System.exit(0);
+                    if (!logged){
+                        logAttempts++;
+                        System.out.println("Invalid Input. Remaining Tries: " + (3-logAttempts));
                     }
-                    else {
-                    logAttempts++;
-                        System.out.println("Invalid. Remaining Tries: " + (3-logAttempts));
-                    }
+            }
+                if(!logged){
+                    System.out.println("You have reached maximum amount of tries.");
+                    System.out.println("Program Close...");
+                    System.exit(0);
                 }
+                    
+                
             return false;
     }
 
@@ -68,7 +70,7 @@ package com.mycompany.bbc_hotelresortreserv;
         char[] chars = Password.toCharArray(); 
         String encryptedPass = "";
             for(char c : chars){ 
-                c += 5; 
+                c += StringIncrement; 
                 encryptedPass += c;
             }    
         return encryptedPass;
@@ -78,10 +80,11 @@ package com.mycompany.bbc_hotelresortreserv;
         char[] chars = encryptedPass.toCharArray();
         String decryptPass = "";
             for (char c : chars){
-                c -= StringIncrement - 1;
+                c -= StringIncrement;
                 decryptPass += c;
             }
         return decryptPass;
         
     }
+
 }
