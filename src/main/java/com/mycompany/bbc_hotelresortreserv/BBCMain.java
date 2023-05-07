@@ -8,7 +8,7 @@ public class BBCMain {
     public static void main(String[] args) {
         
         
-        TransactionGUI transGUI = new TransactionGUI();
+        ReservationGUI transGUI = new ReservationGUI();
         
     }
 }

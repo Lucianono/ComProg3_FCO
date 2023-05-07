@@ -15,7 +15,7 @@ import javax.swing.event.DocumentListener;
 
 
 
-public class TransactionGUI extends JFrame implements ActionListener,ItemListener,DocumentListener{
+public class ReservationGUI extends JFrame implements ActionListener,ItemListener,DocumentListener{
 
     JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
@@ -65,7 +65,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     CustomerCRUD customersBooked = new CustomerCRUD();
     TransactionSystem transactionsCompleted = new TransactionSystem();
     
-    TransactionGUI() {
+    ReservationGUI() {
         frame.setSize(600,400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -255,7 +255,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 try {
                     dateBooked = formatter.parse(s);
                 } catch (ParseException ex) {
-                    Logger.getLogger(TransactionGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 ArrayList<Transaction> transToDate = transactionsCompleted.getTransactionsByDate(dateBooked);
                 avlblLbl.setText("     Available     ");
@@ -468,7 +468,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 try {
                     dateBooked = formatter.parse(s);
                 } catch (ParseException ex) {
-                    Logger.getLogger(TransactionGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked,0,realAmount-custCash);
