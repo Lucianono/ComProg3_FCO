@@ -239,30 +239,30 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
     //available label display
     private void hotelAvlblDisplay(){
         //display if hotel is available that day
-                String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
-                Date dateBooked=null;
-                try {
-                    dateBooked = formatter.parse(s);
-                } catch (ParseException ex) {
-                    Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                ArrayList<Transaction> transToDate = transactionsCompleted.getTransactionsByDate(dateBooked);
+        String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+        Date dateBooked=null;
+        try {
+            dateBooked = formatter.parse(s);
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<Transaction> transToDate = transactionsCompleted.getTransactionsByDate(dateBooked);
+        avlblLbl.setText("     Available     ");
+        btnRsrv50.setEnabled(true);
+        for(int i=0; i<transToDate.size(); i++){
+            if(transToDate.get(i).getHotel().equals(hotelCmb.getSelectedItem()+"")){
+                avlblLbl.setText("     Not Available!      ");
+                btnRsrv50.setEnabled(false);
+                btnRsrv100.setEnabled(false);
+                break;
+            }
+            else{
                 avlblLbl.setText("     Available     ");
                 btnRsrv50.setEnabled(true);
-                for(int i=0; i<transToDate.size(); i++){
-                    if(transToDate.get(i).getHotel().equals(hotelCmb.getSelectedItem()+"")){
-                        avlblLbl.setText("     Not Available!      ");
-                        btnRsrv50.setEnabled(false);
-                        btnRsrv100.setEnabled(false);
-                        break;
-                    }
-                    else{
-                        avlblLbl.setText("     Available     ");
-                        btnRsrv50.setEnabled(true);
-                        btnRsrv100.setEnabled(true);                        
-                    }
-                }
+                btnRsrv100.setEnabled(true);                        
+            }
+        }
     }
     //cash label display return total amount
     private double expectedCashDisplay(){

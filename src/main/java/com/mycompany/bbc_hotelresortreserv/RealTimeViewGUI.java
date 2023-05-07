@@ -4,8 +4,13 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListener{
 
@@ -20,18 +25,20 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     JComboBox dayCmb = new JComboBox();
     JButton resetBtn = new JButton("Reset");
     JPanel jPanel5 = new JPanel();
-    JPanel jPanel6 = new JPanel();
-    JPanel jPanelCustInf = new JPanel();
-    JLabel jLabel1 = new JLabel();
-    JButton jButton1 = new JButton();
-    JPanel jPanel4 = new JPanel();
-    JScrollPane jScrollPane1 = new JScrollPane();
+    JPanel[] custInfoBtnPanel = new JPanel[10];
+    JPanel[] custInfoPanel = new JPanel[10];
+    JLabel[] custInfoLbl = new JLabel[10];
+    JButton[] custInfoBtn = new JButton[10];
+    JPanel custInfoPanelMain = new JPanel();
+    JScrollPane custInfoScrlPane = new JScrollPane();
     JPanel jPanel8 = new JPanel();
     JLabel jLabel3 = new JLabel();
     JPanel jPanel9 = new JPanel();
     JButton jButton3 = new JButton();
     JButton jButton4 = new JButton();
     JButton jButton5 = new JButton();
+    
+    int custCountRsrv = 0;
     
     private final HotelCRUD hotelBooked;
     private final CustomerCRUD customersBooked;
@@ -59,6 +66,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         yearCmb.addItemListener(this);
         yearCmb.setFont(new Font("Arial", Font.PLAIN, 12));
         dayCmb.setFont(new Font("Arial", Font.PLAIN, 12));
+        dayCmb.addItemListener(this);
         resetBtn.setPreferredSize(new Dimension(70, 23));
         resetBtn.addActionListener(this);
         resetBtn.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -67,31 +75,16 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jPanel3.add(jPanel1);
 
         jPanel5.setBorder(BorderFactory.createTitledBorder("Customers Reserved"));
-        jPanel5.setPreferredSize(new Dimension(335, 440));
+        jPanel5.setPreferredSize(new Dimension(200, 440));
 
-        jPanel6.setPreferredSize(new Dimension(250, 50));
-        jPanel6.setRequestFocusEnabled(false);
-        jPanel6.setLayout(new BoxLayout(jPanel6, BoxLayout.X_AXIS));
-
-        jLabel1.setFont(new Font("Arial", 0, 14)); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanelCustInf.setPreferredSize(new Dimension(180, 16));
-        jPanelCustInf.setLayout(new FlowLayout(FlowLayout.LEFT));
-        jPanelCustInf.add(jLabel1);
-        jPanel6.add(jPanelCustInf);
-
-        jButton1.setText(">");
-        jPanel6.add(jButton1);
-
-        jPanel5.add(jPanel6);
+        custDisplayAll();
 
         jPanel3.add(jPanel5);
 
         jPanel2.add(jPanel3);
 
-        jPanel4.setLayout(new BoxLayout(jPanel4, BoxLayout.Y_AXIS));
-
-        jScrollPane1.setPreferredSize(new Dimension(100, 250));
+        custInfoPanelMain.setLayout(new BoxLayout(custInfoPanelMain, BoxLayout.Y_AXIS));
+        custInfoScrlPane.setPreferredSize(new Dimension(100, 250));
 
         jPanel8.setBorder(BorderFactory.createTitledBorder("Customer Information"));
         jPanel8.setLayout(new BorderLayout());
@@ -99,9 +92,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jLabel3.setText("jLabel3");
         jPanel8.add(jLabel3, BorderLayout.CENTER);
 
-        jScrollPane1.setViewportView(jPanel8);
+        custInfoScrlPane.setViewportView(jPanel8);
 
-        jPanel4.add(jScrollPane1);
+        custInfoPanelMain.add(custInfoScrlPane);
 
         jButton3.setText("CHECK IN");
         jPanel9.add(jButton3);
@@ -112,9 +105,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jButton5.setText("CHECKOUT");
         jPanel9.add(jButton5);
 
-        jPanel4.add(jPanel9);
+        custInfoPanelMain.add(jPanel9);
 
-        jPanel2.add(jPanel4);
+        jPanel2.add(custInfoPanelMain);
 
         frame.add(jPanel2, BorderLayout.CENTER);
         
@@ -146,11 +139,76 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                 }
                 dayCmb.setModel(new DefaultComboBoxModel<>(days));
     }
+    //display all cust reserved
+    private void custDisplayAll(){
+        
+        
+        String s =  yearCmb.getSelectedItem() + "/" + (monthCmb.getSelectedIndex()+1) + "/" + dayCmb.getSelectedItem();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+        Date dateBooked=null;
+        try {
+            dateBooked = formatter.parse(s);
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<Transaction> transFromDate = transactionsCompleted.getTransactionsByDate(dateBooked);
+        
+        
+        for(int i=0; i<transFromDate.size(); i++){
+            
+            custCountRsrv++;
+            
+            custInfoLbl[i] = new JLabel();
+            custInfoBtn[i] = new JButton();
+            custInfoPanel[i] = new JPanel();
+            custInfoBtnPanel[i] = new JPanel();
+            
+            custInfoBtnPanel[i].setPreferredSize(new Dimension(200, 30));
+            custInfoBtnPanel[i].setRequestFocusEnabled(false);
+            custInfoBtnPanel[i].setLayout(new BoxLayout(custInfoBtnPanel[i], BoxLayout.X_AXIS));
+
+            jPanel5.add(custInfoBtnPanel[i]);
+            
+            custInfoLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+            custInfoLbl[i].setText(transFromDate.get(i).getHotel()+" | " + transFromDate.get(i).getCustomers()[0].getName());
+            //custInfoPanel[i].setPreferredSize(new Dimension(250, 16));
+            custInfoPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
+            custInfoPanel[i].setBackground(Color.white);
+            custInfoPanel[i].add(custInfoLbl[i]);
+            custInfoBtnPanel[i].add(custInfoPanel[i]);
+            custInfoBtnPanel[i].setBackground(Color.white);
+            custInfoBtnPanel[i].setPreferredSize(new Dimension(250, 30));
+
+            custInfoBtn[i].setText(">");
+            custInfoBtnPanel[i].add(custInfoBtn[i]);
+            
+        }
+
+        jPanel5.repaint();
+        jPanel5.revalidate();
+        frame.setVisible(true);
+        
+    }
+    //refresh displayed customers
+    private void custRefresh(){
+        
+        for (int i = 0; i < custCountRsrv ; i++){
+            jPanel5.remove(custInfoBtnPanel[i]);
+        }
+        jPanel5.repaint();
+        jPanel5.revalidate();
+        frame.setVisible(true);
+        custCountRsrv = 0;
+        
+        custDisplayAll();
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource()==resetBtn){
+            
+            
             Date nowDate = new Date();
             int year = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
             int month = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonthValue();
@@ -160,9 +218,11 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             monthCmb.setSelectedIndex(month-1);
             dayCmb.setSelectedIndex(day-1);
             
-            System.out.println(month);
+            custRefresh();
             
         }
+        
+        
         
     }
 
@@ -170,6 +230,10 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     public void itemStateChanged(ItemEvent e) {
         if(e.getSource()==monthCmb || e.getSource()==yearCmb){
             smartDay();
+        }
+        
+        if(e.getSource()==monthCmb || e.getSource()==yearCmb || e.getSource()==dayCmb ){
+            custRefresh();
         }
     }
     

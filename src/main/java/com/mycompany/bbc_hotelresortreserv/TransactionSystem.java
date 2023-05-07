@@ -16,7 +16,7 @@ public class TransactionSystem {
     
     
     public TransactionSystem() throws ParseException {
-        Customer c = new Customer(5, "bry", 12);
+        Customer c = new Customer(5, "Bryan Calulo", 12);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
         Date d = formatter.parse("2023/1/1");
         Customer[] customers = {c};
