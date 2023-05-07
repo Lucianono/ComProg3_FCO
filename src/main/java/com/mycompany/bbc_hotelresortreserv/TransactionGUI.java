@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 
 
-public class TransactionGUI extends JFrame implements ActionListener,ItemListener{
+public class TransactionGUI extends JFrame implements ActionListener,ItemListener,DocumentListener{
 
     JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
@@ -49,7 +51,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     JComboBox day = new JComboBox();
     JLabel avlblLbl = new JLabel("    . . .    ");
     JLabel capLabel = new JLabel("       .    .    .       ");
-    JLabel expectCashlLbl = new JLabel("       .    .    .       ");
+    JLabel [] expectCashlLbl = new JLabel[10];
     
     
     JPanel panelRight = new JPanel();
@@ -81,16 +83,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jPanelminus.add(jButton2);
         jPanel1.add(jPanelminus);
         
-        customer_txt_arr[custCount*2] = new JTextField();
-        customer_txt_arr[custCount*2 +1] = new JTextField();
-
-        jPanel1.add(customer_txt_arr[custCount*2]);
-        jPanel1.add(customer_txt_arr[custCount*2 +1]);
-        
-        customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
-        customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
-        
-        custCount++;
+        addCustTxt();
         
         jPanel1.setPreferredSize(new Dimension(250,300));
         jPanel1.setBorder(BorderFactory.createTitledBorder("Customer Information"));
@@ -123,6 +116,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         capLabel.setFont(new Font("Arial",Font.PLAIN,12)  );
         hotelAvlblDisplay();
         goodForDisplay();
+        expectedCashDisplay();
         
         jPanel2.add(day);
         jPanel2.add(avlblLbl);
@@ -137,10 +131,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jTextField7.setPreferredSize(new Dimension(150,30));
         jPanel3.setBorder(BorderFactory.createTitledBorder("Cash"));
         jPanel3.add(jTextField7);
-        expectCashlLbl.setFont(new Font("Arial",Font.ITALIC,15)  );
-        jPanelPriceBreakdown.add(expectCashlLbl);
-        jPanelPriceBreakdown.setPreferredSize(new Dimension(150,200));
-        jScrollPriceBreakdown.setPreferredSize(new Dimension(150,90));
+        jPanelPriceBreakdown.setLayout(new BoxLayout(jPanelPriceBreakdown,BoxLayout.Y_AXIS));
+        jScrollPriceBreakdown.setPreferredSize(new Dimension(170,90));
         jPanel3.setPreferredSize(new Dimension(150,80));
         jPanel3.add(jScrollPriceBreakdown);
         
@@ -199,7 +191,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
 
         custCount++;
-        
+        hotelAvlblDisplay();
+        resetCashDisplay();
         
 
         
@@ -272,8 +265,40 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     }
     
     public void expectedCashDisplay(){
-        double amount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate();
-        expectCashlLbl.setText("     P "+ amount+"     ");
+        
+        resetCashDisplay();
+        double hotelAmount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate();
+        double totalAmount = 0;
+        
+        int realCustCount = 0;
+
+        for(int i = 0; i<custCount ; i++){
+            if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
+                System.out.println("exoct");
+                expectCashlLbl[realCustCount] = new JLabel("Regular Rate : " + hotelAmount);
+                expectCashlLbl[realCustCount].setFont(new Font("Arial",Font.ITALIC,15)  );
+                jPanelPriceBreakdown.add(expectCashlLbl[realCustCount]);
+                realCustCount++;
+                totalAmount += hotelAmount;
+                
+                jPanelPriceBreakdown.repaint();
+                jPanelPriceBreakdown.revalidate();
+
+
+            }
+        }
+        expectCashlLbl[realCustCount] = new JLabel("<html>============== <br/> Total Amount : "+ totalAmount+"     ");
+        expectCashlLbl[realCustCount].setFont(new Font("Arial",Font.ITALIC,15)  );
+        jPanelPriceBreakdown.add(expectCashlLbl[realCustCount]);
+    }
+    
+    public void resetCashDisplay(){
+        for (int i = 0; i<expectCashlLbl.length; i++){
+            if(expectCashlLbl[i]!=null){
+                jPanelPriceBreakdown.remove(expectCashlLbl[i]);
+                expectCashlLbl[i]=null;
+            }
+        }
     }
     
     public void goodForDisplay(){
@@ -309,6 +334,9 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 
                 customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
                 customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
+                
+                customer_txt_arr[custCount*2].getDocument().addDocumentListener(this);
+                customer_txt_arr[custCount*2 +1].getDocument().addDocumentListener(this);
                 
                 custCount++;
 
@@ -399,13 +427,13 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         if(e.getSource() == month || e.getSource() == year || e.getSource() == jComboBox1){
 
             smartDay();
-            hotelAvlblDisplay();
                 
         }
         
         if(e.getSource() == month || e.getSource() == year || e.getSource() == day || e.getSource() == jComboBox1){
             expectedCashDisplay();
             goodForDisplay();
+            hotelAvlblDisplay();
         }
         
         if(e.getSource() == jComboBox1){
@@ -417,6 +445,25 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             };
             customerCountRefresh();
         }
+    }
+
+    int kl=0;
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+        System.out.println(kl++);
+        expectedCashDisplay();
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e) {
+        System.out.print(kl++);
+        expectedCashDisplay();
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e) {
+        System.out.println(kl++);
+        expectedCashDisplay();
     }
     
     
