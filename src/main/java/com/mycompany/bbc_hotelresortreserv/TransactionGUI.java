@@ -41,9 +41,10 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     int custCount = 0;
     int custLimit = 1;
     int custMinimum = 1;
-    int realCustLimit = 8;
+    int realCustLimit = 7;
     JTextField[] customer_txt_arr = new JTextField[realCustLimit * 2];
     int custWidth = 110, custHeight = 25;
+    JLabel custLabel = new JLabel("      -Name-         -Age-       ");
     
     String [] y = {"2023","2024","2025"};
     JComboBox year = new JComboBox(y);
@@ -83,8 +84,12 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jButton2.setPreferredSize(new Dimension(50,custHeight));
         jPanelminus.add(jButton2);
         jPanel1.add(jPanelminus);
+                
+        custLabel.setFont(new Font("Verdana",Font.PLAIN,12)  );
+        jPanel1.add(custLabel);
         
         addCustTxt();
+        
         
         jPanel1.setPreferredSize(new Dimension(250,300));
         jPanel1.setBorder(BorderFactory.createTitledBorder("Customer Information"));
@@ -131,6 +136,15 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jTextField7.setFont(new Font("Arial",Font.BOLD,15)  );
         jTextField7.setPreferredSize(new Dimension(150,30));
         jPanel3.setBorder(BorderFactory.createTitledBorder("Cash"));
+        jTextField7.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
         jPanel3.add(jTextField7);
         jPanelPriceBreakdown.setLayout(new BoxLayout(jPanelPriceBreakdown,BoxLayout.Y_AXIS));
         jScrollPriceBreakdown.setPreferredSize(new Dimension(170,90));
@@ -159,13 +173,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         panelSuper.add(panelBottom);
         panelSuper.setLayout(new BoxLayout(panelSuper,BoxLayout.Y_AXIS));
         
-
-
-        
-
         frame.add(panelSuper);
 
-        
         frame.setVisible(true);
         
     }
@@ -276,7 +285,6 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
 
         for(int i = 0; i<custCount ; i++){
             if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
-                System.out.println("exoct");
                 expectCashlLbl[labelCount] = new JLabel("Regular Rate : " + hotelAmount);
                 expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
                 jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
@@ -368,6 +376,16 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 
                 customer_txt_arr[custCount*2].getDocument().addDocumentListener(this);
                 customer_txt_arr[custCount*2 +1].getDocument().addDocumentListener(this);
+                
+                customer_txt_arr[custCount*2 +1].addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        char c = e.getKeyChar();
+                        if (!Character.isDigit(c)) {
+                            e.consume();
+                        }
+                    }
+                });
                 
                 custCount++;
 
