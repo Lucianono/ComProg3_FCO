@@ -28,8 +28,8 @@ public class HotelCRUD {
         addHotel("B1","Deluxe Class",true,1,1200,930);
         addHotel("C1","Ambassador Class",true,1,1300,1030);
         addHotel("D1","Corporate Class",true,1,1500,1300);
-        addHotel("E11","Annex Room",true,3,0,300.0);
-        addHotel("E12","Annex Room",true,5,0,300.0);
+        addHotel("E11","Annex Room",true,3,300,300.0);
+        addHotel("E12","Annex Room",true,5,300,300.0);
         
         
     }
