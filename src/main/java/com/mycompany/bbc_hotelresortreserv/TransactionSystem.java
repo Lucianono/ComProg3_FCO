@@ -1,6 +1,7 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -42,6 +43,7 @@ public class TransactionSystem {
         for(int i = 0; i<transactions.size();i++){
             if(transactions.get(i).getDateRsrv().equals(d)){
                 transTaken.add(transactions.get(i));
+                
             }
         }
         return transTaken;

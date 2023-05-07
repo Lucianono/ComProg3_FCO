@@ -19,17 +19,16 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
 
     JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
-    JTextField jTextField1 = new JTextField();
-    JTextField jTextField2 = new JTextField();
-    JButton jButton1 = new JButton();
-    JButton jButton2 = new JButton();
+    JButton btnPlus = new JButton();
+    JButton btnMinus = new JButton();
     JPanel jPanel2 = new JPanel();
-    JLabel jLabel1 = new JLabel();
-    JComboBox jComboBox1 = new JComboBox(new HotelCRUD().getAllHotelID());
+    JLabel hotelLbl = new JLabel();
+    JLabel hotelTypeLbl = new JLabel();
+    JComboBox hotelCmb = new JComboBox(new HotelCRUD().getAllHotelID());
     JPanel jPanel3 = new JPanel();
-    JTextField jTextField7 = new JTextField();
+    JTextField cashTxt = new JTextField();
     JPanel jPanel4 = new JPanel();
-    JButton jButton3 = new JButton();
+    JButton btnRsrv = new JButton();
     JPanel jPanelplus = new JPanel();
     JPanel jPanelminus = new JPanel();
     JPanel jPanelPriceBreakdown = new JPanel();
@@ -73,16 +72,16 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
 
 
 
-        jButton1.setText("+");
-        jButton1.addActionListener(this);
-        jButton1.setPreferredSize(new Dimension(50,custHeight));
-        jPanelplus.add(jButton1);
+        btnPlus.setText("+");
+        btnPlus.addActionListener(this);
+        btnPlus.setPreferredSize(new Dimension(50,custHeight));
+        jPanelplus.add(btnPlus);
         jPanel1.add(jPanelplus);
 
-        jButton2.setText("-");
-        jButton2.addActionListener(this);
-        jButton2.setPreferredSize(new Dimension(50,custHeight));
-        jPanelminus.add(jButton2);
+        btnMinus.setText("-");
+        btnMinus.addActionListener(this);
+        btnMinus.setPreferredSize(new Dimension(50,custHeight));
+        jPanelminus.add(btnMinus);
         jPanel1.add(jPanelminus);
                 
         custLabel.setFont(new Font("Verdana",Font.PLAIN,12)  );
@@ -95,14 +94,18 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jPanel1.setBorder(BorderFactory.createTitledBorder("Customer Information"));
 
 
-        jLabel1.setText(" Hotel");
-        jLabel1.setFont(new Font("Arial",Font.BOLD,15)  );
-        jPanel2.add(jLabel1);
+        hotelLbl.setText("<html><u>"+" Hotel");
+        hotelLbl.setFont(new Font("Arial",Font.BOLD,15)  );
+        jPanel2.add(hotelLbl);
         
-        jComboBox1.setFont(new Font("Arial",Font.PLAIN,15)  );
-        jComboBox1.setPreferredSize(new Dimension(120,30));
-        jComboBox1.addItemListener(this);
-        jPanel2.add(jComboBox1);
+        hotelCmb.setFont(new Font("Arial",Font.PLAIN,15)  );
+        hotelCmb.setPreferredSize(new Dimension(70,30));
+        hotelCmb.addItemListener(this);
+        jPanel2.add(hotelCmb);
+        
+        jPanel2.add(hotelTypeLbl);
+        hotelTypeLbl.setFont(new Font("Arial",Font.BOLD,12)  );
+        hotelTypeDisplay();
         
         year.setFont(new Font("Arial",Font.PLAIN,12)  );
         year.setPreferredSize(new Dimension(70,24));
@@ -132,11 +135,11 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
 
 
 
-        jTextField7.setText("0");
-        jTextField7.setFont(new Font("Arial",Font.BOLD,15)  );
-        jTextField7.setPreferredSize(new Dimension(150,30));
+        cashTxt.setText("0");
+        cashTxt.setFont(new Font("Arial",Font.BOLD,15)  );
+        cashTxt.setPreferredSize(new Dimension(150,30));
         jPanel3.setBorder(BorderFactory.createTitledBorder("Cash"));
-        jTextField7.addKeyListener(new KeyAdapter() {
+        cashTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
@@ -145,7 +148,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
             }
         });
-        jPanel3.add(jTextField7);
+        jPanel3.add(cashTxt);
         jPanelPriceBreakdown.setLayout(new BoxLayout(jPanelPriceBreakdown,BoxLayout.Y_AXIS));
         jScrollPriceBreakdown.setPreferredSize(new Dimension(170,90));
         jPanel3.setPreferredSize(new Dimension(150,80));
@@ -153,9 +156,9 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         
 
 
-        jButton3.setText("RESERVE");
-        jButton3.setPreferredSize(new Dimension(120,30));
-        jButton3.addActionListener(this);
+        btnRsrv.setText("RESERVE");
+        btnRsrv.setPreferredSize(new Dimension(120,30));
+        btnRsrv.addActionListener(this);
         
         panelRight.add(jPanel2);
         panelRight.add(jPanel3);
@@ -166,7 +169,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         panelMain.add(panelRight);
         
         
-        jPanel4.add(jButton3);
+        jPanel4.add(btnRsrv);
         panelBottom.add(jPanel4);
         
         panelSuper.add(panelMain);
@@ -190,21 +193,11 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 
             }
         
-        jTextField7.setText("0");
-        customer_txt_arr[custCount*2] = new JTextField();
-        customer_txt_arr[custCount*2 +1] = new JTextField();
+        cashTxt.setText("0");
+        addCustTxt();
 
-        jPanel1.add(customer_txt_arr[custCount*2]);
-        jPanel1.add(customer_txt_arr[custCount*2 +1]);
-
-        customer_txt_arr[custCount*2].setPreferredSize(new Dimension(custWidth,custHeight));
-        customer_txt_arr[custCount*2 +1].setPreferredSize(new Dimension(custWidth,custHeight));
-
-        custCount++;
         hotelAvlblDisplay();
         resetCashDisplay();
-        
-
         
         jPanel1.repaint();
         jPanel1.revalidate();
@@ -261,15 +254,16 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 }
                 ArrayList<Transaction> transToDate = transactionsCompleted.getTransactionsByDate(dateBooked);
                 avlblLbl.setText("     Available     ");
-                jButton3.setEnabled(true);
+                btnRsrv.setEnabled(true);
                 for(int i=0; i<transToDate.size(); i++){
-                    if(transToDate.get(i).getHotel().equals(jComboBox1.getSelectedItem()+"")){
+                    if(transToDate.get(i).getHotel().equals(hotelCmb.getSelectedItem()+"")){
                         avlblLbl.setText("     Not Available!      ");
-                        jButton3.setEnabled(false);
+                        btnRsrv.setEnabled(false);
+                        break;
                     }
                     else{
                         avlblLbl.setText("     Available     ");
-                        jButton3.setEnabled(true);
+                        btnRsrv.setEnabled(true);
                     }
                 }
     }
@@ -277,7 +271,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     public double expectedCashDisplay(){
         
         resetCashDisplay();
-        double hotelAmount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate();
+        double hotelAmount = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRegRate();
         double totalAmount = 0;
         double discountAmount = 0;
         
@@ -293,7 +287,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 
                 
                 if(Integer.parseInt(customer_txt_arr[i*2+1].getText())>=60){
-                    double discount = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRegRate() * .2;
+                    double discount = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRegRate() * .2;
                     expectCashlLbl[labelCount] = new JLabel("*Discount for Senior : " + discount);
                     expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
                     jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
@@ -307,7 +301,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
             
         }
         
-        if(jComboBox1.getSelectedIndex()>=4){
+        if(hotelCmb.getSelectedIndex()>=4){
                     if(totalAmount < hotelAmount*custMinimum){
                         totalAmount = hotelAmount*custMinimum;
                         expectCashlLbl[labelCount] = new JLabel("*Minimum Amount : "+ totalAmount+"     ");
@@ -325,6 +319,8 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
         jPanelPriceBreakdown.repaint();
         jPanelPriceBreakdown.revalidate();
         
+        frame.setVisible(true);
+        
         return totalAmount;
     }
     
@@ -338,7 +334,7 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     }
     
     public void goodForDisplay(){
-        int cap = hotelBooked.getHotel(jComboBox1.getSelectedItem()+"").getRoomCap();
+        int cap = hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap();
         if(cap == 1){
             capLabel.setText("     Only 1 customer needed.    ");
         }else{
@@ -361,6 +357,12 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
                 addCustTxt();
             }
         }
+    }
+    
+    public void hotelTypeDisplay(){
+        
+        hotelTypeLbl.setText(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getHotelType());
+        
     }
     
     public void addCustTxt(){
@@ -412,23 +414,23 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(e.getSource()==jButton1){
+        if(e.getSource()==btnPlus){
             
             addCustTxt();
 
         }
         
-        else if(e.getSource()==jButton2){
+        else if(e.getSource()==btnMinus){
             
             removeCustTxt();
 
         }
-        else if(e.getSource()==jButton3){
+        else if(e.getSource()==btnRsrv){
             
             Customer[] custArr = new Customer[custCount];
             int realCustCount = 0;
-            String hotelSelected = jComboBox1.getSelectedItem()+"" ;
-            double cashInput = Double.parseDouble(jTextField7.getText());
+            String hotelSelected = hotelCmb.getSelectedItem()+"" ;
+            double cashInput = Double.parseDouble(cashTxt.getText());
             
             for(int i = 0; i<custCount ; i++){
                 if(!(customer_txt_arr[i*2].getText().equals("")) && !(customer_txt_arr[i*2+1].getText().equals(""))){
@@ -473,21 +475,23 @@ public class TransactionGUI extends JFrame implements ActionListener,ItemListene
     public void itemStateChanged(ItemEvent e) {
 
         
-        if(e.getSource() == month || e.getSource() == year || e.getSource() == jComboBox1){
+        if(e.getSource() == month || e.getSource() == year || e.getSource() == hotelCmb){
 
             smartDay();
                 
         }
         
-        if(e.getSource() == month || e.getSource() == year || e.getSource() == day || e.getSource() == jComboBox1){
+        if(e.getSource() == month || e.getSource() == year || e.getSource() == day || e.getSource() == hotelCmb){
             expectedCashDisplay();
             goodForDisplay();
             hotelAvlblDisplay();
         }
         
-        if(e.getSource() == jComboBox1){
+        if(e.getSource() == hotelCmb){
             
-            switch (jComboBox1.getSelectedIndex()) {
+            hotelTypeDisplay();
+            
+            switch (hotelCmb.getSelectedIndex()) {
                 case 4 :
                 {   custLimit = realCustLimit;
                     custMinimum=3;
