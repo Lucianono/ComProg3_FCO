@@ -12,5 +12,6 @@ public class BBCMain {
         ResourcesCRUD rsrcs = new ResourcesCRUD();
         
         Security sec = new Security();
+        LoginSignupFormGUI lsfgui = new LoginSignupFormGUI();
     }
 }
