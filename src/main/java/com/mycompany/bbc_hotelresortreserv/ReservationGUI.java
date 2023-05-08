@@ -34,7 +34,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
     JPanel jPanelminus = new JPanel();
     JPanel jPanelPriceBreakdown = new JPanel();
     JScrollPane jScrollPriceBreakdown = new JScrollPane(jPanelPriceBreakdown,
-            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
             JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
     

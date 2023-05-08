@@ -28,27 +28,26 @@ public class tobedelete extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel10 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,93 +60,91 @@ public class tobedelete extends javax.swing.JFrame {
 
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(350, 100));
+        jScrollPane1.setRequestFocusEnabled(false);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2);
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Buy a Resources"));
+        jPanel10.setPreferredSize(new java.awt.Dimension(150, 189));
+        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.Y_AXIS));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3);
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox4);
+        jPanel4.setPreferredSize(new java.awt.Dimension(220, 30));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jButton6.setText("reset");
-        jButton6.setPreferredSize(new java.awt.Dimension(60, 23));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6);
+        jLabel1.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        jLabel1.setText("300.00 - Extra Bed");
+        jPanel4.add(jLabel1);
 
-        jPanel3.add(jPanel1);
+        jPanel1.add(jPanel4);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Customers Reserved"));
-        jPanel5.setPreferredSize(new java.awt.Dimension(335, 440));
+        jButton1.setText("+");
+        jPanel1.add(jButton1);
 
-        jPanel6.setPreferredSize(new java.awt.Dimension(300, 50));
-        jPanel6.setRequestFocusEnabled(false);
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.X_AXIS));
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("0");
+        jPanel1.add(jLabel2);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(250, 16));
-        jLabel1.setMinimumSize(new java.awt.Dimension(250, 16));
-        jLabel1.setPreferredSize(new java.awt.Dimension(250, 16));
-        jPanel6.add(jLabel1);
+        jButton2.setText("-");
+        jPanel1.add(jButton2);
 
-        jButton1.setText(">");
-        jPanel6.add(jButton1);
+        jPanel10.add(jPanel1);
+
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jPanel6.setPreferredSize(new java.awt.Dimension(220, 30));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        jLabel5.setText("300.00 - Extra Bed");
+        jPanel6.add(jLabel5);
 
         jPanel5.add(jPanel6);
 
-        jPanel7.setPreferredSize(new java.awt.Dimension(300, 50));
-        jPanel7.setRequestFocusEnabled(false);
-        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.X_AXIS));
+        jButton5.setText("+");
+        jPanel5.add(jButton5);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("jLabel1");
-        jLabel2.setMaximumSize(new java.awt.Dimension(250, 16));
-        jLabel2.setMinimumSize(new java.awt.Dimension(250, 16));
-        jLabel2.setPreferredSize(new java.awt.Dimension(250, 16));
-        jPanel7.add(jLabel2);
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setText("0");
+        jPanel5.add(jLabel6);
 
-        jButton2.setText(">");
-        jPanel7.add(jButton2);
+        jButton6.setText("-");
+        jPanel5.add(jButton6);
 
-        jPanel5.add(jPanel7);
+        jPanel10.add(jPanel5);
 
-        jPanel3.add(jPanel5);
+        jScrollPane1.setViewportView(jPanel10);
+
+        jPanel2.add(jScrollPane1);
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(50, 100));
+        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(50, 150));
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.setPreferredSize(new java.awt.Dimension(50, 187));
+        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.Y_AXIS));
+
+        jLabel3.setText("2 eXTRA bEDS - 600.00");
+        jPanel11.add(jLabel3);
+
+        jScrollPane2.setViewportView(jPanel11);
+
+        jPanel3.add(jScrollPane2);
+
+        jPanel17.setPreferredSize(new java.awt.Dimension(20, 20));
+        jPanel17.setLayout(new java.awt.BorderLayout());
+
+        jButton3.setLabel("CONFIRM");
+        jPanel17.add(jButton3, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(jPanel17);
 
         jPanel2.add(jPanel3);
-
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
-
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(100, 250));
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Customer Information"));
-        jPanel8.setLayout(new java.awt.BorderLayout());
-
-        jLabel3.setText("jLabel3");
-        jPanel8.add(jLabel3, java.awt.BorderLayout.CENTER);
-
-        jScrollPane1.setViewportView(jPanel8);
-
-        jPanel4.add(jScrollPane1);
-
-        jButton3.setText("CHECK IN");
-        jPanel9.add(jButton3);
-
-        jButton4.setText("EXTRAS");
-        jPanel9.add(jButton4);
-
-        jButton5.setText("CHECKOUT");
-        jPanel9.add(jButton5);
-
-        jPanel4.add(jPanel9);
-
-        jPanel2.add(jPanel4);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -157,10 +154,6 @@ public class tobedelete extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,25 +194,24 @@ public class tobedelete extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
