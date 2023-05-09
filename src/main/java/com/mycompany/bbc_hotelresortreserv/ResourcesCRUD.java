@@ -54,7 +54,6 @@ public final class ResourcesCRUD {
                 rcs.get(getIndex(itemID)).setItemName(itemName);
                 rcs.get(getIndex(itemID)).setQty(qty);
                 rcs.get(getIndex(itemID)).setPrice(price);
-                System.out.println("Updated successfully");
             }else{
                 System.out.println("Item is not found");
             }
@@ -85,6 +84,22 @@ public final class ResourcesCRUD {
             }
         }
         
+        public Resources orderItem(int itemID, int qty){
+            
+            
+            if (getIndex(itemID) != -1)
+            {
+                Resources itemOrdered = new Resources(itemID, qty);
+                return itemOrdered;
+            }
+            else {
+                    System.out.println("Resource does not exist");
+                    return null;
+            }
+        }
+        
+        
+        
 
 
     
@@ -107,3 +122,4 @@ public final class ResourcesCRUD {
     
     
 }
+

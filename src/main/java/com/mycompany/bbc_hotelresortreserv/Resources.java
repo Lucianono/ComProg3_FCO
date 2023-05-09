@@ -13,6 +13,12 @@ public class Resources {
         this.itemID = itemID;
         
     }
+    
+    public Resources (int itemID, int qty){
+        this.qty = qty;
+        this.itemID = itemID;
+        
+    }
 
     public String getItemName() {
         return itemName;

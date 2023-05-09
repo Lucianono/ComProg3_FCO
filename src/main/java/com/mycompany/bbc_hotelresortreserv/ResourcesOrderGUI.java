@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemListener {
 
     int resoMaxVal = 30;
+    int j = 0;
     
     JFrame frame = new JFrame();
     JPanel jPanel2 = new JPanel();
@@ -26,12 +27,13 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
     JPanel jPanel11 = new JPanel();
     JLabel totalOrderLbl = new JLabel();
     JPanel jPanel17 = new JPanel();
-    JButton jButton3 = new JButton();
+    JButton confirmBtn = new JButton();
     
     private final Transaction transactionSelected;
     private final ResourcesCRUD resourcesInv;
     
     ArrayList<Resources> reso;
+    Resources [] resoOrdered = new Resources[resoMaxVal]  ;
     
     public ResourcesOrderGUI(Transaction transactionSelected, ResourcesCRUD resourcesInv) {
         
@@ -78,8 +80,9 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         jPanel17.setPreferredSize(new Dimension(20, 20));
         jPanel17.setLayout(new BorderLayout());
 
-        jButton3.setText("CONFIRM");
-        jPanel17.add(jButton3, BorderLayout.CENTER);
+        confirmBtn.setText("CONFIRM");
+        confirmBtn.addActionListener(this);
+        jPanel17.add(confirmBtn, BorderLayout.CENTER);
 
         jPanel3.add(jPanel17);
 
@@ -95,7 +98,7 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
     }
 
     //adds a resource to order
-    public void addResourcePanel(int i, Resources r){
+    public void addResourcePanel(int i, int j , Resources r){
         
         resoEachPanel[i] = new JPanel();
         resoLblPanel[i] = new JPanel();
@@ -128,13 +131,14 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
             public void actionPerformed(ActionEvent e) {
                 if(0<Integer.parseInt(qtyCountLbl[i].getText())){
                     qtyCountLbl[i].setText(Integer.parseInt(qtyCountLbl[i].getText())-1+"");
+                    updateTotalOrder();
                 }
                 
             }
         });
         resoEachPanel[i].add(minusBtn[i]);
        
-        qtyCountLbl[i].setFont(new Font("Arial", Font.BOLD, 12)); // NOI18N
+        qtyCountLbl[i].setFont(new Font("Arial", Font.BOLD, 12)); 
         qtyCountLbl[i].setText("0");
         qtyCountLbl[i].setPreferredSize(new Dimension(15, 10));
         qtyCountLbl[i].setAlignmentX(CENTER_ALIGNMENT);
@@ -148,41 +152,69 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
             public void actionPerformed(ActionEvent e) {
                 if(r.getQty()>Integer.parseInt(qtyCountLbl[i].getText())){
                     qtyCountLbl[i].setText(Integer.parseInt(qtyCountLbl[i].getText())+1+"");
+                    updateTotalOrder();
                 }
                 
             }
         });
         resoEachPanel[i].add(plusBtn[i]);
-
-
-        
-        
-        
         
         jPanel10.add(resoEachPanel[i]);
         
     }
     //refresh resource order pane
     private void refreshResourcePane(){
-        
+        j=0;
         for(int i = 0; i < reso.size(); i++){
-            addResourcePanel(i,reso.get(i));
+            addResourcePanel(i,j,reso.get(i));
         }
         jPanel10.repaint();
         jPanel10.revalidate();
     }
     //updates totalOrderLbl
     private void updateTotalOrder(){
+        String disp = "<html>";
+        Double totalAmount = 0.0;
+        totalOrderLbl.setText(disp);
         for (int i = 0;  i < reso.size(); i++){
-            
+            if(Integer.parseInt(qtyCountLbl[i].getText())>0){
+                Double amount = Integer.parseInt(qtyCountLbl[i].getText()) * reso.get(i).getPrice();
+                disp = qtyCountLbl[i].getText() + " " + reso.get(i).getItemName() + " - ₱ " + amount;
+                totalOrderLbl.setText(totalOrderLbl.getText()+"<br/> "+ disp);
+                totalAmount += amount;
+            }
         }
+        totalOrderLbl.setText(totalOrderLbl.getText()+"<br/> ================== <br/> ₱ "+ totalAmount);
+        
+        
         
     }
-    
+    //submit orders
+    private void confirmOrder(){
+        Double totalAmount = 0.0;
+        int resoCount = 0;
+        for (int i = 0;  i < reso.size(); i++){
+            if(Integer.parseInt(qtyCountLbl[i].getText())>0){
+                Double amount = Integer.parseInt(qtyCountLbl[i].getText()) * reso.get(i).getPrice();
+                resoOrdered[resoCount] = resourcesInv.orderItem(reso.get(i).getItemID(), Integer.parseInt(qtyCountLbl[i].getText()));
+                resoOrdered[resoCount].setQty(Integer.parseInt(qtyCountLbl[i].getText()));
+                reso.get(i).setQty(reso.get(i).getQty()- Integer.parseInt(qtyCountLbl[i].getText()));
+                System.out.println(reso.get(i).getQty());
+                totalAmount += amount;
+                resoCount++;
+            }
+        }
+        transactionSelected.setResoUsed(resoOrdered);
+        System.out.println(transactionSelected.getResoUsed()[0].getQty());
+        frame.dispose();
+    }
             
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        if(e.getSource()==confirmBtn){
+            
+            confirmOrder();
+        }
     }
 
     @Override

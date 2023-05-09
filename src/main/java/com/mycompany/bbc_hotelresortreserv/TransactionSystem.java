@@ -19,10 +19,11 @@ public class TransactionSystem {
         Customer c = new Customer(5, "Bryan Calulo", 12);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
         Date d = formatter.parse("2023/1/1");
+        Resources [] r = null;
         Customer[] customers = {c};
-        createReservation(customers,"A1",5000,d,0,0,null);
-        createReservation(customers,"B1",5000,d,0,500,null);
-        createReservation(customers,"C1",5000,d,0,750,null);
+        createReservation(customers,"A1",5000,d,0,0,r);
+        createReservation(customers,"B1",5000,d,0,500,r);
+        createReservation(customers,"C1",5000,d,0,750,r);
     }
     
     public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
