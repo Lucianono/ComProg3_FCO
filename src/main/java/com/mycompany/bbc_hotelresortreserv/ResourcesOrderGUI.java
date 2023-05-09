@@ -106,7 +106,7 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         
         resoEachPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        resoLblPanel[i].setPreferredSize(new Dimension(250, 30));
+        resoLblPanel[i].setPreferredSize(new Dimension(240, 30));
         resoLblPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
         
         resoLbl[i].setFont(new Font("Arial", Font.BOLD, 15)); // NOI18N
@@ -121,15 +121,35 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         minusBtn[i].setText("-");
         minusBtn[i].setPreferredSize(new Dimension(20, 20));
         minusBtn[i].setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        minusBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(0<Integer.parseInt(qtyCountLbl[i].getText())){
+                    qtyCountLbl[i].setText(Integer.parseInt(qtyCountLbl[i].getText())-1+"");
+                }
+                
+            }
+        });
         resoEachPanel[i].add(minusBtn[i]);
        
         qtyCountLbl[i].setFont(new Font("Arial", Font.BOLD, 12)); // NOI18N
         qtyCountLbl[i].setText("0");
+        qtyCountLbl[i].setPreferredSize(new Dimension(15, 10));
+        qtyCountLbl[i].setAlignmentX(CENTER_ALIGNMENT);
         resoEachPanel[i].add(qtyCountLbl[i]);
         
         plusBtn[i].setText("+");
         plusBtn[i].setPreferredSize(new Dimension(20, 20));
         plusBtn[i].setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        plusBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(r.getQty()>Integer.parseInt(qtyCountLbl[i].getText())){
+                    qtyCountLbl[i].setText(Integer.parseInt(qtyCountLbl[i].getText())+1+"");
+                }
+                
+            }
+        });
         resoEachPanel[i].add(plusBtn[i]);
 
 
