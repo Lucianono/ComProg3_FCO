@@ -24,18 +24,20 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
     JPanel jPanel3 = new JPanel();
     JScrollPane jScrollPane2 = new JScrollPane();
     JPanel jPanel11 = new JPanel();
-    JLabel jLabel3 = new JLabel();
+    JLabel totalOrderLbl = new JLabel();
     JPanel jPanel17 = new JPanel();
     JButton jButton3 = new JButton();
     
     private final Transaction transactionSelected;
     private final ResourcesCRUD resourcesInv;
     
+    ArrayList<Resources> reso;
+    
     public ResourcesOrderGUI(Transaction transactionSelected, ResourcesCRUD resourcesInv) {
         
         this.transactionSelected = transactionSelected;
         this.resourcesInv = resourcesInv;
-        
+        reso = resourcesInv.getResoData();
 
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.X_AXIS));
 
@@ -65,9 +67,9 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         //jPanel11.setPreferredSize(new Dimension(20, 187));
         jPanel11.setLayout(new BoxLayout(jPanel11, BoxLayout.Y_AXIS));
 
-        jLabel3.setText("2 eXTRA bEDS - 600.00");
-        jLabel3.setFont(new Font("Arial", Font.ITALIC, 9)); 
-        jPanel11.add(jLabel3);
+        totalOrderLbl.setText(" . . . ");
+        totalOrderLbl.setFont(new Font("Arial", Font.ITALIC, 9)); 
+        jPanel11.add(totalOrderLbl);
 
         jScrollPane2.setViewportView(jPanel11);
 
@@ -161,14 +163,22 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         
     }
     //refresh resource order pane
-    public void refreshResourcePane(){
-        ArrayList<Resources> reso = resourcesInv.getResoData();
+    private void refreshResourcePane(){
+        
         for(int i = 0; i < reso.size(); i++){
             addResourcePanel(i,reso.get(i));
         }
         jPanel10.repaint();
         jPanel10.revalidate();
     }
+    //updates totalOrderLbl
+    private void updateTotalOrder(){
+        for (int i = 0;  i < reso.size(); i++){
+            
+        }
+        
+    }
+    
             
     @Override
     public void actionPerformed(ActionEvent e) {
