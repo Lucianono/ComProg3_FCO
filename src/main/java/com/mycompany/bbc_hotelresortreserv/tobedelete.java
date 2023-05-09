@@ -36,6 +36,7 @@ public class tobedelete extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -96,6 +97,9 @@ public class tobedelete extends javax.swing.JFrame {
 
         jButton2.setText("-");
         jPanel1.add(jButton2);
+
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4);
 
         jPanel10.add(jPanel1);
 
@@ -210,6 +214,7 @@ public class tobedelete extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

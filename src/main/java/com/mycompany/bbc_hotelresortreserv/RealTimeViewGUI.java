@@ -117,6 +117,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jPanel2.add(custInfoPanelMain);
 
         frame.add(jPanel2, BorderLayout.CENTER);
+        refreshBtns();
         
         frame.setSize(600,400);
         frame.setResizable(false);
@@ -179,6 +180,8 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                     
                     fullCustInfoDisplay(t);
                     transSelectedID = t.getTransactID();
+                    refreshBtns();
+                    
                 }
             });
             
@@ -242,7 +245,18 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                         );
         }
     }
-    //xtra btn creates new jFrame
+    //refresh buttons
+    private void refreshBtns(){
+        boolean chosen = false;
+        if(transSelectedID == -1){
+            chosen = false;
+        }else{
+            chosen = true;
+        }
+        chkInBtn.setEnabled(chosen);
+        chkOutBtn.setEnabled(chosen);
+        xtraBtn.setEnabled(chosen);
+    }
     
     
     @Override

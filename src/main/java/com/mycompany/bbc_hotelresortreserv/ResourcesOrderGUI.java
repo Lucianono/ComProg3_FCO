@@ -8,16 +8,19 @@ import java.util.ArrayList;
 
 public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemListener {
 
+    int resoMaxVal = 30;
+    
     JFrame frame = new JFrame();
     JPanel jPanel2 = new JPanel();
     JScrollPane jScrollPane1 = new JScrollPane();
     JPanel jPanel10 = new JPanel();
-    JPanel [] resoEachPanel = new JPanel[20];
-    JPanel [] resoLblPanel = new JPanel[20];
-    JLabel [] resoLbl = new JLabel[20];
-    JButton [] plusBtn = new JButton[20];
-    JLabel [] qtyCountLbl = new JLabel[20];
-    JButton [] minusBtn = new JButton[20];
+    JPanel [] resoEachPanel = new JPanel[resoMaxVal];
+    JPanel [] resoLblPanel = new JPanel[resoMaxVal];
+    JLabel [] resoLbl = new JLabel[resoMaxVal];
+    JButton [] plusBtn = new JButton[resoMaxVal];
+    JLabel [] qtyCountLbl = new JLabel[resoMaxVal];
+    JButton [] minusBtn = new JButton[resoMaxVal];
+    JLabel [] maxCountLbl = new JLabel[resoMaxVal];
     JPanel jPanel3 = new JPanel();
     JScrollPane jScrollPane2 = new JScrollPane();
     JPanel jPanel11 = new JPanel();
@@ -39,11 +42,11 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         jScrollPane1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        jScrollPane1.setPreferredSize(new Dimension(320, 100));
+        jScrollPane1.setPreferredSize(new Dimension(350, 100));
         jScrollPane1.setRequestFocusEnabled(false);
 
         jScrollPane1.setBorder(BorderFactory.createTitledBorder("Buy a Resources"));
-        jPanel10.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //jPanel10.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         //jPanel10.setPreferredSize(new Dimension(150, 189));
         jPanel10.setLayout(new BoxLayout(jPanel10, BoxLayout.Y_AXIS));
 
@@ -58,7 +61,7 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
 
         jScrollPane2.setPreferredSize(new Dimension(50, 150));
 
-        jPanel11.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanel11.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         //jPanel11.setPreferredSize(new Dimension(20, 187));
         jPanel11.setLayout(new BoxLayout(jPanel11, BoxLayout.Y_AXIS));
 
@@ -98,32 +101,41 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         plusBtn[i] = new JButton();
         qtyCountLbl[i] = new JLabel();
         minusBtn[i] = new JButton();
+        maxCountLbl[i] = new JLabel();
                 
         
         resoEachPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        resoLblPanel[i].setPreferredSize(new Dimension(210, 30));
+        resoLblPanel[i].setPreferredSize(new Dimension(250, 30));
         resoLblPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
         
-        resoLbl[i].setFont(new Font("Arial", 2, 15)); // NOI18N
-        resoLbl[i].setText(r.getPrice() + " - " + r.getItemName());
+        resoLbl[i].setFont(new Font("Arial", Font.BOLD, 15)); // NOI18N
+        resoLbl[i].setText("₱"+ r.getPrice() + " - " + r.getItemName());
         resoLblPanel[i].add(resoLbl[i]);
+        maxCountLbl[i].setFont(new Font("Verdana", Font.ITALIC, 9)); // NOI18N
+        maxCountLbl[i].setText("MAX: " + r.getQty());
+        resoLblPanel[i].add(maxCountLbl[i]);
 
         resoEachPanel[i].add(resoLblPanel[i]);
-
-        plusBtn[i].setText("+");
-        plusBtn[i].setPreferredSize(new Dimension(20, 20));
-        plusBtn[i].setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        resoEachPanel[i].add(plusBtn[i]);
-
-        qtyCountLbl[i].setFont(new Font("Arial", Font.BOLD, 12)); // NOI18N
-        qtyCountLbl[i].setText("0");
-        resoEachPanel[i].add(qtyCountLbl[i]);
 
         minusBtn[i].setText("-");
         minusBtn[i].setPreferredSize(new Dimension(20, 20));
         minusBtn[i].setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         resoEachPanel[i].add(minusBtn[i]);
+       
+        qtyCountLbl[i].setFont(new Font("Arial", Font.BOLD, 12)); // NOI18N
+        qtyCountLbl[i].setText("0");
+        resoEachPanel[i].add(qtyCountLbl[i]);
+        
+        plusBtn[i].setText("+");
+        plusBtn[i].setPreferredSize(new Dimension(20, 20));
+        plusBtn[i].setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        resoEachPanel[i].add(plusBtn[i]);
+
+
+        
+        
+        
         
         jPanel10.add(resoEachPanel[i]);
         
@@ -133,8 +145,9 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         ArrayList<Resources> reso = resourcesInv.getResoData();
         for(int i = 0; i < reso.size(); i++){
             addResourcePanel(i,reso.get(i));
-            System.out.println("wow");
         }
+        jPanel10.repaint();
+        jPanel10.revalidate();
     }
             
     @Override
