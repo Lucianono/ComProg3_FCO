@@ -27,8 +27,6 @@ TODOs:
 public class LoginSignupFormGUI implements ActionListener{
     
     LoginSignupFormGUI(){
-        System.out.println("LoginSignupFormGUI created");
-        
         JPanel panel = new JPanel();
         //JButton button = new JButton();
         JFrame frame = new JFrame();
@@ -58,8 +56,7 @@ public class LoginSignupFormGUI implements ActionListener{
         passText.setBounds(250, 161, 165, 25);
         panel.add(passText);
         */
-        
-        //encrypts password
+        //encrypt password
         JPasswordField passwordText = new JPasswordField();
         passwordText.setBounds(250,161,165,25);
         panel.add (passwordText);
@@ -68,6 +65,11 @@ public class LoginSignupFormGUI implements ActionListener{
         loginButton.setBounds(250, 191, 80, 25);
         loginButton.addActionListener(new LoginSignupFormGUI());
         panel.add(loginButton);
+        
+        JButton signupButton = new JButton("Sign Up");
+        signupButton.setBounds(250, 221, 80, 25);
+        signupButton.addActionListener(new LoginSignupFormGUI());
+        panel.add(signupButton);
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,6 +86,7 @@ public class LoginSignupFormGUI implements ActionListener{
        // frame.add(passText);
         frame.add(passwordText);
         frame.add(loginButton);
+        frame.add(signupButton);
     }
     public void actionPerformed(ActionEvent e){
         System.out.println("asd");
