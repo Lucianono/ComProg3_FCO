@@ -17,16 +17,31 @@ TODO:
 
  */
 public final class ResourcesCRUD {
-        ArrayList<Resources> rcs = new ArrayList();
+        private ArrayList<Resources> rcs = new ArrayList();
         
         
-        public int getIndex(int itemNum){
+        public int getIndex(int itemID){
             for (int i = 0; i < rcs.size(); i++){
-            if (rcs.get(i).equals(itemNum)) {
+            if (rcs.get(i).getItemID()==itemID) {
                 return i;
             }
         }
         return -1;
+        }
+        
+        public Resources getReso(int itemID){
+            if (getIndex(itemID) != -1)
+            {
+                return rcs.get(getIndex(itemID) );
+            }
+            else {
+                System.out.println("Item does not exist");
+                return null;
+            }
+        }
+        
+        public ArrayList<Resources> getResoData(){
+            return rcs;
         }
         
         public void create(int itemID, String itemName, int qty, double price){
@@ -65,7 +80,7 @@ public final class ResourcesCRUD {
             }
             else {
             for (Resources c : rcs) { 
-            System.out.println(c.getItemName() + ", " + c.getQty() + ", " + c.getItemNum()); 
+            System.out.println(c.getItemName() + ", " + c.getQty() + ", " + c.getItemID()); 
         } 
             }
         }

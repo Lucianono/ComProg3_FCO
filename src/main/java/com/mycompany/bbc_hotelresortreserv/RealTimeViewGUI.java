@@ -44,11 +44,13 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     private final HotelCRUD hotelBooked;
     private final CustomerCRUD customersBooked;
     private final TransactionSystem transactionsCompleted;
+    private final ResourcesCRUD resourcesInv;
     
-    public RealTimeViewGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked, TransactionSystem transactionsCompleted) {
+    public RealTimeViewGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked, TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv) {
         this.hotelBooked=hotelBooked;
         this.customersBooked=customersBooked;
         this.transactionsCompleted=transactionsCompleted;
+        this.resourcesInv=resourcesInv;
 
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -300,6 +302,12 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             
             fullCustInfoDisplay(t);
+            
+        }
+        else if (e.getSource()==xtraBtn){
+            
+            
+            ResourcesOrderGUI resoOrder = new ResourcesOrderGUI(transactionsCompleted.getTransaction(transSelectedID),resourcesInv);
             
         }
         

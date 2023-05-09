@@ -13,9 +13,10 @@ public class BBCMain {
         HotelCRUD hotelBooked = new HotelCRUD();
         CustomerCRUD customersBooked = new CustomerCRUD();
         TransactionSystem transactionsCompleted = new TransactionSystem();
+        ResourcesCRUD resourcesInv = new ResourcesCRUD();
         
         //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
-        RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted);
+        RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
         
     }
 }
