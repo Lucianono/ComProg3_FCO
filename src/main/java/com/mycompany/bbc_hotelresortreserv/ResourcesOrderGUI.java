@@ -12,9 +12,9 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
     int j = 0;
     
     JFrame frame = new JFrame();
-    JPanel jPanel2 = new JPanel();
+    JPanel jResoPanel2 = new JPanel();
     JScrollPane jScrollPane1 = new JScrollPane();
-    JPanel jPanel10 = new JPanel();
+    JPanel jResoPanel10 = new JPanel();
     JPanel [] resoEachPanel = new JPanel[resoMaxVal];
     JPanel [] resoLblPanel = new JPanel[resoMaxVal];
     JLabel [] resoLbl = new JLabel[resoMaxVal];
@@ -22,11 +22,11 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
     JLabel [] qtyCountLbl = new JLabel[resoMaxVal];
     JButton [] minusBtn = new JButton[resoMaxVal];
     JLabel [] maxCountLbl = new JLabel[resoMaxVal];
-    JPanel jPanel3 = new JPanel();
+    JPanel jResoPanel3 = new JPanel();
     JScrollPane jScrollPane2 = new JScrollPane();
-    JPanel jPanel11 = new JPanel();
+    JPanel jResoPanel11 = new JPanel();
     JLabel totalOrderLbl = new JLabel();
-    JPanel jPanel17 = new JPanel();
+    JPanel jResoPanel17 = new JPanel();
     JButton confirmBtn = new JButton();
     
     private final Transaction transactionSelected;
@@ -41,7 +41,7 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         this.resourcesInv = resourcesInv;
         reso = resourcesInv.getResoData();
 
-        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.X_AXIS));
+        jResoPanel2.setLayout(new BoxLayout(jResoPanel2, BoxLayout.X_AXIS));
 
         jScrollPane1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -50,45 +50,45 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         jScrollPane1.setRequestFocusEnabled(false);
 
         jScrollPane1.setBorder(BorderFactory.createTitledBorder("Buy a Resources"));
-        //jPanel10.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        //jPanel10.setPreferredSize(new Dimension(150, 189));
-        jPanel10.setLayout(new BoxLayout(jPanel10, BoxLayout.Y_AXIS));
+        //jResoPanel10.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        //jResoPanel10.setPreferredSize(new Dimension(150, 189));
+        jResoPanel10.setLayout(new BoxLayout(jResoPanel10, BoxLayout.Y_AXIS));
 
         refreshResourcePane();
 
-        jScrollPane1.setViewportView(jPanel10);
+        jScrollPane1.setViewportView(jResoPanel10);
 
-        jPanel2.add(jScrollPane1);
+        jResoPanel2.add(jScrollPane1);
 
-        jPanel3.setPreferredSize(new Dimension(50, 100));
-        jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS));
+        jResoPanel3.setPreferredSize(new Dimension(50, 100));
+        jResoPanel3.setLayout(new BoxLayout(jResoPanel3, BoxLayout.Y_AXIS));
 
         jScrollPane2.setPreferredSize(new Dimension(50, 150));
 
-        jPanel11.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        //jPanel11.setPreferredSize(new Dimension(20, 187));
-        jPanel11.setLayout(new BoxLayout(jPanel11, BoxLayout.Y_AXIS));
+        jResoPanel11.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        //jResoPanel11.setPreferredSize(new Dimension(20, 187));
+        jResoPanel11.setLayout(new BoxLayout(jResoPanel11, BoxLayout.Y_AXIS));
 
         totalOrderLbl.setText(" . . . ");
         totalOrderLbl.setFont(new Font("Arial", Font.ITALIC, 9)); 
-        jPanel11.add(totalOrderLbl);
+        jResoPanel11.add(totalOrderLbl);
 
-        jScrollPane2.setViewportView(jPanel11);
+        jScrollPane2.setViewportView(jResoPanel11);
 
-        jPanel3.add(jScrollPane2);
+        jResoPanel3.add(jScrollPane2);
 
-        jPanel17.setPreferredSize(new Dimension(20, 20));
-        jPanel17.setLayout(new BorderLayout());
+        jResoPanel17.setPreferredSize(new Dimension(20, 20));
+        jResoPanel17.setLayout(new BorderLayout());
 
         confirmBtn.setText("CONFIRM");
         confirmBtn.addActionListener(this);
-        jPanel17.add(confirmBtn, BorderLayout.CENTER);
+        jResoPanel17.add(confirmBtn, BorderLayout.CENTER);
 
-        jPanel3.add(jPanel17);
+        jResoPanel3.add(jResoPanel17);
 
-        jPanel2.add(jPanel3);
+        jResoPanel2.add(jResoPanel3);
 
-        frame.add(jPanel2, BorderLayout.CENTER);
+        frame.add(jResoPanel2, BorderLayout.CENTER);
         frame.setSize(500,200);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -159,7 +159,7 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         });
         resoEachPanel[i].add(plusBtn[i]);
         
-        jPanel10.add(resoEachPanel[i]);
+        jResoPanel10.add(resoEachPanel[i]);
         
     }
     //refresh resource order pane
@@ -168,8 +168,8 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         for(int i = 0; i < reso.size(); i++){
             addResourcePanel(i,j,reso.get(i));
         }
-        jPanel10.repaint();
-        jPanel10.revalidate();
+        jResoPanel10.repaint();
+        jResoPanel10.revalidate();
     }
     //updates totalOrderLbl
     private void updateTotalOrder(){
@@ -199,14 +199,11 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
                 resoOrdered[resoCount] = resourcesInv.orderItem(reso.get(i).getItemID(), Integer.parseInt(qtyCountLbl[i].getText()));
                 resoOrdered[resoCount].setQty(Integer.parseInt(qtyCountLbl[i].getText()));
                 reso.get(i).setQty(reso.get(i).getQty()- Integer.parseInt(qtyCountLbl[i].getText()));
-                System.out.println(reso.get(i).getQty());
                 totalAmount += amount;
                 resoCount++;
             }
         }
         transactionSelected.setResoUsed(resoOrdered);
-        System.out.println(transactionSelected.getResoUsed()[0].getQty());
-        frame.dispose();
     }
             
     @Override
@@ -214,6 +211,8 @@ public class ResourcesOrderGUI extends JFrame implements ActionListener,ItemList
         if(e.getSource()==confirmBtn){
             
             confirmOrder();
+            frame.dispose();
+            
         }
     }
 
