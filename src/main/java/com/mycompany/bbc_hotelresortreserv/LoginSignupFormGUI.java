@@ -24,7 +24,7 @@ TODOs:
 -BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
 
 */
-public class LoginSignupFormGUI implements ActionListener{
+public class LoginSignupFormGUI extends JFrame implements ActionListener{
     
     LoginSignupFormGUI(){
         JPanel panel = new JPanel();
@@ -63,12 +63,12 @@ public class LoginSignupFormGUI implements ActionListener{
         
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(250, 191, 80, 25);
-        loginButton.addActionListener(new LoginSignupFormGUI());
+        loginButton.addActionListener(this);
         panel.add(loginButton);
         
         JButton signupButton = new JButton("Sign Up");
         signupButton.setBounds(250, 221, 80, 25);
-        signupButton.addActionListener(new LoginSignupFormGUI());
+        signupButton.addActionListener(this);
         panel.add(signupButton);
         
         
@@ -88,6 +88,7 @@ public class LoginSignupFormGUI implements ActionListener{
         frame.add(loginButton);
         frame.add(signupButton);
     }
+    @Override
     public void actionPerformed(ActionEvent e){
         System.out.println("asd");
     }
