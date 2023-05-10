@@ -225,14 +225,16 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         custDisplayAll();
     }
     //update full cust info
-    private void fullCustInfoDisplay(Transaction t){
+    private double fullCustInfoDisplay(Transaction t){
         
         if(t == null){
             fullCustInfoLbl.setText(
                             "<html><i>Nothing to show here..." 
                     );
+            return 0.0;
         }else{
         
+            Double totalAmount = 0.0;
             fullCustInfoLbl.setText(
                                 "<html> Customer Name : <b>" +  t.getCustomers()[0].getName() +
                                 "</b><br/>Number of Customers : " +  t.getCustomers().length +
@@ -246,7 +248,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             if(t.getResoUsed()!=null){
                 String disp = "<html>  <br/>-->Extras :";
-                Double totalAmount = 0.0;
+                totalAmount = 0.0;
                 fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> "+ disp);
                 for (int i = 0;  i < t.getResoUsed().length; i++){
                     if(t.getResoUsed()[i]==null){
@@ -257,22 +259,18 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                     fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> "+ disp);
                     totalAmount += amount;
                 }   
-                t.setRemBal(t.getRemBal()+totalAmount);
-                fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> ---------- <br/> + ₱ " + totalAmount +"<br/> Remaining Balance : <br/> ₱ " + t.getRemBal());
+                fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> ---------- <br/> + ₱ " + totalAmount +"<br/> Remaining Balance : <br/> ₱ " + (t.getRemBal()+totalAmount));
             }
             
             
+            return t.getRemBal()+totalAmount;
             
         }
     }
     //refresh buttons
     private void refreshBtns(){
-        boolean chosen = false;
-        if(transSelectedID == -1){
-            chosen = false;
-        }else{
-            chosen = true;
-        }
+        boolean chosen ;
+        chosen = transSelectedID != -1;
         chkInBtn.setEnabled(chosen);
         chkOutBtn.setEnabled(chosen);
         xtraBtn.setEnabled(chosen);
@@ -282,29 +280,47 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     int resoMaxVal = 30;
     int j = 0;
     
-    JFrame frame2 = new JFrame();
-    JPanel jResoPanel2 = new JPanel();
-    JScrollPane jScrollPane1 = new JScrollPane();
-    JPanel jResoPanel10 = new JPanel();
-    JPanel [] resoEachPanel = new JPanel[resoMaxVal];
-    JPanel [] resoLblPanel = new JPanel[resoMaxVal];
-    JLabel [] resoLbl = new JLabel[resoMaxVal];
-    JButton [] plusBtn = new JButton[resoMaxVal];
-    JLabel [] qtyCountLbl = new JLabel[resoMaxVal];
-    JButton [] minusBtn = new JButton[resoMaxVal];
-    JLabel [] maxCountLbl = new JLabel[resoMaxVal];
-    JPanel jResoPanel3 = new JPanel();
-    JScrollPane jScrollPane2 = new JScrollPane();
-    JPanel jResoPanel11 = new JPanel();
-    JLabel totalOrderLbl = new JLabel();
-    JPanel jResoPanel17 = new JPanel();
-    JButton confirmBtn = new JButton();
+    JFrame frame2;
+    JPanel jResoPanel2;
+    JScrollPane jScrollPane1;;
+    JPanel jResoPanel10;
+    JPanel [] resoEachPanel;
+    JPanel [] resoLblPanel;
+    JLabel [] resoLbl;
+    JButton [] plusBtn;
+    JLabel [] qtyCountLbl;
+    JButton [] minusBtn;
+    JLabel [] maxCountLbl;
+    JPanel jResoPanel3;
+    JScrollPane jScrollPane2;;
+    JPanel jResoPanel11;
+    JLabel totalOrderLbl;
+    JPanel jResoPanel17;
+    JButton confirmBtn;
     
     
     ArrayList<Resources> reso;
-    Resources [] resoOrdered = new Resources[resoMaxVal]  ;
     
     private void openResourcesOrderGUI() {
+        
+        frame2 = new JFrame();
+        jResoPanel2 = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        jResoPanel10 = new JPanel();
+        resoEachPanel = new JPanel[resoMaxVal];
+        resoLblPanel = new JPanel[resoMaxVal];
+        resoLbl = new JLabel[resoMaxVal];
+        plusBtn = new JButton[resoMaxVal];
+        qtyCountLbl = new JLabel[resoMaxVal];
+        minusBtn = new JButton[resoMaxVal];
+        maxCountLbl = new JLabel[resoMaxVal];
+        jResoPanel3 = new JPanel();
+        jScrollPane2 = new JScrollPane();
+        jResoPanel11 = new JPanel();
+        totalOrderLbl = new JLabel();
+        jResoPanel17 = new JPanel();
+        confirmBtn = new JButton();
+        
         reso = resourcesInv.getResoData();
 
         jResoPanel2.setLayout(new BoxLayout(jResoPanel2, BoxLayout.X_AXIS));
@@ -465,20 +481,38 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     }
     //submit orders
     private void confirmOrder(){
+        System.out.println("-a");
+        Resources [] resoOrdered = new Resources[resoMaxVal]  ;
         Double totalAmount = 0.0;
         int resoCount = 0;
+        
+        
+        
         for (int i = 0;  i < reso.size(); i++){
-            if(Integer.parseInt(qtyCountLbl[i].getText())>0){
+            
+            int totalQtyOrdered = Integer.parseInt(qtyCountLbl[i].getText());
+            for(int k = 0; k < resoMaxVal ; k++){
+                if(transactionsCompleted.getTransaction(transSelectedID).getResoUsed()!= null &&  transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[k]!=null && reso.get(i).getItemID() == transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[k].getItemID()){
+                    totalQtyOrdered += transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[k].getQty();
+                    System.out.println(totalQtyOrdered + "a");
+                    break;
+                }
+            }
+            
+            
+            if(totalQtyOrdered>0){
                 Double amount = Integer.parseInt(qtyCountLbl[i].getText()) * reso.get(i).getPrice();
-                resoOrdered[resoCount] = resourcesInv.orderItem(reso.get(i).getItemID(), Integer.parseInt(qtyCountLbl[i].getText()));
-                resoOrdered[resoCount].setQty(Integer.parseInt(qtyCountLbl[i].getText()));
+                System.out.println(totalQtyOrdered + "b");
                 reso.get(i).setQty(reso.get(i).getQty()- Integer.parseInt(qtyCountLbl[i].getText()));
                 totalAmount += amount;
+                resoOrdered[resoCount] = resourcesInv.orderItem(reso.get(i).getItemID(), totalQtyOrdered);
                 resoCount++;
             }
+            
+            
         }
         transactionsCompleted.getTransaction(transSelectedID).setResoUsed(resoOrdered);
-        System.out.println(transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[0].getItemID());
+        System.out.println("c");
     }
             
     
@@ -516,12 +550,12 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         else if (e.getSource()==chkOutBtn){
             
             Transaction t = transactionsCompleted.getTransaction(transSelectedID);
-          
+            Double totalRemBal = fullCustInfoDisplay(t);
             
             if(t!=null){
                 if(!t.isCheckedOut() && t.isCheckedIn()){
                     try {
-                        if(t.getRemBal() == 0 || (Double.parseDouble(JOptionPane.showInputDialog("Input Cash")) >= t.getRemBal()) ){
+                        if(totalRemBal == 0 || (Double.valueOf(JOptionPane.showInputDialog("Input Cash")) >= totalRemBal) ){
                             t.setCheckedOut(true);
                             t.setFullCash(t.getRemBal());
                             t.setRemBal(0);
@@ -531,7 +565,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                             JOptionPane.showMessageDialog(null, "Insufficient funds!" );
                         }
                         
-                    } catch (Exception err) {
+                    } catch (HeadlessException | NumberFormatException err) {
                         JOptionPane.showMessageDialog(null, "Incorrect input!" );
                     }
                     
@@ -547,9 +581,10 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             openResourcesOrderGUI();
             
         }
-        else if(e.getSource()==confirmBtn){
+        if(e.getSource()==confirmBtn){
             
             confirmOrder();
+            System.out.println("-b");
             fullCustInfoDisplay(transactionsCompleted.getTransaction(transSelectedID));
             frame2.dispose();
             
