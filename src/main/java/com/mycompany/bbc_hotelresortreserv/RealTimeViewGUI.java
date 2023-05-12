@@ -241,8 +241,8 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                                 "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
                                 "<br/>Down Payment : " +  t.getDownCash()+
                                 "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
-                                "<br/>Checked In : " +  t.isCheckedIn()+
-                                "<br/>Checked In : " +  t.isCheckedOut()
+                                "<br/>Checked In : <b>" +  t.isCheckedIn()+
+                                "</b><br/>Checked In <b>: " +  t.isCheckedOut() + "</b>"
 
                         );
             
@@ -259,7 +259,10 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                     fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> "+ disp);
                     totalAmount += amount;
                 }   
-                fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> ---------- <br/> + ₱ " + totalAmount +"<br/> Remaining Balance : <br/> ₱ " + (t.getRemBal()+totalAmount));
+                if(t.isCheckedOut())
+                    fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> ---------- <br/> <b> Fully Paid!");
+                else
+                    fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> ---------- <br/> + ₱ " + totalAmount +"<br/> Remaining Balance : <br/> ₱ <b>" + (t.getRemBal()+totalAmount));
             }
             
             
