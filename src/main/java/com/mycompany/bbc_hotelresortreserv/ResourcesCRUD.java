@@ -49,11 +49,12 @@ public final class ResourcesCRUD {
             rcs.add(resources);
         }
         
-        public void update(int itemID, String itemName, int qty, double price){
+        public void update(int itemID, int qty, double price){
             if(itemID != -1){
-                rcs.get(getIndex(itemID)).setItemName(itemName);
-                rcs.get(getIndex(itemID)).setQty(qty);
-                rcs.get(getIndex(itemID)).setPrice(price);
+                if(qty>=0)
+                    rcs.get(getIndex(itemID)).setQty(qty);
+                if (price>=0)
+                    rcs.get(getIndex(itemID)).setPrice(price);
             }else{
                 System.out.println("Item is not found");
             }
