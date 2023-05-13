@@ -37,10 +37,10 @@ public class tobedelete extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,11 +57,13 @@ public class tobedelete extends javax.swing.JFrame {
 
         jPanel4.setPreferredSize(new java.awt.Dimension(100, 500));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Extra Bed");
         jPanel5.add(jLabel2);
 
         jPanel4.add(jPanel5);
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("10");
         jPanel6.add(jLabel3);
 
@@ -77,11 +79,13 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel6.add(jButton2);
 
         jPanel4.add(jPanel6);
+        jPanel4.add(jPanel8);
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("100");
         jPanel7.add(jLabel4);
 
-        jButton3.setText("Update");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/bbc_hotelresortreserv/resources/refreshIcon.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -90,7 +94,6 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel7.add(jButton3);
 
         jPanel4.add(jPanel7);
-        jPanel4.add(jPanel8);
 
         jButton4.setText("Delete");
         jPanel4.add(jButton4);
