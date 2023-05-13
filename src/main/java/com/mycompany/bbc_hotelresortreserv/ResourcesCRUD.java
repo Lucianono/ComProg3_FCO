@@ -65,7 +65,7 @@ public final class ResourcesCRUD {
             
             if (getIndex(itemID) != -1)
             {
-                rcs.remove(itemID);
+                rcs.remove(getIndex(itemID));
             }
             else {
                     System.out.println("Resource does not exist");

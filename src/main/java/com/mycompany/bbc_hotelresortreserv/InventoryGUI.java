@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.border.LineBorder;
 
-public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
+public class InventoryGUI extends JFrame implements ActionListener{
 
     int resoMaxVal = 30;
     
@@ -37,7 +37,7 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
     JButton [] setPriceBtn = new JButton[resoMaxVal];
     JButton [] deleteItemBtn = new JButton[resoMaxVal];
     JPanel jPanel6 = new JPanel();
-    JButton jButton1 = new JButton();
+    JButton addItemBtn = new JButton();
     
     private final ResourcesCRUD resourcesInv;
     ArrayList<Resources> reso;
@@ -86,9 +86,10 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
         jPanel6.setPreferredSize(new Dimension(550, 35));
         jPanel6.setLayout(new BorderLayout());
 
-        jButton1.setFont(new Font("Verdana", 1, 14)); // NOI18N
-        jButton1.setText("ADD ITEM");
-        jPanel6.add(jButton1, BorderLayout.CENTER);
+        addItemBtn.setFont(new Font("Verdana", 1, 14)); // NOI18N
+        addItemBtn.setText("ADD ITEM");
+        addItemBtn.addActionListener(this);
+        jPanel6.add(addItemBtn, BorderLayout.CENTER);
 
         jPanel2.add(jPanel6);
 
@@ -234,6 +235,11 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
         deleteItemBtn[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int userinput = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this item?", null, JOptionPane.YES_NO_OPTION);
+                if(userinput == 0){
+                    resourcesInv.delete(r.getItemID());
+                    refreshResoSuperPanel();
+                }
             }
         });
         resoPanel[i].add(deleteItemBtn[i]);
@@ -264,10 +270,25 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        if(e.getSource()==addItemBtn){
+            resourcesInv.create(Integer.parseInt(JOptionPane.showInputDialog("Enter Item ID (number only)")),
+                        JOptionPane.showInputDialog("Enter Item Name"), 
+                        Integer.parseInt(JOptionPane.showInputDialog("Enter Quantity")), 
+                        Double.parseDouble(JOptionPane.showInputDialog("Enter Price")));
+                refreshResoSuperPanel();
+            
+//            try {
+//                resourcesInv.create(Integer.parseInt(JOptionPane.showInputDialog("Enter Item ID (number only)")),
+//                        JOptionPane.showInputDialog("Enter Item Name"), 
+//                        Integer.parseInt(JOptionPane.showInputDialog("Enter Quantity")), 
+//                        Double.parseDouble(JOptionPane.showInputDialog("Enter Price")));
+//                refreshResoSuperPanel();
+//            } catch (Exception err) {
+//                JOptionPane.showMessageDialog(null, "Incorrect input!" );
+//            }
+        }
+        
     }
 
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-    }
-    
 }
