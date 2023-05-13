@@ -42,7 +42,6 @@ public class InventoryGUI extends JFrame implements ActionListener{
     private final ResourcesCRUD resourcesInv;
     ArrayList<Resources> reso;
     
-    int resoPanelCtr = 0;
     
     public InventoryGUI(ResourcesCRUD resources) {
         
@@ -126,7 +125,7 @@ public class InventoryGUI extends JFrame implements ActionListener{
         deleteItemBtn[i] = new JButton();
         
         Color resoPanelColor;
-        if(resoPanelCtr%2 == 0){
+        if(i%2 == 0){
             resoPanelColor = new Color(255, 255, 255);
         }else{
             resoPanelColor = new Color(235, 235, 235);
@@ -264,9 +263,7 @@ public class InventoryGUI extends JFrame implements ActionListener{
         
         for(int i = 0; i < reso.size(); i++){
             addResourcePanel(i,reso.get(i));
-            resoPanelCtr++;
         }
-        resoPanelCtr=0;
         resoSuperPanel.repaint();
         resoSuperPanel.revalidate();
     }
@@ -279,22 +276,15 @@ public class InventoryGUI extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(e.getSource()==addItemBtn){
-            resourcesInv.create(Integer.parseInt(JOptionPane.showInputDialog("Enter Item ID (number only)")),
+            try {
+                resourcesInv.create(Integer.parseInt(JOptionPane.showInputDialog("Enter Item ID (number only)")),
                         JOptionPane.showInputDialog("Enter Item Name"), 
                         Integer.parseInt(JOptionPane.showInputDialog("Enter Quantity")), 
                         Double.parseDouble(JOptionPane.showInputDialog("Enter Price")));
                 refreshResoSuperPanel();
-            
-//            try {
-//                resourcesInv.create(Integer.parseInt(JOptionPane.showInputDialog("Enter Item ID (number only)")),
-//                        JOptionPane.showInputDialog("Enter Item Name"), 
-//                        Integer.parseInt(JOptionPane.showInputDialog("Enter Quantity")), 
-//                        Double.parseDouble(JOptionPane.showInputDialog("Enter Price")));
-//                refreshResoSuperPanel();
-//            } catch (Exception err) {
-//                JOptionPane.showMessageDialog(null, "Incorrect input!" );
-//            }
+            } catch (Exception err) {
+                JOptionPane.showMessageDialog(null, "Incorrect input!" );
+            }
         }
         
     }
