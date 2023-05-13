@@ -2,19 +2,20 @@ package com.mycompany.bbc_hotelresortreserv;
 
 public class Security{
 
-    private static String[] user = new String[]{"user123"}; //default username
+    public static String[] user = new String[]{"user123"}; //default username
     private static String[] pass = new String[]{"ufxx678"}; //default password
     private static String[] pos = new String[] {"staff"}; //default position
     public static int StringIncrement = 5;
     
     public Security(){
-        System.out.println("Security Created");
+        /*System.out.println("Security Created");
         
         signUp("abc", "45s", "staff");
         signUp("abc", "45s", "staff");
         signUp("sss", "z0Z ", "staff");
         
         logIn("user123", "pass123");
+        */
     }
         
     public boolean signUp(String username, String password, String position) { //signUp method

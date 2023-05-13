@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 /*
 This is a security extended, Login and Signup Form
@@ -24,30 +25,34 @@ TODOs:
 -BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
 
 */
-public class LoginSignupFormGUI extends JFrame implements ActionListener{
+public class LoginSignupFormGUI extends Security implements ActionListener{
+    
+    JButton LoginButton, SignUpButton;
+    JTextField userText, passwordText;
+    JLabel usernameLabel, passwordLabel;
+    
+    Security security = new Security();
+
     
     LoginSignupFormGUI(){
         JPanel panel = new JPanel();
-        //JButton button = new JButton();
+        
         JFrame frame = new JFrame();
         
-        
-       // button.setBounds(150, 150, 50, 20);
-                
-        //JPanel Login = new JPanel();
-        
-        //JPanel Password = new JPanel();
         panel.setLayout(null);
         
-        JLabel username = new JLabel("Username : ");
-        username.setBounds(180, 20, 250, 250);
-        panel.add(username);
+        //Username Label
+        usernameLabel = new JLabel("Username : ");
+        usernameLabel.setBounds(180, 20, 250, 250);
+        panel.add(usernameLabel);
         
-        JLabel password = new JLabel("Password : ");
-        password.setBounds(180, 50, 250, 250);
-        panel.add(password);
+        //Password Label
+        passwordLabel = new JLabel("Password : ");
+        passwordLabel.setBounds(180, 50, 250, 250);
+        panel.add(passwordLabel);
         
-        JTextField userText = new JTextField(20);
+        //UsernameField
+        userText = new JTextField(20);
         userText.setBounds(250, 131, 165, 25);
         panel.add(userText); 
         
@@ -57,19 +62,23 @@ public class LoginSignupFormGUI extends JFrame implements ActionListener{
         panel.add(passText);
         */
         //encrypt password
-        JPasswordField passwordText = new JPasswordField();
+        
+        //Password Field
+        passwordText = new JPasswordField();
         passwordText.setBounds(250,161,165,25);
         panel.add (passwordText);
         
-        JButton loginButton = new JButton("Login");
-        loginButton.setBounds(250, 191, 80, 25);
-        loginButton.addActionListener(this);
-        panel.add(loginButton);
+        //LoginButton 
+        LoginButton = new JButton("Login");
+        LoginButton.setBounds(250, 191, 80, 25);
+        LoginButton.addActionListener(this);
+        panel.add(LoginButton);
         
-        JButton signupButton = new JButton("Sign Up");
-        signupButton.setBounds(250, 221, 80, 25);
-        signupButton.addActionListener(this);
-        panel.add(signupButton);
+        //SignupButton
+        SignUpButton = new JButton("Sign Up");
+        SignUpButton.setBounds(250, 221, 80, 25);
+        SignUpButton.addActionListener(this);
+        panel.add(SignUpButton);
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,19 +87,28 @@ public class LoginSignupFormGUI extends JFrame implements ActionListener{
         frame.setSize(600,400);
         frame.setVisible(true);
         frame.setLayout(null);
-        frame.add(username);
-        frame.add(password);
+        frame.add(usernameLabel);
+        frame.add(passwordLabel);
        // frame.add(button);
         frame.add(panel);
         frame.add(userText);
        // frame.add(passText);
         frame.add(passwordText);
-        frame.add(loginButton);
-        frame.add(signupButton);
+        frame.add(LoginButton);
+        frame.add(SignUpButton);
     }
     @Override
-    public void actionPerformed(ActionEvent e){
-        System.out.println("asd");
-    }
     
+    public void actionPerformed(ActionEvent e){
+        String UserInput = userText.getText();
+        String PasswordInput = passwordText.getText();
+        if(e.getSource() == LoginButton){
+        security.logIn(UserInput, PasswordInput);
+        
+        }
+        
+        else if(e.getSource() == SignUpButton){
+              
+        }
+    } 
 }
