@@ -21,6 +21,21 @@ import javax.swing.Timer;
     - 
     */
 public class StatusBar extends JPanel {
+    
+    // extras for TESTING
+    //-----------------------------------------------------------------------//
+    public static void main(String[] args) {
+        StatusBar statBar = new StatusBar("Hello", "Admin");
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(statBar, BorderLayout.NORTH);
+        frame.setSize(600, 400);
+        frame.setVisible(true);
+        statBar.setName("Ike San");
+        statBar.setPos("Admin");
+    }
+    //-----------------------------------------------------------------------//
+    
     private String name;
     private String pos;
     private final JLabel nameLbl;
@@ -99,17 +114,5 @@ public class StatusBar extends JPanel {
         timeLbl.setText("Time: " + formattedTime);
     }
 
-    // extras for TESTING
-    //-----------------------------------------------------------------------//
-    public static void main(String[] args) {
-        StatusBar statBar = new StatusBar("Hello", "Admin");
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(statBar, BorderLayout.NORTH);
-        frame.setSize(600, 400);
-        frame.setVisible(true);
-        statBar.setName("Ike San");
-        statBar.setPos("Admin");
-    }
-    //-----------------------------------------------------------------------//
+    
 }
