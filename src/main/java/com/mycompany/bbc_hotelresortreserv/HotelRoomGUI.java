@@ -282,7 +282,7 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
         hotel = hotelSys.getHotelData();
         
         for(int i = 0; i < hotel.size()+1; i++){
-            if(hotelTypePanel[i]!=null){
+            if(hotelPanel[i]!=null){
                 deleteHotelPanel(i);
             }
         }
