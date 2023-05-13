@@ -22,10 +22,10 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
     JLabel jLabel12 = new JLabel();
     JScrollPane jScrollPane1 = new JScrollPane();
     JPanel hotelSuperPanel = new JPanel();
-    JPanel[] hotelTypePanel = new JPanel[resoMaxVal];
+    JPanel[] hotelPanel = new JPanel[resoMaxVal];
     JPanel[] hotelIdPanel = new JPanel[resoMaxVal];
     JLabel[] hotelIdLbl = new JLabel[resoMaxVal];
-    JPanel[] hotelPanel = new JPanel[resoMaxVal];
+    JPanel[] hotelTypePanel = new JPanel[resoMaxVal];
     JLabel[] hotelTypeLbl = new JLabel[resoMaxVal];
     JPanel[] capPanel = new JPanel[resoMaxVal];
     JPanel[] capLblPanel = new JPanel[resoMaxVal];
@@ -115,10 +115,10 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
     //add a hotel
     private void addHotelPanel(int i, Hotel hr){
         
-        hotelTypePanel[i] = new JPanel();
+        hotelPanel[i] = new JPanel();
         hotelIdPanel[i] = new JPanel();
         hotelIdLbl[i] = new JLabel();
-        hotelPanel[i] = new JPanel();
+        hotelTypePanel[i] = new JPanel();
         hotelTypeLbl[i] = new JLabel();
         capPanel[i] = new JPanel();
         capLblPanel[i] = new JPanel();
@@ -136,28 +136,34 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
         prorateBtn[i] = new JButton();
         removHotelBtn[i] = new JButton();
         
-        hotelTypePanel[i].setBackground(new Color(255, 255, 255));
-        hotelTypePanel[i].setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-        hotelTypePanel[i].setPreferredSize(new Dimension(550, 50));
+        Color resoPanelColor;
+        if(i%2 == 0){
+            resoPanelColor = new Color(255, 255, 255);
+        }else{
+            resoPanelColor = new Color(235, 235, 235);
+        }
+        
+        hotelPanel[i].setBackground(resoPanelColor);
+        hotelPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT,0,5));
 
-        hotelIdPanel[i].setPreferredSize(new Dimension(70, 27));
+        hotelIdPanel[i].setPreferredSize(new Dimension(80, 27));
 
         hotelIdLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
         hotelIdLbl[i].setText(hr.getHotelID());
         hotelIdPanel[i].add(hotelIdLbl[i]);
 
-        hotelTypePanel[i].add(hotelIdPanel[i]);
+        hotelPanel[i].add(hotelIdPanel[i]);
 
-        hotelPanel[i].setPreferredSize(new Dimension(170, 27));
-        hotelPanel[i].setLayout(new BoxLayout(hotelPanel[i], BoxLayout.Y_AXIS));
+        hotelTypePanel[i].setPreferredSize(new Dimension(170, 27));
+        hotelTypePanel[i].setLayout(new BoxLayout(hotelTypePanel[i], BoxLayout.Y_AXIS));
 
         hotelTypeLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
         hotelTypeLbl[i].setText(hr.getHotelType());
-        hotelPanel[i].add(hotelTypeLbl[i]);
+        hotelTypePanel[i].add(hotelTypeLbl[i]);
 
-        hotelTypePanel[i].add(hotelPanel[i]);
+        hotelPanel[i].add(hotelTypePanel[i]);
 
-        capLblPanel[i].setPreferredSize(new Dimension(25, 25));
+        capLblPanel[i].setPreferredSize(new Dimension(35, 25));
 
         capLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
         capLbl[i].setText(hr.getRoomCap()+"");
@@ -166,53 +172,108 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
         capPanel[i].add(capLblPanel[i]);
 
         capBtn[i].setText("U");
-        capBtn[i].addActionListener(this);
+        capBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int userinput = Integer.parseInt(JOptionPane.showInputDialog(null, "SET ROOM CAPACITY") );
+                    if(userinput > 0){
+                        hr.setRoomCap(userinput);
+                        capLbl[i].setText(hr.getRoomCap()+"");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                }
+            }
+        });
         capPanel[i].add(capBtn[i]);
 
-        hotelTypePanel[i].add(capPanel[i]);
+        hotelPanel[i].add(capPanel[i]);
 
-        regratePanel[i].setPreferredSize(new Dimension(90, 35));
+        regratePanel[i].setPreferredSize(new Dimension(95, 35));
 
         regPesoLbl[i].setText("₱");
         regratePanel[i].add(regPesoLbl[i]);
 
-        regrateLblPanel[i].setPreferredSize(new Dimension(30, 25));
+        regrateLblPanel[i].setPreferredSize(new Dimension(40, 25));
 
-        regrateLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+        regrateLbl[i].setFont(new Font("Arial", 0, 12)); // NOI18N
         regrateLbl[i].setText(hr.getRegRate()+"");
         regrateLblPanel[i].add(regrateLbl[i]);
 
         regratePanel[i].add(regrateLblPanel[i]);
 
         regrateBtn[i].setText("U");
-        regrateBtn[i].addActionListener(this);
+        regrateBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int userinput = Integer.parseInt(JOptionPane.showInputDialog(null, "SET NEW REGULAR RATE") );
+                    if(userinput > 0){
+                        hr.setRegRate(userinput);
+                        regrateLbl[i].setText(hr.getRegRate()+"");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                }
+            }
+        });
         regratePanel[i].add(regrateBtn[i]);
 
-        hotelTypePanel[i].add(regratePanel[i]);
+        hotelPanel[i].add(regratePanel[i]);
 
-        proratePanel[i].setPreferredSize(new Dimension(90, 35));
+        proratePanel[i].setPreferredSize(new Dimension(95, 35));
 
         proPesoLbl[i].setText("₱");
         proratePanel[i].add(proPesoLbl[i]);
 
-        prorateLblPanel[i].setPreferredSize(new Dimension(30, 25));
+        prorateLblPanel[i].setPreferredSize(new Dimension(40, 25));
 
-        prorateLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+        prorateLbl[i].setFont(new Font("Arial", 0, 12)); // NOI18N
         prorateLbl[i].setText(hr.getPromoRate()+"");
         prorateLblPanel[i].add(prorateLbl[i]);
 
         proratePanel[i].add(prorateLblPanel[i]);
 
         prorateBtn[i].setText("U");
-        prorateBtn[i].addActionListener(this);
+        prorateBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int userinput = Integer.parseInt(JOptionPane.showInputDialog(null, "SET NEW PROMO RATE") );
+                    if(userinput > 0){
+                        hr.setPromoRate(userinput);
+                        prorateLbl[i].setText(hr.getPromoRate()+"");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                }
+            }
+        });
         proratePanel[i].add(prorateBtn[i]);
 
-        hotelTypePanel[i].add(proratePanel[i]);
+        hotelPanel[i].add(proratePanel[i]);
 
         removHotelBtn[i].setText("D");
-        hotelTypePanel[i].add(removHotelBtn[i]);
+        removHotelBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int userinput = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this room?", null, JOptionPane.YES_NO_OPTION);
+                if(userinput == 0){
+                    hotelSys.deleteHotel(hr.getHotelID());
+                    refreshHotelSuperPanel();
+                }
+            }
+        });
+        hotelPanel[i].add(removHotelBtn[i]);
 
-        hotelSuperPanel.add(hotelTypePanel[i]);
+        hotelSuperPanel.add(hotelPanel[i]);
     }
     //refesh all hotel
     private void refreshHotelSuperPanel(){
@@ -220,14 +281,16 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
         hotel = hotelSys.getHotelData();
         
         for(int i = 0; i < hotel.size()+1; i++){
-            if(hotelPanel[i]!=null){
+            if(hotelTypePanel[i]!=null){
                 deleteHotelPanel(i);
             }
         }
         
         for(int i = 0; i < hotel.size(); i++){
             addHotelPanel(i,hotel.get(i));
-        };
+            
+                System.out.println(i);
+        }
         hotelSuperPanel.repaint();
         hotelSuperPanel.revalidate();
     }

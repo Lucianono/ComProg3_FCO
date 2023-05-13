@@ -96,6 +96,7 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel9.setPreferredSize(new java.awt.Dimension(550, 50));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         jPanel18.setPreferredSize(new java.awt.Dimension(70, 27));
 

@@ -7,7 +7,7 @@ public class Hotel {
     private final String HotelID;
     private final String HotelType;
     private boolean Availability;
-    private final int RoomCap;
+    private int RoomCap;
     private double RegRate;
     private double PromoRate;
     
@@ -39,6 +39,9 @@ public class Hotel {
     public int getRoomCap(){
         return RoomCap;
     }
+    public void setRoomCap(int cap){
+        this.RoomCap = cap;
+    }
     
     public double getRegRate(){
         return RegRate;
@@ -53,7 +56,7 @@ public class Hotel {
     }
     
     public void setPromoRate(double prm){
-        this.RegRate = prm;
+        this.PromoRate = prm;
     }
     
     
