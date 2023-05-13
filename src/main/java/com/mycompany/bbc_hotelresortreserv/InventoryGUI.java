@@ -42,10 +42,11 @@ public class InventoryGUI extends JFrame implements ActionListener{
     private final ResourcesCRUD resourcesInv;
     ArrayList<Resources> reso;
     
+    int resoPanelCtr = 0;
+    
     public InventoryGUI(ResourcesCRUD resources) {
         
         this.resourcesInv=resources;
-        reso = resourcesInv.getResoData();
 
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
 
@@ -125,7 +126,7 @@ public class InventoryGUI extends JFrame implements ActionListener{
         deleteItemBtn[i] = new JButton();
         
         Color resoPanelColor;
-        if(i%2 == 0){
+        if(resoPanelCtr%2 == 0){
             resoPanelColor = new Color(255, 255, 255);
         }else{
             resoPanelColor = new Color(235, 235, 235);
@@ -249,16 +250,23 @@ public class InventoryGUI extends JFrame implements ActionListener{
     }
     //adds all resources
     private void refreshResoSuperPanel(){
-        if(resoPanel[0]!=null){
-            for(int i = 0; i < reso.size(); i++){
+        
+        reso = resourcesInv.getResoData();
+        
+        for(int i = 0; i < reso.size()+1; i++){
+            if(resoPanel[i]!=null){
                 deleteResourcePanel(i);
             }
         }
         
         
+        
+        
         for(int i = 0; i < reso.size(); i++){
             addResourcePanel(i,reso.get(i));
+            resoPanelCtr++;
         }
+        resoPanelCtr=0;
         resoSuperPanel.repaint();
         resoSuperPanel.revalidate();
     }

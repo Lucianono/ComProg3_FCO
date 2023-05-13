@@ -24,9 +24,9 @@ public final class ResourcesCRUD {
             for (int i = 0; i < rcs.size(); i++){
             if (rcs.get(i).getItemID()==itemID) {
                 return i;
-            }
-        }
-        return -1;
+                }
+            }   
+            return -1;
         }
         
         public Resources getReso(int itemID){
@@ -68,7 +68,7 @@ public final class ResourcesCRUD {
                 rcs.remove(getIndex(itemID));
             }
             else {
-                    System.out.println("Resource does not exist");
+                System.out.println("Resource does not exist");
             }
             
         }
