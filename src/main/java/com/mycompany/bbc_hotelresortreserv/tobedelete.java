@@ -42,16 +42,20 @@ public class tobedelete extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel20 = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jPanel26 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel27 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -62,7 +66,7 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel1.setText("INVENTORY");
+        jLabel1.setText("HOTEL ROOMS");
         jPanel3.add(jLabel1);
 
         jPanel1.add(jPanel3);
@@ -77,7 +81,7 @@ public class tobedelete extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("   | ItemID | Name                                       |  Quantity         |   Price             |");
+        jLabel12.setText("| HotelID | Hotel Type                       | Capacity | Regular Rate | Promo Rate | ");
         jPanel4.add(jLabel12);
 
         jPanel2.add(jPanel4);
@@ -93,7 +97,7 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel9.setPreferredSize(new java.awt.Dimension(550, 50));
 
-        jPanel18.setPreferredSize(new java.awt.Dimension(50, 27));
+        jPanel18.setPreferredSize(new java.awt.Dimension(70, 27));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("101");
@@ -101,41 +105,16 @@ public class tobedelete extends javax.swing.JFrame {
 
         jPanel9.add(jPanel18);
 
-        jPanel19.setPreferredSize(new java.awt.Dimension(200, 27));
+        jPanel19.setPreferredSize(new java.awt.Dimension(170, 27));
         jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel14.setText("Extra Bed");
+        jLabel14.setText("Tourist Class");
         jPanel19.add(jLabel14);
 
         jPanel9.add(jPanel19);
 
-        jPanel21.setPreferredSize(new java.awt.Dimension(40, 25));
-
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel15.setText("10");
-        jPanel21.add(jLabel15);
-
-        jPanel20.add(jPanel21);
-
-        jButton9.setText("+");
-        jButton9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel20.add(jButton9);
-
-        jButton10.setText("-");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel20.add(jButton10);
-
-        jPanel9.add(jPanel20);
-
-        jLabel16.setText("₱");
-        jPanel22.add(jLabel16);
-
-        jPanel23.setPreferredSize(new java.awt.Dimension(50, 25));
+        jPanel23.setPreferredSize(new java.awt.Dimension(25, 25));
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel17.setText("100");
@@ -153,6 +132,52 @@ public class tobedelete extends javax.swing.JFrame {
 
         jPanel9.add(jPanel22);
 
+        jPanel24.setPreferredSize(new java.awt.Dimension(90, 35));
+
+        jLabel18.setText("₱");
+        jPanel24.add(jLabel18);
+
+        jPanel25.setPreferredSize(new java.awt.Dimension(30, 25));
+
+        jLabel19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel19.setText("100");
+        jPanel25.add(jLabel19);
+
+        jPanel24.add(jPanel25);
+
+        jButton13.setText("U");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel24.add(jButton13);
+
+        jPanel9.add(jPanel24);
+
+        jPanel26.setPreferredSize(new java.awt.Dimension(90, 35));
+
+        jLabel20.setText("₱");
+        jPanel26.add(jLabel20);
+
+        jPanel27.setPreferredSize(new java.awt.Dimension(30, 25));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel21.setText("100");
+        jPanel27.add(jLabel21);
+
+        jPanel26.add(jPanel27);
+
+        jButton14.setText("U");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        jPanel26.add(jButton14);
+
+        jPanel9.add(jPanel26);
+
         jButton12.setText("D");
         jPanel9.add(jButton12);
 
@@ -166,7 +191,7 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel6.setLayout(new java.awt.BorderLayout());
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton1.setText("ADD ITEM");
+        jButton1.setText("ADD HOTEL ROOM");
         jPanel6.add(jButton1, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jPanel6);
@@ -178,13 +203,17 @@ public class tobedelete extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,25 +236,29 @@ UIManager.put("Panel.background", Color.TRANSLUCENT);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
