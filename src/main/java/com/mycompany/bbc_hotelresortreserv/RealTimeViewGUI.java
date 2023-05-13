@@ -535,6 +535,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             monthCmb.setSelectedIndex(month-1);
             dayCmb.setSelectedIndex(day-1);
             
+            transSelectedID = -1;
+            refreshBtns();
+            
             custRefresh();
             
         }
@@ -604,6 +607,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         }
         
         if(e.getSource()==monthCmb || e.getSource()==yearCmb || e.getSource()==dayCmb ){
+            transSelectedID = -1;
+            refreshBtns();
+            
             custRefresh();
             fullCustInfoDisplay(null);
         }
