@@ -51,16 +51,18 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         passwordLabel.setBounds(180, 50, 250, 250);
         panel.add(passwordLabel);
         
+        
         //UsernameField
         userText = new JTextField(20);
         userText.setBounds(250, 131, 165, 25);
         panel.add(userText); 
         
-        /*
+        
+        
         JTextField passText = new JTextField(20);
         passText.setBounds(250, 161, 165, 25);
         panel.add(passText);
-        */
+        
         //encrypt password
         
         //Password Field
@@ -68,17 +70,23 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         passwordText.setBounds(250,161,165,25);
         panel.add (passwordText);
         
-        //LoginButton 
+        
+        
+        
+        //LoginButton Login
         LoginButton = new JButton("Login");
         LoginButton.setBounds(250, 191, 80, 25);
         LoginButton.addActionListener(this);
         panel.add(LoginButton);
         
-        //SignupButton
+        //SignupButton Login
         SignUpButton = new JButton("Sign Up");
         SignUpButton.setBounds(250, 221, 80, 25);
         SignUpButton.addActionListener(this);
         panel.add(SignUpButton);
+        
+        
+        
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,25 +97,33 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         frame.setLayout(null);
         frame.add(usernameLabel);
         frame.add(passwordLabel);
+        
        // frame.add(button);
         frame.add(panel);
         frame.add(userText);
+        
        // frame.add(passText);
         frame.add(passwordText);
         frame.add(LoginButton);
         frame.add(SignUpButton);
+        
+        //For Signup
+        
+        
     }
-    @Override
     
+    @Override
+
     public void actionPerformed(ActionEvent e){
         String UserInput = userText.getText();
         String PasswordInput = passwordText.getText();
+        
         if(e.getSource() == LoginButton){
         security.logIn(UserInput, PasswordInput);
-        
         }
-        
         else if(e.getSource() == SignUpButton){
+              security.signUp(UserInput, PasswordInput, UserInput);
+              
               
         }
     } 
