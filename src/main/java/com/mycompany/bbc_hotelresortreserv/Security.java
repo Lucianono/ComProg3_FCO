@@ -7,6 +7,8 @@ public class Security{
     private static String[] pos = new String[] {"staff"}; //default position
     public static int StringIncrement = 5;
     
+    //fromLoginGUI- create reset
+    
     public Security(){
         /*System.out.println("Security Created");
         
