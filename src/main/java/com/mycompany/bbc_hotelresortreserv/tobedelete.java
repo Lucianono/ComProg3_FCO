@@ -119,6 +119,7 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel20.add(jPanel21);
 
         jButton9.setText("+");
+        jButton9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel20.add(jButton9);
 
         jButton10.setText("-");

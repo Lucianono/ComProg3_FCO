@@ -201,6 +201,11 @@
                             <Component class="javax.swing.JButton" name="jButton9">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="+"/>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                    <EmptyBorder/>
+                                  </Border>
+                                </Property>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JButton" name="jButton10">

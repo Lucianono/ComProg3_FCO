@@ -4,10 +4,13 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.border.LineBorder;
 
 public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
 
+    int resoMaxVal = 30;
+    
     JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
     JPanel jPanel3 = new JPanel();
@@ -16,28 +19,33 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
     JPanel jPanel4 = new JPanel();
     JLabel jLabel12 = new JLabel();
     JScrollPane jScrollPane1 = new JScrollPane();
-    JPanel jPanel5 = new JPanel();
-    JPanel jPanel9 = new JPanel();
-    JPanel jPanel18 = new JPanel();
-    JLabel jLabel13 = new JLabel();
-    JPanel jPanel19 = new JPanel();
-    JLabel jLabel14 = new JLabel();
-    JPanel jPanel20 = new JPanel();
-    JPanel jPanel21 = new JPanel();
-    JLabel jLabel15 = new JLabel();
-    JButton jButton9 = new JButton();
-    JButton jButton10 = new JButton();
-    JPanel jPanel22 = new JPanel();
-    JLabel jLabel16 = new JLabel();
-    JPanel jPanel23 = new JPanel();
-    JLabel jLabel17 = new JLabel();
-    JButton jButton11 = new JButton();
-    JButton jButton12 = new JButton();
+    JPanel resoSuperPanel = new JPanel();
+    JPanel [] resoPanel = new JPanel[resoMaxVal];
+    JPanel [] itemIDPanel = new JPanel[resoMaxVal];
+    JLabel [] itemIDLbl = new JLabel[resoMaxVal];
+    JPanel [] itemNamePanel = new JPanel[resoMaxVal];
+    JLabel [] itemNameLbl = new JLabel[resoMaxVal];
+    JPanel [] itemQtySuperPanel = new JPanel[resoMaxVal];
+    JPanel [] itemQtyPanel = new JPanel[resoMaxVal];
+    JLabel [] itemQtyLbl = new JLabel[resoMaxVal];
+    JButton [] addBtn = new JButton[resoMaxVal];
+    JButton [] removeBtn = new JButton[resoMaxVal];
+    JPanel [] itemPriceSuperPanel = new JPanel[resoMaxVal];
+    JLabel [] pesoLbl = new JLabel[resoMaxVal];
+    JPanel [] itemPricePanel = new JPanel[resoMaxVal];
+    JLabel [] itemPriceLbl = new JLabel[resoMaxVal];
+    JButton [] setPriceBtn = new JButton[resoMaxVal];
+    JButton [] deleteItemBtn = new JButton[resoMaxVal];
     JPanel jPanel6 = new JPanel();
     JButton jButton1 = new JButton();
     
+    private final ResourcesCRUD resourcesInv;
+    ArrayList<Resources> reso;
+    
     public InventoryGUI(ResourcesCRUD resources) {
         
+        this.resourcesInv=resources;
+        reso = resourcesInv.getResoData();
 
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
 
@@ -64,72 +72,14 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
 
         jScrollPane1.setBackground(new Color(179, 154, 135));
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new Dimension(552, 260));
+        jScrollPane1.setPreferredSize(new Dimension(552, 220));
+        
+        resoSuperPanel.setBackground(new Color(213, 178, 144));
+        resoSuperPanel.setLayout(new BoxLayout(resoSuperPanel,BoxLayout.Y_AXIS));
 
-        jPanel5.setBackground(new Color(213, 178, 144));
-        jPanel5.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-
-        jPanel9.setBackground(new Color(255, 255, 255));
-        jPanel9.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-        jPanel9.setPreferredSize(new Dimension(550, 50));
-
-        jPanel18.setPreferredSize(new Dimension(50, 27));
-
-        jLabel13.setFont(new Font("Arial", 0, 14)); // NOI18N
-        jLabel13.setText("101");
-        jPanel18.add(jLabel13);
-
-        jPanel9.add(jPanel18);
-
-        jPanel19.setPreferredSize(new Dimension(200, 27));
-        jPanel19.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-        jLabel14.setFont(new Font("Arial", 0, 14)); // NOI18N
-        jLabel14.setText("Extra Bed");
-        jPanel19.add(jLabel14);
-
-        jPanel9.add(jPanel19);
-
-        jPanel21.setPreferredSize(new Dimension(40, 25));
-
-        jLabel15.setFont(new Font("Arial", 0, 14)); // NOI18N
-        jLabel15.setText("10");
-        jPanel21.add(jLabel15);
-
-        jPanel20.add(jPanel21);
-
-        jButton9.setText("+");
-        jPanel20.add(jButton9);
-
-        jButton10.setText("-");
-        jButton10.addActionListener(this);
-        jPanel20.add(jButton10);
-
-        jPanel9.add(jPanel20);
-
-        jLabel16.setText("₱");
-        jPanel22.add(jLabel16);
-
-        jPanel23.setPreferredSize(new Dimension(50, 25));
-
-        jLabel17.setFont(new Font("Arial", 0, 14)); // NOI18N
-        jLabel17.setText("100");
-        jPanel23.add(jLabel17);
-
-        jPanel22.add(jPanel23);
-
-        jButton11.setText("U");
-        jButton11.addActionListener(this);
-        jPanel22.add(jButton11);
-
-        jPanel9.add(jPanel22);
-
-        jButton12.setText("D");
-        jPanel9.add(jButton12);
-
-        jPanel5.add(jPanel9);
-
-        jScrollPane1.setViewportView(jPanel5);
+        refreshResoSuperPanel();
+        
+        jScrollPane1.setViewportView(resoSuperPanel);
 
         jPanel2.add(jScrollPane1);
 
@@ -153,6 +103,165 @@ public class InventoryGUI extends JFrame implements ActionListener,ItemListener{
         frame.setVisible(true);
     }
 
+    //add a resource
+    private void addResourcePanel(int i, Resources r){
+
+        resoPanel[i] = new JPanel();
+        itemIDPanel[i] = new JPanel();
+        itemIDLbl[i] = new JLabel();
+        itemNamePanel[i] = new JPanel();
+        itemNameLbl[i] = new JLabel();
+        itemQtySuperPanel[i] = new JPanel();
+        itemQtyPanel[i] = new JPanel();
+        itemQtyLbl[i] = new JLabel();
+        addBtn[i] = new JButton();
+        removeBtn[i] = new JButton();
+        itemPriceSuperPanel[i] = new JPanel();
+        pesoLbl[i] = new JLabel();
+        itemPricePanel[i] = new JPanel();
+        itemPriceLbl[i] = new JLabel();
+        setPriceBtn[i] = new JButton();
+        deleteItemBtn[i] = new JButton();
+        
+        Color resoPanelColor;
+        if(i%2 == 0){
+            resoPanelColor = new Color(255, 255, 255);
+        }else{
+            resoPanelColor = new Color(235, 235, 235);
+        }
+        
+        resoPanel[i].setBackground(resoPanelColor);
+        resoPanel[i].setPreferredSize(new Dimension(550, 50));
+
+        itemIDPanel[i].setPreferredSize(new Dimension(50, 27));
+
+        itemIDLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+        itemIDLbl[i].setText(r.getItemID()+"");
+        itemIDPanel[i].add(itemIDLbl[i]);
+
+        resoPanel[i].add(itemIDPanel[i]);
+
+        itemNamePanel[i].setPreferredSize(new Dimension(200, 27));
+        itemNamePanel[i].setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        itemNameLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+        itemNameLbl[i].setText(r.getItemName());
+        itemNamePanel[i].add(itemNameLbl[i]);
+
+        resoPanel[i].add(itemNamePanel[i]);
+
+        itemQtyPanel[i].setPreferredSize(new Dimension(40, 25));
+
+        itemQtyLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+        itemQtyLbl[i].setText(r.getQty()+"");
+        itemQtyPanel[i].add(itemQtyLbl[i]);
+
+        itemQtySuperPanel[i].add(itemQtyPanel[i]);
+
+        addBtn[i].setText("+");
+        addBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int userinput = Integer.parseInt(JOptionPane.showInputDialog(null, "ADD ITEMS") );
+                    if(userinput > 0){
+                        r.setQty(r.getQty() + userinput);
+                        itemQtyLbl[i].setText(r.getQty()+"");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                }
+            }
+        });
+        itemQtySuperPanel[i].add(addBtn[i]);
+
+        removeBtn[i].setText("-");
+        removeBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int userinput = Integer.parseInt(JOptionPane.showInputDialog(null, "REMOVE ITEMS") );
+                    if(userinput > 0){
+                        r.setQty(r.getQty() - userinput);
+                        itemQtyLbl[i].setText(r.getQty()+"");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                }
+            }
+        });
+        itemQtySuperPanel[i].add(removeBtn[i]);
+
+        resoPanel[i].add(itemQtySuperPanel[i]);
+
+        pesoLbl[i].setText("₱");
+        itemPriceSuperPanel[i].add(pesoLbl[i]);
+
+        itemPricePanel[i].setPreferredSize(new Dimension(50, 25));
+
+        itemPriceLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
+        itemPriceLbl[i].setText(r.getPrice()+"");
+        itemPricePanel[i].add(itemPriceLbl[i]);
+
+        itemPriceSuperPanel[i].add(itemPricePanel[i]);
+
+        setPriceBtn[i].setText("U");
+        setPriceBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int userinput = Integer.parseInt(JOptionPane.showInputDialog(null, "SET NEW PRICE") );
+                    if(userinput > 0){
+                        r.setPrice(userinput);
+                        itemPriceLbl[i].setText(r.getPrice()+"");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    }
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                }
+            }
+        });
+        itemPriceSuperPanel[i].add(setPriceBtn[i]);
+
+        resoPanel[i].add(itemPriceSuperPanel[i]);
+
+        deleteItemBtn[i].setText("D");
+        deleteItemBtn[i].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        resoPanel[i].add(deleteItemBtn[i]);
+
+        resoSuperPanel.add(resoPanel[i]);
+        
+    }
+    //adds all resources
+    private void refreshResoSuperPanel(){
+        if(resoPanel[0]!=null){
+            for(int i = 0; i < reso.size(); i++){
+                deleteResourcePanel(i);
+            }
+        }
+        
+        
+        for(int i = 0; i < reso.size(); i++){
+            addResourcePanel(i,reso.get(i));
+        }
+        resoSuperPanel.repaint();
+        resoSuperPanel.revalidate();
+    }
+    //deletes resurce panel
+    public void deleteResourcePanel(int i){
+        resoSuperPanel.remove(resoPanel[i]);
+        resoPanel[i]=null;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
     }
