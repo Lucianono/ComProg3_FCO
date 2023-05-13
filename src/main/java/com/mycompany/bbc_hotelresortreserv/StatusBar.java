@@ -38,7 +38,7 @@ public class StatusBar extends JPanel {
 
         // FIRST ROW FIRST COLUMN - Logo only
 //-----------------------------------------------------------------------//        
-        logoImg = new ImageIcon("filename"); // <--------- I removed it muna :)
+        logoImg = new ImageIcon(getClass().getResource("/images/updIcon.png")); // <--------- I removed it muna :)
         Image logo = logoImg.getImage();
         Image scaledLogo = logo.getScaledInstance(25, 25, Image.SCALE_SMOOTH); // <-------- adjust width and height 
         logoLbl = new JLabel(new ImageIcon(scaledLogo));
