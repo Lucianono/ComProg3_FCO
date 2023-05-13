@@ -380,7 +380,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     }
 
     //adds a resource to order
-    public void addResourcePanel(int i, int j , Resources r){
+    private void addResourcePanel(int i, int j , Resources r){
         
         resoEachPanel[i] = new JPanel();
         resoLblPanel[i] = new JPanel();
@@ -460,7 +460,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         jResoPanel10.revalidate();
     }
     //deletes resurce panel
-    public void deleteResourcePanel(int i){
+    private void deleteResourcePanel(int i){
         jResoPanel10.remove(resoEachPanel[i]);
         resoEachPanel[i]=null;
     }
