@@ -1,6 +1,3 @@
-
-package com.mycompany.bbc_hotelresortreserv;
-
 /*
 This class is for Splash Screen JFrame
 
@@ -13,49 +10,40 @@ TODO:
 
 -BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
 */
+package com.mycompany.bbc_hotelresortreserv;
 
-public class SplashScreen extends javax.swing.JFrame {
+import javax.swing.*;
+import java.awt.FlowLayout;
+import java.awt.event.*;
+import javax.swing.JProgressBar;
 
+
+public class SplashScreen {
+    JFrame frm = new JFrame();
+    JProgressBar bar = new JProgressBar();
     
-    public SplashScreen() {
-        initComponents();
-        this.setVisible(true);
-
+    SplashScreen(){
+    bar.setValue(0);
+    bar.setBounds(0, 0, 400, 40);
+    bar.setStringPainted(true);
+     
+    frm.add(bar);
+    frm.setLayout(new FlowLayout(FlowLayout.CENTER));
+    frm.setSize(600, 400);
+    frm.setVisible(true);
+    frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frm.setLocationRelativeTo(null);
+    fill();
+    
     }
-
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Splash Screen");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jLabel1)
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(jLabel1)
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration//GEN-END:variables
+    public void fill(){
+        int counter = 0;
+        while (counter <= 100)
+            bar.setValue(counter);
+            
+        try{
+            Thread.sleep(50);
+        }catch(InterruptedException e){}
+        counter +=1;
+    }
 }
