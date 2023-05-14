@@ -16,15 +16,21 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.*;
 import javax.swing.JProgressBar;
 
 
 public class SplashScreen {
     JFrame frm = new JFrame();
-    JLabel title = new JLabel("Black Beans Company");
+    JLabel title1 = new JLabel("Black Beans Company");
+    JLabel title2 = new JLabel("copyright 2023");
+    JLabel logo = new JLabel();
     JProgressBar bar = new JProgressBar(0,100);
+    JPanel p1 = new JPanel();
+    JPanel p2 = new JPanel();
+    JPanel p3 = new JPanel();
+    JPanel p4 = new JPanel();
     
     
     SplashScreen(){
@@ -34,13 +40,22 @@ public class SplashScreen {
     bar.setFont(new Font("Arial",Font.BOLD,9));
     bar.setForeground(Color.BLUE);
     bar.setBackground(Color.WHITE);
+    p2.add(bar);
     
-    title.setVerticalAlignment(SwingConstants.CENTER);
-    title.setHorizontalAlignment(SwingConstants.CENTER);
+    title1.setFont(new Font("Arial",Font.BOLD,25));
+    p1.add(title1);
     
-    frm.add(title);
-    frm.add(bar);
-    frm.setLayout(new GridBagLayout());
+    title2.setFont(new Font("Arial",Font.BOLD,9));
+    title2.setForeground(Color.GRAY);
+    p3.add(title2);
+    
+    p4.add(logo);
+    
+    frm.add(p4);
+    frm.add(p1);
+    frm.add(p2);
+    frm.add(p3);
+    frm.setLayout(new FlowLayout(FlowLayout.CENTER,0,150));
     frm.setSize(600, 400);
     frm.setVisible(true);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
