@@ -2,19 +2,18 @@ package com.mycompany.bbc_hotelresortreserv;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Monthly extends JFrame {
     
     private JButton nxtbtn = new JButton("Resources Used");
  
     public Monthly() {
+        int year = 2024;
         JFrame mfrm = new JFrame("Year Report");
         JPanel mpnl = new JPanel();
         JLabel lbl1 = new JLabel("January");
         
-        String[][] row = new String[31][3];
+        String row [][] = new String[31][3];
         
         for (String[] row1 : row) {
             for (int i = 0; i < row1.length; i++) {
@@ -34,37 +33,35 @@ public class Monthly extends JFrame {
         
         rm1.setBounds(30, 40, 300,3000);
         
-        nxtbtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mfrm.dispose();
-                SecondFrame sfrm = new SecondFrame();
-            }
-        });
-        
         JLabel lbl2 = new JLabel("February");
         
-        String data2[][] = {{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}};
+        String row2 [][] = new String[28][3];
         
-        String column2[] = {"Sales", "No. of Customers"};
+        for (String[] row1 : row2) {
+            for (int i = 0; i < row1.length; i++) {
+                row1[i] = "";
+            }
+        }
         
-        JTable rm2 = new JTable(data2, column2);
+        for (int i = 0; i < row2.length; i++) {
+            row2[i][0] = Integer.toString(i + 1);
+                if (i == 1) {
+                    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+                        row2[i][1] = "29";
+                }
+                else {
+                        row2[i][1] = "28";
+                    }
+                }
+        }
+        
+        String column2[] = {"Day", "Sales", "#ofCustomers"};
+        
+        JTable rm2 = new JTable(row2, column2);
         
         JScrollPane sp2 = new JScrollPane(rm2);
         
-        rm2.setBounds(30, 40, 300,300);
-        
-        nxtbtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mfrm.dispose();
-                SecondFrame sfrm = new SecondFrame();
-            }
-        });
+        rm2.setBounds(30, 40, 300,3000);
         
         mpnl.setLayout(new BoxLayout(mpnl, BoxLayout.PAGE_AXIS));
 
@@ -83,6 +80,13 @@ public class Monthly extends JFrame {
         mfrm.setResizable(false);
         mfrm.setLocationRelativeTo(null);
         
+        nxtbtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mfrm.dispose();
+                SecondFrame sfrm = new SecondFrame();
+            }
+        });
         mfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);     
         mfrm.getContentPane().add(nxtbtn, "South");
     }
@@ -95,7 +99,7 @@ public class Monthly extends JFrame {
                             {"102", "Jai", "780000"},
                             {"101", "Sachin", "700000"}};
         
-            String column[] = {"Extra Bed", "Pillow", "Towel", "Reading Light",
+            String column[] = {"Day", "Extra Bed", "Pillow", "Towel", "Reading Light",
             "Books/Magazine", "Toiletries", "Luggage Rack", "Breakfast", "Lunch",
             "Dinner", "Drink", "Snack"};
             
