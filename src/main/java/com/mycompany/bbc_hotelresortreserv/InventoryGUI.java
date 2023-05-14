@@ -277,16 +277,27 @@ public class InventoryGUI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
             try {
-                resourcesInv.create(Integer.parseInt(JOptionPane.showInputDialog("Enter Item ID (number only)")),
+                
+                int itemId = Integer.parseInt(JOptionPane.showInputDialog("Enter HotelID"));
+                
+                for(int i = 0; i < reso.size(); i++){
+                    if( reso.get(i).getItemID() == itemId ){
+                        JOptionPane.showMessageDialog(null, "ID should be unique!" );
+                        throw new Exception();
+                    }
+                }
+                
+                
+                resourcesInv.create(itemId,
                         JOptionPane.showInputDialog("Enter Item Name"), 
                         Integer.parseInt(JOptionPane.showInputDialog("Enter Quantity")), 
                         Double.parseDouble(JOptionPane.showInputDialog("Enter Price")));
                 refreshResoSuperPanel();
             } catch (Exception err) {
-                JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                JOptionPane.showMessageDialog(null, "Invalid input!" );
             }
         }
         
     }
 
-}
+
