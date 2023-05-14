@@ -126,7 +126,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         
     }
     
-    public static void SignUp(){
+    private void SignUp(){
         JPanel panel = new JPanel();
         
         JFrame frame = new JFrame();
