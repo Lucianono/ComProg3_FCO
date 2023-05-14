@@ -26,10 +26,9 @@ public class StatusBar extends JPanel {
 
 
     public StatusBar(String name, String position) {
-    setLayout(new GridLayout(1, 5)); //change 2 to 1 to reduce height
+    setLayout(new GridLayout(1, 5)); 
 
-    // FIRST COLUMN - Logo only
-    //-----------------------------------------------------------------------//        
+      
     logoImg = new ImageIcon("src\\main\\resources\\images\\firstlogo.png");
     Image logo = logoImg.getImage();
     Image scaledLogo = logo.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -37,34 +36,28 @@ public class StatusBar extends JPanel {
     logoLbl.setVerticalAlignment(SwingConstants.NORTH);
     logoLbl.setHorizontalAlignment(SwingConstants.CENTER);
     add(logoLbl);
-    //-----------------------------------------------------------------------//
-    // SECOND COLUMN - name of user
+
     this.name = name;
     nameLbl = new JLabel("Name: " + this.name);
     nameLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     add(nameLbl);
-    //-----------------------------------------------------------------------//
-    // THIRD COLUMN - position admin/staff
+  
     this.pos = position;
     positionLbl = new JLabel("Position: " + this.pos);
     positionLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     add(positionLbl);
-    //-----------------------------------------------------------------------//
-    // FOURTH COLUMN - display date
+ 
 
     dateLbl = new JLabel();
     dateLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     add(dateLbl);
-    //-----------------------------------------------------------------------//
-    // FIFTH COLUMN - display time
-
+ 
     timeLbl = new JLabel();
     timeLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     add(timeLbl);
 
     Timer timer = new Timer(1000, e -> updateDateTime());
     timer.start();
-    //-----------------------------------------------------------------------//
 
     setBackground(Color.WHITE);
 }
