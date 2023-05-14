@@ -50,6 +50,7 @@ public class Security{
         user = newusernames;
         pass = newpasswords;
         pos = newposition;
+        System.out.println("created successfully");
         return true;
 }  
     public boolean logIn (String username, String password){ //logIn Method
@@ -100,8 +101,8 @@ public class Security{
         
     }
 
-    void signUp(String UserInput, String PasswordInput, JComboBox Position) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  //  void signUp(String UserInput, String PasswordInput, JComboBox Position) {
+      //  throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   // }
 
 }

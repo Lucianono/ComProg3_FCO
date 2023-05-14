@@ -39,7 +39,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     public static JTextField userText2, passwordText2, cpText;
     public static JLabel usernameLabel2, passwordLabel2, cpLabel, PosLabel;
     
-    
+    public static int i = 0; //counter signup
     public static JFrame frame2 = new JFrame();
     
     Security security = new Security();
@@ -168,13 +168,13 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         //Create Btn
         CreateAcc = new JButton("Create");
         CreateAcc.setBounds(250, 261, 80, 25);
-        //LoginButton2.addActionListener();
+        CreateAcc.addActionListener(this);
         panel2.add(CreateAcc);
         
         //BackpButton 
         Back = new JButton("Back");
         Back.setBounds(335, 261, 80, 25);
-       // SignUpButton2.addActionListener();
+        Back.addActionListener(this);
         panel2.add(Back);
         
         
@@ -215,6 +215,9 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         String PasswordInput = passwordText.getText();
         String SelectedPosition = (String) Position.getSelectedItem();
         
+        String UserInput2 = userText.getText();
+        String PasswordInput2 = passwordText.getText();
+       
         
         if(e.getSource() == LoginButton){
             //Security Login
@@ -244,24 +247,20 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                 }
             }
         }
-    
+        
         else if(e.getSource() == SignUpButton){
-            
             SignUp();
-            
-            }
+            security.signUp(UserInput2, PasswordInput2, SelectedPosition);
+
             if(e.getSource() == CreateAcc){
-                if(UserInput.isEmpty() || PasswordInput.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please enter both username and password"
-                + " then confirm your password.");
-                
-                security.signUp(UserInput, PasswordInput, SelectedPosition);
-                frame2.setVisible(false);
-                
-                }
-             }
+                System.out.println("ASD");
+                passwordText2.setText("");
+                userText2.setText("");
+            }
             else if(e.getSource() == Back){
                 frame2.setVisible(false);
-            }
-    } 
+            } 
+    
+        }
+    }
 }
