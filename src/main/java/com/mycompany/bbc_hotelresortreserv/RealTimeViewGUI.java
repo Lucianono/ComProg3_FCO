@@ -152,7 +152,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         
         
         String s =  yearCmb.getSelectedItem() + "/" + (monthCmb.getSelectedIndex()+1) + "/" + dayCmb.getSelectedItem();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");  
         Date dateBooked=null;
         try {
             dateBooked = formatter.parse(s);
@@ -550,10 +550,16 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             Transaction t = transactionsCompleted.getTransaction(transSelectedID);
             
-            if(!t.isCheckedIn()){
-                t.setCheckedIn(true);
-                JOptionPane.showMessageDialog(null, "Successfully checked in!" );
+            if(hotelBooked.getHotel(t.getHotel()).getAvailability()){
+                if(!t.isCheckedIn()){
+                    t.setCheckedIn(true);
+                    hotelBooked.getHotel(t.getHotel()).setAvailability(false);
+                    JOptionPane.showMessageDialog(null, "Successfully checked in!" );
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Can't checked in! Room is currently not available." );
             }
+            
             
             fullCustInfoDisplay(t);
             refreshBtns();
@@ -569,6 +575,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                     try {
                         if(totalRemBal == 0 || (Double.valueOf(JOptionPane.showInputDialog("Input Cash")) >= totalRemBal) ){
                             t.setCheckedOut(true);
+                            hotelBooked.getHotel(t.getHotel()).setAvailability(true);
                             t.setFullCash(t.getRemBal());
                             t.setRemBal(0);
                             JOptionPane.showMessageDialog(null, "Successfully checked out!" );

@@ -17,13 +17,19 @@ public class TransactionSystem {
     
     public TransactionSystem() throws ParseException {
         Customer c = new Customer(5, "Bryan Calulo", 12);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
-        Date d = formatter.parse("2023/1/1");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");  
+        Date d1 = formatter.parse("2023/1/1");
+        Date d2 = formatter.parse("2023/1/2");
         Resources [] r = null;
         Customer[] customers = {c};
-        createReservation(customers,"A1",5000,d,0,0,r);
-        createReservation(customers,"B1",5000,d,0,500,r);
-        createReservation(customers,"C1",5000,d,0,750,r);
+        createReservation(customers,"A1",5000,d1,0,0,r);
+        createReservation(customers,"B1",5000,d1,0,500,r);
+        createReservation(customers,"C1",5000,d1,0,750,r);
+        createReservation(customers,"A1",5000,d2,0,750,r);
+        createReservation(customers,"B1",5000,d2,0,750,r);
+        createReservation(customers,"D1",5000,d2,0,750,r);
+
+        
     }
     
     public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
