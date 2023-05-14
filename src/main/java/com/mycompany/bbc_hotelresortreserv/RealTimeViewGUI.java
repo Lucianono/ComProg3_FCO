@@ -79,7 +79,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
 
         jPanel5.setBorder(BorderFactory.createTitledBorder("Customers Reserved"));
         jPanel5.setPreferredSize(new Dimension(200, 440));
-
+        
         custDisplayAll();
 
         jPanel3.add(jPanel5);
@@ -96,6 +96,8 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         fullCustInfoLbl.setFont(new Font("Arial", Font.PLAIN, 15));
         jPanel8.add(fullCustInfoLbl, BorderLayout.CENTER);
 
+        fullCustInfoDisplay(null);
+        
         custInfoScrlPane.setViewportView(jPanel8);
 
         custInfoPanelMain.add(custInfoScrlPane);
@@ -152,7 +154,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         
         
         String s =  yearCmb.getSelectedItem() + "/" + (monthCmb.getSelectedIndex()+1) + "/" + dayCmb.getSelectedItem();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");  
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
         Date dateBooked=null;
         try {
             dateBooked = formatter.parse(s);
@@ -233,6 +235,15 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                     );
             return 0.0;
         }else{
+            
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+            String ssdI = "Not yet Checked In";
+            String ssdO = "Not yet Checked Out";
+            if(t.getDateChkIn()!=null)
+                ssdI = formatter.format(t.getDateChkIn());
+            if(t.getDateChkOut()!=null)
+                ssdO = formatter.format(t.getDateChkOut());
         
             Double totalAmount = 0.0;
             fullCustInfoLbl.setText(
@@ -241,8 +252,10 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                                 "<br/>Hotel Booked : " +  t.getHotel() + " - "  + hotelBooked.getHotel(t.getHotel()).getHotelType() +
                                 "<br/>Down Payment : " +  t.getDownCash()+
                                 "<br/>Remaining Balance for Hotel : " +  t.getRemBal()+
-                                "<br/>Checked In : <b>" +  t.isCheckedIn()+
-                                "</b><br/>Checked In <b>: " +  t.isCheckedOut() + "</b>"
+                                "<br/>Checked In : <b>" +  t.isCheckedIn()+ "</b>" +
+                                "<br/>Date Checked In : <i>" + ssdI + "</i>" +
+                                "<br/>Checked In <b>: " +  t.isCheckedOut() + "</b>" +
+                                "<br/>Date Checked In : <i>" +  ssdO + "</i>"
 
                         );
             
@@ -281,7 +294,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         if(chosen){
         chkInBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedIn());
         chkOutBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedOut() && transactionsCompleted.getTransaction(transSelectedID).isCheckedIn());
-        xtraBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedOut());
+        xtraBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedOut() && transactionsCompleted.getTransaction(transSelectedID).isCheckedIn());
         }
         
         
@@ -389,7 +402,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     }
 
     //adds a resource to order
-    private void addResourcePanel(int i, int j , Resources r){
+    private void addResourcePanel(int i, Resources r){
         
         resoEachPanel[i] = new JPanel();
         resoLblPanel[i] = new JPanel();
@@ -461,9 +474,8 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             }
         }
         
-        j=0;
         for(int i = 0; i < reso.size(); i++){
-            addResourcePanel(i,j,reso.get(i));
+            addResourcePanel(i,reso.get(i));
         }
         jResoPanel10.repaint();
         jResoPanel10.revalidate();
@@ -553,6 +565,8 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             if(hotelBooked.getHotel(t.getHotel()).getAvailability()){
                 if(!t.isCheckedIn()){
                     t.setCheckedIn(true);
+                    t.setDateChkIn(new Date());
+                    System.out.println(t.getDateChkIn());
                     hotelBooked.getHotel(t.getHotel()).setAvailability(false);
                     JOptionPane.showMessageDialog(null, "Successfully checked in!" );
                 }
@@ -576,6 +590,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                         if(totalRemBal == 0 || (Double.valueOf(JOptionPane.showInputDialog("Input Cash")) >= totalRemBal) ){
                             t.setCheckedOut(true);
                             hotelBooked.getHotel(t.getHotel()).setAvailability(true);
+                            t.setDateChkOut(new Date());
                             t.setFullCash(t.getRemBal());
                             t.setRemBal(0);
                             JOptionPane.showMessageDialog(null, "Successfully checked out!" );
@@ -584,8 +599,8 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                             JOptionPane.showMessageDialog(null, "Insufficient funds!" );
                         }
                         
-                    } catch (HeadlessException | NumberFormatException err) {
-                        JOptionPane.showMessageDialog(null, "Incorrect input!" );
+                    } catch (Exception err) {
+                        JOptionPane.showMessageDialog(null, "Invalid input!" );
                     }
                     
                 }

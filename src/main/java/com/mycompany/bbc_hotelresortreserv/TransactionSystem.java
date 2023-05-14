@@ -17,9 +17,9 @@ public class TransactionSystem {
     
     public TransactionSystem() throws ParseException {
         Customer c = new Customer(5, "Bryan Calulo", 12);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");  
-        Date d1 = formatter.parse("2023/1/1");
-        Date d2 = formatter.parse("2023/1/2");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
+        Date d1 = formatter.parse("2023/5/14");
+        Date d2 = formatter.parse("2023/5/13");
         Resources [] r = null;
         Customer[] customers = {c};
         createReservation(customers,"A1",5000,d1,0,0,r);

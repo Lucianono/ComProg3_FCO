@@ -14,6 +14,8 @@ public class Transaction {
     private Resources [] resoUsed;
     private boolean checkedIn;
     private boolean checkedOut;
+    private Date dateChkIn;
+    private Date dateChkOut;
 
     Transaction(int TransactID, Customer[] customers, String hotel, double downCash, Date dateRsrv, double fullCash ,double remBal, Resources [] resoUsed , boolean checkedIn, boolean checkedOut) {
         this.TransactID = TransactID;
@@ -68,6 +70,15 @@ public class Transaction {
     public boolean isCheckedOut() {
         return checkedOut;
     }
+    
+    public Date getDateChkIn() {
+        return dateChkIn;
+    }
+    
+    public Date getDateChkOut() {
+        return dateChkOut;
+    }
+    
 
 
     // Setters for the non-final variables
@@ -89,6 +100,14 @@ public class Transaction {
 
     public void setCheckedOut(boolean checkedOut) {
         this.checkedOut = checkedOut;
+    }
+    
+    public void setDateChkIn(Date dateChkIn) {
+        this.dateChkIn = dateChkIn;
+    }
+    
+    public void setDateChkOut(Date dateChkOut) {
+        this.dateChkOut = dateChkOut;
     }
 
 }
