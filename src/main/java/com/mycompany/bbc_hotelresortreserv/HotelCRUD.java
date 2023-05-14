@@ -20,7 +20,7 @@ TODO :
 
 public class HotelCRUD {
 
-    ArrayList<Hotel> hotel_arr = new ArrayList();
+    private ArrayList<Hotel> hotel_arr = new ArrayList();
     
     //constructor
     HotelCRUD(){
@@ -150,4 +150,9 @@ public class HotelCRUD {
         }
         return arr;
     }
+    
+    //get arraylist
+    public ArrayList<Hotel> getHotelData(){
+            return hotel_arr;
+        }
 }

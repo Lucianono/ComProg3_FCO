@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import javax.swing.border.LineBorder;
 
 public class InventoryGUI extends JFrame implements ActionListener{
 

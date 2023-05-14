@@ -28,6 +28,7 @@ public class BBCMain {
         
         //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
         //RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
-        InventoryGUI invGUI = new InventoryGUI(resourcesInv);
+        //InventoryGUI invGUI = new InventoryGUI(resourcesInv);
+        HotelRoomGUI hrGUI = new HotelRoomGUI(hotelBooked);
     }
 }
