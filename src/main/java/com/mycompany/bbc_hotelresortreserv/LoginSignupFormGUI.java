@@ -40,6 +40,8 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     public static JLabel usernameLabel2, passwordLabel2, cpLabel, PosLabel;
     
     
+    public static JFrame frame2 = new JFrame();
+    
     Security security = new Security();
 
     
@@ -81,11 +83,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         passwordText = new JPasswordField();
         passwordText.setBounds(250,161,165,25);
         panel.add (passwordText);
-        
-        cpText = new JTextField(20);
-        cpText.setBounds(250, 191, 165, 25);
-        panel.add(cpText);
-        
+
         
         //LoginButton Login
         LoginButton = new JButton("Login");
@@ -125,83 +123,86 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         
         
     }
-    
+        
     private void SignUp(){
-        JPanel panel = new JPanel();
+        JPanel panel2 = new JPanel();
         
-        JFrame frame = new JFrame();
         
-        panel.setLayout(null);
+        
+        panel2.setLayout(null);
         
         //Username Label
         usernameLabel2 = new JLabel("Username : ");
         usernameLabel2.setBounds(180, 20, 250, 250);
-        panel.add(usernameLabel2);
+        panel2.add(usernameLabel2);
         
         //Password Label
         passwordLabel2 = new JLabel("Password : ");
         passwordLabel2.setBounds(180, 50, 250, 250);
-        panel.add(passwordLabel2);
+        panel2.add(passwordLabel2);
         
         //Position Label
         PosLabel = new JLabel("Position : ");
         PosLabel.setBounds(193, 107, 250, 250);
-        panel.add(PosLabel);
+        panel2.add(PosLabel);
         
         //UsernameField
         userText2 = new JTextField(50);
         userText2.setBounds(250, 131, 165, 25);
-        panel.add(userText2); 
+        panel2.add(userText2); 
 
         //Password Field
         passwordText2 = new JPasswordField();
         passwordText2.setBounds(250,161,165,25);
-        panel.add (passwordText2);
+        panel2.add (passwordText2);
         
+        cpText = new JPasswordField(20);
+        cpText.setBounds(250, 191, 165, 25);
+        panel2.add(cpText);
         
         //Position Combo Box
         Position.setBounds(250,221,165,25);
-        panel.add(Position);
+        panel2.add(Position);
         
         
         //Create Btn
         CreateAcc = new JButton("Create");
         CreateAcc.setBounds(250, 261, 80, 25);
         //LoginButton2.addActionListener();
-        panel.add(CreateAcc);
+        panel2.add(CreateAcc);
         
         //BackpButton 
         Back = new JButton("Back");
         Back.setBounds(335, 261, 80, 25);
        // SignUpButton2.addActionListener();
-        panel.add(Back);
+        panel2.add(Back);
         
         
         
         
         
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setTitle("Login and SignUp Form");
-        frame.setSize(600,400);
-        frame.setVisible(true);
-        frame.setLayout(null);
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setResizable(false);
+        frame2.setTitle("Login and SignUp Form");
+        frame2.setSize(600,400);
+        frame2.setVisible(true);
+        frame2.setLayout(null);
         
-        frame.add(usernameLabel2);
-        frame.add(passwordLabel2);
+        frame2.add(usernameLabel2);
+        frame2.add(passwordLabel2);
         
        // frame.add(button);
-        frame.add(panel);
-        frame.add(userText2);
+        frame2.add(panel2);
+        frame2.add(userText2);
         
        // frame.add(passText);
-        frame.add(cpText);
-        frame.add(cpLabel);
-        frame.add(passwordText2);
-        frame.add(CreateAcc);
-        frame.add(Back);
-        frame.add(Position);
-        frame.add(PosLabel);
+        frame2.add(cpText);
+        frame2.add(cpLabel);
+        frame2.add(passwordText2);
+        frame2.add(CreateAcc);
+        frame2.add(Back);
+        frame2.add(Position);
+        frame2.add(PosLabel);
         //frame.add(Position);
         
         
@@ -212,14 +213,55 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     public void actionPerformed(ActionEvent e){
         String UserInput = userText.getText();
         String PasswordInput = passwordText.getText();
+        String SelectedPosition = (String) Position.getSelectedItem();
+        
         
         if(e.getSource() == LoginButton){
-        security.logIn(UserInput, PasswordInput);
+            //Security Login
+            if(UserInput.isEmpty() || PasswordInput.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter both username and password"
+                + " then confirm your password.");
+            }
+            else{
+
+                if (!logged){
+                    security.logIn(UserInput, PasswordInput);
+                    
+                    if (!logged){
+                        logAttempts++;
+                        System.out.println("Invalid Input. Remaining Tries: " + (loopctr-logAttempts));
+                        userText.setText("");
+                        passwordText.setText("");
+                        
+                        if(logAttempts == 3){
+                        System.out.println("You have reached maximum amount of tries.");
+                        System.out.println("Program Close...");
+                        System.exit(0);
+                        System.out.println("");
+                        System.exit(0);  
+                        }
+                    }
+                }
+            }
         }
+    
         else if(e.getSource() == SignUpButton){
-              security.signUp(UserInput, PasswordInput, UserInput);
-              SignUp();
-              
-        }
+            
+            SignUp();
+            
+            }
+            if(e.getSource() == CreateAcc){
+                if(UserInput.isEmpty() || PasswordInput.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter both username and password"
+                + " then confirm your password.");
+                
+                security.signUp(UserInput, PasswordInput, SelectedPosition);
+                frame2.setVisible(false);
+                
+                }
+             }
+            else if(e.getSource() == Back){
+                frame2.setVisible(false);
+            }
     } 
 }

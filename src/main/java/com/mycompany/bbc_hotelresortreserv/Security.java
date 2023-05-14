@@ -1,12 +1,16 @@
 package com.mycompany.bbc_hotelresortreserv;
 
+import javax.swing.JComboBox;
+
 public class Security{
 
     public static String[] user = new String[]{"user123"}; //default username
     private static String[] pass = new String[]{"ufxx678"}; //default password
     private static String[] pos = new String[] {"staff"}; //default position
     public static int StringIncrement = 5;
-    
+    public static boolean logged;
+    public static int logAttempts = 0; 
+    public static int loopctr = 3;
     //fromLoginGUI- create reset
     
     public Security(){
@@ -49,32 +53,31 @@ public class Security{
         return true;
 }  
     public boolean logIn (String username, String password){ //logIn Method
-        int logAttempts = 0;
-        boolean logged = false;
-            while (logAttempts < 2 && !logged){// <---- 3 times error 
+        
+            logged = false;
+            if(logAttempts < 2 && !logged){// <---- 3 times error 
                 for (int i = 0; i < user.length; i++)//checheck if username and password is compatible
                 {
                     if (user[i].equals(username) && Decrypt(pass[i]).equals(password)){ //user logged in
                         System.out.println("Login Successful!");
                         logged=true;
+                        logAttempts = 0;
                         break;
                     }
-                    
-                }
-                    if (!logged){
+                    /*else if (!logged){
                         logAttempts++;
                         System.out.println("Invalid Input. Remaining Tries: " + (3-logAttempts));
                     }
-            }
-                if(!logged){
+                    else if (!logged){
                     System.out.println("You have reached maximum amount of tries.");
                     System.out.println("Program Close...");
                     System.exit(0);
-                }
-                    
-                
-            return false;
+                    }*/
+                }    
+            }
+            return false; 
     }
+    
 
     private static String Encrypt (String Password){ //Encryption Method
         char[] chars = Password.toCharArray(); 
@@ -95,6 +98,10 @@ public class Security{
             }
         return decryptPass;
         
+    }
+
+    void signUp(String UserInput, String PasswordInput, JComboBox Position) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
