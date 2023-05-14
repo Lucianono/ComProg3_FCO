@@ -20,7 +20,7 @@ import javax.swing.JProgressBar;
 
 public class SplashScreen {
     JFrame frm = new JFrame();
-    JProgressBar bar = new JProgressBar();
+    JProgressBar bar = new JProgressBar(0,100);
     
     SplashScreen(){
     bar.setValue(0);
@@ -38,12 +38,15 @@ public class SplashScreen {
     }
     public void fill(){
         int counter = 0;
-        while (counter <= 100)
+        while (counter <= 100){
             bar.setValue(counter);
             
         try{
             Thread.sleep(50);
-        }catch(InterruptedException e){}
+        }catch(InterruptedException e){
+        e.printStackTrace();
+        }
         counter +=1;
+        }
     }
 }
