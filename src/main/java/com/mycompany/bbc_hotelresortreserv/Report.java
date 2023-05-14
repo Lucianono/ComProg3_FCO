@@ -15,5 +15,5 @@ TODO:
 */
 
 public class Report{
- Monthly mnt = new Monthly();
+ yr1 yr2023 = new yr1();
 }

@@ -3,17 +3,16 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Monthly extends JFrame {
+public class yr1 extends JFrame {
     
     private JButton nxtbtn = new JButton("Resources Used");
  
-    public Monthly() {
-        int year = 2024;
-        JFrame mfrm = new JFrame("Year Report");
+    public yr1() {
+        JFrame mfrm = new JFrame("2023");
         JPanel mpnl = new JPanel();
         JLabel lbl1 = new JLabel("January");
         
-        String row [][] = new String[31][3];
+        String row[][] = new String[31][3];
         
         for (String[] row1 : row) {
             for (int i = 0; i < row1.length; i++) {
@@ -35,7 +34,7 @@ public class Monthly extends JFrame {
         
         JLabel lbl2 = new JLabel("February");
         
-        String row2 [][] = new String[28][3];
+        String row2[][] = new String[28][3];
         
         for (String[] row1 : row2) {
             for (int i = 0; i < row1.length; i++) {
@@ -45,14 +44,6 @@ public class Monthly extends JFrame {
         
         for (int i = 0; i < row2.length; i++) {
             row2[i][0] = Integer.toString(i + 1);
-                if (i == 1) {
-                    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-                        row2[i][1] = "29";
-                }
-                else {
-                        row2[i][1] = "28";
-                    }
-                }
         }
         
         String column2[] = {"Day", "Sales", "#ofCustomers"};
@@ -63,6 +54,50 @@ public class Monthly extends JFrame {
         
         rm2.setBounds(30, 40, 300,3000);
         
+        JLabel lbl3 = new JLabel("March");
+        
+        String row3[][] = new String[31][3];
+        
+        for (String[] row1 : row3) {
+            for (int i = 0; i < row1.length; i++) {
+                row1[i] = "";
+            }
+        }
+        
+        for (int i = 0; i < row3.length; i++) {
+            row3[i][0] = Integer.toString(i + 1);
+        }
+        
+        String column3[] = {"Day", "Sales", "#ofCustomers"};
+        
+        JTable rm3 = new JTable(row3, column3);
+        
+        JScrollPane sp3 = new JScrollPane(rm3);
+        
+        rm3.setBounds(30, 40, 300,3000);
+        
+        JLabel lbl4 = new JLabel("April");
+        
+        String row4[][] = new String[30][3];
+        
+        for (String[] row1 : row4) {
+            for (int i = 0; i < row1.length; i++) {
+                row1[i] = "";
+            }
+        }
+        
+        for (int i = 0; i < row4.length; i++) {
+            row4[i][0] = Integer.toString(i + 1);
+        }
+        
+        String column4[] = {"Day", "Sales", "#ofCustomers"};
+        
+        JTable rm4 = new JTable(row4, column4);
+        
+        JScrollPane sp4 = new JScrollPane(rm4);
+        
+        rm4.setBounds(30, 40, 300,3000);
+        
         mpnl.setLayout(new BoxLayout(mpnl, BoxLayout.PAGE_AXIS));
 
         mpnl.add(lbl1);
@@ -70,6 +105,12 @@ public class Monthly extends JFrame {
         
         mpnl.add(lbl2);
         mpnl.add(sp2);
+        
+        mpnl.add(lbl3);
+        mpnl.add(sp3);
+        
+        mpnl.add(lbl4);
+        mpnl.add(sp4);
         
         JScrollPane scrollPane = new JScrollPane(mpnl);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
