@@ -8,34 +8,13 @@ import java.awt.Image;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-    /* jelo note
-    - only make JFrame for TESTING
-    - make a status bar that contains name, age, position. date (if possible)
-    - in the form of 2 by 3 matrix. Logo on the left, Name Age, Position Date
-    - added empty labels para masolo ni logo yung col
-    - 
-    */
+
 public class StatusBar extends JPanel {
-    
-    // extras for TESTING
-    //-----------------------------------------------------------------------//
-    public static void main(String[] args) {
-        StatusBar statBar = new StatusBar("Hello", "Admin");
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(statBar, BorderLayout.NORTH);
-        frame.setSize(600, 400);
-        frame.setVisible(true);
-        statBar.setName("Ike San");
-        statBar.setPos("Admin");
-    }
-    //-----------------------------------------------------------------------//
-    
+      
     private String name;
     private String pos;
     private final JLabel nameLbl;
@@ -89,10 +68,6 @@ public class StatusBar extends JPanel {
 
     setBackground(Color.WHITE);
 }
-
-
-    // setters for values
-    //-----------------------------------------------------------------------//
     @Override
     public void setName(String name) {
         this.name = name;
