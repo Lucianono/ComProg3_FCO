@@ -290,7 +290,6 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
         for(int i = 0; i < hotel.size(); i++){
             addHotelPanel(i,hotel.get(i));
             
-                System.out.println(i);
         }
         hotelSuperPanel.repaint();
         hotelSuperPanel.revalidate();
@@ -304,24 +303,28 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-            
-        hotelSys.addHotel(JOptionPane.showInputDialog("Enter HotelID"),
+        
+            try {
+                String hotelID = JOptionPane.showInputDialog("Enter HotelID");
+                
+                for(int i = 0; i < hotel.size(); i++){
+                    if(hotelSys.getAllHotelID()[i].equalsIgnoreCase(hotelID) ){
+                        JOptionPane.showMessageDialog(null, "ID should be unique!" );
+                        throw new Exception();
+                    }
+                }
+                
+                
+                
+                hotelSys.addHotel(hotelID.toUpperCase(),
                         JOptionPane.showInputDialog("Enter Hotel Type"),true,
                         Integer.parseInt(JOptionPane.showInputDialog("Enter Room Capacity")),
                         Double.parseDouble(JOptionPane.showInputDialog("Enter Regular Rate")),
                         Double.parseDouble(JOptionPane.showInputDialog("Enter Promo Rate")));
                 refreshHotelSuperPanel();
-        
-//            try {
-//                hotelSys.addHotel(JOptionPane.showInputDialog("Enter HotelID"),
-//                        JOptionPane.showInputDialog("Enter Hotel Type"),true,
-//                        Integer.parseInt(JOptionPane.showInputDialog("Enter Room Capacity")),
-//                        Double.parseDouble(JOptionPane.showInputDialog("Enter Regular Rate")),
-//                        Double.parseDouble(JOptionPane.showInputDialog("Enter Promo Rate")));
-//                refreshHotelSuperPanel();
-//            } catch (Exception err) {
-//                JOptionPane.showMessageDialog(null, "Incorrect input!" );
-//            }
+            } catch (Exception err) {
+                JOptionPane.showMessageDialog(null, "Incorrect input!" );
+            }
     }  
     
 }
