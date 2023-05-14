@@ -11,7 +11,7 @@ public class BBCMain {
         HotelCRUD hotel = new HotelCRUD();
         ResourcesCRUD rsrcs = new ResourcesCRUD();
         
-        ReportMonthly rm = new ReportMonthly();
+        Report rm = new Report();
         
     }
 }

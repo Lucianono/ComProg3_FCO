@@ -14,6 +14,6 @@ TODO:
 -BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
 */
 
-public class ReportMonthly {
+public class Report{
  Monthly mnt = new Monthly();
 }

@@ -2,6 +2,8 @@ package com.mycompany.bbc_hotelresortreserv;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Monthly extends JFrame {
     
@@ -12,19 +14,25 @@ public class Monthly extends JFrame {
         JPanel mpnl = new JPanel();
         JLabel lbl1 = new JLabel("January");
         
-        String data[][] = {{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-        {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}};
+        String[][] row = new String[31][3];
         
-        String column[] = {"Sales", "#ofCustomers"};
+        for (String[] row1 : row) {
+            for (int i = 0; i < row1.length; i++) {
+                row1[i] = "";
+            }
+        }
         
-        JTable rm1 = new JTable(data, column);
+        for (int i = 0; i < row.length; i++) {
+            row[i][0] = Integer.toString(i + 1);
+        }
+        
+        String column[] = {"Day", "Sales", "#ofCustomers"};
+        
+        JTable rm1 = new JTable(row, column);
         
         JScrollPane sp1 = new JScrollPane(rm1);
         
-        rm1.setBounds(30, 40, 300,300);
+        rm1.setBounds(30, 40, 300,3000);
         
         nxtbtn.addActionListener(new ActionListener(){
             @Override
@@ -48,7 +56,7 @@ public class Monthly extends JFrame {
         
         JScrollPane sp2 = new JScrollPane(rm2);
         
-        rm1.setBounds(30, 40, 300,300);
+        rm2.setBounds(30, 40, 300,300);
         
         nxtbtn.addActionListener(new ActionListener(){
             @Override
@@ -69,7 +77,7 @@ public class Monthly extends JFrame {
         JScrollPane scrollPane = new JScrollPane(mpnl);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
-        mfrm.add(scrollPane);;
+        mfrm.add(scrollPane);
         mfrm.setSize(600, 400);
         mfrm.setVisible(true);
         mfrm.setResizable(false);
