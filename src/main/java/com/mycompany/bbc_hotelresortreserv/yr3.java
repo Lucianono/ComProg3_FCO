@@ -2,15 +2,15 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class yr1 extends JFrame {
+public class yr3 extends JFrame {
     
     private JButton nxtbtn = new JButton("Resources Used");
     private final String[] months = {"January", "February", "March", "April", 
         "May", "June", "July", "August", "September", "October", "November", "December"};
     private final String[] columnNames = {"Day of Month" , "Sales", "No of Customers"};
     
-    public yr1() {
-        JFrame mfrm = new JFrame("2023");
+    public yr3() {
+        JFrame mfrm = new JFrame("2025");
         JPanel mpnl = new JPanel();
         
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
