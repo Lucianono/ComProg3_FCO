@@ -277,6 +277,15 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         chkInBtn.setEnabled(chosen);
         chkOutBtn.setEnabled(chosen);
         xtraBtn.setEnabled(chosen);
+        
+        if(chosen){
+        chkInBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedIn());
+        chkOutBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedOut() && transactionsCompleted.getTransaction(transSelectedID).isCheckedIn());
+        xtraBtn.setEnabled(!transactionsCompleted.getTransaction(transSelectedID).isCheckedOut());
+        }
+        
+        
+        
     }
     
     
@@ -484,7 +493,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     }
     //submit orders
     private void confirmOrder(){
-        System.out.println("-a");
         Resources [] resoOrdered = new Resources[resoMaxVal]  ;
         Double totalAmount = 0.0;
         int resoCount = 0;
@@ -497,7 +505,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             for(int k = 0; k < resoMaxVal ; k++){
                 if(transactionsCompleted.getTransaction(transSelectedID).getResoUsed()!= null &&  transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[k]!=null && reso.get(i).getItemID() == transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[k].getItemID()){
                     totalQtyOrdered += transactionsCompleted.getTransaction(transSelectedID).getResoUsed()[k].getQty();
-                    System.out.println(totalQtyOrdered + "a");
                     break;
                 }
             }
@@ -505,7 +512,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             if(totalQtyOrdered>0){
                 Double amount = Integer.parseInt(qtyCountLbl[i].getText()) * reso.get(i).getPrice();
-                System.out.println(totalQtyOrdered + "b");
                 reso.get(i).setQty(reso.get(i).getQty()- Integer.parseInt(qtyCountLbl[i].getText()));
                 totalAmount += amount;
                 resoOrdered[resoCount] = resourcesInv.orderItem(reso.get(i).getItemID(), totalQtyOrdered);
@@ -515,7 +521,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
         }
         transactionsCompleted.getTransaction(transSelectedID).setResoUsed(resoOrdered);
-        System.out.println("c");
     }
             
     
@@ -551,6 +556,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             }
             
             fullCustInfoDisplay(t);
+            refreshBtns();
             
         }
         else if (e.getSource()==chkOutBtn){
@@ -580,17 +586,18 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
             
             
             fullCustInfoDisplay(t);
+            refreshBtns();
             
         }
         else if (e.getSource()==xtraBtn){
             
             openResourcesOrderGUI();
             
+            
         }
         if(e.getSource()==confirmBtn){
             
             confirmOrder();
-            System.out.println("-b");
             fullCustInfoDisplay(transactionsCompleted.getTransaction(transSelectedID));
             frame2.dispose();
             
