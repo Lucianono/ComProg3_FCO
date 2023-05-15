@@ -1,8 +1,6 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -23,7 +21,7 @@ TODOs:
 public class LoginSignupFormGUI extends Security implements ActionListener{
         
     //for signUp
-    public static String[] Choice = {"Admin", "Staff"};
+    String[] Choice = {"Admin", "Staff"};
     
     JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
@@ -53,15 +51,46 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
 
     
-    
-    JComboBox Position = new JComboBox(Choice);    
-    JButton CreateAcc, Back;
-    JTextField userText2, passwordText2, cpText;
-    JLabel usernameLabel2, passwordLabel2, cpLabel, PosLabel;
+    JPanel bjPanel1 = new JPanel();
+    Box.Filler bfiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
+    JPanel bjPanel8 = new JPanel();
+    JPanel bjPanel9 = new JPanel();
+    JPanel bjPanel2 = new JPanel();
+    JPanel bjPanel11 = new JPanel();
+    JLabel bjLabel3 = new JLabel();
+    JPanel bjPanel12 = new JPanel();
+    JLabel bjLabel4 = new JLabel();
+    JPanel bjPanel13 = new JPanel();
+    Box.Filler bfiller5 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
+    JPanel bjPanel14 = new JPanel();
+    JPanel bjPanel3 = new JPanel();
+    JLabel usernameLabel2 = new JLabel();
+    JPanel bjPanel4 = new JPanel();
+    JTextField userText2 = new JTextField();
+    JPanel bjPanel5 = new JPanel();
+    JLabel passwordLabel2 = new JLabel();
+    JPanel bjPanel6 = new JPanel();
+    JTextField passwordText2 = new JTextField();
+    JPanel jPanel10 = new JPanel();
+    JPanel bjPanel18 = new JPanel();
+    JLabel cLabel = new JLabel();
+    JLabel pLabel = new JLabel();
+    JPanel bjPanel15 = new JPanel();
+    JTextField cpText = new JTextField();
+    JPanel bjPanel16 = new JPanel();
+    JLabel PosLabel = new JLabel();
+    JPanel bjPanel17 = new JPanel();
+    JComboBox<String> Position = new JComboBox<>(Choice);
+    JPanel bjPanel7 = new JPanel();
+    JButton CreateAcc = new JButton();
+    JButton Back = new JButton();
+    Box.Filler bfiller6 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
+    Box.Filler bfiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
+    JFrame frame2 = new JFrame();
+
     
     int i = 0; //counter signup
-    JFrame frame2 = new JFrame();
-    
+        
     Security security = new Security();
 
     
@@ -129,7 +158,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         jPanel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         userText.setFont(new Font("Arial", 0, 14)); // NOI18N
-        userText.setHorizontalAlignment(JTextField.RIGHT);
+        userText.setHorizontalAlignment(JTextField.LEFT);
         userText.setPreferredSize(new Dimension(200, 22));
         jPanel4.add(userText);
 
@@ -148,7 +177,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         jPanel6.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         passwordText.setFont(new Font("Arial", 0, 14)); // NOI18N
-        passwordText.setHorizontalAlignment(JTextField.RIGHT);
+        passwordText.setHorizontalAlignment(JTextField.LEFT);
         passwordText.setPreferredSize(new Dimension(200, 22));
         jPanel6.add(passwordText);
 
@@ -190,86 +219,160 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     }
         
     private void SignUp(){
-        JPanel panel2 = new JPanel();
-        
-        
-        
-        panel2.setLayout(null);
-        
-        //Username Label
-        usernameLabel2 = new JLabel("Username : ");
-        usernameLabel2.setBounds(180, 20, 250, 250);
-        panel2.add(usernameLabel2);
-        
-        //Password Label
-        passwordLabel2 = new JLabel("Password : ");
-        passwordLabel2.setBounds(180, 50, 250, 250);
-        panel2.add(passwordLabel2);
-        
-        //Position Label
-        PosLabel = new JLabel("Position : ");
-        PosLabel.setBounds(193, 107, 250, 250);
-        panel2.add(PosLabel);
-        
-        //UsernameField
-        userText2 = new JTextField(50);
-        userText2.setBounds(250, 131, 165, 25);
-        panel2.add(userText2); 
 
-        //Password Field
-        passwordText2 = new JPasswordField();
-        passwordText2.setBounds(250,161,165,25);
-        panel2.add (passwordText2);
+        bjPanel1.setLayout(new BoxLayout(bjPanel1, BoxLayout.Y_AXIS));
+        bjPanel1.add(bfiller2);
+
+        bjPanel8.setMinimumSize(new Dimension(438, 400));
+        bjPanel8.setPreferredSize(null);
+
+        bjPanel9.setMinimumSize(new Dimension(428, 300));
+        bjPanel9.setPreferredSize(new Dimension(400, 300));
+        bjPanel9.setLayout(new BoxLayout(bjPanel9, BoxLayout.Y_AXIS));
+
+        bjPanel2.setMinimumSize(new Dimension(430, 204));
+        bjPanel2.setPreferredSize(new Dimension(500, 200));
+        bjPanel2.setLayout(new BoxLayout(bjPanel2, BoxLayout.Y_AXIS));
+
+        bjPanel11.setPreferredSize(new Dimension(648, 10));
+
+        bjLabel3.setFont(new Font("Verdana", 1, 24)); // NOI18N
+        bjLabel3.setHorizontalAlignment(SwingConstants.CENTER);
+        bjLabel3.setText("Welcome new user!");
+        bjPanel11.add(bjLabel3);
+
+        bjPanel2.add(bjPanel11);
+
+        bjPanel12.setPreferredSize(new Dimension(300, 10));
+
+        bjLabel4.setFont(new Font("Arial Narrow", 0, 18)); // NOI18N
+        bjLabel4.setHorizontalAlignment(SwingConstants.CENTER);
+        bjLabel4.setText("Create an account");
+        bjPanel12.add(bjLabel4);
+
+        bjPanel2.add(bjPanel12);
+
+        bjPanel13.setPreferredSize(new Dimension(500, 110));
+        bjPanel13.setLayout(new BoxLayout(bjPanel13, BoxLayout.X_AXIS));
+        bjPanel13.add(bfiller5);
+
+        bjPanel14.setPreferredSize(new Dimension(250, 110));
+        bjPanel14.setRequestFocusEnabled(false);
+        bjPanel14.setLayout(new BoxLayout(bjPanel14, BoxLayout.Y_AXIS));
+
+        bjPanel3.setPreferredSize(new Dimension(300, 35));
+        bjPanel3.setLayout(new BoxLayout(bjPanel3, BoxLayout.X_AXIS));
+
+        usernameLabel2.setFont(new Font("Arial", 1, 14)); // NOI18N
+        usernameLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+        usernameLabel2.setText("Username : ");
+        bjPanel3.add(usernameLabel2);
+
+        bjPanel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        userText2.setFont(new Font("Arial", 0, 14)); // NOI18N
+        userText2.setHorizontalAlignment(JTextField.LEFT);
+        userText2.setPreferredSize(new Dimension(200, 22));
         
-        cpText = new JPasswordField(20);
-        cpText.setBounds(250, 191, 165, 25);
-        panel2.add(cpText);
-        
-        //Position Combo Box
-        Position.setBounds(250,221,165,25);
-        panel2.add(Position);
-        
-        
-        //Create Btn
-        CreateAcc = new JButton("Create");
-        CreateAcc.setBounds(250, 261, 80, 25);
+        bjPanel4.add(userText2);
+
+        bjPanel3.add(bjPanel4);
+
+        bjPanel14.add(bjPanel3);
+
+        bjPanel5.setPreferredSize(new Dimension(300, 35));
+        bjPanel5.setLayout(new BoxLayout(bjPanel5, BoxLayout.X_AXIS));
+
+        passwordLabel2.setFont(new Font("Arial", 1, 14)); // NOI18N
+        passwordLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+        passwordLabel2.setText("Password : ");
+        bjPanel5.add(passwordLabel2);
+
+        bjPanel6.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        passwordText2.setFont(new Font("Arial", 0, 14)); // NOI18N
+        passwordText2.setHorizontalAlignment(JTextField.LEFT);
+        passwordText2.setPreferredSize(new Dimension(200, 22));
+        bjPanel6.add(passwordText2);
+
+        bjPanel5.add(bjPanel6);
+
+        bjPanel14.add(bjPanel5);
+
+        jPanel10.setPreferredSize(new Dimension(300, 35));
+        jPanel10.setLayout(new BoxLayout(jPanel10, BoxLayout.X_AXIS));
+
+        bjPanel18.setLayout(new BoxLayout(bjPanel18, BoxLayout.Y_AXIS));
+
+        cLabel.setFont(new Font("Arial", 1, 14)); // NOI18N
+        cLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        cLabel.setText("Confirm");
+        bjPanel18.add(cLabel);
+
+        pLabel.setFont(new Font("Arial", 1, 14)); // NOI18N
+        pLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        pLabel.setText("Password : ");
+        bjPanel18.add(pLabel);
+
+        jPanel10.add(bjPanel18);
+
+        bjPanel15.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        cpText.setFont(new Font("Arial", 0, 14)); // NOI18N
+        cpText.setHorizontalAlignment(JTextField.LEFT);
+        cpText.setPreferredSize(new Dimension(200, 22));
+        bjPanel15.add(cpText);
+
+        jPanel10.add(bjPanel15);
+
+        bjPanel14.add(jPanel10);
+
+        bjPanel16.setPreferredSize(new Dimension(300, 35));
+        bjPanel16.setLayout(new BoxLayout(bjPanel16, BoxLayout.X_AXIS));
+
+        PosLabel.setFont(new Font("Arial", 1, 14)); // NOI18N
+        PosLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        PosLabel.setText("Position : ");
+        bjPanel16.add(PosLabel);
+
+        bjPanel17.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        Position.setPreferredSize(new Dimension(100, 22));
+        bjPanel17.add(Position);
+
+        bjPanel16.add(bjPanel17);
+
+        bjPanel14.add(bjPanel16);
+
+        CreateAcc.setText("Sign Up");
         CreateAcc.addActionListener(this);
-        panel2.add(CreateAcc);
-        
-        //BackpButton 
-        Back = new JButton("Back");
-        Back.setBounds(335, 261, 80, 25);
+        bjPanel7.add(CreateAcc);
+
+        Back.setText("Cancel");
         Back.addActionListener(this);
-        panel2.add(Back);
-        
-        
-        
-        
-        
+        bjPanel7.add(Back);
+
+        bjPanel14.add(bjPanel7);
+
+        bjPanel13.add(bjPanel14);
+        bjPanel13.add(bfiller6);
+
+        bjPanel2.add(bjPanel13);
+
+        bjPanel9.add(bjPanel2);
+
+        bjPanel8.add(bjPanel9);
+
+        bjPanel1.add(bjPanel8);
+        bjPanel1.add(bfiller1);
+
+        frame2.add(bjPanel1, BorderLayout.CENTER);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setResizable(false);
         frame2.setTitle("Login and SignUp Form");
         frame2.setSize(600,400);
+        frame2.setLocationRelativeTo(null);
         frame2.setVisible(true);
-        frame2.setLayout(null);
-        
-        frame2.add(usernameLabel2);
-        frame2.add(passwordLabel2);
-        
-       // frame.add(button);
-        frame2.add(panel2);
-        frame2.add(userText2);
-        
-       // frame.add(passText);
-        frame2.add(cpText);
-        frame2.add(cpLabel);
-        frame2.add(passwordText2);
-        frame2.add(CreateAcc);
-        frame2.add(Back);
-        frame2.add(Position);
-        frame2.add(PosLabel);
-        //frame.add(Position);
-        
         
     }
     

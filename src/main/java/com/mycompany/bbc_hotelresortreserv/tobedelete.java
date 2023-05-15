@@ -26,189 +26,190 @@ public class tobedelete extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel14 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        bjPanel1 = new javax.swing.JPanel();
+        bfiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        bjPanel8 = new javax.swing.JPanel();
+        bjPanel9 = new javax.swing.JPanel();
+        bjPanel2 = new javax.swing.JPanel();
+        bjPanel11 = new javax.swing.JPanel();
+        bjLabel3 = new javax.swing.JLabel();
+        bjPanel12 = new javax.swing.JPanel();
+        bjLabel4 = new javax.swing.JLabel();
+        bjPanel13 = new javax.swing.JPanel();
+        bfiller5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        bjPanel14 = new javax.swing.JPanel();
+        bjPanel3 = new javax.swing.JPanel();
+        bjLabel1 = new javax.swing.JLabel();
+        bjPanel4 = new javax.swing.JPanel();
+        bjTextField1 = new javax.swing.JTextField();
+        bjPanel5 = new javax.swing.JPanel();
+        bjLabel2 = new javax.swing.JLabel();
+        bjPanel6 = new javax.swing.JPanel();
+        bjTextField2 = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        bjPanel18 = new javax.swing.JPanel();
+        bjLabel5 = new javax.swing.JLabel();
+        bjLabel7 = new javax.swing.JLabel();
+        bjPanel15 = new javax.swing.JPanel();
+        btxt = new javax.swing.JTextField();
+        bjPanel16 = new javax.swing.JPanel();
+        bjLabel6 = new javax.swing.JLabel();
+        bjPanel17 = new javax.swing.JPanel();
+        bjComboBox1 = new javax.swing.JComboBox<>();
+        bjPanel7 = new javax.swing.JPanel();
+        bjButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        bfiller6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        bfiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
-        jPanel1.add(filler2);
+        bjPanel1.setLayout(new javax.swing.BoxLayout(bjPanel1, javax.swing.BoxLayout.Y_AXIS));
+        bjPanel1.add(bfiller2);
 
-        jPanel8.setMinimumSize(new java.awt.Dimension(438, 400));
+        bjPanel8.setMinimumSize(new java.awt.Dimension(438, 400));
+        bjPanel8.setPreferredSize(null);
 
-        jPanel9.setMinimumSize(new java.awt.Dimension(428, 300));
-        jPanel9.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.Y_AXIS));
+        bjPanel9.setMinimumSize(new java.awt.Dimension(428, 300));
+        bjPanel9.setPreferredSize(new java.awt.Dimension(400, 300));
+        bjPanel9.setLayout(new javax.swing.BoxLayout(bjPanel9, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel2.setMinimumSize(new java.awt.Dimension(430, 204));
-        jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+        bjPanel2.setMinimumSize(new java.awt.Dimension(430, 204));
+        bjPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
+        bjPanel2.setLayout(new javax.swing.BoxLayout(bjPanel2, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel11.setPreferredSize(new java.awt.Dimension(648, 10));
+        bjPanel11.setPreferredSize(new java.awt.Dimension(648, 10));
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Welcome new user!");
-        jPanel11.add(jLabel3);
+        bjLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        bjLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bjLabel3.setText("Welcome new user!");
+        bjPanel11.add(bjLabel3);
 
-        jPanel2.add(jPanel11);
+        bjPanel2.add(bjPanel11);
 
-        jPanel12.setPreferredSize(new java.awt.Dimension(300, 10));
+        bjPanel12.setPreferredSize(new java.awt.Dimension(300, 10));
 
-        jLabel4.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Create an account");
-        jPanel12.add(jLabel4);
+        bjLabel4.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        bjLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bjLabel4.setText("Create an account");
+        bjPanel12.add(bjLabel4);
 
-        jPanel2.add(jPanel12);
+        bjPanel2.add(bjPanel12);
 
-        jPanel13.setPreferredSize(new java.awt.Dimension(500, 110));
-        jPanel13.setLayout(new javax.swing.BoxLayout(jPanel13, javax.swing.BoxLayout.X_AXIS));
-        jPanel13.add(filler5);
+        bjPanel13.setPreferredSize(new java.awt.Dimension(500, 110));
+        bjPanel13.setLayout(new javax.swing.BoxLayout(bjPanel13, javax.swing.BoxLayout.X_AXIS));
+        bjPanel13.add(bfiller5);
 
-        jPanel14.setPreferredSize(new java.awt.Dimension(250, 110));
-        jPanel14.setRequestFocusEnabled(false);
-        jPanel14.setLayout(new javax.swing.BoxLayout(jPanel14, javax.swing.BoxLayout.Y_AXIS));
+        bjPanel14.setPreferredSize(new java.awt.Dimension(250, 110));
+        bjPanel14.setRequestFocusEnabled(false);
+        bjPanel14.setLayout(new javax.swing.BoxLayout(bjPanel14, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(300, 35));
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.X_AXIS));
+        bjPanel3.setPreferredSize(new java.awt.Dimension(300, 35));
+        bjPanel3.setLayout(new javax.swing.BoxLayout(bjPanel3, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setText("Username : ");
-        jPanel3.add(jLabel1);
+        bjLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bjLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bjLabel1.setText("Username : ");
+        bjPanel3.add(bjLabel1);
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        bjPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 22));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        bjTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        bjTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        bjTextField1.setPreferredSize(new java.awt.Dimension(200, 22));
+        bjTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                bjTextField1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField1);
+        bjPanel4.add(bjTextField1);
 
-        jPanel3.add(jPanel4);
+        bjPanel3.add(bjPanel4);
 
-        jPanel14.add(jPanel3);
+        bjPanel14.add(bjPanel3);
 
-        jPanel5.setPreferredSize(new java.awt.Dimension(300, 35));
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.X_AXIS));
+        bjPanel5.setPreferredSize(new java.awt.Dimension(300, 35));
+        bjPanel5.setLayout(new javax.swing.BoxLayout(bjPanel5, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Password : ");
-        jPanel5.add(jLabel2);
+        bjLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bjLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bjLabel2.setText("Password : ");
+        bjPanel5.add(bjLabel2);
 
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        bjPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField2.setPreferredSize(new java.awt.Dimension(200, 22));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        bjTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        bjTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        bjTextField2.setPreferredSize(new java.awt.Dimension(200, 22));
+        bjTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                bjTextField2ActionPerformed(evt);
             }
         });
-        jPanel6.add(jTextField2);
+        bjPanel6.add(bjTextField2);
 
-        jPanel5.add(jPanel6);
+        bjPanel5.add(bjPanel6);
 
-        jPanel14.add(jPanel5);
+        bjPanel14.add(bjPanel5);
 
         jPanel10.setPreferredSize(new java.awt.Dimension(300, 35));
         jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel18.setLayout(new javax.swing.BoxLayout(jPanel18, javax.swing.BoxLayout.Y_AXIS));
+        bjPanel18.setLayout(new javax.swing.BoxLayout(bjPanel18, javax.swing.BoxLayout.Y_AXIS));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Confirm");
-        jPanel18.add(jLabel5);
+        bjLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bjLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bjLabel5.setText("Confirm");
+        bjPanel18.add(bjLabel5);
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Password : ");
-        jPanel18.add(jLabel7);
+        bjLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bjLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bjLabel7.setText("Password : ");
+        bjPanel18.add(bjLabel7);
 
-        jPanel10.add(jPanel18);
+        jPanel10.add(bjPanel18);
 
-        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        bjPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField3.setPreferredSize(new java.awt.Dimension(200, 22));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        btxt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btxt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        btxt.setPreferredSize(new java.awt.Dimension(200, 22));
+        btxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                btxtActionPerformed(evt);
             }
         });
-        jPanel15.add(jTextField3);
+        bjPanel15.add(btxt);
 
-        jPanel10.add(jPanel15);
+        jPanel10.add(bjPanel15);
 
-        jPanel14.add(jPanel10);
+        bjPanel14.add(jPanel10);
 
-        jPanel16.setPreferredSize(new java.awt.Dimension(300, 35));
-        jPanel16.setLayout(new javax.swing.BoxLayout(jPanel16, javax.swing.BoxLayout.X_AXIS));
+        bjPanel16.setPreferredSize(new java.awt.Dimension(300, 35));
+        bjPanel16.setLayout(new javax.swing.BoxLayout(bjPanel16, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("Position : ");
-        jPanel16.add(jLabel6);
+        bjLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bjLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bjLabel6.setText("Position : ");
+        bjPanel16.add(bjLabel6);
 
-        jPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        bjPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(100, 22));
-        jPanel17.add(jComboBox1);
+        bjComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bjComboBox1.setPreferredSize(new java.awt.Dimension(100, 22));
+        bjPanel17.add(bjComboBox1);
 
-        jPanel16.add(jPanel17);
+        bjPanel16.add(bjPanel17);
 
-        jPanel14.add(jPanel16);
+        bjPanel14.add(bjPanel16);
 
-        jButton1.setText("Sign Up");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bjButton1.setText("Sign Up");
+        bjButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bjButton1ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1);
+        bjPanel7.add(bjButton1);
 
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -216,42 +217,42 @@ public class tobedelete extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton2);
+        bjPanel7.add(jButton2);
 
-        jPanel14.add(jPanel7);
+        bjPanel14.add(bjPanel7);
 
-        jPanel13.add(jPanel14);
-        jPanel13.add(filler6);
+        bjPanel13.add(bjPanel14);
+        bjPanel13.add(bfiller6);
 
-        jPanel2.add(jPanel13);
+        bjPanel2.add(bjPanel13);
 
-        jPanel9.add(jPanel2);
+        bjPanel9.add(bjPanel2);
 
-        jPanel8.add(jPanel9);
+        bjPanel8.add(bjPanel9);
 
-        jPanel1.add(jPanel8);
-        jPanel1.add(filler1);
+        bjPanel1.add(bjPanel8);
+        bjPanel1.add(bfiller1);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(bjPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void bjTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_bjTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void bjTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_bjTextField2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bjButton1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void btxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_btxtActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -293,40 +294,40 @@ public class tobedelete extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler6;
-    private javax.swing.JButton jButton1;
+    private javax.swing.Box.Filler bfiller1;
+    private javax.swing.Box.Filler bfiller2;
+    private javax.swing.Box.Filler bfiller5;
+    private javax.swing.Box.Filler bfiller6;
+    private javax.swing.JButton bjButton1;
+    private javax.swing.JComboBox<String> bjComboBox1;
+    private javax.swing.JLabel bjLabel1;
+    private javax.swing.JLabel bjLabel2;
+    private javax.swing.JLabel bjLabel3;
+    private javax.swing.JLabel bjLabel4;
+    private javax.swing.JLabel bjLabel5;
+    private javax.swing.JLabel bjLabel6;
+    private javax.swing.JLabel bjLabel7;
+    private javax.swing.JPanel bjPanel1;
+    private javax.swing.JPanel bjPanel11;
+    private javax.swing.JPanel bjPanel12;
+    private javax.swing.JPanel bjPanel13;
+    private javax.swing.JPanel bjPanel14;
+    private javax.swing.JPanel bjPanel15;
+    private javax.swing.JPanel bjPanel16;
+    private javax.swing.JPanel bjPanel17;
+    private javax.swing.JPanel bjPanel18;
+    private javax.swing.JPanel bjPanel2;
+    private javax.swing.JPanel bjPanel3;
+    private javax.swing.JPanel bjPanel4;
+    private javax.swing.JPanel bjPanel5;
+    private javax.swing.JPanel bjPanel6;
+    private javax.swing.JPanel bjPanel7;
+    private javax.swing.JPanel bjPanel8;
+    private javax.swing.JPanel bjPanel9;
+    private javax.swing.JTextField bjTextField1;
+    private javax.swing.JTextField bjTextField2;
+    private javax.swing.JTextField btxt;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
