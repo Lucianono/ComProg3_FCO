@@ -10,6 +10,6 @@ public class BBCMain {
         CustomerCRUD cstmr = new CustomerCRUD();
         HotelCRUD hotel = new HotelCRUD();
         ResourcesCRUD rsrcs = new ResourcesCRUD();
-        
+        HelpAbout hp = new HelpAbout ();
     }
 }
