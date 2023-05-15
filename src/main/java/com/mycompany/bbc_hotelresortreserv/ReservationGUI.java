@@ -512,7 +512,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             btnRsrv100.setEnabled(true);
         }
             
-    }
+    }//
     
     
     
