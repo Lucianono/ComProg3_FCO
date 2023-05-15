@@ -270,9 +270,10 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                                 passwordText2.setText("");
                                 userText2.setText("");
                                 cpText.setText("");
+                                break;
                             }
                             else{
-                                passwordText2.setText("");
+                            passwordText2.setText("");
                             userText2.setText("");
                             cpText.setText("");
                             JOptionPane.showMessageDialog(null, "Successfully Created an Account...");
@@ -289,6 +290,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         else if(e.getSource() == Back){
             System.out.println("back");
             frame2.setVisible(false);
+            
         }    
     }
 }
