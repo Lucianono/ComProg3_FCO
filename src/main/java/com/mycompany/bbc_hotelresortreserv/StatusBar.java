@@ -2,6 +2,7 @@ package com.mycompany.bbc_hotelresortreserv;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -23,39 +24,52 @@ public class StatusBar extends JPanel {
     private final JLabel timeLbl;
     private final ImageIcon logoImg;
     private final JLabel logoLbl;
+    
+    private final JPanel leftPnl;
+    private final JPanel rightPnl;
 
 
     public StatusBar(String name, String position) {
-    setLayout(new GridLayout(1, 5)); 
-
+    setLayout(new GridLayout(1, 2)); 
+    
+    leftPnl = new JPanel();
+    rightPnl = new JPanel();
+    rightPnl.setLayout(new GridLayout(2, 2));
+    leftPnl.setLayout(new BorderLayout( ));
+    rightPnl.setBackground(new Color(Color.TRANSLUCENT));
+    leftPnl.setBackground(new Color(Color.TRANSLUCENT));
+    
       
-    logoImg = new ImageIcon("src\\main\\resources\\images\\firstlogo.png");
+    logoImg = new ImageIcon("src/main/resources/images/logo_orig_side.png");
     Image logo = logoImg.getImage();
-    Image scaledLogo = logo.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+    Image scaledLogo = logo.getScaledInstance(logoImg.getIconWidth()/10, logoImg.getIconHeight()/10, Image.SCALE_SMOOTH);
     logoLbl = new JLabel(new ImageIcon(scaledLogo));
-    logoLbl.setVerticalAlignment(SwingConstants.NORTH);
-    logoLbl.setHorizontalAlignment(SwingConstants.CENTER);
-    add(logoLbl);
+    logoLbl.setHorizontalAlignment(SwingConstants.LEFT);
+    leftPnl.add(logoLbl,BorderLayout.CENTER);
 
     this.name = name;
     nameLbl = new JLabel("Name: " + this.name);
     nameLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
-    add(nameLbl);
+    rightPnl.add(nameLbl);
   
     this.pos = position;
     positionLbl = new JLabel("Position: " + this.pos);
     positionLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
-    add(positionLbl);
+    rightPnl.add(positionLbl);
  
 
     dateLbl = new JLabel();
     dateLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
-    add(dateLbl);
+    rightPnl.add(dateLbl);
  
     timeLbl = new JLabel();
     timeLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
-    add(timeLbl);
+    rightPnl.add(timeLbl);
 
+    setPreferredSize(new Dimension(getWidth(),40));
+    add(leftPnl);
+    add(rightPnl);
+    
     Timer timer = new Timer(1000, e -> updateDateTime());
     timer.start();
 
@@ -78,8 +92,8 @@ public class StatusBar extends JPanel {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String formattedDate = now.format(dateFormatter);
         String formattedTime = now.format(timeFormatter);
-        dateLbl.setText("Date: " + formattedDate);
-        timeLbl.setText("Time: " + formattedTime);
+        dateLbl.setText("" + formattedDate);
+        timeLbl.setText("" + formattedTime);
     }
 
     
