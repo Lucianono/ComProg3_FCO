@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class SplashScreen {
     JFrame frm = new JFrame();
-    JLabel title1 = new JLabel("Black Beans Company");
+    JLabel title1;
     JLabel title2 = new JLabel("copyright 2023");
     JLabel logo = new JLabel();
     JProgressBar bar = new JProgressBar(0,100);
@@ -31,45 +31,49 @@ public class SplashScreen {
     
     
     SplashScreen() {
-    compPanel.setLayout(new BoxLayout(compPanel, BoxLayout.Y_AXIS));
-    mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        ImageIcon logoImg = new ImageIcon("src/main/resources/images/logo_orig.png");
+        Image logoVar = logoImg.getImage().getScaledInstance(logoImg.getIconWidth()/8, logoImg.getIconHeight()/8, Image.SCALE_SMOOTH);
 
-    bar.setValue(0);
-    bar.setBounds(0, 0, 400, 40);
-    bar.setStringPainted(true);
-    bar.setFont(new Font("Arial", Font.BOLD, 9));
-    bar.setForeground(Color.BLUE);
-    bar.setBackground(Color.WHITE);
-    p2.add(bar);
+        title1 = new JLabel(new ImageIcon(logoVar));
+        compPanel.setLayout(new BoxLayout(compPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-    title1.setFont(new Font("Arial", Font.BOLD, 25));
-    p1.add(title1);
+        bar.setValue(0);
+        bar.setBounds(0, 0, 400, 40);
+        bar.setStringPainted(true);
+        bar.setFont(new Font("Arial", Font.BOLD, 9));
+        bar.setForeground(Color.BLUE);
+        bar.setBackground(Color.WHITE);
+        p2.add(bar);
 
-    title2.setFont(new Font("Arial", Font.BOLD, 9));
-    title2.setForeground(Color.GRAY);
-    p3.add(title2);
+        title1.setFont(new Font("Arial", Font.BOLD, 25));
+        p1.add(title1);
 
-    p4.add(logo);
+        title2.setFont(new Font("Arial", Font.BOLD, 9));
+        title2.setForeground(Color.GRAY);
+        p3.add(title2);
 
-    compPanel.add(p4);
-    compPanel.add(p1);
-    compPanel.add(p2);
-    compPanel.add(p3);
-    compPanel.setPreferredSize(compPanel.getPreferredSize());
-    mainPanel.add(compPanel);
-    frm.setLayout(new BoxLayout(frm.getContentPane(), BoxLayout.Y_AXIS));
-    frm.add(Box.createVerticalGlue());
-    mainPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-    mainPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
-    frm.add(mainPanel);
-    frm.add(Box.createVerticalGlue());
-    frm.setSize(600, 400);
-    frm.setVisible(true);
-    frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frm.setLocationRelativeTo(null);
+        p4.add(logo);
 
-    fill();
-}
+        compPanel.add(p4);
+        compPanel.add(p1);
+        compPanel.add(p2);
+        compPanel.add(p3);
+        compPanel.setPreferredSize(compPanel.getPreferredSize());
+        mainPanel.add(compPanel);
+        frm.setLayout(new BoxLayout(frm.getContentPane(), BoxLayout.Y_AXIS));
+        frm.add(Box.createVerticalGlue());
+        mainPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        frm.add(mainPanel);
+        frm.add(Box.createVerticalGlue());
+        frm.setSize(600, 400);
+        frm.setVisible(true);
+        frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frm.setLocationRelativeTo(null);
+
+        fill();
+    }   
 
     public void fill(){
         int counter = 0;
