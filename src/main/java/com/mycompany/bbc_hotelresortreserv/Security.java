@@ -24,11 +24,11 @@ public class Security{
         */
     }
         
-    public boolean signUp(String username, String password, String position) { //signUp method
+    public void signUp(String username, String password, String position) { //signUp method
             for (String user1 : user) {
                 if (user1.equals(username)) {
                     System.out.println("already taken");
-                    return false; //username already taken
+                    //return false; //username already taken
                 }
             }
 
@@ -50,8 +50,8 @@ public class Security{
         user = newusernames;
         pass = newpasswords;
         pos = newposition;
+        //return true;
         System.out.println("created successfully");
-        return true;
 }  
     public boolean logIn (String username, String password){ //logIn Method
         

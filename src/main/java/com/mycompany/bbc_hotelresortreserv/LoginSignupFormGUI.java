@@ -32,6 +32,9 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     JTextField userText, passwordText;
     JLabel usernameLabel, passwordLabel;
     
+    //Jpanel For signup
+    JPanel panel2 = new JPanel();
+    
     //for signUp
     public static String[] Choice = {"Admin", "Staff"};
     public static JComboBox Position = new JComboBox(Choice);    
@@ -42,8 +45,9 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     public static int i = 0; //counter signup
     public static JFrame frame2 = new JFrame();
     
+    
     Security security = new Security();
-
+    
     
     LoginSignupFormGUI(){
         JPanel panel = new JPanel();
@@ -97,9 +101,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         SignUpButton.addActionListener(this);
         panel.add(SignUpButton);
         
-        
-        
-        
+
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -119,16 +121,14 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         frame.add(LoginButton);
         frame.add(SignUpButton);
         frame.add(Position);
+        
+        
+        
+        
+        
         //For Signup
         
-        
-    }
-        
-    private void SignUp(){
-        JPanel panel2 = new JPanel();
-        
-        
-        
+
         panel2.setLayout(null);
         
         //Username Label
@@ -177,9 +177,11 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         Back.addActionListener(this);
         panel2.add(Back);
         
+    }
         
+    private void SignUp(){
         
-        
+
         
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setResizable(false);
@@ -215,6 +217,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         String PasswordInput = passwordText.getText();
         String SelectedPosition = (String) Position.getSelectedItem();
         
+        String ConfirmPassword = cpText.getText();
         String UserInput2 = userText.getText();
         String PasswordInput2 = passwordText.getText();
        
@@ -247,20 +250,36 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                 }
             }
         }
-        
+        //signUp
         else if(e.getSource() == SignUpButton){
             SignUp();
-            security.signUp(UserInput2, PasswordInput2, SelectedPosition);
-
-            if(e.getSource() == CreateAcc){
-                System.out.println("ASD");
-                passwordText2.setText("");
-                userText2.setText("");
-            }
-            else if(e.getSource() == Back){
-                frame2.setVisible(false);
-            } 
-    
         }
+            //Create
+        if(e.getSource() == CreateAcc){
+                //checks empty input
+                if(UserInput.isEmpty() && PasswordInput.isEmpty() && ConfirmPassword.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please enter both username and password then confirm your password");
+                }
+                else{
+                    security.signUp(UserInput2, PasswordInput2, SelectedPosition);
+                    if(ConfirmPassword.equals(PasswordInput)){
+                        passwordText2.setText("");
+                        userText2.setText("");
+                        cpText.setText("");
+                        JOptionPane.showMessageDialog(null, "Successfully Created an Account...");  
+                    }
+                    else if(!ConfirmPassword.equals(PasswordInput)){
+                        JOptionPane.showMessageDialog(null, "Password Doesn't Match! Confirm it again...");
+                        cpText.setText("");   
+                    }
+
+                }
+        } 
+        else if(e.getSource() == Back){
+            System.out.println("back");
+            frame2.setVisible(false);
+        }    
     }
 }
+    
+
