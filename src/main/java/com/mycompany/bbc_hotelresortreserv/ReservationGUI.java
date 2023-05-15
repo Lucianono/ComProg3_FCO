@@ -484,6 +484,37 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 
             }
     }
+    //check if paste date
+    private void checkPastDate(){
+        
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date nowDate = new Date();
+        
+        int yearV = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+        int monthV = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonthValue();
+        int dayV = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfMonth();
+        
+        String s1 =  yearV+ "/" + monthV + "/" + dayV;
+        String s2 =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
+        Date selectedDated = new Date();
+        try {
+            selectedDated = formatter.parse(s2);
+            nowDate = formatter.parse(s1);
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(selectedDated.before(nowDate)){
+            btnRsrv50.setEnabled(false);
+            btnRsrv100.setEnabled(false);
+            avlblLbl.setText("Date expired");
+        }else{
+            btnRsrv50.setEnabled(true);
+            btnRsrv100.setEnabled(true);
+        }
+            
+    }//
     
     
     
