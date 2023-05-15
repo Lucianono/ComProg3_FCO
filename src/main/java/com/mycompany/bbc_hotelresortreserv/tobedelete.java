@@ -57,10 +57,13 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
         jPanel1.add(filler2);
 
-        jPanel8.setPreferredSize(new java.awt.Dimension(0, 100));
+        jPanel8.setMinimumSize(new java.awt.Dimension(438, 400));
+        jPanel8.setPreferredSize(null);
 
+        jPanel9.setMinimumSize(new java.awt.Dimension(428, 300));
         jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel2.setMinimumSize(new java.awt.Dimension(430, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(450, 200));
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
