@@ -217,10 +217,6 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         String PasswordInput = passwordText.getText();
         String SelectedPosition = (String) Position.getSelectedItem();
         
-        String ConfirmPassword = cpText.getText();
-        String UserInput2 = userText.getText();
-        String PasswordInput2 = passwordText.getText();
-       
         
         if(e.getSource() == LoginButton){
             //Security Login
@@ -257,18 +253,33 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
             //Create
         if(e.getSource() == CreateAcc){
                 //checks empty input
-                if(UserInput.isEmpty() && PasswordInput.isEmpty() && ConfirmPassword.isEmpty()){
+                String ConfirmPassword = cpText.getText();
+                String UserInput2 = userText2.getText();
+                String PasswordInput2 = passwordText2.getText();
+  
+                if(UserInput2.isEmpty() || PasswordInput2.isEmpty() || ConfirmPassword.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Please enter both username and password then confirm your password");
                 }
                 else{
                     security.signUp(UserInput2, PasswordInput2, SelectedPosition);
-                    if(ConfirmPassword.equals(PasswordInput)){
-                        passwordText2.setText("");
-                        userText2.setText("");
-                        cpText.setText("");
-                        JOptionPane.showMessageDialog(null, "Successfully Created an Account...");  
+                    if(ConfirmPassword.equals(PasswordInput2)){
+                        for (String user1 : user) {
+                            if (user1.equals(UserInput2)) {
+                                JOptionPane.showMessageDialog(null, "Already Taken");
+                                //username already taken
+                                passwordText2.setText("");
+                                userText2.setText("");
+                                cpText.setText("");
+                            }
+                            else{
+                                passwordText2.setText("");
+                            userText2.setText("");
+                            cpText.setText("");
+                            JOptionPane.showMessageDialog(null, "Successfully Created an Account...");
+                            }
+                        }
                     }
-                    else if(!ConfirmPassword.equals(PasswordInput)){
+                    else if(!ConfirmPassword.equals(PasswordInput2)){
                         JOptionPane.showMessageDialog(null, "Password Doesn't Match! Confirm it again...");
                         cpText.setText("");   
                     }
