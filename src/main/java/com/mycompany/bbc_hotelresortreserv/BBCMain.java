@@ -26,8 +26,8 @@ public class BBCMain {
         TransactionSystem transactionsCompleted = new TransactionSystem();
         ResourcesCRUD resourcesInv = new ResourcesCRUD();
         
-        ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
-        //RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
+        //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
+        RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
         //InventoryGUI invGUI = new InventoryGUI(resourcesInv);
         //HotelRoomGUI hrGUI = new HotelRoomGUI(hotelBooked);
     }

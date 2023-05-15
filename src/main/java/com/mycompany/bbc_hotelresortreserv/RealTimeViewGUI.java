@@ -40,11 +40,12 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     
     int custCountRsrv = 0;
     int transSelectedID = -1;
+    double vatAmount = .12;
     
     private final HotelCRUD hotelBooked;
-    private final CustomerCRUD customersBooked;
     private final TransactionSystem transactionsCompleted;
     private final ResourcesCRUD resourcesInv;
+    private final CustomerCRUD customersBooked;
     
     public RealTimeViewGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked, TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv) {
         this.hotelBooked=hotelBooked;
@@ -271,7 +272,12 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                     disp = t.getResoUsed()[i].getQty() + " " + resourcesInv.getReso(t.getResoUsed()[i].getItemID()).getItemName()+ " - ₱ " + amount;
                     fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> "+ disp);
                     totalAmount += amount;
-                }   
+                    
+                }  
+                
+                fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> Total VAT : " + Math.round(totalAmount*vatAmount*100)/100.0);
+                totalAmount = Math.round(totalAmount*(1+vatAmount)*100)/100.0;
+                
                 if(t.isCheckedOut())
                     fullCustInfoLbl.setText(fullCustInfoLbl.getText()+"<br/> ---------- <br/> <b> Fully Paid!");
                 else
@@ -303,7 +309,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
     
     
     int resoMaxVal = 30;
-    int j = 0;
     
     JFrame frame2;
     JPanel jResoPanel2;
