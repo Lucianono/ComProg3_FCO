@@ -277,6 +277,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                             userText2.setText("");
                             cpText.setText("");
                             JOptionPane.showMessageDialog(null, "Successfully Created an Account...");
+                            break;
                             }
                         }
                     }
