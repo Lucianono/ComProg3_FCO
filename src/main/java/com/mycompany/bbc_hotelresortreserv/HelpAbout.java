@@ -1,13 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.bbc_hotelresortreserv;
 
-/**
- *
- * @author vccfi
- */
+import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
+
 public class HelpAbout {
+    JFrame frm = new JFrame();
+    JLabel about = new JLabel("About");
+
+    public HelpAbout() {
+    about.setFont(new Font("Arial",Font.BOLD,25)); 
+    
+    frm.add(about);     
+    frm.setLayout(new FlowLayout(FlowLayout.CENTER,10,15)); 
+    frm.setSize(600, 400); 
+    frm.setVisible(true); 
+    frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    }
     
 }
