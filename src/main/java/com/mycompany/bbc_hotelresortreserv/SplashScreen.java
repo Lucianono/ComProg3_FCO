@@ -49,13 +49,14 @@ public class SplashScreen {
     title2.setForeground(Color.GRAY);
     p3.add(title2);
     
+    
     p4.add(logo);
     
     frm.add(p4);
     frm.add(p1);
     frm.add(p2);
     frm.add(p3);
-    frm.setLayout(new FlowLayout(FlowLayout.CENTER,0,150));
+    frm.setLayout(new FlowLayout(FlowLayout.CENTER,200,0));
     frm.setSize(600, 400);
     frm.setVisible(true);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
