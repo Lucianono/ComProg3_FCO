@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -134,6 +135,15 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         goodForDisplay();
         expectedCashDisplay();
         
+        Date nowDate = new Date(); 
+        int yearV = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear(); 
+        int monthV = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonthValue(); 
+        int dayV = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfMonth(); 
+ 
+        year.setSelectedIndex(yearV-2023); 
+        month.setSelectedIndex(monthV-1); 
+        day.setSelectedIndex(dayV-1); 
+        
         jPanel2.add(day);
         jPanel2.add(avlblLbl);
         jPanel2.add(capLabel);
@@ -241,7 +251,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
     private void hotelAvlblDisplay(){
         //display if hotel is available that day
         String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
         Date dateBooked=null;
         try {
             dateBooked = formatter.parse(s);
@@ -467,7 +477,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         if( (custCash <= cashInput) && realCustCount > 0){
 
                 String s =  year.getSelectedItem() + "/" + (month.getSelectedIndex()+1) + "/" + day.getSelectedItem();
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/dd/mm");  
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
                 Date dateBooked = null;
                 try {
                     dateBooked = formatter.parse(s);
@@ -562,6 +572,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             expectedCashDisplay();
             goodForDisplay();
             hotelAvlblDisplay();
+            checkPastDate(); 
         }
         
         if(e.getSource() == hotelCmb){
