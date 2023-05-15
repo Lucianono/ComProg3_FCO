@@ -49,7 +49,6 @@ public class SplashScreen {
     title2.setForeground(Color.GRAY);
     p3.add(title2);
     
-    
     p4.add(logo);
     
     frm.add(p4);
