@@ -54,7 +54,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
     JComboBox day = new JComboBox();
     JLabel avlblLbl = new JLabel("    . . .    ");
     JLabel capLabel = new JLabel("       .    .    .       ");
-    JLabel [] expectCashlLbl = new JLabel[10];
+    JLabel [] expectCashlLbl = new JLabel[20];
     
     
     JPanel panelRight = new JPanel();
@@ -282,12 +282,12 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
                 jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
                 labelCount++;
-                totalAmount += hotelAmount;
-                expectCashlLbl[labelCount] = new JLabel("VAT : " + totalAmount*(vatAmount));
+                totalAmount += Math.round(hotelAmount*(1+vatAmount)*100)/100.00;
+                expectCashlLbl[labelCount] = new JLabel("VAT : " + hotelAmount*(vatAmount));
                 expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
                 jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
                 labelCount++;
-                totalAmount = totalAmount*(1+vatAmount);
+                
                 
                 
                 if(Integer.parseInt(customer_txt_arr[i*2+1].getText())>=60){
@@ -306,8 +306,8 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         }
         
         if(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap() > 1){
-                    if(totalAmount < hotelAmount*custMinimum){
-                        totalAmount = hotelAmount*custMinimum;
+                    if(totalAmount < hotelAmount*custMinimum*(1+vatAmount)){
+                        totalAmount = Math.round(hotelAmount*custMinimum*(1+vatAmount)*100)/100.0;
                         expectCashlLbl[labelCount] = new JLabel("*Minimum Amount : "+ totalAmount+"     ");
                         expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
                         jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
@@ -326,7 +326,15 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
         labelCount++;
         
-        expectCashlLbl[labelCount] = new JLabel("<html>*100% Down Payment :"+ (Math.round(hotelAmountPromo*(1+vatAmount)*10)/10.0) +"<br/>-->(Promo applied)");
+        String dp100;
+        if(totalAmount!= 0)
+            if(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap() > 1)
+                dp100 = totalAmount  + "";
+            else
+                dp100 = (Math.round(hotelAmountPromo*(1+vatAmount)*100)/100.0)  + "";
+        else
+            dp100 = "0.0";
+        expectCashlLbl[labelCount] = new JLabel("<html>*100% Down Payment :"+ dp100 +"<br/>-->(Promo applied)");
         expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,10)  );
         jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
         labelCount++;
@@ -451,7 +459,7 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
             custCash = realAmount / 2 ;
         }
         else if (type == 1){
-            custCash = hotelBooked.getHotel(hotelSelected).getPromoRate()*(1+vatAmount);
+            custCash = expectedCashDisplay() - (hotelBooked.getHotel(hotelSelected).getRegRate()- hotelBooked.getHotel(hotelSelected).getPromoRate())*1.12;
             realAmount = custCash;
             System.out.println(custCash);
         }
