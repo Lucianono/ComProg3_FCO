@@ -28,7 +28,8 @@ public class SplashScreen {
     JPanel p4 = new JPanel();
     JPanel compPanel = new JPanel();
     JPanel mainPanel = new JPanel(new BorderLayout());
-    
+    Color brown = new Color (102,51,0);
+    Color lgtbrown = new Color (198,186,153);
     
     SplashScreen() {
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/logo_orig.png");
@@ -41,25 +42,31 @@ public class SplashScreen {
         bar.setBounds(0, 0, 400, 40);
         bar.setFont(new Font("Arial", Font.BOLD, 9));
         bar.setStringPainted(true);
-        bar.setForeground(Color.BLUE);
+        bar.setForeground(brown);
         bar.setBackground(Color.WHITE);
         p2.add(bar);
+        p2.setBackground(lgtbrown);
         title1.setFont(new Font("Arial", Font.BOLD, 25));
         p1.add(title1);
+        p1.setBackground(lgtbrown);
 
 
         title2.setFont(new Font("Arial", Font.BOLD, 9));
         title2.setForeground(Color.GRAY);
         p3.add(title2);
+        p3.setBackground(lgtbrown);
 
         p4.add(logo);
+        p4.setBackground(lgtbrown);
 
         compPanel.add(p4);
         compPanel.add(p1);
         compPanel.add(p2);
         compPanel.setPreferredSize(compPanel.getPreferredSize());
         compPanel.add(p3);
+        compPanel.setBackground(lgtbrown);
         mainPanel.add(compPanel);
+        mainPanel.setBackground(lgtbrown);
         frm.setLayout(new BoxLayout(frm.getContentPane(), BoxLayout.Y_AXIS));
         mainPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
         frm.add(Box.createVerticalGlue());
@@ -67,6 +74,7 @@ public class SplashScreen {
         frm.add(mainPanel);
         frm.add(Box.createVerticalGlue());
         frm.setSize(600, 400);
+        frm.getContentPane().setBackground(lgtbrown);
         frm.setVisible(true);
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frm.setLocationRelativeTo(null);
