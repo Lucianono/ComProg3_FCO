@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 public class BBCMain {
 
     public static void main(String[] args) throws ParseException {
-        
+        //Receipt receipt = new Receipt();
         UIManager.put("Panel.background", Color.TRANSLUCENT);
         UIManager.put("Button.background", Color.WHITE);
         UIManager.put("Button.margin", new Insets(2, 5, 2, 5));
