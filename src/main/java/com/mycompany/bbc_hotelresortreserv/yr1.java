@@ -1,6 +1,5 @@
 package com.mycompany.bbc_hotelresortreserv;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -23,10 +22,17 @@ public class yr1 extends JFrame {
                 rowData[dayIndex][0] = Integer.toString(dayIndex + 1);
             }
             JTable table = new JTable(rowData, columnNames);
+            JPanel tblPnl = new JPanel ();
+            
+            table.getColumnModel().getColumn(0).setPreferredWidth(27);
             JScrollPane scrollPane = new JScrollPane(table);
+            
+            tblPnl.add (scrollPane);
+            tblPnl.setPreferredSize(new Dimension(500,600));
+            
             JLabel label = new JLabel(months[monthIndex]);
             mpnl.add(label);
-            mpnl.add(scrollPane);
+            mpnl.add(tblPnl);
         }
         
         mpnl.setLayout(new BoxLayout(mpnl, BoxLayout.PAGE_AXIS));
