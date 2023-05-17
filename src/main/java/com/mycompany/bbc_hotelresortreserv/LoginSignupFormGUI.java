@@ -51,43 +51,12 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
 
     
-    JPanel bjPanel1 = new JPanel();
-    Box.Filler bfiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
-    JPanel bjPanel8 = new JPanel();
-    JPanel bjPanel9 = new JPanel();
-    JPanel bjPanel2 = new JPanel();
-    JPanel bjPanel11 = new JPanel();
-    JLabel bjLabel3 = new JLabel();
-    JPanel bjPanel12 = new JPanel();
-    JLabel bjLabel4 = new JLabel();
-    JPanel bjPanel13 = new JPanel();
-    Box.Filler bfiller5 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
-    JPanel bjPanel14 = new JPanel();
-    JPanel bjPanel3 = new JPanel();
-    JLabel usernameLabel2 = new JLabel();
-    JPanel bjPanel4 = new JPanel();
-    JTextField userText2 = new JTextField();
-    JPanel bjPanel5 = new JPanel();
-    JLabel passwordLabel2 = new JLabel();
-    JPanel bjPanel6 = new JPanel();
-    JTextField passwordText2 = new JTextField();
-    JPanel jPanel10 = new JPanel();
-    JPanel bjPanel18 = new JPanel();
-    JLabel cLabel = new JLabel();
-    JLabel pLabel = new JLabel();
-    JPanel bjPanel15 = new JPanel();
-    JTextField cpText = new JTextField();
-    JPanel bjPanel16 = new JPanel();
-    JLabel PosLabel = new JLabel();
-    JPanel bjPanel17 = new JPanel();
-    JComboBox<String> Position = new JComboBox<>(Choice);
-    JPanel bjPanel7 = new JPanel();
-    JButton CreateAcc = new JButton();
-    JButton Back = new JButton();
-    Box.Filler bfiller6 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
-    Box.Filler bfiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
-    JFrame frame2 = new JFrame();
-
+    //for signUp
+    public static String[] Choice = {"Admin", "Staff"};
+    public static JComboBox Position = new JComboBox(Choice);    
+    public static JButton CreateAcc, Back;
+    public static JTextField userText2, passwordText2, cpText;
+    public static JLabel usernameLabel2, passwordLabel2, cpLabel, PosLabel;
     
     int i = 0; //counter signup
         
@@ -383,9 +352,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         String PasswordInput = passwordText.getText();
         String SelectedPosition = (String) Position.getSelectedItem();
         
-        String UserInput2 = userText.getText();
-        String PasswordInput2 = passwordText.getText();
-       
+        
         
         if(e.getSource() == LoginButton){
             //Security Login
@@ -396,9 +363,17 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
             else{
 
                 if (!logged){
-                    security.logIn(UserInput, PasswordInput);
                     
-                    if (!logged){
+                    if(security.logIn(UserInput, PasswordInput)){
+                         //Added User,PassChange variable kasabay nung Account
+                        Account acc = new Account(UserInput, PasswordInput,security);
+
+                    }else{
+                        //Account acc = new Account();
+                    }
+                    
+                   
+                     if (!logged){
                         logAttempts++;
                         System.out.println("Invalid Input. Remaining Tries: " + (loopctr-logAttempts));
                         userText.setText("");
@@ -408,27 +383,60 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                         System.out.println("You have reached maximum amount of tries.");
                         System.out.println("Program Close...");
                         System.exit(0);
-                        System.out.println("");
-                        System.exit(0);  
                         }
                     }
                 }
+                
             }
         }
-        
+        //signUp
         else if(e.getSource() == SignUpButton){
             SignUp();
-            security.signUp(UserInput2, PasswordInput2, SelectedPosition);
-
-            if(e.getSource() == CreateAcc){
-                System.out.println("ASD");
-                passwordText2.setText("");
-                userText2.setText("");
-            }
-            else if(e.getSource() == Back){
-                frame2.setVisible(false);
-            } 
-    
         }
+            //Create
+        if(e.getSource() == CreateAcc){
+                //checks empty input
+                String ConfirmPassword = cpText.getText();
+                String UserInput2 = userText2.getText();
+                String PasswordInput2 = passwordText2.getText();
+  
+                if(UserInput2.isEmpty() || PasswordInput2.isEmpty() || ConfirmPassword.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please enter both username and password then confirm your password");
+                }
+                else{
+                    security.signUp(UserInput2, PasswordInput2, SelectedPosition);
+                    if(ConfirmPassword.equals(PasswordInput2)){
+                        for (String user1 : user) {
+                            if (user1.equals(UserInput2)) {
+                                JOptionPane.showMessageDialog(null, "Already Taken");
+                                //username already taken
+                                passwordText2.setText("");
+                                userText2.setText("");
+                                cpText.setText("");
+                                break;
+                            }
+                            else{
+                            passwordText2.setText("");
+                            userText2.setText("");
+                            cpText.setText("");
+                            JOptionPane.showMessageDialog(null, "Successfully Created an Account...");
+                            break;
+                            }
+                        }
+                    }
+                    else if(!ConfirmPassword.equals(PasswordInput2)){
+                        JOptionPane.showMessageDialog(null, "Password Doesn't Match! Confirm it again...");
+                        cpText.setText("");   
+                    }
+
+                }
+        } 
+        else if(e.getSource() == Back){
+            System.out.println("back");
+            frame2.setVisible(false);
+            
+        }    
     }
 }
+    
+

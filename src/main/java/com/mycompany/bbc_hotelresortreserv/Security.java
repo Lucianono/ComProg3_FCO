@@ -5,7 +5,7 @@ import javax.swing.JComboBox;
 public class Security{
 
     public static String[] user = new String[]{"user123"}; //default username
-    private static String[] pass = new String[]{"ufxx678"}; //default password
+    public static String[] pass = new String[]{"ufxx678"}; //default password
     private static String[] pos = new String[] {"staff"}; //default position
     public static int StringIncrement = 5;
     public static boolean logged;
@@ -50,7 +50,7 @@ public class Security{
         user = newusernames;
         pass = newpasswords;
         pos = newposition;
-        System.out.println("created successfully");
+    //    System.out.println("created successfully");
         return true;
 }  
     public boolean logIn (String username, String password){ //logIn Method
@@ -61,9 +61,8 @@ public class Security{
                 {
                     if (user[i].equals(username) && Decrypt(pass[i]).equals(password)){ //user logged in
                         System.out.println("Login Successful!");
-                        logged=true;
                         logAttempts = 0;
-                        break;
+                        return true;
                     }
                     /*else if (!logged){
                         logAttempts++;
@@ -76,7 +75,8 @@ public class Security{
                     }*/
                 }    
             }
-            return false; 
+            return false;
+            
     }
     
 
