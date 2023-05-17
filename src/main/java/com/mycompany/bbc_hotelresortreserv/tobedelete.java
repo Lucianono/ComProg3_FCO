@@ -29,6 +29,7 @@ public class tobedelete extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -41,28 +42,47 @@ public class tobedelete extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4, java.awt.BorderLayout.PAGE_START);
+
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel2.setMaximumSize(null);
         jPanel2.setMinimumSize(new java.awt.Dimension(1, 500));
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+        jPanel2.setPreferredSize(new java.awt.Dimension(70, 508));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
         jButton1.setText("Reserve");
+        jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jButton1);
 
         jButton2.setText("CheckIn/CheckOut");
+        jButton2.setPreferredSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jButton2);
 
         jButton3.setText("Resources");
+        jButton3.setPreferredSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jButton3);
 
         jButton4.setText("Report");
+        jButton4.setPreferredSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jButton4);
 
         jButton5.setText("About/ Help");
+        jButton5.setPreferredSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jButton5);
 
         jButton6.setText("Account");
+        jButton6.setPreferredSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jButton6);
 
         jPanel1.add(jPanel2);
@@ -71,7 +91,7 @@ public class tobedelete extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
+            .addGap(0, 614, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,5 +150,6 @@ public class tobedelete extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
