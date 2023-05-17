@@ -150,7 +150,6 @@ public class Report{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                yr1 yr2023 = new yr1();
             }
         });
         
