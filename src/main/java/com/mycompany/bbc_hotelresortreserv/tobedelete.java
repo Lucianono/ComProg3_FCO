@@ -43,7 +43,8 @@ public class tobedelete extends javax.swing.JFrame {
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel2.setMinimumSize(new Dimension(200,jPanel1.getHeight()));
+        jPanel2.setMaximumSize(null);
+        jPanel2.setMinimumSize(new java.awt.Dimension(1, 500));
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
         jButton1.setText("Reserve");
