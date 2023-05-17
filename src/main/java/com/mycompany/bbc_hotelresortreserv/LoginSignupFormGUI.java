@@ -51,19 +51,14 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
 
     
-    //for signUp
-    public static String[] Choice = {"Admin", "Staff"};
-    public static JComboBox Position = new JComboBox(Choice);    
-    public static JButton CreateAcc, Back;
-    public static JTextField userText2, passwordText2, cpText;
-    public static JLabel usernameLabel2, passwordLabel2, cpLabel, PosLabel;
     
     int i = 0; //counter signup
         
     Security security = new Security();
 
     
-    LoginSignupFormGUI(){
+    LoginSignupFormGUI(Security security){
+        this.security = security;
         
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
         jPanel1.add(filler2);
@@ -186,6 +181,43 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         
         
     }
+    
+    JPanel bjPanel1 = new JPanel(); 
+    Box.Filler bfiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767)); 
+    JPanel bjPanel8 = new JPanel(); 
+    JPanel bjPanel9 = new JPanel(); 
+    JPanel bjPanel2 = new JPanel(); 
+    JPanel bjPanel11 = new JPanel(); 
+    JLabel bjLabel3 = new JLabel(); 
+    JPanel bjPanel12 = new JPanel(); 
+    JLabel bjLabel4 = new JLabel(); 
+    JPanel bjPanel13 = new JPanel(); 
+    Box.Filler bfiller5 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0)); 
+    JPanel bjPanel14 = new JPanel(); 
+    JPanel bjPanel3 = new JPanel(); 
+    JLabel usernameLabel2 = new JLabel(); 
+    JPanel bjPanel4 = new JPanel(); 
+    JTextField userText2 = new JTextField(); 
+    JPanel bjPanel5 = new JPanel(); 
+    JLabel passwordLabel2 = new JLabel(); 
+    JPanel bjPanel6 = new JPanel(); 
+    JTextField passwordText2 = new JTextField(); 
+    JPanel jPanel10 = new JPanel(); 
+    JPanel bjPanel18 = new JPanel(); 
+    JLabel cLabel = new JLabel(); 
+    JLabel pLabel = new JLabel(); 
+    JPanel bjPanel15 = new JPanel(); 
+    JTextField cpText = new JTextField(); 
+    JPanel bjPanel16 = new JPanel(); 
+    JLabel PosLabel = new JLabel(); 
+    JPanel bjPanel17 = new JPanel(); 
+    JComboBox<String> Position = new JComboBox<>(Choice); 
+    JPanel bjPanel7 = new JPanel(); 
+    JButton CreateAcc = new JButton(); 
+    JButton Back = new JButton(); 
+    Box.Filler bfiller6 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0)); 
+    Box.Filler bfiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767)); 
+    JFrame frame2 = new JFrame(); 
         
     private void SignUp(){
 
@@ -366,7 +398,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                     
                     if(security.logIn(UserInput, PasswordInput)){
                          //Added User,PassChange variable kasabay nung Account
-                        Account acc = new Account(UserInput, PasswordInput,security);
+                        //Account acc = new Account(UserInput, PasswordInput,security);
 
                     }else{
                         //Account acc = new Account();
