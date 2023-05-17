@@ -62,7 +62,9 @@ public class Security{
                     if (user[i].equals(username) && Decrypt(pass[i]).equals(password)){ //user logged in
                         System.out.println("Login Successful!");
                         logAttempts = 0;
+                        logged = true;
                         return true;
+                        
                     }
                     /*else if (!logged){
                         logAttempts++;
@@ -75,6 +77,7 @@ public class Security{
                     }*/
                 }    
             }
+            
             return false;
             
     }
@@ -90,7 +93,7 @@ public class Security{
         return encryptedPass;
     } 
 
-    private static String Decrypt (String encryptedPass){ //Decryption Method
+    public String Decrypt (String encryptedPass){ //Decryption Method
         char[] chars = encryptedPass.toCharArray();
         String decryptPass = "";
             for (char c : chars){

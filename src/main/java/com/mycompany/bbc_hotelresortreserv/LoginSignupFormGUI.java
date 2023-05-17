@@ -238,12 +238,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                          //Added User,PassChange variable kasabay nung Account
                         Account acc = new Account(UserInput, PasswordInput,security);
 
-                    }else{
-                        //Account acc = new Account();
-                    }
-                    
-                   
-                     if (!logged){
+                    }else{{
                         logAttempts++;
                         System.out.println("Invalid Input. Remaining Tries: " + (loopctr-logAttempts));
                         userText.setText("");
@@ -253,6 +248,13 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                         System.out.println("You have reached maximum amount of tries.");
                         System.out.println("Program Close...");
                         System.exit(0);
+                    }
+                        //Account acc = new Account();
+                  //  }
+                    
+                   
+                     //if (!logged){
+                        
                         }
                     }
                 }

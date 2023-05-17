@@ -52,36 +52,34 @@ public class Account {
         
         
         
-        
+        //Change Username Confirm
         Confirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame2.dispose();
                 
-                Security secChange = new Security();
+                //Security secChange = new Security();
                 
                 //Function for changing username
                 String NewUserText = usernameField.getText();
                 String EnterPass = passwordField.getText();
-                
-                for(int i=0; i<upChange.user.length; i++){
+                           
+                //Wrong Logic For now
+                if  (security.logged == true){
                     
-                }
-                
-                if  (secChange.logged == true){
-                    
-                    if (NewUserText.equals(UserChange)){
-                        if(EnterPass.equals(PassChange))
-                        {
-                            //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
-                            for(int i=0; i<upChange.user.length; i++) {
-                            upChange.user[i] = NewUserText;
-                            System.out.println(upChange.user[i]); 
-                            frame2.setVisible(false);
-                            }
+                    for(int i=0; i<security.user.length; i++) {
+                        System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
+                        if (security.user[i].equals(NewUserText) && security.Decrypt(security.pass[i]).equals(EnterPass)){
+                                //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
+                                
+                                security.user[i] = NewUserText;
+                                security.pass[i] = EnterPass;
+                                System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
+                                
                         }
+                        JOptionPane.showMessageDialog(null, "Successfully Changed Username");
                     }
-                    
+                    JOptionPane.showMessageDialog(null, "ASDASD");
                 }
                 else{
                     System.out.println("Login First...");
@@ -99,6 +97,7 @@ public class Account {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame2.setVisible(false);
+                System.out.println(security.user); 
                 
             }
         });
@@ -150,11 +149,11 @@ public class Account {
 
                 Security secChange = new Security();
                 if  (secChange.logged == true){
-                    if (NewPassText.equals(upChange.PassChange)){
+                    if (NewPassText.equals(PassChange)){
                         if(ConfirmNewPass.equals(NewPassText)){
                             //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
-                            for(int i=0; i<upChange.user.length; i++) {
-                            upChange.pass[i] = NewPassText;
+                            for(int i=0; i<security.user.length; i++) {
+                            security.pass[i] = NewPassText;
                                 
                             }
                         }  
