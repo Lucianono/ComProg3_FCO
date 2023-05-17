@@ -10,6 +10,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     
         
     JPanel statusPnl ;
+    JPanel reservPnl ;
+    JPanel rtvPnl ;
+    JPanel invPnl ;
+    JPanel hotelPnl ;
+    
     JPanel mainPnl = new JPanel();
     JPanel btnPnl = new JPanel();
     JButton jButton1 = new JButton();
@@ -20,10 +25,23 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     JButton jButton6 = new JButton();
     JPanel viewPnl = new JPanel();
 
+    HotelCRUD hotelBooked;
+    CustomerCRUD customersBooked;
+    TransactionSystem transactionsCompleted;
+    ResourcesCRUD resourcesInv;
     
-    public MainMenuGUI() {
+    public MainMenuGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked,TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv) {
+        
+        this.hotelBooked=hotelBooked;
+        this.customersBooked=customersBooked;
+        this.transactionsCompleted=transactionsCompleted;
+        this.resourcesInv=resourcesInv;
 
         statusPnl = new StatusBar("Bryan","admin");
+        reservPnl = new ReservationGUI(hotelBooked, customersBooked, transactionsCompleted);
+        rtvPnl = new RealTimeViewGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv);
+        invPnl = new InventoryGUI(resourcesInv);
+        hotelPnl = new HotelRoomGUI(hotelBooked);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,7 +53,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
 
         
         btnPnl.setPreferredSize(new Dimension(70, 508));
-        btnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 20));
+        btnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 8));
 
         jButton1.setText("Reserve");
         jButton1.setPreferredSize(new Dimension(60, 60));
@@ -65,6 +83,8 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         
         mainPnl.add(btnPnl);
 
+        viewPnl.setLayout(new BorderLayout());
+        viewPnl.add(hotelPnl,BorderLayout.CENTER);
         mainPnl.add(viewPnl);
 
         getContentPane().add(mainPnl, BorderLayout.CENTER);
@@ -72,6 +92,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         setVisible(true);
         setResizable(false);
         setSize(700,500);
+        setLocationRelativeTo(null);
 
     }
 

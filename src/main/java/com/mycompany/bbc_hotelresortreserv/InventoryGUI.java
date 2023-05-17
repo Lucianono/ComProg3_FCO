@@ -6,11 +6,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class InventoryGUI extends JFrame implements ActionListener{
+public class InventoryGUI extends JPanel implements ActionListener{
 
     int resoMaxVal = 30;
     
-    JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
     JPanel jPanel3 = new JPanel();
     JLabel jLabel1 = new JLabel();
@@ -71,7 +70,7 @@ public class InventoryGUI extends JFrame implements ActionListener{
 
         jScrollPane1.setBackground(new Color(179, 154, 135));
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new Dimension(552, 220));
+        jScrollPane1.setPreferredSize(new Dimension(552, 250));
         
         resoSuperPanel.setBackground(new Color(213, 178, 144));
         resoSuperPanel.setLayout(new BoxLayout(resoSuperPanel,BoxLayout.Y_AXIS));
@@ -94,13 +93,8 @@ public class InventoryGUI extends JFrame implements ActionListener{
 
         jPanel1.add(jPanel2);
 
-        frame.add(jPanel1, BorderLayout.CENTER);
+        add(jPanel1, BorderLayout.CENTER);
 
-        frame.setSize(600,400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 
     //add a resource

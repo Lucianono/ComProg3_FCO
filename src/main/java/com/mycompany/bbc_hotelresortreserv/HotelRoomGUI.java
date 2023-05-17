@@ -9,11 +9,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.border.LineBorder;
 
-public class HotelRoomGUI extends JFrame implements ActionListener{
+public class HotelRoomGUI extends JPanel implements ActionListener{
     
     int resoMaxVal = 30;
     
-    JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
     JPanel jPanel3 = new JPanel();
     JLabel jLabel1 = new JLabel();
@@ -78,7 +77,7 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
 
         jScrollPane1.setBackground(new Color(179, 154, 135));
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new Dimension(552, 220));
+        jScrollPane1.setPreferredSize(new Dimension(552, 250));
 
         hotelSuperPanel.setBackground(new Color(213, 178, 144));
         hotelSuperPanel.setLayout(new BoxLayout(hotelSuperPanel,BoxLayout.Y_AXIS));
@@ -103,13 +102,8 @@ public class HotelRoomGUI extends JFrame implements ActionListener{
 
         jPanel1.add(jPanel2);
 
-        frame.add(jPanel1, BorderLayout.CENTER);
+        add(jPanel1, BorderLayout.CENTER);
 
-        frame.setSize(600,400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
         
     }
 

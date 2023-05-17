@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 public class BBCMain {
 
     public static void main(String[] args) throws ParseException {
-        UIManager.put("Panel.background", Color.TRANSLUCENT);
+        UIManager.put("Panel.background", new Color(0, 0, 0, 0));
         UIManager.put("Button.background", Color.WHITE);
         UIManager.put("Button.margin", new Insets(2, 5, 2, 5));
         UIManager.put("TextField.background", Color.WHITE);
@@ -25,11 +25,12 @@ public class BBCMain {
         TransactionSystem transactionsCompleted = new TransactionSystem();
         ResourcesCRUD resourcesInv = new ResourcesCRUD();
         
-        ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
+        //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
         //RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
         //InventoryGUI invGUI = new InventoryGUI(resourcesInv);
         //HotelRoomGUI hrGUI = new HotelRoomGUI(hotelBooked);
-        UIManager.put("Panel.background", new Color(0, 0, 0, 0));
+        
+        //UIManager.put("Panel.background", new Color(0, 0, 0, 0));
         
 //        JPanel statBar = new StatusBar("Hello", "Admin");
 //        JFrame jf = new JFrame();
@@ -38,7 +39,7 @@ public class BBCMain {
 //        jf.setVisible(true);
 //        jf.setSize(600,400);
         
-        MainMenuGUI menu = new MainMenuGUI();
+        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv);
     }
     
     

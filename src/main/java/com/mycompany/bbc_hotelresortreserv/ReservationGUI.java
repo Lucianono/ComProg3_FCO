@@ -17,9 +17,8 @@ import javax.swing.event.DocumentListener;
 
 
 
-public class ReservationGUI extends JFrame implements ActionListener,ItemListener,DocumentListener{
+public class ReservationGUI extends JPanel implements ActionListener,ItemListener,DocumentListener{
 
-    JFrame frame = new JFrame();
     JPanel jPanel1 = new JPanel();
     JButton btnPlus = new JButton();
     JButton btnMinus = new JButton();
@@ -74,10 +73,6 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         this.customersBooked=customersBooked;
         this.transactionsCompleted=transactionsCompleted;
         
-        frame.setSize(600,400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 
 
@@ -197,9 +192,9 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         panelSuper.add(panelBottom);
         panelSuper.setLayout(new BoxLayout(panelSuper,BoxLayout.Y_AXIS));
         
-        frame.add(panelSuper);
+        add(panelSuper,BorderLayout.CENTER);
 
-        frame.setVisible(true);
+        
         
     }
 
@@ -223,7 +218,6 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         
         jPanel1.repaint();
         jPanel1.revalidate();
-        frame.setVisible(true);
 
     }
     //day of combobox depnds on month
@@ -353,7 +347,6 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
         jPanelPriceBreakdown.repaint();
         jPanelPriceBreakdown.revalidate();
         
-        frame.setVisible(true);
         
         return totalAmount;
     }
@@ -426,7 +419,6 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 custCount++;
 
              
-                frame.setVisible(true);
             }
     }
     //remove cusotmer text field
@@ -441,7 +433,6 @@ public class ReservationGUI extends JFrame implements ActionListener,ItemListene
                 jPanel1.repaint();
                 jPanel1.revalidate();
 
-                frame.setVisible(true);
             }
     } 
     //process transaction

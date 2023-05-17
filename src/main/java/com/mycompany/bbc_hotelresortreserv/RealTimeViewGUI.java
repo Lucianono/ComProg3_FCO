@@ -12,12 +12,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListener{
+public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListener{
 
     private JButton printbtn = new JButton("Print Receipt");
     private JButton cancelbtn = new JButton("Cancel Transaction");
     
-    JFrame frame = new JFrame();
     JPanel jPanel2 = new JPanel();
     JPanel jPanel3 = new JPanel();
     JPanel jPanel1 = new JPanel();
@@ -57,9 +56,9 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         this.resourcesInv=resourcesInv;
 
         
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.X_AXIS));
+        jPanel2.setPreferredSize(new Dimension(600,400));
 
         jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS));
 
@@ -122,14 +121,10 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
 
         jPanel2.add(custInfoPanelMain);
 
-        frame.add(jPanel2, BorderLayout.CENTER);
+        add(jPanel2, BorderLayout.CENTER);
         refreshBtns();
         
-        frame.setSize(600,400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        setLayout(new FlowLayout(FlowLayout.CENTER));
     }
     // day computer
     private void smartDay(){
@@ -214,7 +209,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
 
         jPanel5.repaint();
         jPanel5.revalidate();
-        frame.setVisible(true);
         
     }
     //refresh displayed customers
@@ -225,7 +219,6 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
         }
         jPanel5.repaint();
         jPanel5.revalidate();
-        frame.setVisible(true);
         custCountRsrv = 0;
         
         custDisplayAll();
