@@ -29,11 +29,11 @@ TODOs:
 public class LoginSignupFormGUI extends Security implements ActionListener{
     
     JButton LoginButton, SignUpButton;
-    JTextField userText, passwordText;
-    JLabel usernameLabel, passwordLabel;
+    public static JTextField userText, passwordText;
+    public static JLabel usernameLabel, passwordLabel;
     
     //Jpanel For signup
-    JPanel panel2 = new JPanel();
+    public static JPanel panel2 = new JPanel();
     
     //for signUp
     public static String[] Choice = {"Admin", "Staff"};
@@ -45,11 +45,15 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     public static int i = 0; //counter signup
     public static JFrame frame2 = new JFrame();
     
+    //public static String UserChange, PassChange;
     
-    Security security = new Security();
+    
+    Security security;
     
     
-    LoginSignupFormGUI(){
+    LoginSignupFormGUI(Security security){
+        this.security = security;
+        
         JPanel panel = new JPanel();
         
         JFrame frame = new JFrame();
@@ -178,7 +182,8 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         panel2.add(Back);
         
     }
-        
+   
+         
     private void SignUp(){
         
 
@@ -218,6 +223,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         String SelectedPosition = (String) Position.getSelectedItem();
         
         
+        
         if(e.getSource() == LoginButton){
             //Security Login
             if(UserInput.isEmpty() || PasswordInput.isEmpty()) {
@@ -227,9 +233,17 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
             else{
 
                 if (!logged){
-                    security.logIn(UserInput, PasswordInput);
                     
-                    if (!logged){
+                    if(security.logIn(UserInput, PasswordInput)){
+                         //Added User,PassChange variable kasabay nung Account
+                        Account acc = new Account(UserInput, PasswordInput,security);
+
+                    }else{
+                        //Account acc = new Account();
+                    }
+                    
+                   
+                     if (!logged){
                         logAttempts++;
                         System.out.println("Invalid Input. Remaining Tries: " + (loopctr-logAttempts));
                         userText.setText("");
@@ -239,11 +253,10 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                         System.out.println("You have reached maximum amount of tries.");
                         System.out.println("Program Close...");
                         System.exit(0);
-                        System.out.println("");
-                        System.exit(0);  
                         }
                     }
                 }
+                
             }
         }
         //signUp
