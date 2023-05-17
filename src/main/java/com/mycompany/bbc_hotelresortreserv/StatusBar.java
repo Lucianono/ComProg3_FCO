@@ -3,6 +3,7 @@ package com.mycompany.bbc_hotelresortreserv;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -29,15 +30,15 @@ public class StatusBar extends JPanel {
     private final JPanel rightPnl;
 
 
-    public StatusBar(String name, String position) {
+    public StatusBar(String name, String position) {  
+        
     setLayout(new GridLayout(1, 2)); 
+    
     
     leftPnl = new JPanel();
     rightPnl = new JPanel();
     rightPnl.setLayout(new GridLayout(2, 2));
     leftPnl.setLayout(new BorderLayout( ));
-    rightPnl.setBackground(new Color(Color.TRANSLUCENT));
-    leftPnl.setBackground(new Color(Color.TRANSLUCENT));
     
       
     logoImg = new ImageIcon("src/main/resources/images/logo_orig_side.png");
@@ -70,10 +71,13 @@ public class StatusBar extends JPanel {
     add(leftPnl);
     add(rightPnl);
     
-    Timer timer = new Timer(1000, e -> updateDateTime());
+    
+    updateDateTime();
+    Timer timer = new Timer(1000 * 30, e -> updateDateTime());
     timer.start();
 
     setBackground(Color.WHITE);
+    
 }
     @Override
     public void setName(String name) {
@@ -89,11 +93,13 @@ public class StatusBar extends JPanel {
     private void updateDateTime() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         String formattedDate = now.format(dateFormatter);
         String formattedTime = now.format(timeFormatter);
         dateLbl.setText("" + formattedDate);
         timeLbl.setText("" + formattedTime);
+        repaint();
+        revalidate();
     }
 
     
