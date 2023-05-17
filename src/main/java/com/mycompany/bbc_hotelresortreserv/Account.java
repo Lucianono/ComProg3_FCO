@@ -67,7 +67,8 @@ public class Account {
                 
                 if  (security.logged == true){
                     
-                    for(int i=0; i<security.user.length; i++) {
+                    int i = security.getIndexByUser(UserChange);
+                    
                         System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
                         if (security.Decrypt(security.pass[i]).equals(EnterPass)){
                                 //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
@@ -80,7 +81,7 @@ public class Account {
                                 security.logged = false;
                         }
                         
-                    }
+                    
                 }
                 else{
                     System.out.println("Login First...");
@@ -97,7 +98,7 @@ public class Account {
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame2.setVisible(false);
+                frame2.dispose();
                 System.out.println(security.user); 
                 
             }
@@ -139,11 +140,11 @@ public class Account {
         
         
         
-        
+        //passConfirm
         Confirm2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame3.setVisible(false);
+                frame3.dispose();
                 
                 
                 // METHODS/FUNCTIONS OR STATEMENTS RELATED TO SUCCESSFULLY CHANGE PASSWORD
@@ -153,33 +154,34 @@ public class Account {
                 
                 if  (security.logged == true){
                     
-                    for(int i=0; i<security.user.length; i++) {
-                        System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
-                      // if (NewPassText.equals(security.Decrypt(security.pass[i]))){
+                    
+                    int i = security.getIndexByUser(UserChange);
+                    
                             if(ConfirmNewPass.equals(NewPassText))
                             {
-                                System.out.println("asdaDASD");
                                  //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
-                                security.pass[i] = security.Decrypt(NewPassText);
+                                security.pass[i] = security.Encrypt(NewPassText);
                                 System.out.println(security.Decrypt(security.pass[i]));
                                 security.logged = false;
-                                System.out.println("adASDASDASD");
+                                JOptionPane.showMessageDialog(null, "Successfully Changed Password");
+                                LoginSignupFormGUI lsfg = new LoginSignupFormGUI(security);
+                                
+                                
                             }
                             else{
                                 System.out.println("new pass does not match to confiirm pass");
-                            }   
-                                
+                            }    
                        // }
-                        JOptionPane.showMessageDialog(null, "Successfully Changed Password");
+                        
                     }
-                }
+                
             }
         });
 
         Back2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame3.setVisible(false);
+                frame3.dispose();
                 
             }
         });
@@ -222,7 +224,7 @@ public class Account {
         Back3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                frame.dispose();
                 
             }
         });

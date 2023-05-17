@@ -83,7 +83,7 @@ public class Security{
     }
     
 
-    private static String Encrypt (String Password){ //Encryption Method
+    public static String Encrypt (String Password){ //Encryption Method
         char[] chars = Password.toCharArray(); 
         String encryptedPass = "";
             for(char c : chars){ 
@@ -101,6 +101,16 @@ public class Security{
                 decryptPass += c;
             }
         return decryptPass;
+        
+    }
+    
+    public int getIndexByUser(String userName){
+        
+        for(int i=0; i<user.length; i++) {
+            if(user[i].equals(userName))
+                return i;
+        }
+        return -1;
         
     }
 
