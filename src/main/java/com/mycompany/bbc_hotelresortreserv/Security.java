@@ -8,7 +8,7 @@ public class Security{
     public static String[] pass = new String[]{"ufxx678"}; //default password
     private static String[] pos = new String[] {"staff"}; //default position
     public static int StringIncrement = 5;
-    public static boolean logged;
+    public boolean logged;
     public static int logAttempts = 0; 
     public static int loopctr = 3;
     //fromLoginGUI- create reset

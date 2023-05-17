@@ -75,9 +75,11 @@ public class Account {
                                 security.user[i] = NewUserText;
                                 
                                 System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
-                                
+                                JOptionPane.showMessageDialog(null, "Successfully Changed Username");
+                                LoginSignupFormGUI lsfg = new LoginSignupFormGUI(security);
+                                security.logged = false;
                         }
-                        JOptionPane.showMessageDialog(null, "Successfully Changed Username");
+                        
                     }
                     JOptionPane.showMessageDialog(null, "ASDASD");
                 }
@@ -149,17 +151,19 @@ public class Account {
                 String NewPassText = NewPassField.getText();
                 String ConfirmNewPass = ConfirmPassField.getText();
 
-                Security secChange = new Security();
+                
                 if  (security.logged == true){
                     
                     for(int i=0; i<security.user.length; i++) {
                         System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
-                        if (security.Decrypt(security.pass[i]).equals(NewPassText) && ConfirmNewPass.equals(NewPassText)){
-                                //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
-                                
+                        if (security.Decrypt(security.pass[i]).equals(NewPassText)){
+                            if(ConfirmNewPass.equals(NewPassText))
+                            {
+                                 //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
                                 security.pass[i] = NewPassText;
-                                
                                 System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
+                            }
+                               
                                 
                         }
                         JOptionPane.showMessageDialog(null, "Successfully Changed Username");

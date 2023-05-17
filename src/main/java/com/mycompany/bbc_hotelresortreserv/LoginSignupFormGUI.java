@@ -44,6 +44,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     
     public static int i = 0; //counter signup
     public static JFrame frame2 = new JFrame();
+    JFrame frame;
     
     //public static String UserChange, PassChange;
     
@@ -56,7 +57,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         
         JPanel panel = new JPanel();
         
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         
         panel.setLayout(null);
         
@@ -232,13 +233,13 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
             }
             else{
 
-                if (!logged){
+                if (!security.logged){
                     
                     if(security.logIn(UserInput, PasswordInput)){
                          //Added User,PassChange variable kasabay nung Account
                         Account acc = new Account(UserInput, PasswordInput,security);
                         logAttempts=0;
-                        logged=false;
+                        frame.dispose();
 
                     }else{{
                         logAttempts++;
