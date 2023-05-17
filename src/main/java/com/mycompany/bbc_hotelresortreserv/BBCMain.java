@@ -12,7 +12,6 @@ import javax.swing.UIManager;
 public class BBCMain {
 
     public static void main(String[] args) throws ParseException {
-        //Receipt receipt = new Receipt();
         UIManager.put("Panel.background", Color.TRANSLUCENT);
         UIManager.put("Button.background", Color.WHITE);
         UIManager.put("Button.margin", new Insets(2, 5, 2, 5));
@@ -26,8 +25,8 @@ public class BBCMain {
         TransactionSystem transactionsCompleted = new TransactionSystem();
         ResourcesCRUD resourcesInv = new ResourcesCRUD();
         
-        //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
-        RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
+        ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
+        //RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
         //InventoryGUI invGUI = new InventoryGUI(resourcesInv);
         //HotelRoomGUI hrGUI = new HotelRoomGUI(hotelBooked);
     }

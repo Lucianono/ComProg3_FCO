@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 
 public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListener{
 
+    private JButton printbtn = new JButton("Print Receipt");
+    private JButton cancelbtn = new JButton("Cancel Transaction");
+    
     JFrame frame = new JFrame();
     JPanel jPanel2 = new JPanel();
     JPanel jPanel3 = new JPanel();
@@ -599,6 +602,7 @@ public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListen
                             t.setFullCash(t.getRemBal());
                             t.setRemBal(0);
                             JOptionPane.showMessageDialog(null, "Successfully checked out!" );
+                            Receipt receipt = new Receipt(1);
                         }
                         else{
                             JOptionPane.showMessageDialog(null, "Insufficient funds!" );
