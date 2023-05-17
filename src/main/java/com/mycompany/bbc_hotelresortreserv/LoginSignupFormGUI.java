@@ -237,6 +237,8 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                     if(security.logIn(UserInput, PasswordInput)){
                          //Added User,PassChange variable kasabay nung Account
                         Account acc = new Account(UserInput, PasswordInput,security);
+                        logAttempts=0;
+                        logged=false;
 
                     }else{{
                         logAttempts++;
