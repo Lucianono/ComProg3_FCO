@@ -64,7 +64,7 @@ public class Account {
                 String NewUserText = usernameField.getText();
                 String EnterPass = passwordField.getText();
                            
-                //Wrong Logic For now
+                
                 if  (security.logged == true){
                     
                     for(int i=0; i<security.user.length; i++) {
@@ -81,7 +81,6 @@ public class Account {
                         }
                         
                     }
-                    JOptionPane.showMessageDialog(null, "ASDASD");
                 }
                 else{
                     System.out.println("Login First...");
@@ -156,19 +155,23 @@ public class Account {
                     
                     for(int i=0; i<security.user.length; i++) {
                         System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
-                        if (security.Decrypt(security.pass[i]).equals(NewPassText)){
+                      // if (NewPassText.equals(security.Decrypt(security.pass[i]))){
                             if(ConfirmNewPass.equals(NewPassText))
                             {
+                                System.out.println("asdaDASD");
                                  //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
-                                security.pass[i] = NewPassText;
-                                System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
+                                security.pass[i] = security.Decrypt(NewPassText);
+                                System.out.println(security.Decrypt(security.pass[i]));
+                                security.logged = false;
+                                System.out.println("adASDASDASD");
                             }
-                               
+                            else{
+                                System.out.println("new pass does not match to confiirm pass");
+                            }   
                                 
-                        }
-                        JOptionPane.showMessageDialog(null, "Successfully Changed Username");
+                       // }
+                        JOptionPane.showMessageDialog(null, "Successfully Changed Password");
                     }
-                    JOptionPane.showMessageDialog(null, "ASDASD");
                 }
             }
         });
