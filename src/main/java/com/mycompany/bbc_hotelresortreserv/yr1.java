@@ -10,10 +10,11 @@ public class yr1 extends JFrame {
     private JButton nxtbtn = new JButton("Next Year");
     private final String[] months = {"January", "February", "March", "April", 
         "May", "June", "July", "August", "September", "October", "November", "December"};
-    private final String[] columnNames = {"Day of Month" , "Sales", "No of Customers"};
+    private final String[] columnNames = {"Day" , "Sales", "No of Customers"};
+    private int yearSelected = 2023;
     
     public yr1() {
-        JFrame mfrm = new JFrame("2023");
+        JFrame mfrm = new JFrame(yearSelected+"");
         JPanel mpnl = new JPanel();
         
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
@@ -24,11 +25,11 @@ public class yr1 extends JFrame {
             JTable table = new JTable(rowData, columnNames);
             JPanel tblPnl = new JPanel ();
             
-            table.getColumnModel().getColumn(0).setPreferredWidth(27);
+            table.getColumnModel().getColumn(0).setMaxWidth(50);
             JScrollPane scrollPane = new JScrollPane(table);
             
             tblPnl.add (scrollPane);
-            tblPnl.setPreferredSize(new Dimension(500,600));
+            //tblPnl.setPreferredSize(new Dimension(500,600));
             
             JLabel label = new JLabel(months[monthIndex]);
             mpnl.add(label);
@@ -42,7 +43,7 @@ public class yr1 extends JFrame {
         
         mfrm.pack();
         mfrm.add(scrollPane);
-        mfrm.setSize(600, 400);
+        mfrm.setSize(700, 500);
         mfrm.setVisible(true);
         mfrm.setResizable(false);
         mfrm.setLocationRelativeTo(null);
@@ -67,7 +68,7 @@ public class yr1 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mfrm.dispose();
-                yr2 yr2024 = new yr2();
+                //next year
             }
         });
         
@@ -80,6 +81,9 @@ public class yr1 extends JFrame {
         mfrm.getContentPane().add(buttonPanel, "South");
     }
   
+    
+    
+    
     public class SecondFrame extends JFrame {
    
     private final String[] columnNames2 = {"Day", "Extra Bed", "Pillow", 
