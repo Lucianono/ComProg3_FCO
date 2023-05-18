@@ -31,7 +31,6 @@ public class Report{
     private int yearSelected = 2023;
     private JButton rsrcsbtn = new JButton("Resources Used");
     private JButton yearbtn = new JButton("Generate Year " + yearSelected +" "+"Report");
-    private JButton nxtbtn = new JButton("Next Year");
     DecimalFormat decfrmt = new DecimalFormat("#");
     double sum = 0;
     double yrsum = 0;
@@ -103,17 +102,9 @@ public class Report{
             }
         });
         
-        nxtbtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //next year
-            }
-        });
-        
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
         buttonPanel.add(rsrcsbtn);
         buttonPanel.add(yearbtn);
-        buttonPanel.add(nxtbtn);
         
         mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
         mfrm.getContentPane().add(buttonPanel, "South");
