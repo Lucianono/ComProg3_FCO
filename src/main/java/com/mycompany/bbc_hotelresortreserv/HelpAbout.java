@@ -53,22 +53,44 @@ public class HelpAbout extends JScrollPane{
         JLabel jLabel29 = new JLabel();
         JPanel jPanel12 = new JPanel();
         JLabel jLabel30 = new JLabel();
+        JLabel jLabel36 = new JLabel();
+        JLabel jLabel37 = new JLabel();
+        JLabel jLabel38 = new JLabel();
+        JLabel jLabel39 = new JLabel();
+        JLabel jLabel40 = new JLabel();
+        JLabel jLabel41 = new JLabel();
+        JLabel jLabel42 = new JLabel();
+        JLabel jLabel43 = new JLabel();
+        JLabel jLabel44 = new JLabel();
+        JLabel jLabel45 = new JLabel();
+        JLabel jLabel46 = new JLabel();
+        JLabel jLabel47 = new JLabel();
+        JLabel jLabel48 = new JLabel();
+        JLabel jLabel49 = new JLabel();
+        JLabel jLabel50 = new JLabel();
+        JLabel jLabel51 = new JLabel();
+        JLabel jLabel52 = new JLabel();
+        JLabel jLabel53 = new JLabel();
+        JLabel jLabel54 = new JLabel();
+        JLabel jLabel55 = new JLabel();
+        JLabel jLabel56 = new JLabel();
+        JLabel jLabel57 = new JLabel();
 
     public HelpAbout() {
 
-        about.setFont(new Font("Arial", 1, 24)); // NOI18N
+        about.setFont(new Font("Arial", 1, 24)); 
         about.setText("About the Developer");
 
-        prstb.setFont(new Font("Arial", 1, 12)); // NOI18N
+        prstb.setFont(new Font("Arial", 1, 12)); 
         prstb.setText("Presented By:");
 
-        albaName.setFont(new Font("Arial", 1, 12)); // NOI18N
+        albaName.setFont(new Font("Arial", 1, 12)); 
         albaName.setText("Darwin Alba Inigo I. Alba");
 
-        albaYS.setFont(new Font("Arial", 0, 12)); // NOI18N
+        albaYS.setFont(new Font("Arial", 0, 12)); 
         albaYS.setText("BSM CS 2A - G1");
 
-        albaNum.setFont(new Font("Arial", 0, 12)); // NOI18N
+        albaNum.setFont(new Font("Arial", 0, 12)); 
         albaNum.setText("0920-654-7790");
 
         ImageIcon darr = new ImageIcon("src/main/resources/images/images/Alba.png");
@@ -108,16 +130,16 @@ public class HelpAbout extends JScrollPane{
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        belonioName.setFont(new Font("Arial", 1, 12)); // NOI18N
+        belonioName.setFont(new Font("Arial", 1, 12)); 
         belonioName.setText("Noren Ester C. Belono");
 
-        belonioYS.setFont(new Font("Arial", 0, 12)); // NOI18N
+        belonioYS.setFont(new Font("Arial", 0, 12)); 
         belonioYS.setText("BSM CS 2A - G1");
 
-        belonioNum.setFont(new Font("Arial", 0, 12)); // NOI18N
+        belonioNum.setFont(new Font("Arial", 0, 12)); 
         belonioNum.setText("0912-700-2544");
 
-        belonioPic.setIcon(new ImageIcon(getClass().getResource("/images/Belonio.jpg"))); // NOI18N
+        belonioPic.setIcon(new ImageIcon(getClass().getResource("/images/Belonio.jpg"))); 
         belonioPic.setText("caluloPic");
 
         GroupLayout belonioPanelLayout = new GroupLayout(belonioPanel);
@@ -154,16 +176,16 @@ public class HelpAbout extends JScrollPane{
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        caluloName.setFont(new Font("Arial", 1, 12)); // NOI18N
+        caluloName.setFont(new Font("Arial", 1, 12)); 
         caluloName.setText("Bryan Jett T. Calulo");
 
-        caluloYS.setFont(new Font("Arial", 0, 12)); // NOI18N
+        caluloYS.setFont(new Font("Arial", 0, 12)); 
         caluloYS.setText("BSM CS 2A - G1");
 
-        caluloNum.setFont(new Font("Arial", 0, 12)); // NOI18N
+        caluloNum.setFont(new Font("Arial", 0, 12)); 
         caluloNum.setText("0915-112-0027");
 
-        caluloPic.setIcon(new ImageIcon(getClass().getResource("/images/Calulo.jpeg"))); // NOI18N
+        caluloPic.setIcon(new ImageIcon(getClass().getResource("/images/Calulo.jpeg"))); 
         caluloPic.setText("Bryan");
 
         GroupLayout caluloPanelLayout = new GroupLayout(caluloPanel);
@@ -228,16 +250,16 @@ public class HelpAbout extends JScrollPane{
                         .addGap(87, 87, 87))))
         );
 
-        sandiegoName.setFont(new Font("Arial", 1, 12)); // NOI18N
+        sandiegoName.setFont(new Font("Arial", 1, 12)); 
         sandiegoName.setText("Neil Allen H. Sandiego");
 
-        sandiegoYS.setFont(new Font("Arial", 0, 12)); // NOI18N
+        sandiegoYS.setFont(new Font("Arial", 0, 12)); 
         sandiegoYS.setText("BSM CS 2A - G1");
 
-        sandiegoNum.setFont(new Font("Arial", 0, 12)); // NOI18N
+        sandiegoNum.setFont(new Font("Arial", 0, 12)); 
         sandiegoNum.setText("0923-236-5987");
 
-        sandiegoPic.setIcon(new ImageIcon(getClass().getResource("/images/SanDiego.jpeg"))); // NOI18N
+        sandiegoPic.setIcon(new ImageIcon(getClass().getResource("/images/SanDiego.jpeg"))); 
         sandiegoPic.setText("Neil");
 
         GroupLayout sandiegoPanelLayout = new GroupLayout(sandiegoPanel);
@@ -273,16 +295,16 @@ public class HelpAbout extends JScrollPane{
                 .addContainerGap())
         );
 
-        rosalName.setFont(new Font("Arial", 1, 12)); // NOI18N
+        rosalName.setFont(new Font("Arial", 1, 12)); 
         rosalName.setText("Ramil Angelo Jan M. Rosal");
 
-        rosalYS.setFont(new Font("Arial", 0, 12)); // NOI18N
+        rosalYS.setFont(new Font("Arial", 0, 12)); 
         rosalYS.setText("BSM CS 2A - G1");
 
-        rosalNum.setFont(new Font("Arial", 0, 12)); // NOI18N
+        rosalNum.setFont(new Font("Arial", 0, 12)); 
         rosalNum.setText("0969-326-9501");
 
-        rosalPic.setIcon(new ImageIcon(getClass().getResource("/images/Rosal.png"))); // NOI18N
+        rosalPic.setIcon(new ImageIcon(getClass().getResource("/images/Rosal.png"))); 
         rosalPic.setText("Jelo");
 
         GroupLayout rosalPanelLayout = new GroupLayout(rosalPanel);
@@ -338,13 +360,13 @@ public class HelpAbout extends JScrollPane{
                 .addContainerGap())
         );
 
-        prstt.setFont(new Font("Arial", 1, 12)); // NOI18N
+        prstt.setFont(new Font("Arial", 1, 12)); 
         prstt.setText("Presented To:");
 
-        engrName.setFont(new Font("Arial", 1, 12)); // NOI18N
+        engrName.setFont(new Font("Arial", 1, 12)); 
         engrName.setText("Engr. Evelyn C. Samson");
 
-        engrCareer.setFont(new Font("Arial", 0, 12)); // NOI18N
+        engrCareer.setFont(new Font("Arial", 0, 12)); 
         engrCareer.setText("Instructor, MCS 203");
 
         GroupLayout engrPanelLayout = new GroupLayout(engrPanel);
@@ -370,74 +392,128 @@ public class HelpAbout extends JScrollPane{
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        help.setFont(new Font("Arial", 1, 24)); // NOI18N
+        help.setFont(new Font("Arial", 1, 24)); 
         help.setText(" Help");
 
-        mainMenu.setFont(new Font("Arial", 1, 12)); // NOI18N
+        mainMenu.setFont(new Font("Arial", 1, 12)); 
         mainMenu.setText("How to Reserve a Room for the customer");
 
-        GroupLayout jPanel10Layout = new GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel23.setText("How to Check in  ");
 
-        jLabel23.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel23.setText("How to Check in ");
+        jLabel24.setFont(new java.awt.Font("Arial", 1, 12));
+        jLabel24.setText("2. Type the customer's name and age in the customer information panel. ");
+        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        GroupLayout jPanel11Layout = new GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jLabel25.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel25.setText("1. On the main menu click Reserve. ");
+        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel24.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel24.setText("2.  Type the customer's name and age in the customer information panel.");
-        jLabel24.setVerticalAlignment(SwingConstants.TOP);
+        jLabel26.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel26.setText("2. Select the date when the customers reserve their room. ");
+        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel25.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel25.setText("1. On the main menu click Reserve. ");
-        jLabel25.setVerticalAlignment(SwingConstants.TOP);
+        jLabel27.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel27.setText("1. On the main menu click Check In/Out. ");
+        jLabel27.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel26.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel26.setText("2.  Select the date when the customers reserve their room.");
-        jLabel26.setVerticalAlignment(SwingConstants.TOP);
+        jLabel28.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel28.setText("2. Select the date when the customer reserves their room. ");
+        jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel27.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel27.setText("1. On the main menu click Check In/Out.");
-        jLabel27.setVerticalAlignment(SwingConstants.TOP);
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel29.setText("1. On the main menu click Check In/Out. ");
+        jLabel29.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel28.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel28.setText("2.   Select the date when the customer reserves their room.");
-        jLabel28.setVerticalAlignment(SwingConstants.TOP);
+        jLabel30.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel30.setText("How to add extras ");
 
-        jLabel29.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel29.setText("1. On the main menu click Check In/Out.");
-        jLabel29.setVerticalAlignment(SwingConstants.TOP);
+        jLabel36.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel36.setText("3. Select the Hotel room and what date the customer reserving the room. ");
+        jLabel36.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        GroupLayout jPanel12Layout = new GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel37.setText("4. Then click if the customer is reserving in regular or promo rate, and then the receipt will show. ");
+        jLabel37.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel30.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel30.setText("How to add extras");
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel38.setText("3. Then when the customer's name shows click the arrow beside");
+        jLabel38.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel39.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel39.setText(" their name and their information will show. ");
+        jLabel39.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel40.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel40.setText("4. Click, check In, and a receipt will show. ");
+        jLabel40.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel41.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel41.setText("3. Then when the customer's name shows click the arrow beside");
+        jLabel41.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel42.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel42.setText(" their name and their information will show. ");
+        jLabel42.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel43.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel43.setText("4. Click extras below the customer information box, then a window ");
+        jLabel43.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel44.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel44.setText("will pop out with the extras that the customer wants.  ");
+        jLabel44.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel45.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel45.setText("the bill on the customer's information box.  ");
+        jLabel45.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel46.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel46.setText("5. After selecting the extras click to confirm, then the extras will be added in ");
+        jLabel46.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel47.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel47.setText("How to Check out ");
+
+        jLabel48.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel48.setText("1. On the main menu click Check In/Out. ");
+        jLabel48.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel49.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel49.setText("2. Select the date when the customers reserve their room. ");
+        jLabel49.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel50.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel50.setText("3. Then when the customer's name shows click the arrow beside ");
+        jLabel50.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel51.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel51.setText(" their name and their information will show.");
+        jLabel51.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel52.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel52.setText("4. Click, check out then the bill will pop out, enter the amount and the receipt will show.");
+        jLabel52.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel53.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel53.setText("How to change the quantity of an item ");
+
+        jLabel54.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel54.setText("1. On the main menu click Manage, then click resources. ");
+        jLabel54.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel55.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel55.setText("2. Find the item that you want to add or reduce the quantity. ");
+        jLabel55.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel56.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel56.setText("3. Click the plus (+) button if you want to add. ");
+        jLabel56.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel57.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel57.setText("4. If you want to reduce the quantity of the resources click the subtract (-) botton. ");
+        jLabel57.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
 
         GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
