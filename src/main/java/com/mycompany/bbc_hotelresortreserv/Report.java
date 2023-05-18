@@ -4,25 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-/*
-This class is for Monthly Report JFrame
-
-TODO:
--Create a jframe that could handle multiple data from a month
-    - 28 to 31 data, depends on the month
--Data includes the sales, #ofCustomers, ResourcesUsed
-
--Create a new jframe file for annual report which handles data for each month
--Create a new jframe file for amenities/resources report which displays the current stock or inventory of resources
--Create a new jframe file for receipt which allows user to print/view a TXT or ASCII styled receipt
-
--BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
-*/
-
-/*yr1 yr2023 = new yr1();
- yr2 yr2024 = new yr2();
- yr3 yr2025 = new yr3();
-*/
 
 public class Report extends JPanel{
     
@@ -33,16 +14,15 @@ public class Report extends JPanel{
     private JButton rsrcsbtn = new JButton("Resources Used");
     private JButton yearbtn = new JButton("Generate Year " + yearSelected +" "+"Report");
     DecimalFormat decfrmt = new DecimalFormat("#");
-    double sum = 0;
-    double yrsum = 0;   
+    double yrsum = 0;
     LocalDate currentDate = LocalDate.now();
     LocalDate stopDate = LocalDate.of(2023, 5, 19);
     int stopMonth = 5;
-    int stopDay = 18;
-    
-    JPanel mainPanel = new JPanel();
+    int stopDay = 19;
     
     public Report(TransactionSystem trans) {
+        double sum = 0;
+    JPanel mainPanel = new JPanel();
         StringBuilder receiptText = new StringBuilder();
 
         JPanel mpnl = new JPanel();
@@ -64,17 +44,20 @@ public class Report extends JPanel{
                 rowData[index][1] = decfrmt.format(random);
                 double random1 = 1 + Math.random() * (20 - 1);
                 rowData[index][2] = decfrmt.format(random1);
+                
+                if (monthIndex >= 0 && monthIndex <= 4){
                 sum +=random;
                 }
+            }
             
+            
+              if (monthIndex >= 0 && monthIndex <= 4){
             receiptText.append(months[monthIndex]).append(" Total Sales: ")
             .append(decfrmt.format(sum)).append("\n");
-            
-            if (monthIndex + 1 > stopMonth || (monthIndex + 1 == stopMonth && rowData.length + 1 >= stopDay)) {
-                    break;
-                }
-            
+            } 
+            if (monthIndex < 5) {
             yrsum += sum;
+            }
             
             JTable table = new JTable(rowData, columnNames){
                  @Override
@@ -164,11 +147,9 @@ public class Report extends JPanel{
             
             for (int index = 0; index < rowData.length; index++) {
                 rowData[index][0] = Integer.toString(index + 1);
-                
                 if (monthIndex + 1 > stopMonth || (monthIndex + 1 == stopMonth && index + 1 >= stopDay)) {
                     break;
                 }
-                
                 double random = 1 + Math.random() * (10 - 1);
                 rowData[index][1] = decfrmt.format(random);
                 double random2 = 1 + Math.random() * (20 - 1);
@@ -194,7 +175,6 @@ public class Report extends JPanel{
                 double random12 = 1 + Math.random() * (100 - 1);
                 rowData[index][12] = decfrmt.format(random12);
             }
-            
             JTable table = new JTable(rowData, columnNames2){
                 @Override
                     public boolean isCellEditable(int row, int column) {

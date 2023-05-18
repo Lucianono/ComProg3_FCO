@@ -1,15 +1,4 @@
-/*
-This class is for Splash Screen JFrame
 
-TODO:
--Splash Screen is the first screen to be seen by the user
--after a short period of time, splash screen will be closed
--Splashscreen should have Logo, Company Name, License, Copyright, ProgressBar
--Logo can be from internet, AI generated, or original
--ProgressBar should depends on seconds before splashscreen to be closed, progressbar is like the "loading"
-
--BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
-*/
 package com.mycompany.bbc_hotelresortreserv;
 
 import javax.swing.*;

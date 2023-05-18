@@ -1,5 +1,3 @@
-//nag initialize sa login form ng Account sa may loginbtn part
-
 
 package com.mycompany.bbc_hotelresortreserv;
 
@@ -7,14 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-/*
-ToDo's
 
--Create method to change username
--Create method to change password
--When changing password, confirm old password then set new password
--Create method to signout
-*/
 
 public class Account extends JPanel{
     

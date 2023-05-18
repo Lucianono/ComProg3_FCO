@@ -1,13 +1,11 @@
 package com.mycompany.bbc_hotelresortreserv;
 
-//this is the main class
 
 import java.awt.Color;
 import java.awt.Insets;
 import java.text.ParseException;
 import javax.swing.*;
 
-//all classes should be in here
 
 public class BBCMain {
     
@@ -33,11 +31,11 @@ public class BBCMain {
         
         SplashScreen splsh = new SplashScreen(security);
         
-        JScrollPane hp = new HelpAbout();
-        JFrame fr = new JFrame();
-        fr.add(hp);
-        fr.setVisible(true);
-        fr.setSize(600,400);
+//        JScrollPane hp = new HelpAbout();
+//        JFrame fr = new JFrame();
+//        fr.add(hp);
+//        fr.setVisible(true);
+//        fr.setSize(600,400);
         
     }
     
