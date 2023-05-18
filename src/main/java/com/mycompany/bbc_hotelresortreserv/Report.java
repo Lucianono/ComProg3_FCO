@@ -42,22 +42,16 @@ public class Report{
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
             String[][] rowData = new String[getMaxDays(monthIndex)][3];
             DecimalFormat decfrmt = new DecimalFormat("#");
-            double min = 0.0;
+            double min = 500.0;
             double max = 10000.0;
             LocalDate currentDate = LocalDate.now();
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             
-            for (int Index = 0; Index < rowData.length; Index++) {
-                rowData[Index][0] = Integer.toString(Index + 1);
-                
-                LocalDate rowDate = LocalDate.parse(rowData[Index][1], dateFormatter);
-                if (currentDate.isBefore(rowDate)) {
-                    break;
-                }
-                
+            for (int index = 0; index < rowData.length; index++) {
+                rowData[index][0] = Integer.toString(index + 1);
                 double random = min + Math.random() * (max - min);
-                rowData[Index][1] = decfrmt.format(random);
-            }
+                rowData[index][1] = decfrmt.format(random);
+                }
+            
             
             JTable table = new JTable(rowData, columnNames){
                  @Override
@@ -128,7 +122,7 @@ public class Report{
         "Towel", "Reading Light", "Books/Magazine", "Toiletries", 
         "Luggage Rack", "Breakfast", "Lunch", "Dinner", "Drink", "Snack"};
     
-    private JButton backbtn = new JButton("Back to Year Report");
+    private final JButton backbtn = new JButton("Back to Year Report");
     
     public SecondFrame() {
         JFrame sfrm = new JFrame("2023");
@@ -172,9 +166,11 @@ public class Report{
         sfrm.getContentPane().add(backbtn, "South");
     }
 }
-    
-    public class YearReport extends JFrame {
-        private JTextArea yr;
+
+public class YearReport extends JFrame {
+
+        private final JTextArea yr;
+        
      public YearReport(){
         JFrame yrfrm = new JFrame(yearSelected+"");
         
@@ -209,7 +205,7 @@ public class Report{
         yrfrm.setVisible(true);
         yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);     
     }   
-    }
+    } 
     
     private int getMaxDays(int monthIndex) { 
         return switch (monthIndex) {
