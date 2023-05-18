@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 /*
 This class is for Monthly Report JFrame
 
@@ -33,7 +34,11 @@ public class Report extends JPanel{
     private JButton yearbtn = new JButton("Generate Year " + yearSelected +" "+"Report");
     DecimalFormat decfrmt = new DecimalFormat("#");
     double sum = 0;
-    double yrsum = 0;
+    double yrsum = 0;   
+    LocalDate currentDate = LocalDate.now();
+    LocalDate stopDate = LocalDate.of(2023, 5, 19);
+    int stopMonth = 5;
+    int stopDay = 18;
     
     JPanel mainPanel = new JPanel();
     
@@ -49,6 +54,11 @@ public class Report extends JPanel{
             
             for (int index = 0; index < rowData.length; index++) {
                 rowData[index][0] = Integer.toString(index + 1);
+                
+                if (monthIndex + 1 > stopMonth || (monthIndex + 1 == stopMonth && index + 1 >= stopDay)) {
+                    break;
+                }
+                
                 double random = 500 + Math.random() * (10000 - 500);
                 random *=2;
                 rowData[index][1] = decfrmt.format(random);
@@ -59,6 +69,10 @@ public class Report extends JPanel{
             
             receiptText.append(months[monthIndex]).append(" Total Sales: ")
             .append(decfrmt.format(sum)).append("\n");
+            
+            if (monthIndex + 1 > stopMonth || (monthIndex + 1 == stopMonth && rowData.length + 1 >= stopDay)) {
+                    break;
+                }
             
             yrsum += sum;
             
@@ -150,6 +164,11 @@ public class Report extends JPanel{
             
             for (int index = 0; index < rowData.length; index++) {
                 rowData[index][0] = Integer.toString(index + 1);
+                
+                if (monthIndex + 1 > stopMonth || (monthIndex + 1 == stopMonth && index + 1 >= stopDay)) {
+                    break;
+                }
+                
                 double random = 1 + Math.random() * (10 - 1);
                 rowData[index][1] = decfrmt.format(random);
                 double random2 = 1 + Math.random() * (20 - 1);
@@ -175,7 +194,15 @@ public class Report extends JPanel{
                 double random12 = 1 + Math.random() * (100 - 1);
                 rowData[index][12] = decfrmt.format(random12);
             }
-            JTable table = new JTable(rowData, columnNames2);
+            
+            JTable table = new JTable(rowData, columnNames2){
+                @Override
+                    public boolean isCellEditable(int row, int column) {
+                       //all cells false
+                       return false;
+                    }
+            };
+            
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             table.getColumnModel().getColumn(0).setPreferredWidth(50);
             table.setPreferredScrollableViewportSize(new Dimension(950, 400));
