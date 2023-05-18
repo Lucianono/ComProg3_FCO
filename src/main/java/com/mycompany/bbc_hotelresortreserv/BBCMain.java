@@ -33,7 +33,7 @@ public class BBCMain {
         
         SplashScreen splsh = new SplashScreen(security);
         
-        JPanel hp = new HelpAbout();
+        JScrollPane hp = new HelpAbout();
         JFrame fr = new JFrame();
         fr.add(hp);
         fr.setVisible(true);

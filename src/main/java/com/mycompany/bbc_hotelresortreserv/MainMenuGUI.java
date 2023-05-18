@@ -17,7 +17,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     JPanel hotelPnl ;
     JPanel accPnl ;
     JPanel reportPnl;
-    JPanel abtPnl;
+    JScrollPane abtPnl;
     
     
     JPanel mainPnl = new JPanel();
