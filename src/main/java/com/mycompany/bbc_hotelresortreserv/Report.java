@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 /*
 This class is for Monthly Report JFrame
 
@@ -96,7 +95,6 @@ public class Report{
             @Override
             public void actionPerformed(ActionEvent e) {
                 YearReport yrrprt = new YearReport();
-                
             }
         });
         
@@ -170,24 +168,32 @@ public class Report{
 public class YearReport extends JFrame {
 
         private final JTextArea yr;
+        private final String[] months = {"January", "February", "March", "April", 
+        "May", "June", "July", "August", "September", "October", "November", "December"};
         
      public YearReport(){
         JFrame yrfrm = new JFrame(yearSelected+"");
         
         StringBuilder receiptText = new StringBuilder();
-        
-        receiptText.append("January Total Sales: ").append("\n");
-        receiptText.append("February Total Sales: ").append("\n");
-        receiptText.append("March Total Sales: ").append("\n");
-        receiptText.append("April Total Sales: ").append("\n");
-        receiptText.append("May Total Sales: ").append("\n");
-        receiptText.append("June Total Sales: ").append("\n");
-        receiptText.append("July Total Sales: ").append("\n");
-        receiptText.append("August Total Sales: ").append("\n");
-        receiptText.append("September Total Sales: ").append("\n");
-        receiptText.append("October Total Sales: ").append("\n");
-        receiptText.append("November Total Sales: ").append("\n");
-        receiptText.append("December Total Sales: ").append("\n");
+
+        for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
+            receiptText.append(months[monthIndex]).append(" Total Sales: ").append("\n");
+            String[][] rowData = new String[getMaxDays(monthIndex)][3];
+            DecimalFormat decfrmt = new DecimalFormat("#");
+            double min = 500.0;
+            double max = 10000.0;
+            LocalDate currentDate = LocalDate.now();
+
+            for (int index = 0; index < rowData.length; index++) {
+                rowData[index][0] = Integer.toString(index + 1);
+                double random = min + Math.random() * (max - min);
+                rowData[index][1] = decfrmt.format(random);
+                receiptText.append(rowData[index][1]).append("\n");
+            }
+
+            receiptText.append("\n");
+        }
+
         receiptText.append("For the year of ").append(yearSelected).append(": ");
         
         yr = new JTextArea(receiptText.toString());
@@ -203,7 +209,8 @@ public class YearReport extends JFrame {
         yrfrm.setLocationRelativeTo(null);
         yrfrm.setResizable(false);
         yrfrm.setVisible(true);
-        yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);     
+        yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);    
+        
     }   
     } 
     
