@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Receipt extends JFrame {
 
@@ -22,12 +23,14 @@ public class Receipt extends JFrame {
         
         if(rcpttype==0){
         StringBuilder receiptText = new StringBuilder();
+        String reservationCode = UUID.randomUUID().toString();
+        
         receiptText.append("=============================================\n");
         receiptText.append("                    RECEIPT\n");
         receiptText.append("=============================================\n\n");
         receiptText.append("Hotel/Resort Name: BBC Hotel Resort\n");
         receiptText.append("Date: ").append(LocalDate.now()).append("\n");
-        receiptText.append("Reservation Code: [Reservation Code]\n");
+        receiptText.append("Reservation Code:") .append(reservationCode).append ("\n");
         receiptText.append("Customer Name: [Customer Name]\n");
         receiptText.append("Customer Age: [Customer Age]\n");
         receiptText.append("Customer Phone: [Customer Phone]\n");
@@ -61,7 +64,7 @@ public class Receipt extends JFrame {
         mfrm.setLocationRelativeTo(null);
         mfrm.setResizable(false);
         mfrm.setVisible(true);
-        mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+        mfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);     
         mfrm.getContentPane().add(buttonPanel, "North");
         
         printbtn.addActionListener(new ActionListener(){

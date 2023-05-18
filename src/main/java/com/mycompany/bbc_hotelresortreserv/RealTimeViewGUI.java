@@ -13,9 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class RealTimeViewGUI extends JFrame implements ActionListener,ItemListener{
-
-    private JButton printbtn = new JButton("Print Receipt");
-    private JButton cancelbtn = new JButton("Cancel Transaction");
     
     JFrame frame = new JFrame();
     JPanel jPanel2 = new JPanel();
