@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 /*
 This class is for Monthly Report JFrame
 
@@ -43,18 +44,21 @@ public class Report{
             DecimalFormat decfrmt = new DecimalFormat("#");
             double min = 0.0;
             double max = 10000.0;
-            
             LocalDate currentDate = LocalDate.now();
-
-for (int index = 0; index < rowData.length; index++) {
-    rowData[index][0] = Integer.toString(index + 1);
-    if (currentDate.isAfter(LocalDate.now())) {
-        double random = min + Math.random() * (max - min);
-        rowData[index][1] = decfrmt.format(random);
-    } else {
-        rowData[index][1] = currentDate.toString();
-    }
-}
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            
+            for (int Index = 0; Index < rowData.length; Index++) {
+                rowData[Index][0] = Integer.toString(Index + 1);
+                
+                LocalDate rowDate = LocalDate.parse(rowData[Index][1], dateFormatter);
+                if (currentDate.isBefore(rowDate)) {
+                    break;
+                }
+                
+                double random = min + Math.random() * (max - min);
+                rowData[Index][1] = decfrmt.format(random);
+            }
+            
             JTable table = new JTable(rowData, columnNames){
                  @Override
                     public boolean isCellEditable(int row, int column) {
@@ -176,29 +180,34 @@ for (int index = 0; index < rowData.length; index++) {
         
         StringBuilder receiptText = new StringBuilder();
         
-        receiptText.append("January Total Sales: " + "");
-        receiptText.append("February Total Sales: " + "");
-        receiptText.append("March Total Sales: " + "");
-        receiptText.append("April Total Sales: " + "");
-        receiptText.append("May Total Sales: " + "");
-        receiptText.append("June Total Sales: " + "");
-        receiptText.append("July Total Sales: " + "");
-        receiptText.append("August Total Sales: " + "");
-        receiptText.append("September Total Sales: " + "");
-        receiptText.append("October Total Sales: " + "");
-        receiptText.append("November Total Sales: " + "");
-        receiptText.append("December Total Sales: " + "");
+        receiptText.append("January Total Sales: ").append("\n");
+        receiptText.append("February Total Sales: ").append("\n");
+        receiptText.append("March Total Sales: ").append("\n");
+        receiptText.append("April Total Sales: ").append("\n");
+        receiptText.append("May Total Sales: ").append("\n");
+        receiptText.append("June Total Sales: ").append("\n");
+        receiptText.append("July Total Sales: ").append("\n");
+        receiptText.append("August Total Sales: ").append("\n");
+        receiptText.append("September Total Sales: ").append("\n");
+        receiptText.append("October Total Sales: ").append("\n");
+        receiptText.append("November Total Sales: ").append("\n");
+        receiptText.append("December Total Sales: ").append("\n");
+        receiptText.append("For the year of ").append(yearSelected).append(": ");
         
         yr = new JTextArea(receiptText.toString());
         yr.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
         yr.setEditable(false);
         yr.setFont(new Font("Monospaced", Font.PLAIN, 12));
         
-        yrfrm.setSize(600, 400);
-        yrfrm.setVisible(true);
-        yrfrm.setResizable(true);
+        JScrollPane scrollPane = new JScrollPane(yr);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        yrfrm.getContentPane().add(scrollPane);
+        yrfrm.pack();
+        yrfrm.setSize(355,265);
         yrfrm.setLocationRelativeTo(null);
-        yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        yrfrm.setResizable(false);
+        yrfrm.setVisible(true);
+        yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);     
     }   
     }
     
