@@ -23,7 +23,7 @@ TODO:
  yr3 yr2025 = new yr3();
 */
 
-public class Report{
+public class Report extends JPanel{
     
     private final String[] months = {"January", "February", "March", "April", 
         "May", "June", "July", "August", "September", "October", "November", "December"};
@@ -35,11 +35,14 @@ public class Report{
     double sum = 0;
     double yrsum = 0;
     
-    public Report() {
+    JPanel mainPanel = new JPanel();
+    
+    public Report(TransactionSystem trans) {
         StringBuilder receiptText = new StringBuilder();
 
-        JFrame mfrm = new JFrame(yearSelected+"");
         JPanel mpnl = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setPreferredSize(new Dimension(600,400));
         
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
             String[][] rowData = new String[getMaxDays(monthIndex)][3];
@@ -88,12 +91,7 @@ public class Report{
         JScrollPane scrollPane = new JScrollPane(mpnl);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
-        mfrm.pack();
-        mfrm.add(scrollPane);
-        mfrm.setSize(700, 500);
-        mfrm.setVisible(true);
-        mfrm.setResizable(false);
-        mfrm.setLocationRelativeTo(null);
+        mainPanel.add(scrollPane);
  
         rsrcsbtn.addActionListener(new ActionListener(){
             @Override
@@ -105,9 +103,8 @@ public class Report{
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
         buttonPanel.add(rsrcsbtn);
         buttonPanel.add(yearbtn);
-        
-        mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
-        mfrm.getContentPane().add(buttonPanel, "South");
+          
+        mainPanel.add(buttonPanel, "South");
 
             JTextArea yr = new JTextArea(receiptText.toString());
             yr.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
@@ -131,6 +128,8 @@ public class Report{
                 yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
             }
         });
+            
+            add(mainPanel);
     }
  
     public class SecondFrame extends JFrame {

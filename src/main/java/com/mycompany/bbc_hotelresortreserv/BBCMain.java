@@ -34,7 +34,6 @@ public class BBCMain {
         SplashScreen splsh = new SplashScreen(security);
         
         
-        Report rm = new Report();
         
     }
     
