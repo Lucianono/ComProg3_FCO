@@ -45,7 +45,9 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/mainMenuImg.png");
         Image logo = logoImg.getImage();
-        Image scaledLogo = logo.getScaledInstance(logoImg.getIconWidth()/2, logoImg.getIconHeight()/2, Image.SCALE_SMOOTH);
+        int imgw = (int) ((int)logoImg.getIconWidth()/1.5);
+        int imgh = (int) ((int)logoImg.getIconHeight()/1.5);
+        Image scaledLogo = logo.getScaledInstance(imgw, imgh, Image.SCALE_SMOOTH);
         defaultImgHolder = new JLabel(new ImageIcon(scaledLogo));
         
         statusPnl = new StatusBar("Bryan","admin");
@@ -69,10 +71,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
 
         
         mainPnl.setLayout(new BoxLayout(mainPnl, BoxLayout.X_AXIS));
-        btnPnl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        mainPnl.setBackground(BbcUI.lightbrown);
 
         
         btnPnl.setPreferredSize(new Dimension(70, 508));
+        btnPnl.setBackground(BbcUI.brown);
         btnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 8));
 
         rsrvBtn.setText("Reserve");

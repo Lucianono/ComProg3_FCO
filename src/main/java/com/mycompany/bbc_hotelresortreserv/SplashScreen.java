@@ -28,8 +28,8 @@ public class SplashScreen {
     JPanel p4 = new JPanel();
     JPanel compPanel = new JPanel();
     JPanel mainPanel = new JPanel(new BorderLayout());
-    Color brown = new Color (102,51,0);
-    Color lgtbrown = new Color (255, 240, 217);
+    Color brown = BbcUI.brown;
+    Color lgtbrown = BbcUI.lightbrown;
     
     SplashScreen() {
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/logo_orig.png");

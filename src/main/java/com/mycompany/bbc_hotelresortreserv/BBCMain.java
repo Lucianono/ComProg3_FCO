@@ -13,7 +13,7 @@ public class BBCMain {
 
     public static void main(String[] args) throws ParseException {
         
-        UIdefaults uidflts = new UIdefaults();
+        BbcUI uidflts = new BbcUI();
         
         HotelCRUD hotelBooked = new HotelCRUD();
         CustomerCRUD customersBooked = new CustomerCRUD();
@@ -24,7 +24,7 @@ public class BBCMain {
         
         MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
         
-        SplashScreen splsh = new SplashScreen();
+        //SplashScreen splsh = new SplashScreen();
         
     }
     

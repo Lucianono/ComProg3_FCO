@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.UIManager;
 
-public class UIdefaults {
+public class BbcUI {
 
-    public UIdefaults() {
+    public static Color lightbrown = new Color (255, 250, 242);
+    public static Color brown = new Color (102,51,0);
+    
+    public BbcUI() {
         
         UIManager.put("Panel.background", Color.TRANSLUCENT);
         UIManager.put("Button.background", Color.WHITE);
@@ -16,6 +19,8 @@ public class UIdefaults {
         UIManager.put("Label.background", Color.WHITE);
         UIManager.put("CheckBox.background", Color.WHITE);
         UIManager.put("RadioButton.background", Color.WHITE);
+        UIManager.put("ComboBox.background", Color.WHITE);
+        UIManager.put("Viewport.background", Color.WHITE);
         
     }
     
