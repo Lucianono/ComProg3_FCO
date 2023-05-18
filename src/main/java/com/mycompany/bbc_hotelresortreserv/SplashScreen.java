@@ -90,14 +90,8 @@ public class SplashScreen {
             
         if(counter == 100){
             
-            HotelCRUD hotelBooked = new HotelCRUD();
-            CustomerCRUD customersBooked = new CustomerCRUD();
-            TransactionSystem transactionsCompleted = new TransactionSystem();
-            ResourcesCRUD resourcesInv = new ResourcesCRUD();
-            Security security = new Security();
-
-
-            MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
+            Security security = new  Security();
+            LoginSignupFormGUI login = new LoginSignupFormGUI(security);
             
             frm.dispose();
             

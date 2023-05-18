@@ -25,7 +25,7 @@ public class BbcUI {
         
         
         UIManager.put("TextField.background", Color.WHITE);
-
+        UIManager.put("TextField.font", new Font("Verdana", Font.PLAIN, 12));
         
         UIManager.put("CheckBox.background", Color.WHITE);
         UIManager.put("RadioButton.background", Color.WHITE);

@@ -51,7 +51,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         Image scaledLogo = logo.getScaledInstance(imgw, imgh, Image.SCALE_SMOOTH);
         defaultImgHolder = new JLabel(new ImageIcon(scaledLogo));
         
-        statusPnl = new StatusBar("Bryan","admin");
+        statusPnl = new StatusBar(security);
         reservPnl = new ReservationGUI(hotelBooked, customersBooked, transactionsCompleted);
         rtvPnl = new RealTimeViewGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv);
         invPnl = new InventoryGUI(resourcesInv);
@@ -65,6 +65,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         abtHelpBtn.addActionListener(this);
         accBtn.addActionListener(this);
 
+        if(security.pos[security.loggedIndex].equalsIgnoreCase("admin"))
+            reportBtn.setEnabled(true);
+        else
+            reportBtn.setEnabled(false);
+        
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

@@ -19,6 +19,15 @@ public class BBCMain {
         
         SplashScreen splsh = new SplashScreen();
         
+//        HotelCRUD hotelBooked = new HotelCRUD();
+//            CustomerCRUD customersBooked = new CustomerCRUD();
+//            TransactionSystem transactionsCompleted = new TransactionSystem();
+//            ResourcesCRUD resourcesInv = new ResourcesCRUD();
+//            Security security = new Security();
+//
+//
+//            MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
+        
     }
     
     

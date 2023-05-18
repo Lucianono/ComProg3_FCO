@@ -4,6 +4,9 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /*
 This is a security extended, Login and Signup Form
 
@@ -60,6 +63,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     LoginSignupFormGUI(Security security){
         this.security = security;
         
+        jPanel1.setBackground(BbcUI.lightbrown);
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
         jPanel1.add(filler2);
 
@@ -70,7 +74,10 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
 
         jLabel3.setFont(new Font("Verdana", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel3.setText("Black Bean Company");
+        
+        ImageIcon logoImg = new ImageIcon("src/main/resources/images/logo_orig.png");
+        Image logoVar = logoImg.getImage().getScaledInstance(logoImg.getIconWidth()/8, logoImg.getIconHeight()/8, Image.SCALE_SMOOTH);
+        jLabel3.setIcon(new ImageIcon(logoVar));
         jPanel11.add(jLabel3);
 
         jPanel2.add(jPanel11);
@@ -223,6 +230,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
 
         bjPanel1.setLayout(new BoxLayout(bjPanel1, BoxLayout.Y_AXIS));
         bjPanel1.add(bfiller2);
+        bjPanel1.setBackground(BbcUI.lightbrown);
 
         bjPanel8.setMinimumSize(new Dimension(438, 400));
         bjPanel8.setPreferredSize(null);
@@ -402,8 +410,21 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                         logAttempts=0;
                         frame.dispose();
                         JOptionPane.showMessageDialog(null, "Welcome " + UserInput,"Login",JOptionPane.INFORMATION_MESSAGE);
-                        Account acc = new Account(UserInput, PasswordInput,security);
+                        security.logged = true;
+                        
+                        //call to main menu
+                        HotelCRUD hotelBooked = new HotelCRUD();
+                        CustomerCRUD customersBooked = new CustomerCRUD();
+                        TransactionSystem transactionsCompleted = null;
+                        try {
+                            transactionsCompleted = new TransactionSystem();
+                        } catch (ParseException ex) {
+                            Logger.getLogger(LoginSignupFormGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        ResourcesCRUD resourcesInv = new ResourcesCRUD();
 
+
+                        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
 
                     }else{{
                         logAttempts++;
@@ -444,6 +465,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                 else{
                     security.signUp(UserInput2, PasswordInput2, SelectedPosition);
                     if(ConfirmPassword.equals(PasswordInput2)){
+                        boolean m = true;
                         for (String user1 : user) {
                             if (user1.equals(UserInput2)) {
                                 JOptionPane.showMessageDialog(null, "Already Taken");
@@ -451,17 +473,18 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                                 passwordText2.setText("");
                                 userText2.setText("");
                                 cpText.setText("");
+                                m=false;
                                 break;
                             }
-                            else{
+                        }
+                        if (m) {
                             passwordText2.setText("");
                             userText2.setText("");
                             cpText.setText("");
                             JOptionPane.showMessageDialog(null, "Successfully Created an Account...");
                             frame2.dispose();
-                            break;
-                            }
                         }
+                        
                     }
                     else if(!ConfirmPassword.equals(PasswordInput2)){
                         JOptionPane.showMessageDialog(null, "Password Doesn't Match! Confirm it again...");

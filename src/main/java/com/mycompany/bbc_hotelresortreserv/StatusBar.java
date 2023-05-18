@@ -27,9 +27,13 @@ public class StatusBar extends JPanel {
     
     private final JPanel leftPnl;
     private final JPanel rightPnl;
+    
+    Security security;
 
-
-    public StatusBar(String name, String position) {  
+    
+    public StatusBar(Security security) {  
+        
+    this.security = security;
         
     setLayout(new GridLayout(1, 2)); 
     
@@ -47,13 +51,11 @@ public class StatusBar extends JPanel {
     logoLbl.setHorizontalAlignment(SwingConstants.LEFT);
     leftPnl.add(logoLbl,BorderLayout.CENTER);
 
-    this.name = name;
-    nameLbl = new JLabel("<html>Username : <b>" + this.name);
+    nameLbl = new JLabel("<html>Username : <b>" + security.user[security.loggedIndex]);
     nameLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     rightPnl.add(nameLbl);
   
-    this.pos = position;
-    positionLbl = new JLabel("<html>Position: <b>" + this.pos);
+    positionLbl = new JLabel("<html>Position: <b>" + security.pos[security.loggedIndex]);
     positionLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     rightPnl.add(positionLbl);
  
@@ -72,7 +74,7 @@ public class StatusBar extends JPanel {
     
     
     updateDateTime();
-    Timer timer = new Timer(1000 * 30, e -> updateDateTime());
+    Timer timer = new Timer(1000 * 5, e -> updateDateTime());
     timer.start();
 
     setBackground(Color.WHITE);
@@ -99,6 +101,8 @@ public class StatusBar extends JPanel {
         timeLbl.setText("" + formattedTime);
         repaint();
         revalidate();
+        
+        setName(security.user[security.loggedIndex]);
     }
 
     
