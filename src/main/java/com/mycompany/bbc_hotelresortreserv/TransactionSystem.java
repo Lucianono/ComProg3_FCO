@@ -22,19 +22,19 @@ public class TransactionSystem {
         Date d2 = formatter.parse("2023/5/13");
         Resources [] r = null;
         Customer[] customers = {c};
-        createReservation(customers,"A1",5000,d1,0,0,r);
-        createReservation(customers,"B1",5000,d1,0,500,r);
-        createReservation(customers,"C1",5000,d1,0,750,r);
-        createReservation(customers,"A1",5000,d2,0,750,r);
-        createReservation(customers,"B1",5000,d2,0,750,r);
-        createReservation(customers,"D1",5000,d2,0,750,r);
+        createReservation(customers,"A1",1000,5000,d1,0,0,r);
+        createReservation(customers,"B1",1000,5000,d1,0,500,r);
+        createReservation(customers,"C1",1000,5000,d1,0,750,r);
+        createReservation(customers,"A1",1000,5000,d2,0,750,r);
+        createReservation(customers,"B1",1000,5000,d2,0,750,r);
+        createReservation(customers,"D1",1000,5000,d2,0,750,r);
 
         
     }
     
-    public Transaction createReservation( Customer[] customers, String hotel, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
+    public Transaction createReservation( Customer[] customers, String hotel,double totalAm, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer
         
-            Transaction transaction = new Transaction(TransIDCtr++,customers,hotel,downcash,timeRsrv,fullcash,remBal,resoUsed,false,false);
+            Transaction transaction = new Transaction(TransIDCtr++,customers,hotel,totalAm,downcash,timeRsrv,fullcash,remBal,resoUsed,false,false);
             transactions.add(transaction);
             return transaction;
         

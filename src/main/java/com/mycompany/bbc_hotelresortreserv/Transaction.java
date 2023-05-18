@@ -7,6 +7,7 @@ public class Transaction {
     private final int TransactID;
     private final Customer[] customers;
     private final String hotel;
+    private double totalAmount;
     private final double downCash;
     private final Date dateRsrv;
     private double fullCash;
@@ -17,7 +18,7 @@ public class Transaction {
     private Date dateChkIn;
     private Date dateChkOut;
 
-    Transaction(int TransactID, Customer[] customers, String hotel, double downCash, Date dateRsrv, double fullCash ,double remBal, Resources [] resoUsed , boolean checkedIn, boolean checkedOut) {
+    Transaction(int TransactID, Customer[] customers, String hotel,double totalAmount, double downCash, Date dateRsrv, double fullCash ,double remBal, Resources [] resoUsed , boolean checkedIn, boolean checkedOut) {
         this.TransactID = TransactID;
         this.customers = customers;
         this.hotel = hotel;
@@ -28,6 +29,7 @@ public class Transaction {
         this.resoUsed = resoUsed;
         this.checkedIn = checkedOut;
         this.checkedIn = checkedOut;
+        this.totalAmount=totalAmount;
     }
 
     // Getters for all variables
@@ -41,6 +43,10 @@ public class Transaction {
 
     public String getHotel() {
         return hotel;
+    }
+    
+    public double getTotalAmount() {
+        return totalAmount;
     }
 
     public double getDownCash() {
@@ -108,6 +114,10 @@ public class Transaction {
     
     public void setDateChkOut(Date dateChkOut) {
         this.dateChkOut = dateChkOut;
+    }
+    
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
 }

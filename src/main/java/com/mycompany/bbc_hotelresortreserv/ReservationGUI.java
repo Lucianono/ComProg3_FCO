@@ -311,9 +311,9 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
         }
         
         if(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap() > 1){
-                    if(totalAmount < hotelAmount*custMinimum*(1+vatAmount)){
+                    if(totalAmount < hotelAmount*custMinimum*(1+vatAmount) - discountAmount){
                         totalAmount = Math.round(hotelAmount*custMinimum*(1+vatAmount)*100)/100.0;
-                        expectCashlLbl[labelCount] = new JLabel("*Minimum Amount : "+ totalAmount+"     ");
+                        expectCashlLbl[labelCount] = new JLabel("*Minimum Amount : "+ (totalAmount- discountAmount) +"     ");
                         expectCashlLbl[labelCount].setFont(new Font("Arial",Font.ITALIC,12)  );
                         jPanelPriceBreakdown.add(expectCashlLbl[labelCount]);
                         labelCount++;
@@ -334,9 +334,9 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
         String dp100;
         if(totalAmount!= 0)
             if(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getRoomCap() > 1)
-                dp100 = totalAmount  + "";
+                dp100 = (totalAmount-discountAmount)  + "";
             else
-                dp100 = (Math.round(hotelAmountPromo*(1+vatAmount)*100)/100.0)  + "";
+                dp100 = ((Math.round(hotelAmountPromo*(1+vatAmount)*100)/100.0)-discountAmount)  + "";
         else
             dp100 = "0.0";
         expectCashlLbl[labelCount] = new JLabel("<html>*100% Down Payment :"+ dp100 +"<br/>-->(Promo applied)");
@@ -421,6 +421,8 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
 
              
             }
+        jPanel1.repaint();
+        jPanel1.revalidate();
     }
     //remove cusotmer text field
     private void removeCustTxt(){
@@ -478,11 +480,13 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
                     Logger.getLogger(ReservationGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                transactionsCompleted.createReservation(custArr, hotelSelected, cashInput,dateBooked,0,realAmount-custCash,null);
+                Transaction t = transactionsCompleted.createReservation(custArr, hotelSelected,realAmount, cashInput,dateBooked,0,realAmount-custCash,null);
+                
                 System.out.println("Transaction was successful");
 
                 JOptionPane.showMessageDialog(null, "Reservation completed!");
 
+                Receipt receipt = new Receipt(0,t,cashInput-custCash,null);
                 clearAll();
                 
             }
@@ -536,18 +540,17 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
         else if(e.getSource()==btnMinus){
             
             removeCustTxt();
+            expectedCashDisplay();
 
         }
         else if(e.getSource()==btnRsrv50){
             
             processTransaction(0);
-            Receipt receipt = new Receipt(0);
             
         }
         else if(e.getSource()==btnRsrv100){
             
             processTransaction(1);
-            Receipt receipt = new Receipt(0);
             
         }
 
@@ -602,69 +605,5 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
         expectedCashDisplay();
     }
     
-    private JButton printbtn = new JButton("Print Receipt");
-    private JButton cancelbtn = new JButton("Cancel Transaction");
-    private JTextArea main;
-    
-    public void Receipt() {
-        JFrame mfrm = new JFrame("Draft");
-        
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
-        buttonPanel.add(printbtn);
-        buttonPanel.add(cancelbtn);
-        
-        StringBuilder receiptText = new StringBuilder();
-        receiptText.append("=============================================\n");
-        receiptText.append("                    RECEIPT\n");
-        receiptText.append("=============================================\n\n");
-        receiptText.append("Hotel/Resort Name: BBC Hotel Resort\n");
-        receiptText.append("Date: ").append(LocalDate.now()).append("\n");
-        receiptText.append("Reservation Code: [Reservation Code]\n");
-        receiptText.append("Customer Age: [Customer Name]\n");
-        receiptText.append("Customer Email: [Customer Email]\n");
-        receiptText.append("Customer Phone: [Customer Phone]\n");
-        receiptText.append("---------------------------------------------\n");
-        receiptText.append("Room Type: [Room Type]\n");
-        receiptText.append("Check-in Date: [Check-in Date]\n");
-        receiptText.append("Check-out Date: [Check-out Date]\n");
-        receiptText.append("Number of Guests: [Number of Guests]\n");
-        receiptText.append("--------------------------------------------\n");
-        receiptText.append("Subtotal: $[Subtotal]\n");
-        receiptText.append("Tax: $[Tax Amount]\n");
-        receiptText.append("Total Amount: $[Total Amount]\n");
-        receiptText.append("---------------------------------------------\n");
-        receiptText.append("Payment Method: [Payment Method]\n");
-        receiptText.append("Transaction ID: [Transaction ID]\n");
-        receiptText.append("---------------------------------------------\n\n");
-        receiptText.append("Thank you for choosing BBC Hotel Resort.\n");
-        receiptText.append("For any inquiries, please contact our\n");
-        receiptText.append("customer service.\n\n");
-        receiptText.append("=============================================\n");
-        
-        main = new JTextArea(receiptText.toString());
-        main.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
-        main.setEditable(false);
-        main.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        
-        mfrm.setSize(600, 400); 
-        mfrm.setLocationRelativeTo(null);
-        mfrm.setResizable(false);
-        mfrm.setVisible(true);
-        mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
-        mfrm.getContentPane().add(buttonPanel, "North");
-        
-        printbtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JScrollPane scrollPane = new JScrollPane(main);
-                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                mfrm.getContentPane().add(scrollPane);
-                mfrm.pack();
-                mfrm.setSize(355,400);
-                mfrm.setLocationRelativeTo(null);
-                mfrm.setResizable(false);
-            }
-        }); 
-      }
     
 }

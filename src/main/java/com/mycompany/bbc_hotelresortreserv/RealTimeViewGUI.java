@@ -14,8 +14,6 @@ import java.util.logging.Logger;
 
 public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListener{
 
-    private JButton printbtn = new JButton("Print Receipt");
-    private JButton cancelbtn = new JButton("Cancel Transaction");
     
     JPanel jPanel2 = new JPanel();
     JPanel jPanel3 = new JPanel();
@@ -291,6 +289,7 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
             }
             
             
+            t.setTotalAmount(t.getTotalAmount()+totalAmount);
             return t.getRemBal()+totalAmount;
             
         }
@@ -601,14 +600,15 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
             if(t!=null){
                 if(!t.isCheckedOut() && t.isCheckedIn()){
                     try {
-                        if(totalRemBal == 0 || (Double.valueOf(JOptionPane.showInputDialog("Input Cash")) >= totalRemBal) ){
+                        double custInp = Double.parseDouble(JOptionPane.showInputDialog("Input Cash"));
+                        if(totalRemBal == 0 || custInp >= totalRemBal) {
                             t.setCheckedOut(true);
                             hotelBooked.getHotel(t.getHotel()).setAvailability(true);
                             t.setDateChkOut(new Date());
-                            t.setFullCash(t.getRemBal());
+                            t.setFullCash(custInp);
                             t.setRemBal(0);
                             JOptionPane.showMessageDialog(null, "Successfully checked out!" );
-                            Receipt receipt = new Receipt(1);
+                            Receipt receipt = new Receipt(1,t,custInp-totalRemBal,resourcesInv);
                         }
                         else{
                             JOptionPane.showMessageDialog(null, "Insufficient funds!" );
