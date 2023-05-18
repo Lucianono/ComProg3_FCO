@@ -3,7 +3,7 @@ package com.mycompany.bbc_hotelresortreserv;
 import javax.swing.JFrame;
 import javax.swing.*;
 
-public class HelpAbout extends JFrame{
+public class HelpAbout extends JPanel{
         JScrollPane jScrollPane1 = new JScrollPane();
         JPanel mainPanel = new JPanel();
         JLabel about = new JLabel();
@@ -54,7 +54,6 @@ public class HelpAbout extends JFrame{
         JLabel jLabel30 = new JLabel();
 
     public HelpAbout() {
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         about.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         about.setText("About the Developer");
@@ -531,9 +530,10 @@ public class HelpAbout extends JFrame{
 
         jScrollPane1.setViewportView(mainPanel);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        pack();                   
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        setSize(600,400);
+        
+             
     }
     
 }
