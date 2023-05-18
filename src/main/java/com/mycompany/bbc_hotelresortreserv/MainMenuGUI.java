@@ -15,6 +15,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     JPanel rtvPnl ;
     JPanel invPnl ;
     JPanel hotelPnl ;
+    JPanel accPnl ;
     
     
     JPanel mainPnl = new JPanel();
@@ -31,13 +32,15 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     CustomerCRUD customersBooked;
     TransactionSystem transactionsCompleted;
     ResourcesCRUD resourcesInv;
+    Security security;
     
-    public MainMenuGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked,TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv) {
+    public MainMenuGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked,TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv,Security security) {
         
         this.hotelBooked=hotelBooked;
         this.customersBooked=customersBooked;
         this.transactionsCompleted=transactionsCompleted;
         this.resourcesInv=resourcesInv;
+        this.security=security;
 
         
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/mainMenuImg.png");
@@ -50,6 +53,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         rtvPnl = new RealTimeViewGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv);
         invPnl = new InventoryGUI(resourcesInv);
         hotelPnl = new HotelRoomGUI(hotelBooked);
+        accPnl = new Account(security.user[security.loggedIndex], security.pass[security.loggedIndex], security);
         
         rsrvBtn.addActionListener(this);
         chkInOutBtn.addActionListener(this);

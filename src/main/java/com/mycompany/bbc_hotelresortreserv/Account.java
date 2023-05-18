@@ -16,7 +16,7 @@ ToDo's
 -Create method to signout
 */
 
-public class Account extends JFrame{
+public class Account extends JPanel{
     
     JLabel userNameLbl = new JLabel();
 
@@ -68,7 +68,7 @@ public class Account extends JFrame{
                 
                 if  (security.logged == true){
                     
-                    int i = security.getIndexByUser(UserChange);
+                    int i = security.loggedIndex;
                     
                         System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
                         if (security.Decrypt(security.pass[i]).equals(EnterPass)){
@@ -159,7 +159,7 @@ public class Account extends JFrame{
                 if  (security.logged == true){
                     
                     
-                    int i = security.getIndexByUser(UserChange);
+                    int i = security.loggedIndex;
                     
                             if(ConfirmNewPass.equals(NewPassText))
                             {
@@ -218,8 +218,6 @@ public class Account extends JFrame{
         Box.Filler bfiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
 
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         bjPanel1.setLayout(new BoxLayout(bjPanel1, BoxLayout.Y_AXIS));
         bjPanel1.add(bfiller2);
 
@@ -261,7 +259,7 @@ public class Account extends JFrame{
 
         bjLabel4.setFont(new Font("Arial Narrow", 0, 18)); // NOI18N
         bjLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-        bjLabel4.setText("<html>Role : <b>" + security.pos[security.getIndexByUser(UserChange)].toUpperCase());
+        bjLabel4.setText("<html>Role : <b>" + security.pos[security.loggedIndex].toUpperCase());
         bjLabel4.setPreferredSize(new Dimension(126, 16));
         bjPanel12.add(bjLabel4);
 
@@ -305,7 +303,7 @@ public class Account extends JFrame{
         bjPanel1.add(bjPanel8);
         bjPanel1.add(bfiller1);
 
-        getContentPane().add(bjPanel1, BorderLayout.CENTER);
+        add(bjPanel1, BorderLayout.CENTER);
 
         setSize(600, 400);
         setVisible(true);
@@ -327,7 +325,9 @@ public class Account extends JFrame{
         LogoutBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                security.logged=false;
+                security.loggedIndex = -1;
+               // dispose();
                 
             }
         });

@@ -24,22 +24,11 @@ public class BBCMain {
         CustomerCRUD customersBooked = new CustomerCRUD();
         TransactionSystem transactionsCompleted = new TransactionSystem();
         ResourcesCRUD resourcesInv = new ResourcesCRUD();
+        Security security = new Security();
         
-        //ReservationGUI transGUI = new ReservationGUI(hotelBooked,customersBooked,transactionsCompleted);
-        //RealTimeViewGUI rtvGUI = new RealTimeViewGUI(hotelBooked,customersBooked,transactionsCompleted,resourcesInv);
-        //InventoryGUI invGUI = new InventoryGUI(resourcesInv);
-        //HotelRoomGUI hrGUI = new HotelRoomGUI(hotelBooked);
         
-        //UIManager.put("Panel.background", new Color(0, 0, 0, 0));
+        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
         
-//        JPanel statBar = new StatusBar("Hello", "Admin");
-//        JFrame jf = new JFrame();
-//        jf.add(statBar, BorderLayout.NORTH);
-//        jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        jf.setVisible(true);
-//        jf.setSize(600,400);
-        
-        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv);
     }
     
     

@@ -398,10 +398,11 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                     
                     if(security.logIn(UserInput, PasswordInput)){
                          //Added User,PassChange variable kasabay nung Account
-                        Account acc = new Account(UserInput, PasswordInput,security);
+                        
                         logAttempts=0;
                         frame.dispose();
                         JOptionPane.showMessageDialog(null, "Welcome " + UserInput,"Login",JOptionPane.INFORMATION_MESSAGE);
+                        Account acc = new Account(UserInput, PasswordInput,security);
 
 
                     }else{{
