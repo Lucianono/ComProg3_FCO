@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 /*
 This class is for Monthly Report JFrame
 
@@ -43,11 +44,17 @@ public class Report{
             double min = 0.0;
             double max = 10000.0;
             
-            for (int Index = 0; Index < rowData.length; Index++) {
-                rowData[Index][0] = Integer.toString(Index + 1);
-                double random = min + Math.random() * (max - min);
-                rowData[Index][1]= decfrmt.format(random);
-            }
+            LocalDate currentDate = LocalDate.now();
+
+for (int index = 0; index < rowData.length; index++) {
+    rowData[index][0] = Integer.toString(index + 1);
+    if (currentDate.isAfter(LocalDate.now())) {
+        double random = min + Math.random() * (max - min);
+        rowData[index][1] = decfrmt.format(random);
+    } else {
+        rowData[index][1] = currentDate.toString();
+    }
+}
             JTable table = new JTable(rowData, columnNames){
                  @Override
                     public boolean isCellEditable(int row, int column) {
@@ -163,48 +170,29 @@ public class Report{
 }
     
     public class YearReport extends JFrame {
-
+        private JTextArea yr;
      public YearReport(){
         JFrame yrfrm = new JFrame(yearSelected+"");
-        JLabel lbl1 = new JLabel("January Total Sales:");
-        lbl1.setBounds(50,50, 100,30);  
-        JLabel lbl2 = new JLabel("February Total Sales:");
-        lbl2.setBounds(50,50, 100,30); 
-        JLabel lbl3 = new JLabel("March Total Sales:");
-        lbl3.setBounds(50,50, 100,30); 
-        JLabel lbl4 = new JLabel("April Total Sales:");
-        lbl4.setBounds(50,50, 100,30); 
-        JLabel lbl5 = new JLabel("May Total Sales:");
-        lbl5.setBounds(50,50, 100,30); 
-        JLabel lbl6 = new JLabel("June Total Sales:");
-        lbl6.setBounds(50,50, 100,30); 
-        JLabel lbl7 = new JLabel("July Total Sales:");
-        lbl7.setBounds(50,50, 100,30); 
-        JLabel lbl8 = new JLabel("August Total Sales:");
-        lbl8.setBounds(50,50, 100,30); 
-        JLabel lbl9 = new JLabel("September Total Sales:");
-        lbl9.setBounds(50,50, 100,30); 
-        JLabel lbl10 = new JLabel("October Total Sales:");
-        lbl10.setBounds(50,50, 100,30); 
-        JLabel lbl11 = new JLabel("November Total Sales:");
-        lbl11.setBounds(50,50, 100,30); 
-        JLabel lbl12 = new JLabel("December Total Sales:");
-        lbl12.setBounds(50,50, 100,30); 
-        JLabel lbl13 = new JLabel("For the year " + yearSelected + ":");
-        lbl13.setBounds(50,50, 100,30); 
         
-        yrfrm.add(lbl1);
-        yrfrm.add(lbl2);
-        yrfrm.add(lbl3);
-        yrfrm.add(lbl4);
-        yrfrm.add(lbl5);
-        yrfrm.add(lbl6);
-        yrfrm.add(lbl7);
-        yrfrm.add(lbl8);
-        yrfrm.add(lbl9);
-        yrfrm.add(lbl10);
-        yrfrm.add(lbl11);
-        yrfrm.add(lbl12);
+        StringBuilder receiptText = new StringBuilder();
+        
+        receiptText.append("January Total Sales: " + "");
+        receiptText.append("February Total Sales: " + "");
+        receiptText.append("March Total Sales: " + "");
+        receiptText.append("April Total Sales: " + "");
+        receiptText.append("May Total Sales: " + "");
+        receiptText.append("June Total Sales: " + "");
+        receiptText.append("July Total Sales: " + "");
+        receiptText.append("August Total Sales: " + "");
+        receiptText.append("September Total Sales: " + "");
+        receiptText.append("October Total Sales: " + "");
+        receiptText.append("November Total Sales: " + "");
+        receiptText.append("December Total Sales: " + "");
+        
+        yr = new JTextArea(receiptText.toString());
+        yr.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
+        yr.setEditable(false);
+        yr.setFont(new Font("Monospaced", Font.PLAIN, 12));
         
         yrfrm.setSize(600, 400);
         yrfrm.setVisible(true);
