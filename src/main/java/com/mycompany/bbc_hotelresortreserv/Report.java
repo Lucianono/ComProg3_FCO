@@ -59,6 +59,7 @@ public class Report{
                        return false;
                     }
             };
+            
             JPanel tblPnl = new JPanel ();
             
             table.getColumnModel().getColumn(0).setMaxWidth(50);
@@ -83,18 +84,11 @@ public class Report{
         mfrm.setVisible(true);
         mfrm.setResizable(false);
         mfrm.setLocationRelativeTo(null);
-        
+ 
         rsrcsbtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 SecondFrame sfrm = new SecondFrame();
-            }
-        });
-   
-        yearbtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                YearReport yrrprt = new YearReport();
             }
         });
         
@@ -112,6 +106,38 @@ public class Report{
         
         mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
         mfrm.getContentPane().add(buttonPanel, "South");
+        
+                
+        StringBuilder receiptText = new StringBuilder();
+
+        for (String month : months) {
+            receiptText.append(month).append(" Total Sales:").append("\n");
+        }
+
+            receiptText.append("For the year of ").append(yearSelected).append(": ");
+
+            JTextArea yr = new JTextArea(receiptText.toString());
+            yr.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
+            yr.setEditable(false);
+            yr.setFont(new Font("Monospaced", Font.PLAIN, 12));
+
+            JScrollPane scrollPane2 = new JScrollPane(yr);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+            JFrame yrfrm = new JFrame(Integer.toString(yearSelected));
+            yrfrm.getContentPane().add(scrollPane2);
+            yrfrm.pack();
+            yrfrm.setSize(355, 265);
+            yrfrm.setLocationRelativeTo(null);
+            yrfrm.setResizable(false);
+            
+            yearbtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                yrfrm.setVisible(true);
+                yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            }
+        });
     }
  
     public class SecondFrame extends JFrame {
@@ -164,56 +190,6 @@ public class Report{
         sfrm.getContentPane().add(backbtn, "South");
     }
 }
-
-public class YearReport extends JFrame {
-
-        private final JTextArea yr;
-        private final String[] months = {"January", "February", "March", "April", 
-        "May", "June", "July", "August", "September", "October", "November", "December"};
-        
-     public YearReport(){
-        JFrame yrfrm = new JFrame(yearSelected+"");
-        
-        StringBuilder receiptText = new StringBuilder();
-
-        for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
-            receiptText.append(months[monthIndex]).append(" Total Sales: ").append("\n");
-            String[][] rowData = new String[getMaxDays(monthIndex)][3];
-            DecimalFormat decfrmt = new DecimalFormat("#");
-            double min = 500.0;
-            double max = 10000.0;
-            LocalDate currentDate = LocalDate.now();
-
-            for (int index = 0; index < rowData.length; index++) {
-                rowData[index][0] = Integer.toString(index + 1);
-                double random = min + Math.random() * (max - min);
-                rowData[index][1] = decfrmt.format(random);
-                receiptText.append(rowData[index][1]).append("\n");
-            }
-
-            receiptText.append("\n");
-        }
-
-        receiptText.append("For the year of ").append(yearSelected).append(": ");
-        
-        yr = new JTextArea(receiptText.toString());
-        yr.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
-        yr.setEditable(false);
-        yr.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        
-        JScrollPane scrollPane = new JScrollPane(yr);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        yrfrm.getContentPane().add(scrollPane);
-        yrfrm.pack();
-        yrfrm.setSize(355,265);
-        yrfrm.setLocationRelativeTo(null);
-        yrfrm.setResizable(false);
-        yrfrm.setVisible(true);
-        yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);    
-        
-    }   
-    } 
-    
     private int getMaxDays(int monthIndex) { 
         return switch (monthIndex) {
             case 1 -> 28;
