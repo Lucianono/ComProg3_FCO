@@ -7,20 +7,7 @@ import java.awt.*;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/*
-This is a security extended, Login and Signup Form
 
-TODOs:
--Create a UI or GUI or login and signup
--as much as possible, use only one jframe
--able user to login 
--if wrong 3x, program terminates
--able user to sign up then choose for position
--use methods created in Security class
-
--BE CREATIVE! BE Mindful on the layouts. Layouts should be responsive
-
-*/
 public class LoginSignupFormGUI extends Security implements ActionListener{
         
     //for signUp
