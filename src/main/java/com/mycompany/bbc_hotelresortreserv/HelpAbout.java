@@ -72,7 +72,7 @@ public class HelpAbout extends JScrollPane{
         albaNum.setText("0920-654-7790");
 
         ImageIcon darr = new ImageIcon("src/main/resources/images/images/Alba.png");
-        Image darrr = darr.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        Image darrr = darr.getImage().getScaledInstance(darr.getIconWidth()/200,darr.getIconHeight()/ 200, Image.SCALE_SMOOTH);
         albaPic.setIcon(new ImageIcon(darrr)); 
 
         GroupLayout albaPanelLayout = new GroupLayout(albaPanel);
@@ -374,7 +374,7 @@ public class HelpAbout extends JScrollPane{
         help.setText(" Help");
 
         mainMenu.setFont(new Font("Arial", 1, 12)); // NOI18N
-        mainMenu.setText("Main Menu");
+        mainMenu.setText("How to Reserve a Room for the customer");
 
         GroupLayout jPanel10Layout = new GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -388,7 +388,7 @@ public class HelpAbout extends JScrollPane{
         );
 
         jLabel23.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel23.setText("Reservation");
+        jLabel23.setText("How to Check in ");
 
         GroupLayout jPanel11Layout = new GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -402,27 +402,27 @@ public class HelpAbout extends JScrollPane{
         );
 
         jLabel24.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel24.setText("2.  jhcfdsnbcvsmh gngf");
+        jLabel24.setText("2.  Type the customer's name and age in the customer information panel.");
         jLabel24.setVerticalAlignment(SwingConstants.TOP);
 
         jLabel25.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel25.setText("1. bfkdsbvdjbv jkfvn xcn mjkn m ");
+        jLabel25.setText("1. On the main menu click Reserve. ");
         jLabel25.setVerticalAlignment(SwingConstants.TOP);
 
         jLabel26.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel26.setText("2.  jhcfdsnbcvsmh gngf");
+        jLabel26.setText("2.  Select the date when the customers reserve their room.");
         jLabel26.setVerticalAlignment(SwingConstants.TOP);
 
         jLabel27.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel27.setText("1. bfkdsbvdjbv jkfvn xcn mjkn m ");
+        jLabel27.setText("1. On the main menu click Check In/Out.");
         jLabel27.setVerticalAlignment(SwingConstants.TOP);
 
         jLabel28.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel28.setText("2.  jhcfdsnbcvsmh gngf");
+        jLabel28.setText("2.   Select the date when the customer reserves their room.");
         jLabel28.setVerticalAlignment(SwingConstants.TOP);
 
         jLabel29.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel29.setText("1. bfkdsbvdjbv jkfvn xcn mjkn m ");
+        jLabel29.setText("1. On the main menu click Check In/Out.");
         jLabel29.setVerticalAlignment(SwingConstants.TOP);
 
         GroupLayout jPanel12Layout = new GroupLayout(jPanel12);
@@ -437,7 +437,7 @@ public class HelpAbout extends JScrollPane{
         );
 
         jLabel30.setFont(new Font("Arial", 1, 12)); // NOI18N
-        jLabel30.setText("Report");
+        jLabel30.setText("How to add extras");
 
         GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
