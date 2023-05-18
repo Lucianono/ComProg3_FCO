@@ -24,6 +24,8 @@ public class BBCMain {
         
         MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
         
+        SplashScreen splsh = new SplashScreen();
+        
     }
     
     
