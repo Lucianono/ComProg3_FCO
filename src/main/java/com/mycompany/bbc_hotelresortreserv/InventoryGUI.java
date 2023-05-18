@@ -203,7 +203,7 @@ public class InventoryGUI extends JPanel implements ActionListener{
 
         itemPriceSuperPanel[i].add(itemPricePanel[i]);
 
-        setPriceBtn[i].setText("U");
+        setPriceBtn[i].setIcon(new ImageIcon("src/main/resources/images/update.png"));
         setPriceBtn[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -224,7 +224,8 @@ public class InventoryGUI extends JPanel implements ActionListener{
 
         resoPanel[i].add(itemPriceSuperPanel[i]);
 
-        deleteItemBtn[i].setText("D");
+        deleteItemBtn[i].setIcon(new ImageIcon("src/main/resources/images/delete.png"));
+        deleteItemBtn[i].setBackground(BbcUI.red);
         deleteItemBtn[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

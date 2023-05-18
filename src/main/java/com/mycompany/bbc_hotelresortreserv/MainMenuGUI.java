@@ -36,13 +36,14 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     
     public MainMenuGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked,TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv,Security security) {
         
+        super("Black Bean Company Hotel and Resort Reservation System");
+        
         this.hotelBooked=hotelBooked;
         this.customersBooked=customersBooked;
         this.transactionsCompleted=transactionsCompleted;
         this.resourcesInv=resourcesInv;
         this.security=security;
 
-        
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/mainMenuImg.png");
         Image logo = logoImg.getImage();
         int imgw = (int) ((int)logoImg.getIconWidth()/1.5);
@@ -160,6 +161,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         
         if(e.getSource()==rsrvBtn){
             viewPnl.removeAll();
+            reservPnl = new ReservationGUI(hotelBooked, customersBooked, transactionsCompleted); 
             viewPnl.add(reservPnl);
         }else if(e.getSource()==chkInOutBtn){
             viewPnl.removeAll();

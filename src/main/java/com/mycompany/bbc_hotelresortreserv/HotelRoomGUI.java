@@ -72,7 +72,7 @@ public class HotelRoomGUI extends JPanel implements ActionListener{
 
         jLabel12.setFont(new Font("Verdana", 1, 12)); // NOI18N
         jLabel12.setHorizontalAlignment(SwingConstants.LEFT);
-        jLabel12.setText("| HotelID | Hotel Type                       | Capacity | Regular Rate | Promo Rate | ");
+        jLabel12.setText("| HotelID | Hotel Type                   | Capacity | Regular Rate | Promo Rate | ");
         jPanel4.add(jLabel12);
 
         jPanel2.add(jPanel4);
@@ -151,7 +151,7 @@ public class HotelRoomGUI extends JPanel implements ActionListener{
 
         hotelPanel[i].add(hotelIdPanel[i]);
 
-        hotelTypePanel[i].setPreferredSize(new Dimension(170, 27));
+        hotelTypePanel[i].setPreferredSize(new Dimension(150, 27));
         hotelTypePanel[i].setLayout(new BoxLayout(hotelTypePanel[i], BoxLayout.Y_AXIS));
 
         hotelTypeLbl[i].setFont(new Font("Arial", 0, 14)); // NOI18N
@@ -202,7 +202,7 @@ public class HotelRoomGUI extends JPanel implements ActionListener{
 
         regratePanel[i].add(regrateLblPanel[i]);
 
-        regrateBtn[i].setText("U");
+        regrateBtn[i].setIcon(new ImageIcon("src/main/resources/images/update.png"));
         regrateBtn[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -236,7 +236,7 @@ public class HotelRoomGUI extends JPanel implements ActionListener{
 
         proratePanel[i].add(prorateLblPanel[i]);
 
-        prorateBtn[i].setText("U");
+        prorateBtn[i].setIcon(new ImageIcon("src/main/resources/images/update.png"));
         prorateBtn[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -257,7 +257,8 @@ public class HotelRoomGUI extends JPanel implements ActionListener{
 
         hotelPanel[i].add(proratePanel[i]);
 
-        removHotelBtn[i].setText("D");
+        removHotelBtn[i].setIcon(new ImageIcon("src/main/resources/images/delete.png"));
+        removHotelBtn[i].setBackground(BbcUI.red);
         removHotelBtn[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

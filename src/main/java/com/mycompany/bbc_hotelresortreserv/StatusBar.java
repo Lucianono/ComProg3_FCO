@@ -3,7 +3,6 @@ package com.mycompany.bbc_hotelresortreserv;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -49,12 +48,12 @@ public class StatusBar extends JPanel {
     leftPnl.add(logoLbl,BorderLayout.CENTER);
 
     this.name = name;
-    nameLbl = new JLabel("Name: " + this.name);
+    nameLbl = new JLabel("<html>Username : <b>" + this.name);
     nameLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     rightPnl.add(nameLbl);
   
     this.pos = position;
-    positionLbl = new JLabel("Position: " + this.pos);
+    positionLbl = new JLabel("<html>Position: <b>" + this.pos);
     positionLbl.setFont(new Font("Arial", Font.PLAIN, 12)); 
     rightPnl.add(positionLbl);
  

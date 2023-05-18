@@ -25,7 +25,7 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
     JPanel jPanel2 = new JPanel();
     JLabel hotelLbl = new JLabel();
     JLabel hotelTypeLbl = new JLabel();
-    JComboBox hotelCmb = new JComboBox(new HotelCRUD().getAllHotelID());
+    JComboBox hotelCmb = new JComboBox();
     JPanel jPanel3 = new JPanel();
     JTextField cashTxt = new JTextField();
     JPanel jPanel4 = new JPanel();
@@ -73,7 +73,7 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
         this.customersBooked=customersBooked;
         this.transactionsCompleted=transactionsCompleted;
         
-
+        hotelCmb.setModel(new DefaultComboBoxModel<>(hotelBooked.getAllHotelID()));
 
 
         btnPlus.setText("+");
@@ -388,6 +388,7 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
     //hotel type indicatior
     private void hotelTypeDisplay(){
         
+        System.out.println(hotelCmb.getSelectedItem()+"");
         hotelTypeLbl.setText(hotelBooked.getHotel(hotelCmb.getSelectedItem()+"").getHotelType());
         
     }
