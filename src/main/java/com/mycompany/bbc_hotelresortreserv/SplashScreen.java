@@ -52,7 +52,7 @@ public class SplashScreen {
 
 
         title2.setFont(new Font("Arial", Font.BOLD, 9));
-        title2.setForeground(Color.GRAY);
+        title2.setForeground(Color.WHITE);
         p3.add(title2);
         p3.setBackground(lgtbrown);
 
@@ -62,8 +62,8 @@ public class SplashScreen {
         compPanel.add(p4);
         compPanel.add(p1);
         compPanel.add(p2);
-        compPanel.setPreferredSize(compPanel.getPreferredSize());
         compPanel.add(p3);
+        compPanel.setPreferredSize(compPanel.getPreferredSize());
         compPanel.setBackground(lgtbrown);
         mainPanel.add(compPanel);
         mainPanel.setBackground(lgtbrown);
