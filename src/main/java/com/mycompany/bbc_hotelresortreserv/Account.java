@@ -3,8 +3,8 @@
 
 package com.mycompany.bbc_hotelresortreserv;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /*
@@ -16,17 +16,18 @@ ToDo's
 -Create method to signout
 */
 
-public class Account {
+public class Account extends JFrame{
     
-    
-        String UserChange;
-        String PassChange;
-        Security security;
+    JLabel userNameLbl = new JLabel();
+
+    String UserChange;
+    String PassChange;
+    Security security;
     
     public void ChangeUsername(){
         JFrame frame2 = new JFrame("Change Username/Password");
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setSize(300, 200);
+        frame2.setLocationRelativeTo(null);
 
         JPanel panel2 = new JPanel();
         
@@ -39,7 +40,7 @@ public class Account {
         JLabel passwordLabel = new JLabel("Enter Password:");
         panel2.add(passwordLabel);
 
-        JTextField passwordField = new JTextField(20);
+        JPasswordField passwordField = new JPasswordField(20);
         panel2.add(passwordField);  
         
         frame2.getContentPane().add(panel2);
@@ -74,11 +75,14 @@ public class Account {
                                 //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
                                 
                                 security.user[i] = NewUserText;
-                                
                                 System.out.println(security.user[i] + security.Decrypt(security.pass[i]));
+                                UserChange = NewUserText;
+                                userNameLbl.setText(UserChange);
                                 JOptionPane.showMessageDialog(null, "Successfully Changed Username");
-                                LoginSignupFormGUI lsfg = new LoginSignupFormGUI(security);
-                                security.logged = false;
+                                
+                        }else {
+                            JOptionPane.showMessageDialog(null, "Incorrect password!",null,JOptionPane.ERROR_MESSAGE);
+
                         }
                         
                     
@@ -110,21 +114,21 @@ public class Account {
     
     public void ChangePass(){
         JFrame frame3 = new JFrame("Change Username/Password");
-        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.setSize(300, 200);
+        frame3.setLocationRelativeTo(null);
 
         JPanel panel3 = new JPanel();
 
         JLabel NewPassLabel = new JLabel("Enter New Password:");
         panel3.add(NewPassLabel);
 
-        JTextField NewPassField = new JTextField(20);
+        JPasswordField NewPassField = new JPasswordField(20);
         panel3.add(NewPassField);
 
         JLabel ConfirmPassLabel = new JLabel("Confirm New Password");
         panel3.add(ConfirmPassLabel);
 
-        JTextField ConfirmPassField = new JTextField(20);
+        JPasswordField ConfirmPassField = new JPasswordField(20);
         panel3.add(ConfirmPassField);  
         
         
@@ -162,16 +166,14 @@ public class Account {
                                  //Hinahanap ung username ng iniiba na pw then gagawing = sa NewPassText
                                 security.pass[i] = security.Encrypt(NewPassText);
                                 System.out.println(security.Decrypt(security.pass[i]));
-                                security.logged = false;
+                                
                                 JOptionPane.showMessageDialog(null, "Successfully Changed Password");
-                                LoginSignupFormGUI lsfg = new LoginSignupFormGUI(security);
                                 
                                 
-                            }
-                            else{
-                                System.out.println("new pass does not match to confiirm pass");
-                            }    
-                       // }
+                            }else {
+                            JOptionPane.showMessageDialog(null, "Password does not match!",null,JOptionPane.ERROR_MESSAGE);
+
+                        }
                         
                     }
                 
@@ -182,7 +184,7 @@ public class Account {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame3.dispose();
-                
+                security.logged=false;
             }
         });
         
@@ -195,48 +197,124 @@ public class Account {
         this.PassChange = userpass;
         this.security = security;
       
-        // Create a JFrame
-        JFrame frame = new JFrame("Change Username/Password");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
-        
-        // Create a JPanel
-        JPanel panel = new JPanel();
+        JPanel bjPanel1 = new JPanel();
+        Box.Filler bfiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
+        JPanel bjPanel8 = new JPanel();
+        JPanel bjPanel9 = new JPanel();
+        JPanel bjPanel2 = new JPanel();
+        JPanel bjPanel19 = new JPanel();
+        JLabel bjLabel8 = new JLabel();
+        JPanel bjPanel11 = new JPanel();
+        JPanel bjPanel12 = new JPanel();
+        JLabel bjLabel4 = new JLabel();
+        JPanel bjPanel13 = new JPanel();
+        Box.Filler bfiller5 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
+        JPanel bjPanel14 = new JPanel();
+        JPanel bjPanel7 = new JPanel();
+        JButton ChangeUsernameBtn = new JButton();
+        JButton ChangePasswordBtn = new JButton();
+        JButton LogoutBtn = new JButton();
+        Box.Filler bfiller6 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
+        Box.Filler bfiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 32767));
+
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        bjPanel1.setLayout(new BoxLayout(bjPanel1, BoxLayout.Y_AXIS));
+        bjPanel1.add(bfiller2);
+
+        bjPanel8.setMinimumSize(new Dimension(438, 400));
+
+        bjPanel9.setMinimumSize(new Dimension(428, 300));
+        bjPanel9.setPreferredSize(new Dimension(400, 300));
+        bjPanel9.setLayout(new BoxLayout(bjPanel9, BoxLayout.Y_AXIS));
+
+        bjPanel2.setMinimumSize(new Dimension(430, 204));
+        bjPanel2.setPreferredSize(new Dimension(500, 200));
+        bjPanel2.setLayout(new BoxLayout(bjPanel2, BoxLayout.Y_AXIS));
+
+        bjPanel19.setPreferredSize(new Dimension(648, 60));
+
+        ImageIcon logoImg = new ImageIcon("src/main/resources/images/accIcon.png"); 
+        Image logoVar = logoImg.getImage().getScaledInstance(logoImg.getIconWidth()/6, logoImg.getIconHeight()/6, Image.SCALE_SMOOTH); 
 
         
+        bjLabel8.setFont(new Font("Verdana", 1, 24)); // NOI18N
+        bjLabel8.setHorizontalAlignment(SwingConstants.CENTER);
+        bjLabel8.setIcon(new ImageIcon(logoVar)); // NOI18N
+        bjPanel19.add(bjLabel8);
 
-        // Create a button to choose between changing username and password
-        JButton ChangeUsernameBtn = new JButton("Change Username");
-        panel.add(ChangeUsernameBtn);
-        
-        JButton ChangePasswordBtn = new JButton("Change Password");
-        panel.add(ChangePasswordBtn);
-        
-        // Add the panel to the frame
-        frame.getContentPane().add(panel);
+        bjPanel2.add(bjPanel19);
 
-        // Make the frame visible
-        frame.setVisible(true);
-        
-        JButton Back3 = new JButton("Back");
-        panel.add(Back3);
-        
-        Back3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                
-            }
-        });
-        
+        bjPanel11.setPreferredSize(new Dimension(648, 10));
+        bjPanel11.setLayout(new GridLayout());
+
+        userNameLbl.setFont(new Font("Verdana", 1, 24)); // NOI18N
+        userNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        userNameLbl.setText(UserChange);
+        bjPanel11.add(userNameLbl);
+
+        bjPanel2.add(bjPanel11);
+
+        bjPanel12.setPreferredSize(new Dimension(300, 0));
+        bjPanel12.setLayout(new GridLayout());
+
+        bjLabel4.setFont(new Font("Arial Narrow", 0, 18)); // NOI18N
+        bjLabel4.setHorizontalAlignment(SwingConstants.CENTER);
+        bjLabel4.setText("<html>Role : <b>" + security.pos[security.getIndexByUser(UserChange)].toUpperCase());
+        bjLabel4.setPreferredSize(new Dimension(126, 16));
+        bjPanel12.add(bjLabel4);
+
+        bjPanel2.add(bjPanel12);
+
+        bjPanel13.setPreferredSize(new Dimension(500, 110));
+        bjPanel13.setLayout(new BoxLayout(bjPanel13, BoxLayout.X_AXIS));
+        bjPanel13.add(bfiller5);
+
+        bjPanel14.setPreferredSize(new Dimension(250, 110));
+        bjPanel14.setRequestFocusEnabled(false);
+        bjPanel14.setLayout(new BoxLayout(bjPanel14, BoxLayout.Y_AXIS));
+
+        bjPanel7.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 20));
+
+        ChangeUsernameBtn.setText("<html>Change <br/>Username");
+        ChangeUsernameBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        ChangeUsernameBtn.setPreferredSize(new Dimension(120, 40));
+        bjPanel7.add(ChangeUsernameBtn);
+
+        ChangePasswordBtn.setText("<html>Change <br/>Password");
+        ChangePasswordBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        ChangePasswordBtn.setPreferredSize(new Dimension(120, 40));
+        bjPanel7.add(ChangePasswordBtn);
+
+        LogoutBtn.setText("Logout");
+        LogoutBtn.setPreferredSize(new Dimension(100, 40));
+        bjPanel7.add(LogoutBtn);
+
+        bjPanel14.add(bjPanel7);
+
+        bjPanel13.add(bjPanel14);
+        bjPanel13.add(bfiller6);
+
+        bjPanel2.add(bjPanel13);
+
+        bjPanel9.add(bjPanel2);
+
+        bjPanel8.add(bjPanel9);
+
+        bjPanel1.add(bjPanel8);
+        bjPanel1.add(bfiller1);
+
+        getContentPane().add(bjPanel1, BorderLayout.CENTER);
+
+        setSize(600, 400);
+        setVisible(true);
         
         //Button Action
         ChangeUsernameBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChangeUsername();
-                
-                // usernameField.setText(newUsername);
             }
         });
         ChangePasswordBtn.addActionListener(new ActionListener() {
@@ -244,9 +322,13 @@ public class Account {
             public void actionPerformed(ActionEvent e) {
                 ChangePass();
                 
+            }
+        });
+        LogoutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
                 
-                
-              //  passwordField.setText(newPassword);
             }
         });
         

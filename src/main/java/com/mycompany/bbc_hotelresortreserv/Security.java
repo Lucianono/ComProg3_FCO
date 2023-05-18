@@ -4,9 +4,9 @@ import javax.swing.JComboBox;
 
 public class Security{
 
-    public static String[] user = new String[]{"user123"}; //default username
-    public static String[] pass = new String[]{"ufxx678"}; //default password
-    private static String[] pos = new String[] {"staff"}; //default position
+    public String[] user = new String[]{"123"}; //default username
+    public String[] pass = new String[]{"678"}; //default password
+    public String[] pos = new String[] {"admin"}; //default position
     public static int StringIncrement = 5;
     public boolean logged;
     public static int logAttempts = 0; 
@@ -14,14 +14,7 @@ public class Security{
     //fromLoginGUI- create reset
     
     public Security(){
-        /*System.out.println("Security Created");
         
-        signUp("abc", "45s", "staff");
-        signUp("abc", "45s", "staff");
-        signUp("sss", "z0Z ", "staff");
-        
-        logIn("user123", "pass123");
-        */
     }
         
     public boolean signUp(String username, String password, String position) { //signUp method
@@ -66,15 +59,6 @@ public class Security{
                         return true;
                         
                     }
-                    /*else if (!logged){
-                        logAttempts++;
-                        System.out.println("Invalid Input. Remaining Tries: " + (3-logAttempts));
-                    }
-                    else if (!logged){
-                    System.out.println("You have reached maximum amount of tries.");
-                    System.out.println("Program Close...");
-                    System.exit(0);
-                    }*/
                 }    
             }
             

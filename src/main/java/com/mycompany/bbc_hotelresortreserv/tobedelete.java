@@ -31,6 +31,8 @@ public class tobedelete extends javax.swing.JFrame {
         bjPanel8 = new javax.swing.JPanel();
         bjPanel9 = new javax.swing.JPanel();
         bjPanel2 = new javax.swing.JPanel();
+        bjPanel19 = new javax.swing.JPanel();
+        bjLabel8 = new javax.swing.JLabel();
         bjPanel11 = new javax.swing.JPanel();
         bjLabel3 = new javax.swing.JLabel();
         bjPanel12 = new javax.swing.JPanel();
@@ -38,27 +40,10 @@ public class tobedelete extends javax.swing.JFrame {
         bjPanel13 = new javax.swing.JPanel();
         bfiller5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         bjPanel14 = new javax.swing.JPanel();
-        bjPanel3 = new javax.swing.JPanel();
-        bjLabel1 = new javax.swing.JLabel();
-        bjPanel4 = new javax.swing.JPanel();
-        bjTextField1 = new javax.swing.JTextField();
-        bjPanel5 = new javax.swing.JPanel();
-        bjLabel2 = new javax.swing.JLabel();
-        bjPanel6 = new javax.swing.JPanel();
-        bjTextField2 = new javax.swing.JTextField();
-        jPanel10 = new javax.swing.JPanel();
-        bjPanel18 = new javax.swing.JPanel();
-        bjLabel5 = new javax.swing.JLabel();
-        bjLabel7 = new javax.swing.JLabel();
-        bjPanel15 = new javax.swing.JPanel();
-        btxt = new javax.swing.JTextField();
-        bjPanel16 = new javax.swing.JPanel();
-        bjLabel6 = new javax.swing.JLabel();
-        bjPanel17 = new javax.swing.JPanel();
-        bjComboBox1 = new javax.swing.JComboBox<>();
         bjPanel7 = new javax.swing.JPanel();
         bjButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         bfiller6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         bfiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
@@ -68,7 +53,6 @@ public class tobedelete extends javax.swing.JFrame {
         bjPanel1.add(bfiller2);
 
         bjPanel8.setMinimumSize(new java.awt.Dimension(438, 400));
-        bjPanel8.setPreferredSize(null);
 
         bjPanel9.setMinimumSize(new java.awt.Dimension(428, 300));
         bjPanel9.setPreferredSize(new java.awt.Dimension(400, 300));
@@ -78,20 +62,32 @@ public class tobedelete extends javax.swing.JFrame {
         bjPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         bjPanel2.setLayout(new javax.swing.BoxLayout(bjPanel2, javax.swing.BoxLayout.Y_AXIS));
 
+        bjPanel19.setPreferredSize(new java.awt.Dimension(648, 60));
+
+        bjLabel8.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        bjLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bjLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updIcon.png"))); // NOI18N
+        bjPanel19.add(bjLabel8);
+
+        bjPanel2.add(bjPanel19);
+
         bjPanel11.setPreferredSize(new java.awt.Dimension(648, 10));
+        bjPanel11.setLayout(new java.awt.GridLayout());
 
         bjLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         bjLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bjLabel3.setText("Welcome new user!");
+        bjLabel3.setText("UserName");
         bjPanel11.add(bjLabel3);
 
         bjPanel2.add(bjPanel11);
 
-        bjPanel12.setPreferredSize(new java.awt.Dimension(300, 10));
+        bjPanel12.setPreferredSize(new java.awt.Dimension(300, 0));
+        bjPanel12.setLayout(new java.awt.GridLayout());
 
         bjLabel4.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
         bjLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bjLabel4.setText("Create an account");
+        bjLabel4.setText("Role : Administrator");
+        bjLabel4.setPreferredSize(new java.awt.Dimension(126, 16));
         bjPanel12.add(bjLabel4);
 
         bjPanel2.add(bjPanel12);
@@ -104,106 +100,12 @@ public class tobedelete extends javax.swing.JFrame {
         bjPanel14.setRequestFocusEnabled(false);
         bjPanel14.setLayout(new javax.swing.BoxLayout(bjPanel14, javax.swing.BoxLayout.Y_AXIS));
 
-        bjPanel3.setPreferredSize(new java.awt.Dimension(300, 35));
-        bjPanel3.setLayout(new javax.swing.BoxLayout(bjPanel3, javax.swing.BoxLayout.X_AXIS));
+        bjPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        bjLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bjLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bjLabel1.setText("Username : ");
-        bjPanel3.add(bjLabel1);
-
-        bjPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        bjTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        bjTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        bjTextField1.setPreferredSize(new java.awt.Dimension(200, 22));
-        bjTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bjTextField1ActionPerformed(evt);
-            }
-        });
-        bjPanel4.add(bjTextField1);
-
-        bjPanel3.add(bjPanel4);
-
-        bjPanel14.add(bjPanel3);
-
-        bjPanel5.setPreferredSize(new java.awt.Dimension(300, 35));
-        bjPanel5.setLayout(new javax.swing.BoxLayout(bjPanel5, javax.swing.BoxLayout.X_AXIS));
-
-        bjLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bjLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bjLabel2.setText("Password : ");
-        bjPanel5.add(bjLabel2);
-
-        bjPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        bjTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        bjTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        bjTextField2.setPreferredSize(new java.awt.Dimension(200, 22));
-        bjTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bjTextField2ActionPerformed(evt);
-            }
-        });
-        bjPanel6.add(bjTextField2);
-
-        bjPanel5.add(bjPanel6);
-
-        bjPanel14.add(bjPanel5);
-
-        jPanel10.setPreferredSize(new java.awt.Dimension(300, 35));
-        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.X_AXIS));
-
-        bjPanel18.setLayout(new javax.swing.BoxLayout(bjPanel18, javax.swing.BoxLayout.Y_AXIS));
-
-        bjLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bjLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bjLabel5.setText("Confirm");
-        bjPanel18.add(bjLabel5);
-
-        bjLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bjLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bjLabel7.setText("Password : ");
-        bjPanel18.add(bjLabel7);
-
-        jPanel10.add(bjPanel18);
-
-        bjPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        btxt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btxt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        btxt.setPreferredSize(new java.awt.Dimension(200, 22));
-        btxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btxtActionPerformed(evt);
-            }
-        });
-        bjPanel15.add(btxt);
-
-        jPanel10.add(bjPanel15);
-
-        bjPanel14.add(jPanel10);
-
-        bjPanel16.setPreferredSize(new java.awt.Dimension(300, 35));
-        bjPanel16.setLayout(new javax.swing.BoxLayout(bjPanel16, javax.swing.BoxLayout.X_AXIS));
-
-        bjLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bjLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bjLabel6.setText("Position : ");
-        bjPanel16.add(bjLabel6);
-
-        bjPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        bjComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        bjComboBox1.setPreferredSize(new java.awt.Dimension(100, 22));
-        bjPanel17.add(bjComboBox1);
-
-        bjPanel16.add(bjPanel17);
-
-        bjPanel14.add(bjPanel16);
-
-        bjButton1.setText("Sign Up");
+        bjButton1.setText("Change Username");
+        bjButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bjButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bjButton1.setPreferredSize(new java.awt.Dimension(120, 40));
         bjButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bjButton1ActionPerformed(evt);
@@ -211,13 +113,23 @@ public class tobedelete extends javax.swing.JFrame {
         });
         bjPanel7.add(bjButton1);
 
-        jButton2.setText("Cancel");
+        jButton2.setText("Change Password");
+        jButton2.setPreferredSize(new java.awt.Dimension(120, 40));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         bjPanel7.add(jButton2);
+
+        jButton3.setText("Logout");
+        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        bjPanel7.add(jButton3);
 
         bjPanel14.add(bjPanel7);
 
@@ -238,25 +150,17 @@ public class tobedelete extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bjTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bjTextField1ActionPerformed
-
-    private void bjTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bjTextField2ActionPerformed
-
     private void bjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bjButton1ActionPerformed
 
-    private void btxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btxtActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,35 +203,20 @@ public class tobedelete extends javax.swing.JFrame {
     private javax.swing.Box.Filler bfiller5;
     private javax.swing.Box.Filler bfiller6;
     private javax.swing.JButton bjButton1;
-    private javax.swing.JComboBox<String> bjComboBox1;
-    private javax.swing.JLabel bjLabel1;
-    private javax.swing.JLabel bjLabel2;
     private javax.swing.JLabel bjLabel3;
     private javax.swing.JLabel bjLabel4;
-    private javax.swing.JLabel bjLabel5;
-    private javax.swing.JLabel bjLabel6;
-    private javax.swing.JLabel bjLabel7;
+    private javax.swing.JLabel bjLabel8;
     private javax.swing.JPanel bjPanel1;
     private javax.swing.JPanel bjPanel11;
     private javax.swing.JPanel bjPanel12;
     private javax.swing.JPanel bjPanel13;
     private javax.swing.JPanel bjPanel14;
-    private javax.swing.JPanel bjPanel15;
-    private javax.swing.JPanel bjPanel16;
-    private javax.swing.JPanel bjPanel17;
-    private javax.swing.JPanel bjPanel18;
+    private javax.swing.JPanel bjPanel19;
     private javax.swing.JPanel bjPanel2;
-    private javax.swing.JPanel bjPanel3;
-    private javax.swing.JPanel bjPanel4;
-    private javax.swing.JPanel bjPanel5;
-    private javax.swing.JPanel bjPanel6;
     private javax.swing.JPanel bjPanel7;
     private javax.swing.JPanel bjPanel8;
     private javax.swing.JPanel bjPanel9;
-    private javax.swing.JTextField bjTextField1;
-    private javax.swing.JTextField bjTextField2;
-    private javax.swing.JTextField btxt;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel10;
+    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }
