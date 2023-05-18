@@ -94,8 +94,7 @@ public class HelpAbout extends JScrollPane{
         albaNum.setText("0920-654-7790");
 
         ImageIcon darr = new ImageIcon("src/main/resources/images/images/Alba.png");
-        Image darrr = darr.getImage().getScaledInstance(darr.getIconWidth()/200,darr.getIconHeight()/ 200, Image.SCALE_SMOOTH);
-        albaPic.setIcon(new ImageIcon(darrr)); 
+        albaPic.setIcon(darr); 
 
         GroupLayout albaPanelLayout = new GroupLayout(albaPanel);
         albaPanel.setLayout(albaPanelLayout);
@@ -398,123 +397,122 @@ public class HelpAbout extends JScrollPane{
         mainMenu.setFont(new Font("Arial", 1, 12)); 
         mainMenu.setText("How to Reserve a Room for the customer");
 
+        jLabel23.setText("How to Check in  ");
+
+        jLabel24.setFont(new java.awt.Font("Arial", 1, 12));
+        jLabel24.setText("2. Type the customer's name and age in the customer information panel. ");
+        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel25.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel25.setText("1. On the main menu click Reserve. ");
+        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel26.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel26.setText("2. Select the date when the customers reserve their room. ");
+        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel27.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel27.setText("1. On the main menu click Check In/Out. ");
+        jLabel27.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel28.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel28.setText("2. Select the date when the customer reserves their room. ");
+        jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel29.setText("1. On the main menu click Check In/Out. ");
+        jLabel29.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel30.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel30.setText("How to add extras ");
+
+        jLabel36.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel36.setText("3. Select the Hotel room and what date the customer reserving the room. ");
+        jLabel36.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel37.setText("4. Then click if the customer is reserving in regular or promo rate, and then the receipt will show. ");
+        jLabel37.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel38.setText("3. Then when the customer's name shows click the arrow beside");
+        jLabel38.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel39.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel39.setText(" their name and their information will show. ");
+        jLabel39.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel40.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel40.setText("4. Click, check In, and a receipt will show. ");
+        jLabel40.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel41.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel41.setText("3. Then when the customer's name shows click the arrow beside");
+        jLabel41.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel42.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel42.setText(" their name and their information will show. ");
+        jLabel42.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel43.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel43.setText("4. Click extras below the customer information box, then a window ");
+        jLabel43.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel44.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel44.setText("will pop out with the extras that the customer wants.  ");
+        jLabel44.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel45.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel45.setText("the bill on the customer's information box.  ");
+        jLabel45.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel46.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel46.setText("5. After selecting the extras click to confirm, then the extras will be added in ");
+        jLabel46.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel47.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel47.setText("How to Check out ");
+
+        jLabel48.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel48.setText("1. On the main menu click Check In/Out. ");
+        jLabel48.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel49.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel49.setText("2. Select the date when the customers reserve their room. ");
+        jLabel49.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel50.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel50.setText("3. Then when the customer's name shows click the arrow beside ");
+        jLabel50.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel51.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel51.setText(" their name and their information will show.");
+        jLabel51.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel52.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel52.setText("4. Click, check out then the bill will pop out, enter the amount and the receipt will show.");
+        jLabel52.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel53.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel53.setText("How to change the quantity of an item ");
+
+        jLabel54.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel54.setText("1. On the main menu click Manage, then click resources. ");
+        jLabel54.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel55.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel55.setText("2. Find the item that you want to add or reduce the quantity. ");
+        jLabel55.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel56.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel56.setText("3. Click the plus (+) button if you want to add. ");
+        jLabel56.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel57.setFont(new java.awt.Font("Arial", 1, 12)); 
+        jLabel57.setText("4. If you want to reduce the quantity of the resources click the subtract (-) botton. ");
+        jLabel57.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        
         jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel23.setText("How to Check in  ");
-
-        jLabel24.setFont(new java.awt.Font("Arial", 1, 12));
-        jLabel24.setText("2. Type the customer's name and age in the customer information panel. ");
-        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel25.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel25.setText("1. On the main menu click Reserve. ");
-        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel26.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel26.setText("2. Select the date when the customers reserve their room. ");
-        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel27.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel27.setText("1. On the main menu click Check In/Out. ");
-        jLabel27.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel28.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel28.setText("2. Select the date when the customer reserves their room. ");
-        jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel29.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel29.setText("1. On the main menu click Check In/Out. ");
-        jLabel29.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel30.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel30.setText("How to add extras ");
-
-        jLabel36.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel36.setText("3. Select the Hotel room and what date the customer reserving the room. ");
-        jLabel36.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel37.setText("4. Then click if the customer is reserving in regular or promo rate, and then the receipt will show. ");
-        jLabel37.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel38.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel38.setText("3. Then when the customer's name shows click the arrow beside");
-        jLabel38.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel39.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel39.setText(" their name and their information will show. ");
-        jLabel39.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel40.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel40.setText("4. Click, check In, and a receipt will show. ");
-        jLabel40.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel41.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel41.setText("3. Then when the customer's name shows click the arrow beside");
-        jLabel41.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel42.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel42.setText(" their name and their information will show. ");
-        jLabel42.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel43.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel43.setText("4. Click extras below the customer information box, then a window ");
-        jLabel43.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel44.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel44.setText("will pop out with the extras that the customer wants.  ");
-        jLabel44.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel45.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel45.setText("the bill on the customer's information box.  ");
-        jLabel45.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel46.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel46.setText("5. After selecting the extras click to confirm, then the extras will be added in ");
-        jLabel46.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel47.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel47.setText("How to Check out ");
-
-        jLabel48.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel48.setText("1. On the main menu click Check In/Out. ");
-        jLabel48.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel49.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel49.setText("2. Select the date when the customers reserve their room. ");
-        jLabel49.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel50.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel50.setText("3. Then when the customer's name shows click the arrow beside ");
-        jLabel50.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel51.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel51.setText(" their name and their information will show.");
-        jLabel51.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel52.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel52.setText("4. Click, check out then the bill will pop out, enter the amount and the receipt will show.");
-        jLabel52.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel53.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel53.setText("How to change the quantity of an item ");
-
-        jLabel54.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel54.setText("1. On the main menu click Manage, then click resources. ");
-        jLabel54.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel55.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel55.setText("2. Find the item that you want to add or reduce the quantity. ");
-        jLabel55.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel56.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel56.setText("3. Click the plus (+) button if you want to add. ");
-        jLabel56.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel57.setFont(new java.awt.Font("Arial", 1, 12)); 
-        jLabel57.setText("4. If you want to reduce the quantity of the resources click the subtract (-) botton. ");
-        jLabel57.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-
         GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(

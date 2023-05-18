@@ -272,7 +272,7 @@ public class InventoryGUI extends JPanel implements ActionListener{
         
             try {
                 
-                int itemId = Integer.parseInt(JOptionPane.showInputDialog("Enter HotelID"));
+                int itemId = Integer.parseInt(JOptionPane.showInputDialog("Enter ItemID"));
                 
                 for(int i = 0; i < reso.size(); i++){
                     if( reso.get(i).getItemID() == itemId ){
