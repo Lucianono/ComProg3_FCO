@@ -12,13 +12,8 @@ import javax.swing.UIManager;
 public class BBCMain {
 
     public static void main(String[] args) throws ParseException {
-        UIManager.put("Panel.background", Color.TRANSLUCENT);
-        UIManager.put("Button.background", Color.WHITE);
-        UIManager.put("Button.margin", new Insets(2, 5, 2, 5));
-        UIManager.put("TextField.background", Color.WHITE);
-        UIManager.put("Label.background", Color.WHITE);
-        UIManager.put("CheckBox.background", Color.WHITE);
-        UIManager.put("RadioButton.background", Color.WHITE);
+        
+        UIdefaults uidflts = new UIdefaults();
         
         HotelCRUD hotelBooked = new HotelCRUD();
         CustomerCRUD customersBooked = new CustomerCRUD();
