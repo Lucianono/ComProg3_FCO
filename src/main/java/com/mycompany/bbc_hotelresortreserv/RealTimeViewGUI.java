@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +48,8 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
     private final TransactionSystem transactionsCompleted;
     private final ResourcesCRUD resourcesInv;
     private final CustomerCRUD customersBooked;
+    
+    ArrayList<Transaction> tranChkIn = new ArrayList();
     
     public RealTimeViewGUI(HotelCRUD hotelBooked, CustomerCRUD customersBooked, TransactionSystem transactionsCompleted, ResourcesCRUD resourcesInv) {
         this.hotelBooked=hotelBooked;
@@ -123,6 +127,11 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
         refreshBtns();
         
         setLayout(new FlowLayout(FlowLayout.CENTER));
+        
+        //checker of overstays
+        Timer timer = new Timer(1000 * 5, e -> alertOverStay());
+    timer.start();
+        
     }
     // day computer
     private void smartDay(){
@@ -582,6 +591,8 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
                     System.out.println(t.getDateChkIn());
                     hotelBooked.getHotel(t.getHotel()).setAvailability(false);
                     JOptionPane.showMessageDialog(null, "Successfully checked in!" );
+                    
+                    tranChkIn.add(t);
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Can't checked in! Room is currently not available." );
@@ -599,24 +610,29 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
             
             if(t!=null){
                 if(!t.isCheckedOut() && t.isCheckedIn()){
-                    try {
-                        double custInp = Double.parseDouble(JOptionPane.showInputDialog("Input Cash"));
+                    //try {
+                        double custInp = 0;
+                        if(totalRemBal > 0){
+                             custInp = Double.parseDouble(JOptionPane.showInputDialog("Input Cash"));
+                        }
                         if(totalRemBal == 0 || custInp >= totalRemBal) {
                             t.setCheckedOut(true);
+                            tranChkIn.remove(t);
                             hotelBooked.getHotel(t.getHotel()).setAvailability(true);
                             t.setDateChkOut(new Date());
                             t.setFullCash(custInp);
                             t.setRemBal(0);
                             JOptionPane.showMessageDialog(null, "Successfully checked out!" );
                             Receipt receipt = new Receipt(1,t,custInp-totalRemBal,resourcesInv);
+                            
                         }
                         else{
                             JOptionPane.showMessageDialog(null, "Insufficient funds!" );
                         }
                         
-                    } catch (Exception err) {
-                        JOptionPane.showMessageDialog(null, "Invalid input!" );
-                    }
+                    //} catch (Exception err) {
+                    //    JOptionPane.showMessageDialog(null, "Invalid input!" );
+                    //}
                     
                 }
             }
@@ -656,6 +672,23 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
             
             custRefresh();
             fullCustInfoDisplay(null);
+        }
+    }
+
+    //overstay checker
+    private void alertOverStay() {
+        for(int i = 0 ; i < tranChkIn.size() ; i++){
+            LocalDateTime timeChk =  tranChkIn.get(i).getDateChkIn().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            LocalDateTime dayAfter =  timeChk.plusHours(24);
+            LocalDateTime timeNow = LocalDateTime.now();
+            
+            System.out.println(timeChk);
+            System.out.println(dayAfter);
+            System.out.println(timeNow);
+            
+            if(timeNow.isAfter(dayAfter)){
+                JOptionPane.showMessageDialog(null, "Customer at " + tranChkIn.get(i).getHotel() + " overstays!" ,null, JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     

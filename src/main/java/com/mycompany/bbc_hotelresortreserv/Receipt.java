@@ -98,13 +98,16 @@ public class Receipt extends JFrame {
             receiptText.append("Date checked in: ").append(t.getDateChkIn()).append("\n");
             receiptText.append("Date checked out: ").append(t.getDateChkOut()).append("\n");
             receiptText.append("---------------EXTRAS------------------------\n");
-            for(int i = 0; i<t.getResoUsed().length;i++){
-                if(t.getResoUsed()[i]==null)
-                    break;
-                receiptText.append("*Item Name: ").append(rinv.getReso(t.getResoUsed()[i].getItemID()).getItemName()).append("\n");
-                receiptText.append("Price: ₱ ").append(rinv.getReso(t.getResoUsed()[i].getItemID()).getPrice()).append("\n");
-                receiptText.append("Qty: ").append(t.getResoUsed()[i].getQty()).append("\n");
+            if(t.getResoUsed() != null){
+                for(int i = 0; i<t.getResoUsed().length;i++){
+                    if(t.getResoUsed()[i]==null)
+                        break;
+                    receiptText.append("*Item Name: ").append(rinv.getReso(t.getResoUsed()[i].getItemID()).getItemName()).append("\n");
+                    receiptText.append("Price: ₱ ").append(rinv.getReso(t.getResoUsed()[i].getItemID()).getPrice()).append("\n");
+                    receiptText.append("Qty: ").append(t.getResoUsed()[i].getQty()).append("\n");
+                }
             }
+            
             receiptText.append("--------------------------------------------\n");
             receiptText.append("Total Amount: ₱ ").append(t.getTotalAmount()).append("\n");
             receiptText.append("Down Payment: ₱ ").append(t.getDownCash()).append("\n");
