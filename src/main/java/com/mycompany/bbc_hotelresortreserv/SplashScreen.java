@@ -19,7 +19,7 @@ import java.awt.*;
 public class SplashScreen {
     JFrame frm = new JFrame();
     JLabel title1;
-    JLabel title2 = new JLabel("copyright 2023");
+    JLabel title2 = new JLabel("License and Copyright 2023");
     JLabel logo = new JLabel();
     JProgressBar bar = new JProgressBar(0,100);
     JPanel p1 = new JPanel();
