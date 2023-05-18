@@ -43,7 +43,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     JPanel jPanel5 = new JPanel();
     JLabel passwordLabel = new JLabel();
     JPanel jPanel6 = new JPanel();
-    JTextField passwordText = new JTextField();
+    JPasswordField passwordText = new JPasswordField();
     JPanel jPanel7 = new JPanel();
     JButton LoginButton = new JButton();
     JButton SignUpButton = new JButton();
@@ -54,7 +54,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     
     int i = 0; //counter signup
         
-    Security security = new Security();
+    Security security;
 
     
     LoginSignupFormGUI(Security security){
@@ -201,13 +201,13 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
     JPanel bjPanel5 = new JPanel(); 
     JLabel passwordLabel2 = new JLabel(); 
     JPanel bjPanel6 = new JPanel(); 
-    JTextField passwordText2 = new JTextField(); 
+    JPasswordField passwordText2 = new JPasswordField(); 
     JPanel jPanel10 = new JPanel(); 
     JPanel bjPanel18 = new JPanel(); 
     JLabel cLabel = new JLabel(); 
     JLabel pLabel = new JLabel(); 
     JPanel bjPanel15 = new JPanel(); 
-    JTextField cpText = new JTextField(); 
+    JPasswordField cpText = new JPasswordField(); 
     JPanel bjPanel16 = new JPanel(); 
     JLabel PosLabel = new JLabel(); 
     JPanel bjPanel17 = new JPanel(); 
@@ -371,7 +371,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setResizable(false);
         frame2.setTitle("Login and SignUp Form");
-        frame2.setSize(600,400);
+        frame2.setSize(400,500);
         frame2.setLocationRelativeTo(null);
         frame2.setVisible(true);
         
@@ -401,16 +401,17 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                         Account acc = new Account(UserInput, PasswordInput,security);
                         logAttempts=0;
                         frame.dispose();
+                        JOptionPane.showMessageDialog(null, "Welcome " + UserInput,"Login",JOptionPane.INFORMATION_MESSAGE);
+
 
                     }else{{
                         logAttempts++;
-                        System.out.println("Invalid Input. Remaining Tries: " + (loopctr-logAttempts));
+                        JOptionPane.showMessageDialog(null, "Incorrect username or password. Remaining Tries: " + (loopctr-logAttempts),"Login", JOptionPane.ERROR_MESSAGE);
                         userText.setText("");
                         passwordText.setText("");
                         
                         if(logAttempts == 3){
-                        System.out.println("You have reached maximum amount of tries.");
-                        System.out.println("Program Close...");
+                        JOptionPane.showMessageDialog(null, "You have reached maximum amount of tries. Program Close...", "Login", JOptionPane.ERROR_MESSAGE);
                         System.exit(0);
                     }
                         //Account acc = new Account();
@@ -456,6 +457,7 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                             userText2.setText("");
                             cpText.setText("");
                             JOptionPane.showMessageDialog(null, "Successfully Created an Account...");
+                            frame2.dispose();
                             break;
                             }
                         }
