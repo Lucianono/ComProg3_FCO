@@ -5,7 +5,7 @@ package com.mycompany.bbc_hotelresortreserv;
 import java.awt.Color;
 import java.awt.Insets;
 import java.text.ParseException;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 //all classes should be in here
 
@@ -33,7 +33,11 @@ public class BBCMain {
         
         SplashScreen splsh = new SplashScreen(security);
         
-        
+        JPanel hp = new HelpAbout();
+        JFrame fr = new JFrame();
+        fr.add(hp);
+        fr.setVisible(true);
+        fr.setSize(600,400);
         
     }
     

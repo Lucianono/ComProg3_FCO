@@ -17,6 +17,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     JPanel hotelPnl ;
     JPanel accPnl ;
     JPanel reportPnl;
+    JPanel abtPnl;
     
     
     JPanel mainPnl = new JPanel();
@@ -59,6 +60,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         hotelPnl = new HotelRoomGUI(hotelBooked);
         accPnl = new Account(security.user[security.loggedIndex], security.pass[security.loggedIndex], security);
         reportPnl = new Report(transactionsCompleted);
+        abtPnl = new HelpAbout();
         
         rsrvBtn.addActionListener(this);
         chkInOutBtn.addActionListener(this);
@@ -218,7 +220,11 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         }else if(e.getSource()==reportBtn){
             viewPnl.removeAll();
             viewPnl.add(reportPnl);
+        }else if(e.getSource()==abtHelpBtn){
+            viewPnl.removeAll();
+            viewPnl.add(abtPnl);
         }
+        
        
         revalidate();
         repaint();

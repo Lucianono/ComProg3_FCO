@@ -1,9 +1,11 @@
 package com.mycompany.bbc_hotelresortreserv;
 
+import java.awt.Dimension;
+import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.*;
 
-public class HelpAbout extends JPanel{
+public class HelpAbout extends JScrollPane{
         JScrollPane jScrollPane1 = new JScrollPane();
         JPanel mainPanel = new JPanel();
         JLabel about = new JLabel();
@@ -70,7 +72,9 @@ public class HelpAbout extends JPanel{
         albaNum.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         albaNum.setText("0920-654-7790");
 
-        albaPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Alba.png"))); // NOI18N
+        ImageIcon darr = new ImageIcon("/images/Alba.png");
+        Image darrr = darr.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        albaPic.setIcon(new javax.swing.ImageIcon(darrr)); // NOI18N
         albaPic.setText("Darwin");
 
         javax.swing.GroupLayout albaPanelLayout = new javax.swing.GroupLayout(albaPanel);
@@ -528,10 +532,8 @@ public class HelpAbout extends JPanel{
                 .addGap(99, 99, 99))
         );
 
-        jScrollPane1.setViewportView(mainPanel);
-
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        setSize(600,400);
+        setViewportView(mainPanel);
+        mainPanel.setPreferredSize(new Dimension(600,1000));
         
              
     }
