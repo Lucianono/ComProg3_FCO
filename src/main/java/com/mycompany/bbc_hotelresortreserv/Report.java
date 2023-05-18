@@ -3,7 +3,6 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 /*
 This class is for Monthly Report JFrame
 
@@ -33,24 +32,34 @@ public class Report{
     private JButton rsrcsbtn = new JButton("Resources Used");
     private JButton yearbtn = new JButton("Generate Year " + yearSelected +" "+"Report");
     private JButton nxtbtn = new JButton("Next Year");
+    DecimalFormat decfrmt = new DecimalFormat("#");
+    double sum = 0;
+    double yrsum = 0;
     
     public Report() {
+        StringBuilder receiptText = new StringBuilder();
+
         JFrame mfrm = new JFrame(yearSelected+"");
         JPanel mpnl = new JPanel();
         
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
             String[][] rowData = new String[getMaxDays(monthIndex)][3];
-            DecimalFormat decfrmt = new DecimalFormat("#");
-            double min = 500.0;
-            double max = 10000.0;
-            LocalDate currentDate = LocalDate.now();
+            boolean foundDecember = false;
             
             for (int index = 0; index < rowData.length; index++) {
                 rowData[index][0] = Integer.toString(index + 1);
-                double random = min + Math.random() * (max - min);
+                double random = 500 + Math.random() * (10000 - 500);
+                random *=2;
                 rowData[index][1] = decfrmt.format(random);
+                double random1 = 1 + Math.random() * (20 - 1);
+                rowData[index][2] = decfrmt.format(random1);
+                sum +=random;
                 }
             
+            receiptText.append(months[monthIndex]).append(" Total Sales: ")
+            .append(decfrmt.format(sum)).append("\n");
+            
+            yrsum += sum;
             
             JTable table = new JTable(rowData, columnNames){
                  @Override
@@ -72,6 +81,9 @@ public class Report{
             mpnl.add(label);
             mpnl.add(tblPnl);
         }
+        
+        receiptText.append("For the year of ").append(yearSelected)
+                .append(": ").append(decfrmt.format(yrsum));
         
         mpnl.setLayout(new BoxLayout(mpnl, BoxLayout.PAGE_AXIS));
         
@@ -106,15 +118,6 @@ public class Report{
         
         mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
         mfrm.getContentPane().add(buttonPanel, "South");
-        
-                
-        StringBuilder receiptText = new StringBuilder();
-
-        for (String month : months) {
-            receiptText.append(month).append(" Total Sales:").append("\n");
-        }
-
-            receiptText.append("For the year of ").append(yearSelected).append(": ");
 
             JTextArea yr = new JTextArea(receiptText.toString());
             yr.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
