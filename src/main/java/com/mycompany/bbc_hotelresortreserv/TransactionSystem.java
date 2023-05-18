@@ -15,21 +15,7 @@ public class TransactionSystem {
     private LinkedList<Transaction> transactions = new LinkedList<>();
     
     
-    public TransactionSystem() throws ParseException {
-        Customer c = new Customer(5, "Bryan Calulo", 12);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-        Date d1 = formatter.parse("2023/5/14");
-        Date d2 = formatter.parse("2023/5/13");
-        Resources [] r = null;
-        Customer[] customers = {c};
-        createReservation(customers,"A1",1000,5000,d1,0,0,r);
-        createReservation(customers,"B1",1000,5000,d1,0,500,r);
-        createReservation(customers,"C1",1000,5000,d1,0,750,r);
-        createReservation(customers,"A1",1000,5000,d2,0,750,r);
-        createReservation(customers,"B1",1000,5000,d2,0,750,r);
-        createReservation(customers,"D1",1000,5000,d2,0,750,r);
-
-        
+    public TransactionSystem()  {
     }
     
     public Transaction createReservation( Customer[] customers, String hotel,double totalAm, double downcash , Date timeRsrv , double fullcash, double remBal, Resources[] resoUsed) { //create customer

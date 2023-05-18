@@ -413,18 +413,9 @@ public class LoginSignupFormGUI extends Security implements ActionListener{
                         security.logged = true;
                         
                         //call to main menu
-                        HotelCRUD hotelBooked = new HotelCRUD();
-                        CustomerCRUD customersBooked = new CustomerCRUD();
-                        TransactionSystem transactionsCompleted = null;
-                        try {
-                            transactionsCompleted = new TransactionSystem();
-                        } catch (ParseException ex) {
-                            Logger.getLogger(LoginSignupFormGUI.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        ResourcesCRUD resourcesInv = new ResourcesCRUD();
+                        
+                        BBCMain.callMenu();
 
-
-                        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
 
                     }else{{
                         logAttempts++;

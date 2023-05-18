@@ -10,6 +10,20 @@ import javax.swing.UIManager;
 //all classes should be in here
 
 public class BBCMain {
+    
+    static HotelCRUD hotelBooked = new HotelCRUD();
+    static CustomerCRUD customersBooked = new CustomerCRUD();
+    static TransactionSystem transactionsCompleted = new TransactionSystem();
+    static ResourcesCRUD resourcesInv = new ResourcesCRUD();
+    static Security security = new Security();;
+     
+    
+    public static void callMenu(){
+        
+        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
+    }
+    
+    
 
     public static void main(String[] args) throws ParseException {
         
@@ -17,7 +31,7 @@ public class BBCMain {
         
         
         
-        SplashScreen splsh = new SplashScreen();
+        SplashScreen splsh = new SplashScreen(security);
         
         
     }

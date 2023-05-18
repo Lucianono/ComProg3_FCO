@@ -181,7 +181,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
             hotelResoBtnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 80, 150));
 
             resoBtn.setFont(new Font("Arial", 1, 14)); // NOI18N
-            resoBtn.setText("Resources");
+            resoBtn.setText("Inventory");
             resoBtn.setPreferredSize(new Dimension(200, 100));
             resoBtn.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {

@@ -32,7 +32,11 @@ public class SplashScreen {
     Color brown = BbcUI.brown;
     Color lgtbrown = BbcUI.lightbrown;
     
-    SplashScreen() throws ParseException {
+    Security security;
+    
+    SplashScreen(Security security) throws ParseException {
+        this.security = security;
+        
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/logo_orig.png");
         Image logoVar = logoImg.getImage().getScaledInstance(logoImg.getIconWidth()/8, logoImg.getIconHeight()/8, Image.SCALE_SMOOTH);
 
@@ -90,7 +94,6 @@ public class SplashScreen {
             
         if(counter == 100){
             
-            Security security = new  Security();
             LoginSignupFormGUI login = new LoginSignupFormGUI(security);
             
             frm.dispose();
