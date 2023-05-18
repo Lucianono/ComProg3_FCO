@@ -8,21 +8,23 @@ import javax.swing.*;
 public class MainMenuGUI extends JFrame implements ActionListener{
 
     
-        
+    JLabel defaultImgHolder; 
+    
     JPanel statusPnl ;
     JPanel reservPnl ;
     JPanel rtvPnl ;
     JPanel invPnl ;
     JPanel hotelPnl ;
     
+    
     JPanel mainPnl = new JPanel();
     JPanel btnPnl = new JPanel();
-    JButton jButton1 = new JButton();
-    JButton jButton2 = new JButton();
-    JButton jButton3 = new JButton();
-    JButton jButton4 = new JButton();
-    JButton jButton5 = new JButton();
-    JButton jButton6 = new JButton();
+    JButton rsrvBtn = new JButton();
+    JButton chkInOutBtn = new JButton();
+    JButton resoHotelBtn = new JButton();
+    JButton reportBtn = new JButton();
+    JButton abtHelpBtn = new JButton();
+    JButton accBtn = new JButton();
     JPanel viewPnl = new JPanel();
 
     HotelCRUD hotelBooked;
@@ -37,11 +39,25 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         this.transactionsCompleted=transactionsCompleted;
         this.resourcesInv=resourcesInv;
 
+        
+        ImageIcon logoImg = new ImageIcon("src/main/resources/images/mainMenuImg.png");
+        Image logo = logoImg.getImage();
+        Image scaledLogo = logo.getScaledInstance(logoImg.getIconWidth()/2, logoImg.getIconHeight()/2, Image.SCALE_SMOOTH);
+        defaultImgHolder = new JLabel(new ImageIcon(scaledLogo));
+        
         statusPnl = new StatusBar("Bryan","admin");
         reservPnl = new ReservationGUI(hotelBooked, customersBooked, transactionsCompleted);
         rtvPnl = new RealTimeViewGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv);
         invPnl = new InventoryGUI(resourcesInv);
         hotelPnl = new HotelRoomGUI(hotelBooked);
+        
+        rsrvBtn.addActionListener(this);
+        chkInOutBtn.addActionListener(this);
+        resoHotelBtn.addActionListener(this);
+        reportBtn.addActionListener(this);
+        abtHelpBtn.addActionListener(this);
+        accBtn.addActionListener(this);
+
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,36 +71,36 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         btnPnl.setPreferredSize(new Dimension(70, 508));
         btnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 8));
 
-        jButton1.setText("Reserve");
-        jButton1.setPreferredSize(new Dimension(60, 60));
-        btnPnl.add(jButton1);
+        rsrvBtn.setText("Reserve");
+        rsrvBtn.setPreferredSize(new Dimension(60, 60));
+        btnPnl.add(rsrvBtn);
 
-        jButton2.setText("CheckIn/CheckOut");
-        jButton2.setPreferredSize(new Dimension(60, 60));
-        btnPnl.add(jButton2);
+        chkInOutBtn.setText("CheckIn/CheckOut");
+        chkInOutBtn.setPreferredSize(new Dimension(60, 60));
+        btnPnl.add(chkInOutBtn);
 
-        jButton3.setText("Resources");
-        jButton3.setPreferredSize(new Dimension(60, 60));
-        btnPnl.add(jButton3);
+        resoHotelBtn.setText("Resources/Hotel");
+        resoHotelBtn.setPreferredSize(new Dimension(60, 60));
+        btnPnl.add(resoHotelBtn);
 
-        jButton4.setText("Report");
-        jButton4.setPreferredSize(new Dimension(60, 60));
-        btnPnl.add(jButton4);
+        reportBtn.setText("Report");
+        reportBtn.setPreferredSize(new Dimension(60, 60));
+        btnPnl.add(reportBtn);
 
-        jButton5.setText("About/ Help");
-        jButton5.setPreferredSize(new Dimension(60, 60));
-        btnPnl.add(jButton5);
+        abtHelpBtn.setText("About/ Help");
+        abtHelpBtn.setPreferredSize(new Dimension(60, 60));
+        btnPnl.add(abtHelpBtn);
 
-        jButton6.setText("Account");
-        jButton6.setPreferredSize(new Dimension(60, 60));
-        btnPnl.add(jButton6);
+        accBtn.setText("Account");
+        accBtn.setPreferredSize(new Dimension(60, 60));
+        btnPnl.add(accBtn);
 
         viewPnl.setPreferredSize(new Dimension(530, 60));
         
         mainPnl.add(btnPnl);
 
         viewPnl.setLayout(new BorderLayout());
-        viewPnl.add(hotelPnl,BorderLayout.CENTER);
+        viewPnl.add(defaultImgHolder,BorderLayout.CENTER);
         mainPnl.add(viewPnl);
 
         getContentPane().add(mainPnl, BorderLayout.CENTER);
@@ -98,7 +114,18 @@ public class MainMenuGUI extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        viewPnl.removeAll();
+        if(e.getSource()==rsrvBtn){
+            viewPnl.add(reservPnl);
+        }else if(e.getSource()==chkInOutBtn){
+            viewPnl.add(rtvPnl);
+        }else if(e.getSource()==resoHotelBtn){
+            viewPnl.add(invPnl);
+        }
+        repaint();
+        revalidate();
+       
     }
     
     
