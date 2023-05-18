@@ -276,7 +276,7 @@ public class Account extends JPanel{
         ChangePasswordBtn.setPreferredSize(new Dimension(120, 40));
         bjPanel7.add(ChangePasswordBtn);
 
-        LogoutBtn.setText("Logout");
+        LogoutBtn.setText("Exit");
         LogoutBtn.setPreferredSize(new Dimension(100, 40));
         bjPanel7.add(LogoutBtn);
 

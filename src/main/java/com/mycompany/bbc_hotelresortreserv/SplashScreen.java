@@ -90,7 +90,7 @@ public class SplashScreen {
         }
             
         try{
-            Thread.sleep(1);
+            Thread.sleep(35);
         }catch(InterruptedException e){
         e.printStackTrace();
         }
