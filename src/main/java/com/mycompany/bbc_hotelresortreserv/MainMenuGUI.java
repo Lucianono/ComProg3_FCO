@@ -78,27 +78,63 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         btnPnl.setBackground(BbcUI.brown);
         btnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 8));
 
-        rsrvBtn.setText("Reserve");
+        JLabel rsrvLbl = new JLabel("Reserve");
+        rsrvLbl.setFont(new Font("Verdana", Font.BOLD,8));
+        rsrvLbl.setForeground(Color.WHITE);
+        rsrvLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        rsrvBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        rsrvBtn.add(new JLabel(new ImageIcon("src/main/resources/images/bed.png")));
+        rsrvBtn.add(rsrvLbl);
         rsrvBtn.setPreferredSize(new Dimension(60, 60));
         btnPnl.add(rsrvBtn);
 
-        chkInOutBtn.setText("CheckIn/CheckOut");
+        JLabel chkLbl = new JLabel("CheckIn/Out");
+        chkLbl.setFont(new Font("Verdana", Font.BOLD,7));
+        chkLbl.setForeground(Color.WHITE);
+        chkLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        chkInOutBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        chkInOutBtn.add(new JLabel(new ImageIcon("src/main/resources/images/door.png")));
+        chkInOutBtn.add(chkLbl);
         chkInOutBtn.setPreferredSize(new Dimension(60, 60));
         btnPnl.add(chkInOutBtn);
 
-        resoHotelBtn.setText("Resources/Hotel");
+        JLabel rhLbl = new JLabel("Manage");
+        rhLbl.setFont(new Font("Verdana", Font.BOLD,8));
+        rhLbl.setForeground(Color.WHITE);
+        rhLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        resoHotelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        resoHotelBtn.add(new JLabel(new ImageIcon("src/main/resources/images/box.png")));
+        resoHotelBtn.add(rhLbl);
         resoHotelBtn.setPreferredSize(new Dimension(60, 60));
         btnPnl.add(resoHotelBtn);
 
-        reportBtn.setText("Report");
+        JLabel repLbl = new JLabel("Report");
+        repLbl.setFont(new Font("Verdana", Font.BOLD,8));
+        repLbl.setForeground(Color.WHITE);
+        repLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        reportBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        reportBtn.add(new JLabel(new ImageIcon("src/main/resources/images/bill.png")));
+        reportBtn.add(repLbl);
         reportBtn.setPreferredSize(new Dimension(60, 60));
         btnPnl.add(reportBtn);
 
-        abtHelpBtn.setText("About/ Help");
+        JLabel abtLbl = new JLabel("About");
+        abtLbl.setFont(new Font("Verdana", Font.BOLD,8));
+        abtLbl.setForeground(Color.WHITE);
+        abtLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        abtHelpBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        abtHelpBtn.add(new JLabel(new ImageIcon("src/main/resources/images/help.png")));
+        abtHelpBtn.add(abtLbl);
         abtHelpBtn.setPreferredSize(new Dimension(60, 60));
         btnPnl.add(abtHelpBtn);
 
-        accBtn.setText("Account");
+        JLabel accLbl = new JLabel("Account");
+        accLbl.setFont(new Font("Verdana", Font.BOLD,8));
+        accLbl.setForeground(Color.WHITE);
+        accLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        accBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        accBtn.add(new JLabel(new ImageIcon("src/main/resources/images/user.png")));
+        accBtn.add(accLbl);
         accBtn.setPreferredSize(new Dimension(60, 60));
         btnPnl.add(accBtn);
 

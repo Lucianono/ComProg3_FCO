@@ -15,16 +15,9 @@ public class BBCMain {
         
         BbcUI uidflts = new BbcUI();
         
-        HotelCRUD hotelBooked = new HotelCRUD();
-        CustomerCRUD customersBooked = new CustomerCRUD();
-        TransactionSystem transactionsCompleted = new TransactionSystem();
-        ResourcesCRUD resourcesInv = new ResourcesCRUD();
-        Security security = new Security();
         
         
-        MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
-        
-        //SplashScreen splsh = new SplashScreen();
+        SplashScreen splsh = new SplashScreen();
         
     }
     

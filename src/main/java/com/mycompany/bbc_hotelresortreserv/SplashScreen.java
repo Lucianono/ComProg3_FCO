@@ -14,6 +14,7 @@ package com.mycompany.bbc_hotelresortreserv;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.ParseException;
 
 
 public class SplashScreen {
@@ -31,7 +32,7 @@ public class SplashScreen {
     Color brown = BbcUI.brown;
     Color lgtbrown = BbcUI.lightbrown;
     
-    SplashScreen() {
+    SplashScreen() throws ParseException {
         ImageIcon logoImg = new ImageIcon("src/main/resources/images/logo_orig.png");
         Image logoVar = logoImg.getImage().getScaledInstance(logoImg.getIconWidth()/8, logoImg.getIconHeight()/8, Image.SCALE_SMOOTH);
 
@@ -52,7 +53,7 @@ public class SplashScreen {
 
 
         title2.setFont(new Font("Arial", Font.BOLD, 9));
-        title2.setForeground(Color.WHITE);
+        title2.setForeground(Color.BLACK);
         p3.add(title2);
         p3.setBackground(lgtbrown);
 
@@ -82,13 +83,28 @@ public class SplashScreen {
         fill();
     }   
 
-    public void fill(){
+    public void fill() throws ParseException{
         int counter = 0;
         while (counter <= 100){
             bar.setValue(counter);
             
+        if(counter == 100){
+            
+            HotelCRUD hotelBooked = new HotelCRUD();
+            CustomerCRUD customersBooked = new CustomerCRUD();
+            TransactionSystem transactionsCompleted = new TransactionSystem();
+            ResourcesCRUD resourcesInv = new ResourcesCRUD();
+            Security security = new Security();
+
+
+            MainMenuGUI menu = new MainMenuGUI(hotelBooked, customersBooked, transactionsCompleted, resourcesInv,security);
+            
+            frm.dispose();
+            
+        }
+            
         try{
-            Thread.sleep(50);
+            Thread.sleep(1);
         }catch(InterruptedException e){
         e.printStackTrace();
         }
