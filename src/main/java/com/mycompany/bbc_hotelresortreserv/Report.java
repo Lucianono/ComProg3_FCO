@@ -44,7 +44,6 @@ public class Report{
         
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
             String[][] rowData = new String[getMaxDays(monthIndex)][3];
-            boolean foundDecember = false;
             
             for (int index = 0; index < rowData.length; index++) {
                 rowData[index][0] = Integer.toString(index + 1);
@@ -158,8 +157,33 @@ public class Report{
 
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
             String[][] rowData = new String[getMaxDays(monthIndex)][columnNames2.length];
-            for (int dayIndex = 0; dayIndex < rowData.length; dayIndex++) {
-                rowData[dayIndex][0] = Integer.toString(dayIndex + 1);
+            
+            for (int index = 0; index < rowData.length; index++) {
+                rowData[index][0] = Integer.toString(index + 1);
+                double random = 1 + Math.random() * (10 - 1);
+                rowData[index][1] = decfrmt.format(random);
+                double random2 = 1 + Math.random() * (20 - 1);
+                rowData[index][2] = decfrmt.format(random2);
+                double random3 = 1 + Math.random() * (30 - 1);
+                rowData[index][3] = decfrmt.format(random3);
+                double random4 = 1 + Math.random() * (15 - 1);
+                rowData[index][4] = decfrmt.format(random4);
+                double random5 = 1 + Math.random() * (50 - 1);
+                rowData[index][5] = decfrmt.format(random5);
+                double random6 = 1 + Math.random() * (100 - 1);
+                rowData[index][6] = decfrmt.format(random6);
+                double random7 = 1 + Math.random() * (15 - 1);
+                rowData[index][7] = decfrmt.format(random7);
+                double random8 = 1 + Math.random() * (100 - 1);
+                rowData[index][8] = decfrmt.format(random8);
+                double random9 = 1 + Math.random() * (100 - 1);
+                rowData[index][9] = decfrmt.format(random9);
+                double random10 = 1 + Math.random() * (100 - 1);
+                rowData[index][10] = decfrmt.format(random10);
+                double random11 = 1 + Math.random() * (100 - 1);
+                rowData[index][11] = decfrmt.format(random11);
+                double random12 = 1 + Math.random() * (100 - 1);
+                rowData[index][12] = decfrmt.format(random12);
             }
             JTable table = new JTable(rowData, columnNames2);
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -179,7 +203,7 @@ public class Report{
         sfrm.pack();
         sfrm.setSize(600, 400);
         sfrm.setVisible(true);
-        sfrm.setResizable(true);
+        sfrm.setResizable(false);
         sfrm.setLocationRelativeTo(null);
         sfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
