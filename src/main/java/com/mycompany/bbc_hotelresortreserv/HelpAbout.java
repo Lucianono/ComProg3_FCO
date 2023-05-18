@@ -2,8 +2,6 @@ package com.mycompany.bbc_hotelresortreserv;
 
 import javax.swing.JFrame;
 import javax.swing.*;
-import java.awt.*;
-import javax.swing.border.EmptyBorder;
 
 public class HelpAbout extends JFrame{
         JScrollPane jScrollPane1 = new JScrollPane();
