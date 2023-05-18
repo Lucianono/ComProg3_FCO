@@ -210,6 +210,9 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
         jPanel5.repaint();
         jPanel5.revalidate();
         
+        
+
+        
     }
     //refresh displayed customers
     private void custRefresh(){
@@ -222,6 +225,10 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
         custCountRsrv = 0;
         
         custDisplayAll();
+        
+        
+        repaint();
+        revalidate();
     }
     //update full cust info
     private double fullCustInfoDisplay(Transaction t){
@@ -541,8 +548,8 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        
         if(e.getSource()==resetBtn){
-            
             
             Date nowDate = new Date();
             int year = nowDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
@@ -557,6 +564,8 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
             refreshBtns();
             
             custRefresh();
+            
+            
             
         }
         else if (e.getSource()==chkInBtn){

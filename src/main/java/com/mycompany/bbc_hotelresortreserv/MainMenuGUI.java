@@ -100,7 +100,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         mainPnl.add(btnPnl);
 
         viewPnl.setLayout(new BorderLayout());
-        viewPnl.add(defaultImgHolder,BorderLayout.CENTER);
+        viewPnl.add(rtvPnl,BorderLayout.CENTER);
         mainPnl.add(viewPnl);
 
         getContentPane().add(mainPnl, BorderLayout.CENTER);
@@ -115,16 +115,19 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        viewPnl.removeAll();
         if(e.getSource()==rsrvBtn){
+             viewPnl.removeAll();
             viewPnl.add(reservPnl);
         }else if(e.getSource()==chkInOutBtn){
+             viewPnl.removeAll();
             viewPnl.add(rtvPnl);
         }else if(e.getSource()==resoHotelBtn){
+             viewPnl.removeAll();
             viewPnl.add(invPnl);
         }
         repaint();
         revalidate();
+        setVisible(true);
        
     }
     

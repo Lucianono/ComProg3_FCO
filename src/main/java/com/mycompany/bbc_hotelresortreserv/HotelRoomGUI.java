@@ -50,6 +50,8 @@ public class HotelRoomGUI extends JPanel implements ActionListener{
     
     public HotelRoomGUI(HotelCRUD hotelreso) {
         
+        
+        
         this.hotelSys=hotelreso;
         
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
