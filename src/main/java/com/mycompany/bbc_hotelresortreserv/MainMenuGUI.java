@@ -100,7 +100,7 @@ public class MainMenuGUI extends JFrame implements ActionListener{
         mainPnl.add(btnPnl);
 
         viewPnl.setLayout(new BorderLayout());
-        viewPnl.add(rtvPnl,BorderLayout.CENTER);
+        viewPnl.add(defaultImgHolder,BorderLayout.CENTER);
         mainPnl.add(viewPnl);
 
         getContentPane().add(mainPnl, BorderLayout.CENTER);
@@ -116,17 +116,54 @@ public class MainMenuGUI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource()==rsrvBtn){
-             viewPnl.removeAll();
+            viewPnl.removeAll();
             viewPnl.add(reservPnl);
         }else if(e.getSource()==chkInOutBtn){
-             viewPnl.removeAll();
+            viewPnl.removeAll();
             viewPnl.add(rtvPnl);
         }else if(e.getSource()==resoHotelBtn){
-             viewPnl.removeAll();
-            viewPnl.add(invPnl);
+            viewPnl.removeAll();
+            
+            JPanel hotelResoBtnPnl = new JPanel();
+            JButton resoBtn = new JButton();
+            JButton hotelBtn = new JButton();
+
+            hotelResoBtnPnl.setLayout(new FlowLayout(FlowLayout.CENTER, 80, 150));
+
+            resoBtn.setFont(new Font("Arial", 1, 14)); // NOI18N
+            resoBtn.setText("Resources");
+            resoBtn.setPreferredSize(new Dimension(200, 100));
+            resoBtn.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    viewPnl.removeAll();
+                    viewPnl.add(invPnl);
+                    revalidate();
+                    repaint();
+                }
+            });
+            hotelResoBtnPnl.add(resoBtn);
+
+            hotelBtn.setFont(new Font("Arial", 1, 14)); // NOI18N
+            hotelBtn.setText("Hotel");
+            hotelBtn.setPreferredSize(new Dimension(200, 100));
+            hotelBtn.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    viewPnl.removeAll();
+                    viewPnl.add(hotelPnl);
+                    revalidate();
+                    repaint();
+                }
+            });
+            hotelResoBtnPnl.add(hotelBtn);
+           
+            
+
+            viewPnl.add(hotelResoBtnPnl);
+
         }
-        repaint();
+       
         revalidate();
+        repaint();
         setVisible(true);
        
     }

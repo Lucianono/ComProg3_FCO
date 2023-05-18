@@ -556,7 +556,7 @@ public class ReservationGUI extends JPanel implements ActionListener,ItemListene
     public void itemStateChanged(ItemEvent e) {
 
         
-        if(e.getSource() == month || e.getSource() == year || e.getSource() == hotelCmb){
+        if(e.getSource() == month || e.getSource() == year ){
 
             smartDay();
                 

@@ -207,8 +207,9 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
             
         }
 
-        jPanel5.repaint();
+        
         jPanel5.revalidate();
+        jPanel5.repaint();
         
         
 
@@ -220,15 +221,17 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
         for (int i = 0; i < custCountRsrv ; i++){
             jPanel5.remove(custInfoBtnPanel[i]);
         }
-        jPanel5.repaint();
+        
         jPanel5.revalidate();
+        jPanel5.repaint();
         custCountRsrv = 0;
         
         custDisplayAll();
         
         
-        repaint();
+        
         revalidate();
+        repaint();
     }
     //update full cust info
     private double fullCustInfoDisplay(Transaction t){
@@ -485,8 +488,9 @@ public class RealTimeViewGUI extends JPanel implements ActionListener,ItemListen
         for(int i = 0; i < reso.size(); i++){
             addResourcePanel(i,reso.get(i));
         }
-        jResoPanel10.repaint();
+        
         jResoPanel10.revalidate();
+        jResoPanel10.repaint();
     }
     //deletes resurce panel
     private void deleteResourcePanel(int i){
