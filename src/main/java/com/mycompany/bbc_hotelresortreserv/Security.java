@@ -4,7 +4,7 @@ import javax.swing.JComboBox;
 
 public class Security{
     
-    
+    //UPDATE THIS BEFORE RELEASE
 
     public String[] user = new String[]{"123"}; //default username
     public String[] pass = new String[]{"678"}; //default password
@@ -14,7 +14,7 @@ public class Security{
     public static int logAttempts = 0; 
     public static int loopctr = 3;
     
-    public int loggedIndex = -1;
+    public int loggedIndex = 0;
     //fromLoginGUI- create reset
     
     public Security(){

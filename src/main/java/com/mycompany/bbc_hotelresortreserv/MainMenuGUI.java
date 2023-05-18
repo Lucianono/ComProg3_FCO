@@ -164,6 +164,9 @@ public class MainMenuGUI extends JFrame implements ActionListener{
 
             viewPnl.add(hotelResoBtnPnl);
 
+        }else if(e.getSource()==accBtn){
+            viewPnl.removeAll();
+            viewPnl.add(accPnl);
         }
        
         revalidate();
