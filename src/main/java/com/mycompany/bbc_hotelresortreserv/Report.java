@@ -2,6 +2,7 @@ package com.mycompany.bbc_hotelresortreserv;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 /*
 This class is for Monthly Report JFrame
 
@@ -24,13 +25,13 @@ TODO:
 
 public class Report{
     
-    private JButton rsrcsbtn = new JButton("Resources Used");
-    private JButton backbtn = new JButton("Back to Report");
-    private JButton nxtbtn = new JButton("Next Year");
     private final String[] months = {"January", "February", "March", "April", 
         "May", "June", "July", "August", "September", "October", "November", "December"};
     private final String[] columnNames = {"Day" , "Sales", "No of Customers"};
     private int yearSelected = 2023;
+    private JButton rsrcsbtn = new JButton("Resources Used");
+    private JButton yearbtn = new JButton("Generate Year " + yearSelected +" "+"Report");
+    private JButton nxtbtn = new JButton("Next Year");
     
     public Report() {
         JFrame mfrm = new JFrame(yearSelected+"");
@@ -38,8 +39,14 @@ public class Report{
         
         for (int monthIndex = 0; monthIndex < months.length; monthIndex++) {
             String[][] rowData = new String[getMaxDays(monthIndex)][3];
-            for (int dayIndex = 0; dayIndex < rowData.length; dayIndex++) {
-                rowData[dayIndex][0] = Integer.toString(dayIndex + 1);
+            DecimalFormat decfrmt = new DecimalFormat("#");
+            double min = 0.0;
+            double max = 10000.0;
+            
+            for (int Index = 0; Index < rowData.length; Index++) {
+                rowData[Index][0] = Integer.toString(Index + 1);
+                double random = min + Math.random() * (max - min);
+                rowData[Index][1]= decfrmt.format(random);
             }
             JTable table = new JTable(rowData, columnNames){
                  @Override
@@ -80,10 +87,11 @@ public class Report{
             }
         });
    
-        backbtn.addActionListener(new ActionListener(){
+        yearbtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mfrm.dispose();
+                YearReport yrrprt = new YearReport();
+                
             }
         });
         
@@ -95,17 +103,14 @@ public class Report{
         });
         
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
-        buttonPanel.add(backbtn);
         buttonPanel.add(rsrcsbtn);
+        buttonPanel.add(yearbtn);
         buttonPanel.add(nxtbtn);
         
         mfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
         mfrm.getContentPane().add(buttonPanel, "South");
     }
-  
-    
-    
-    
+ 
     public class SecondFrame extends JFrame {
    
     private final String[] columnNames2 = {"Day", "Extra Bed", "Pillow", 
@@ -144,18 +149,70 @@ public class Report{
         sfrm.setVisible(true);
         sfrm.setResizable(true);
         sfrm.setLocationRelativeTo(null);
-        sfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         backbtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                sfrm.dispose();
             }
         });
         
         sfrm.getContentPane().add(backbtn, "South");
     }
 }
+    
+    public class YearReport extends JFrame {
+
+     public YearReport(){
+        JFrame yrfrm = new JFrame(yearSelected+"");
+        JLabel lbl1 = new JLabel("January Total Sales:");
+        lbl1.setBounds(50,50, 100,30);  
+        JLabel lbl2 = new JLabel("February Total Sales:");
+        lbl2.setBounds(50,50, 100,30); 
+        JLabel lbl3 = new JLabel("March Total Sales:");
+        lbl3.setBounds(50,50, 100,30); 
+        JLabel lbl4 = new JLabel("April Total Sales:");
+        lbl4.setBounds(50,50, 100,30); 
+        JLabel lbl5 = new JLabel("May Total Sales:");
+        lbl5.setBounds(50,50, 100,30); 
+        JLabel lbl6 = new JLabel("June Total Sales:");
+        lbl6.setBounds(50,50, 100,30); 
+        JLabel lbl7 = new JLabel("July Total Sales:");
+        lbl7.setBounds(50,50, 100,30); 
+        JLabel lbl8 = new JLabel("August Total Sales:");
+        lbl8.setBounds(50,50, 100,30); 
+        JLabel lbl9 = new JLabel("September Total Sales:");
+        lbl9.setBounds(50,50, 100,30); 
+        JLabel lbl10 = new JLabel("October Total Sales:");
+        lbl10.setBounds(50,50, 100,30); 
+        JLabel lbl11 = new JLabel("November Total Sales:");
+        lbl11.setBounds(50,50, 100,30); 
+        JLabel lbl12 = new JLabel("December Total Sales:");
+        lbl12.setBounds(50,50, 100,30); 
+        JLabel lbl13 = new JLabel("For the year " + yearSelected + ":");
+        lbl13.setBounds(50,50, 100,30); 
+        
+        yrfrm.add(lbl1);
+        yrfrm.add(lbl2);
+        yrfrm.add(lbl3);
+        yrfrm.add(lbl4);
+        yrfrm.add(lbl5);
+        yrfrm.add(lbl6);
+        yrfrm.add(lbl7);
+        yrfrm.add(lbl8);
+        yrfrm.add(lbl9);
+        yrfrm.add(lbl10);
+        yrfrm.add(lbl11);
+        yrfrm.add(lbl12);
+        
+        yrfrm.setSize(600, 400);
+        yrfrm.setVisible(true);
+        yrfrm.setResizable(true);
+        yrfrm.setLocationRelativeTo(null);
+        yrfrm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+    }   
+    }
     
     private int getMaxDays(int monthIndex) { 
         return switch (monthIndex) {
